@@ -409,3 +409,123 @@ glowSeed: 600
 <div mt-8 text-xl opacity-70>
   开始创建你的专业演示吧
 </div>
+
+---
+glowSeed: 650
+theme: light
+---
+
+# 浅色主题演示
+
+<div mt-8 text-gray-700>
+  这是一个浅色主题的示例页面
+</div>
+
+<div mt-6 grid grid-cols-2 gap-6>
+
+<v-click>
+<div border="2 solid blue-600" bg="blue-100" rounded-lg overflow-hidden>
+  <div bg="blue-200" px-4 py-2 flex items-center>
+    <div i-carbon:information text-blue-700 text-xl mr-2 />
+    <span font-bold text-blue-900>浅色主题信息卡片</span>
+  </div>
+  <div px-4 py-3 text-gray-800>
+    <p>浅色主题适合需要更高对比度的场景，或者打印输出。</p>
+  </div>
+</div>
+</v-click>
+
+<v-click>
+<div border="2 solid green-600" bg="green-100" rounded-lg overflow-hidden>
+  <div bg="green-200" px-4 py-2 flex items-center>
+    <div i-carbon:checkmark text-green-700 text-xl mr-2 />
+    <span font-bold text-green-900>主题特点</span>
+  </div>
+  <div px-4 py-3 flex flex-col gap-2 text-gray-800>
+    <div flex items-center gap-2>
+      <div i-carbon:checkmark-outline text-green-600 />
+      <span>更高的对比度</span>
+    </div>
+    <div flex items-center gap-2>
+      <div i-carbon:checkmark-outline text-green-600 />
+      <span>适合打印</span>
+    </div>
+    <div flex items-center gap-2>
+      <div i-carbon:checkmark-outline text-green-600 />
+      <span>白色背景友好</span>
+    </div>
+  </div>
+</div>
+</v-click>
+
+</div>
+
+---
+glowSeed: 700
+---
+
+# 动画系统演示
+
+<div mt-8 text-lg opacity-80 mb-6>
+  所有动画使用统一的 500ms 过渡时长
+</div>
+
+<div flex flex-col gap-4>
+
+<div
+  v-click="1"
+  transition duration-500 ease-in-out
+  :class="$clicks < 1 ? 'opacity-0 translate-y-20' : 'opacity-100 translate-y-0'"
+>
+  <div border="2 solid blue-800" bg="blue-800/20" rounded-lg p-4>
+    <div flex items-center gap-2>
+      <div i-carbon:arrow-down text-blue-400 />
+      <span>从下方滑入的动画</span>
+    </div>
+  </div>
+</div>
+
+<div flex gap-4>
+  <div
+    v-click="2"
+    flex-1
+    transition duration-500 ease-in-out
+    :class="$clicks < 2 ? 'opacity-0 translate-x--20' : 'opacity-100 translate-x-0'"
+  >
+    <div border="2 solid green-800" bg="green-800/20" rounded-lg p-4>
+      <div flex items-center gap-2>
+        <div i-carbon:arrow-left text-green-400 />
+        <span>从左侧滑入</span>
+      </div>
+    </div>
+  </div>
+
+  <div
+    v-click="2"
+    flex-1
+    transition duration-500 ease-in-out
+    :class="$clicks < 2 ? 'opacity-0 translate-x-20' : 'opacity-100 translate-x-0'"
+  >
+    <div border="2 solid purple-800" bg="purple-800/20" rounded-lg p-4>
+      <div flex items-center gap-2>
+        <div i-carbon:arrow-right text-purple-400 />
+        <span>从右侧滑入</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  v-click="3"
+  transition duration-500 ease-in-out
+  :class="$clicks < 3 ? 'opacity-0 scale-90' : 'opacity-100 scale-100'"
+>
+  <div border="2 solid yellow-800" bg="yellow-800/20" rounded-lg p-4>
+    <div flex items-center gap-2>
+      <div i-carbon:maximize text-yellow-400 />
+      <span>缩放入场动画</span>
+    </div>
+  </div>
+</div>
+
+</div>

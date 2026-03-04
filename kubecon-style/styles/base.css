@@ -56,6 +56,73 @@ iframe {
   background: black;
 }
 
+/* Animation System */
+@keyframes balance-shake {
+  0% {
+    transform: rotate(13deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(13deg);
+  }
+}
+
+@keyframes balance-move-left {
+  0% {
+    transform: translate(0, -27px);
+  }
+  50% {
+    transform: translate(3px, -40px);
+  }
+  100% {
+    transform: translate(0, -27px);
+  }
+}
+
+@keyframes balance-move-right {
+  0% {
+    transform: translate(-7px, 25px);
+  }
+  50% {
+    transform: translate(-12px, 38px);
+  }
+  100% {
+    transform: translate(-7px, 25px);
+  }
+}
+
+.animate-balance-shake {
+  transform: rotate(13deg);
+  animation: balance-shake 3s infinite;
+  animation-delay: 1s;
+  animation-timing-function: ease;
+}
+
+.animate-balance-move-left {
+  transform: translate(0, -27px);
+  animation: balance-move-left 3s infinite;
+  animation-delay: 1s;
+  animation-timing-function: ease;
+}
+
+.animate-balance-move-right {
+  transform: translate(-7px, 25px);
+  animation: balance-move-right 3s infinite;
+  animation-delay: 1s;
+  animation-timing-function: ease;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .animate-balance-shake,
+  .animate-balance-move-left,
+  .animate-balance-move-right {
+    animation: none;
+  }
+}
+
 .slidev-code {
   backdrop-filter: blur(10px);
   border: 1px solid #eee1;

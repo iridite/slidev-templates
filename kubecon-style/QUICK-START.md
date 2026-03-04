@@ -18,6 +18,13 @@ cd my-presentation
 npm install
 ```
 
+**核心依赖**：
+- `@slidev/cli` - Slidev 核心
+- `seedrandom` - 稳定的随机背景生成
+- `@iconify-json/carbon` - Carbon 图标集
+- `@iconify-json/logos` - 品牌 Logo 图标
+- `unocss` - 原子化 CSS 引擎
+
 ### 3. 启动开发服务器
 
 ```bash
@@ -224,11 +231,27 @@ glowSeed: 100
 glowSeed: 229        # 改变这个数字获得不同的图案
 glow: right          # 位置: full/top/bottom/left/right/center
 glowOpacity: 0.4     # 透明度 (0-1)
-glowHue: 0           # 色相偏移
+glowHue: 0           # 色相偏移 (0-360)
+theme: dark          # 主题: dark/light (新增)
 ---
 ```
 
 **建议**：每页使用不同的 `glowSeed` 值（如 100, 150, 200...）
+
+### 主题切换
+
+```yaml
+---
+theme: light         # 浅色主题
+glowSeed: 100
+glowOpacity: 0.6     # 浅色主题建议更高透明度
+---
+```
+
+浅色主题适合：
+- 白色背景的演示
+- 需要更高对比度的场景
+- 打印或投影到白色屏幕
 
 ---
 

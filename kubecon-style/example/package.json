@@ -14,9 +14,11 @@
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.2.8",
-    "@iconify-json/devicon": "^1.2.24",
+    "@iconify-json/devicon": "^1.2.59",
     "@iconify-json/logos": "^1.2.4",
     "@iconify-json/ri": "^1.2.5",
+    "@iconify-json/simple-icons": "^1.2.72",
+    "@iconify-json/solar": "^1.2.5",
     "@iconify/utils": "^2.3.0",
     "unocss": "^0.58.0"
   }

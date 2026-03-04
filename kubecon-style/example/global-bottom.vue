@@ -1,4 +1,17 @@
 <script setup lang="ts">
+/**
+ * Enhanced glow effect system with theme support
+ *
+ * Credits to @pi0 @Atinux
+ *
+ * Frontmatter Properties:
+ * - glow: Distribution pattern for polygons
+ * - glowOpacity: Opacity of the polygons (default: 0.4)
+ * - glowHue: Hue shift for the polygons (default: 0)
+ * - glowSeed: Seed for stable random distribution (default: 'default')
+ * - theme: 'light' | 'dark' - Theme mode (default: 'dark')
+ */
+
 import { useNav } from '@slidev/client'
 import seedrandom from 'seedrandom'
 import { computed, ref, watch } from 'vue'
@@ -28,6 +41,7 @@ const seed = computed<string>(() => (formatter.value.glowSeed === 'false' || for
   ? Date.now().toString()
   : formatter.value.glowSeed || 'default',
 )
+const theme = computed(() => (formatter.value.theme || 'dark') as 'light' | 'dark')
 const overflow = 0.3
 const disturb = 0.3
 const disturbChance = 0.3
@@ -143,20 +157,39 @@ const poly3 = usePloy(3)
     <div
       class="bg transform-gpu overflow-hidden pointer-events-none"
       :style="{ filter: `blur(70px) hue-rotate(${hue}deg)` }"
+      :class="[
+        theme === 'light' ? 'bg-white scale-150' : 'bg-black',
+      ]"
       aria-hidden="true"
     >
-      <div
-        class="clip bg-gradient-to-r from-[#18549a] to-[#12238b]"
-        :style="{ 'clip-path': `polygon(${poly1})`, 'opacity': opacity }"
-      />
-      <div
-        class="clip bg-gradient-to-l from-[#18549a] to-[#12238b]"
-        :style="{ 'clip-path': `polygon(${poly2})`, 'opacity': opacity }"
-      />
-      <div
-        class="clip bg-gradient-to-t from-[#01b6d1] to-[#aaf7ff]"
-        :style="{ 'clip-path': `polygon(${poly3})`, 'opacity': 0.2 }"
-      />
+      <template v-if="theme === 'light'">
+        <div
+          class="clip bg-gradient-to-r from-[#18549a] to-[#12238b]"
+          :style="{ 'clip-path': `polygon(${poly1})`, 'opacity': opacity }"
+        />
+        <div
+          class="clip bg-gradient-to-l from-[#18549a] to-[#12238b]"
+          :style="{ 'clip-path': `polygon(${poly2})`, 'opacity': opacity }"
+        />
+        <div
+          class="clip bg-gradient-to-t from-[#01b6d1] to-[#aaf7ff]"
+          :style="{ 'clip-path': `polygon(${poly3})`, 'opacity': 0.2 }"
+        />
+      </template>
+      <template v-else>
+        <div
+          class="clip bg-gradient-to-r from-[#18549a] to-[#12238b]"
+          :style="{ 'clip-path': `polygon(${poly1})`, 'opacity': opacity }"
+        />
+        <div
+          class="clip bg-gradient-to-l from-[#18549a] to-[#12238b]"
+          :style="{ 'clip-path': `polygon(${poly2})`, 'opacity': opacity }"
+        />
+        <div
+          class="clip bg-gradient-to-t from-[#01b6d1] to-[#aaf7ff]"
+          :style="{ 'clip-path': `polygon(${poly3})`, 'opacity': 0.2 }"
+        />
+      </template>
     </div>
   </div>
 </template>

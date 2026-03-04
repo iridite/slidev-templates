@@ -2,6 +2,45 @@
 
 本指南包含所有可复用的组件模式和使用示例。直接复制代码即可使用。
 
+## 动画系统
+
+所有组件都支持统一的动画系统，使用 `transition duration-500 ease-in-out` 保持一致性。
+
+### 基础动画类
+
+```vue
+<!-- 从下方滑入 -->
+<div
+  v-click
+  transition duration-500 ease-in-out
+  :class="$clicks < 1 ? 'opacity-0 translate-y-20' : 'opacity-100 translate-y-0'"
+>
+  内容
+</div>
+
+<!-- 从左侧滑入 -->
+<div
+  v-click
+  transition duration-500 ease-in-out
+  :class="$clicks < 1 ? 'opacity-0 translate-x--20' : 'opacity-100 translate-x-0'"
+>
+  内容
+</div>
+
+<!-- 缩放入场 -->
+<div
+  v-click
+  transition duration-500 ease-in-out
+  :class="$clicks < 1 ? 'opacity-0 scale-90' : 'opacity-100 scale-100'"
+>
+  内容
+</div>
+```
+
+详细动画模式请参考 `animation-patterns.md`。
+
+---
+
 ## 1. 信息卡片（Info Card）
 
 ### 基础信息卡片
@@ -410,11 +449,57 @@
 
 ## 使用技巧
 
-1. **保持一致性**：在同一个演示中使用相同的配色方案
+1. **保持一致性**：在同一个演示中使用相同的配色方案和动画时长（500ms）
 2. **合理间距**：使用 `gap-2`, `gap-4`, `gap-6` 等保持统一间距
 3. **图标选择**：从 Carbon 图标集中选择合适的图标
 4. **响应式**：使用 `grid-cols-2` 或 `grid-cols-3` 创建响应式布局
 5. **动画配合**：结合 `v-click` 实现渐进式展示
+6. **主题切换**：使用 `theme: light` 切换到浅色主题
+
+## Frontmatter 配置选项
+
+每页幻灯片支持以下配置：
+
+```yaml
+---
+layout: center           # 布局类型
+glowSeed: 100           # 背景图案种子（必需）
+glow: full              # 背景分布: full/top/bottom/left/right/center
+glowOpacity: 0.4        # 背景透明度 (0-1)
+glowHue: 0              # 色相偏移 (0-360)
+theme: dark             # 主题: dark/light
+transition: fade-out    # 页面过渡效果
+---
+```
+
+### 主题配置
+
+**深色主题（默认）**：
+```yaml
+---
+theme: dark
+glowSeed: 100
+glowOpacity: 0.4
+---
+```
+
+**浅色主题**：
+```yaml
+---
+theme: light
+glowSeed: 100
+glowOpacity: 0.6        # 浅色主题建议更高透明度
+---
+```
+
+### 动画配置
+
+所有动画使用统一配置：
+- 过渡时长：`duration-500`
+- 缓动函数：`ease-in-out`
+- 透明度：`opacity-0` → `opacity-100`
+- 位移距离：`20` 单位（translate-y-20, translate-x-20）
+- 缩放比例：`scale-90` → `scale-100`
 
 ## 常用图标
 
