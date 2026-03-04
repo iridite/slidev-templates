@@ -1,0 +1,29 @@
+{
+	"prefix": "solar",
+	"name": "Solar",
+	"total": 7401,
+	"author": {
+		"name": "480 Design",
+		"url": "https://www.figma.com/community/file/1166831539721848736"
+	},
+	"license": {
+		"title": "CC BY 4.0",
+		"spdx": "CC-BY-4.0",
+		"url": "https://creativecommons.org/licenses/by/4.0/"
+	},
+	"samples": [
+		"magnifer-zoom-out-broken",
+		"armchair-2-bold-duotone",
+		"traffic-economy-line-duotone",
+		"user-rounded-bold-duotone",
+		"soundwave-linear",
+		"hamburger-menu-broken"
+	],
+	"height": 24,
+	"category": "UI 24px",
+	"tags": [
+		"Has Padding",
+		"Uses Stroke"
+	],
+	"palette": false
+}

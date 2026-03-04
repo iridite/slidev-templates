@@ -1,0 +1,68 @@
+{
+  "name": "@unocss/postcss",
+  "type": "module",
+  "version": "0.62.4",
+  "description": "PostCSS plugin for UnoCSS",
+  "author": "sibbng <sibbngheid@gmail.com>",
+  "license": "MIT",
+  "funding": "https://github.com/sponsors/antfu",
+  "homepage": "https://github.com/unocss/unocss/tree/main/packages/postcss#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unocss/unocss",
+    "directory": "packages/postcss"
+  },
+  "bugs": {
+    "url": "https://github.com/unocss/unocss/issues"
+  },
+  "keywords": [],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./esm": {
+      "types": "./dist/esm.d.mts",
+      "default": "./dist/esm.mjs"
+    }
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "dist/*",
+        "./*"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=14"
+  },
+  "peerDependencies": {
+    "postcss": "^8.4.21"
+  },
+  "dependencies": {
+    "css-tree": "^2.3.1",
+    "postcss": "^8.4.47",
+    "tinyglobby": "^0.2.6",
+    "@unocss/config": "0.62.4",
+    "@unocss/core": "0.62.4",
+    "@unocss/rule-utils": "0.62.4"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "stub": "unbuild --stub"
+  }
+}
