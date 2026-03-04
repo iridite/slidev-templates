@@ -1,0 +1,23 @@
+{
+  "name": "kubecon-style-example",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@slidev/cli": "^0.49.0",
+    "@slidev/theme-default": "latest",
+    "seedrandom": "^3.0.5"
+  },
+  "devDependencies": {
+    "@iconify-json/carbon": "^1.2.8",
+    "@iconify-json/devicon": "^1.2.24",
+    "@iconify-json/logos": "^1.2.4",
+    "@iconify-json/ri": "^1.2.5",
+    "@iconify/utils": "^2.3.0",
+    "unocss": "^0.58.0"
+  }
+}
