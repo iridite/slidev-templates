@@ -18,20 +18,41 @@
 - 🚀 **平滑动画系统** — 统一 `500ms` 过渡，支持 `v-click` 渐进展示
 - 📚 **完整文档** — 快速入门、组件指南、配色说明、动画模式、AI 使用指南
 
-## 🚀 快速开始
+## 🚀 使用方式
+
+本仓库采用 **monorepo** 结构，支持两种使用方式：
+
+### 方式一：AI Agent 读取（推荐用于 AI 辅助创作）
+
+直接让 AI agent 读取仓库内容，自动应用模板风格：
 
 ```bash
 # 1. 克隆仓库
 git clone https://github.com/iridite/slidev-templates.git
+
+# 2. 在根目录安装依赖（monorepo 统一管理）
 cd slidev-templates
-
-# 2. 进入模板示例目录
-cd neko-style/example
-
-# 3. 安装依赖
 npm install
 
-# 4. 启动开发服务器
+# 3. 启动 neko-style 示例预览
+npm run dev:neko
+```
+
+AI agent 可以直接读取 [neko-style/AI-GUIDE.md](./neko-style/AI-GUIDE.md) 和组件文档，帮你快速生成符合模板风格的演示文稿。
+
+### 方式二：手工复制（传统方式）
+
+复制模板文件到你的项目，手动修改：
+
+```bash
+# 1. 复制模板到你的项目
+cp -r neko-style/components your-project/
+cp -r neko-style/styles your-project/
+cp -r neko-style/configs your-project/
+
+# 2. 参考示例项目
+cd neko-style/example
+npm install
 npm run dev
 ```
 
@@ -41,6 +62,7 @@ npm run dev
 
 ```
 slidev-templates/
+├── package.json       # Monorepo 配置
 ├── README.md          # 本文件
 └── neko-style/        # neko-style 模板
     ├── README.md      # 模板主文档
@@ -48,7 +70,7 @@ slidev-templates/
     ├── components-guide.md   # 组件使用指南
     ├── color-system.md       # 配色系统说明
     ├── animation-patterns.md # 动画模式指南
-    ├── AI-GUIDE.md           # AI 助手使用说明
+    ├── FOR-AI-ASSISTANTS.md  # AI 助手使用说明 ⭐
     ├── components/           # Vue 组件
     ├── styles/               # 基础样式
     ├── configs/              # 配置示例
@@ -79,7 +101,7 @@ glowPreset: rust   # blue | rust | cyan
 - [组件指南](./neko-style/components-guide.md) — 所有组件代码示例 ⭐⭐⭐
 - [配色系统](./neko-style/color-system.md) — 配色方案说明
 - [动画模式](./neko-style/animation-patterns.md) — 动画效果指南
-- [AI 使用指南](./neko-style/AI-GUIDE.md) — 给 AI 助手的说明
+- [AI 助手指南](./neko-style/FOR-AI-ASSISTANTS.md) — 给 AI 助手的使用说明
 
 ## 🤝 贡献
 
