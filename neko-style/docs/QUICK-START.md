@@ -4,25 +4,36 @@
 
 ## 🚀 使用方式
 
-### 方式一：Monorepo 统一管理（推荐）
+### 方式一：Starter Template（推荐新手）
+
+```bash
+npx degit user/repo/neko-style/starter my-presentation
+cd my-presentation
+npm install
+npm run dev
+```
+
+### 方式二：Theme Package（推荐进阶用户）
+
+```bash
+# 在现有 Slidev 项目中
+npm install slidev-theme-neko-style
+```
+
+在 slides.md 中引用：
+
+```yaml
+---
+theme: neko-style
+---
+```
+
+### 方式三：Monorepo 开发
 
 ```bash
 # 在仓库根目录
 npm install
 npm run dev:neko
-```
-
-### 方式二:复制到现有项目
-
-```bash
-# 复制必要文件
-cp components/GlowBackground.vue your-project/global-bottom.vue
-cp styles/base.css your-project/style.css
-cp configs/uno.config.example.ts your-project/uno.config.ts
-
-# 安装依赖
-npm install seedrandom
-npm install -D @iconify-json/carbon @iconify-json/logos
 ```
 
 ## 📚 核心概念

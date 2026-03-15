@@ -8,30 +8,47 @@
 - 🌈 **3 种颜色预设** - blue(科技蓝)、rust(橙红)、cyan(青蓝)
 - 🎯 **语义化配色** - 红色=问题,绿色=解决方案,蓝色=信息
 - 📦 **丰富组件库** - 信息卡片、对比卡片、指标卡片
+- 🎭 **专业布局系统** - 封面、章节、目录、结束页布局
 - 🚀 **平滑动画系统** - 统一 500ms 过渡效果
+- ⚡ **高级功能** - v-motion 动画、Asciinema 播放器、Three.js 3D
 - 📚 **完整文档** - 快速入门、组件指南、AI 助手指南
+- 🎓 **真实案例** - 来自 KubeCon、LLM 深度解析等演讲
 
 ## 🚀 快速开始
 
-### 在 Monorepo 中使用(推荐)
+### 方式 1: 使用 Starter Template（推荐新手）
+
+直接复制 starter 模板开始：
+
+```bash
+npx degit user/repo/neko-style/starter my-presentation
+cd my-presentation
+npm install
+npm run dev
+```
+
+### 方式 2: 安装 Theme Package（推荐进阶用户）
+
+在现有 Slidev 项目中安装 theme：
+
+```bash
+npm install slidev-theme-neko-style
+```
+
+在 slides.md 中引用：
+
+```yaml
+---
+theme: neko-style
+---
+```
+
+### 在 Monorepo 中开发
 
 ```bash
 # 在仓库根目录
 npm install
 npm run dev:neko
-```
-
-### 复制到现有项目
-
-```bash
-# 复制必要文件
-cp components/GlowBackground.vue your-project/global-bottom.vue
-cp styles/base.css your-project/style.css
-cp configs/uno.config.example.ts your-project/uno.config.ts
-
-# 安装依赖
-npm install seedrandom
-npm install -D @iconify-json/carbon @iconify-json/logos
 ```
 
 ## 📖 文档
@@ -40,9 +57,13 @@ npm install -D @iconify-json/carbon @iconify-json/logos
 |------|------|
 | [docs/QUICK-START.md](./docs/QUICK-START.md) | 5 分钟快速入门 ⭐ |
 | [docs/components-guide.md](./docs/components-guide.md) | 所有组件使用方法 ⭐⭐⭐ |
+| [docs/layouts-guide.md](./docs/layouts-guide.md) | 布局系统使用指南 ⭐⭐ |
+| [docs/advanced-components.md](./docs/advanced-components.md) | 高级组件指南 |
 | [docs/color-system.md](./docs/color-system.md) | 配色系统说明 |
 | [docs/animation-patterns.md](./docs/animation-patterns.md) | 动画模式指南 |
+| [docs/optional-dependencies.md](./docs/optional-dependencies.md) | 可选依赖说明 |
 | [docs/FOR-AI-ASSISTANTS.md](./docs/FOR-AI-ASSISTANTS.md) | AI 助手使用指南 |
+| [examples/README.md](./examples/README.md) | 真实演讲案例 ⭐ |
 
 **推荐学习顺序**:
 1. 运行 `example` 项目(5 分钟)
@@ -54,22 +75,33 @@ npm install -D @iconify-json/carbon @iconify-json/logos
 ```
 neko-style/
 ├── README.md                    # 本文件
-├── FOR-AI-ASSISTANTS.md         # AI 助手指南
-├── docs/
-│   ├── QUICK-START.md          # 快速入门 ⭐
-│   ├── components-guide.md      # 组件指南 ⭐⭐⭐
-│   ├── color-system.md         # 配色系统
-│   └── animation-patterns.md    # 动画模式
-├── components/
-│   └── GlowBackground.vue      # Glow 背景组件
-├── styles/
-│   └── base.css                # 基础样式
-├── configs/
-│   └── uno.config.example.ts   # UnoCSS 配置
-└── example/                    # 完整示例项目 ⭐
-    ├── slides.md               # 示例幻灯片
-    ├── package.json
-    └── ...
+├── theme/                       # NPM Theme Package
+│   ├── package.json
+│   ├── components/              # 主题组件
+│   │   ├── GlowBackground.vue
+│   │   ├── Background.vue
+│   │   └── advanced/
+│   ├── layouts/                 # 布局系统
+│   │   ├── cover.vue
+│   │   ├── section.vue
+│   │   ├── contents-toc.vue
+│   │   └── end.vue
+│   ├── styles/
+│   │   └── index.css
+│   ├── setup/
+│   └── README.md
+├── starter/                     # Starter Template ⭐
+│   ├── package.json
+│   ├── slides.md                # 示例幻灯片
+│   ├── uno.config.ts
+│   └── README.md
+├── docs/                        # 文档
+│   ├── QUICK-START.md
+│   ├── components-guide.md      ⭐⭐⭐
+│   ├── layouts-guide.md
+│   └── ...
+└── examples/                    # 真实演讲案例
+    └── README.md
 ```
 
 ## 🎨 颜色预设

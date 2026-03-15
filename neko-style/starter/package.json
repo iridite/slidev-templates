@@ -1,0 +1,20 @@
+{
+  "name": "neko-style-starter",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@slidev/cli": "^0.49.0",
+    "@slidev/theme-default": "latest",
+    "slidev-theme-neko-style": "file:../theme"
+  },
+  "devDependencies": {
+    "@iconify-json/carbon": "^1.2.8",
+    "@iconify-json/logos": "^1.2.4",
+    "unocss": "^0.58.0"
+  }
+}
