@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.slidev/
+*.log
+.DS_Store
+
+# 工作目录 - 用于临时存放和提取他人的 PPT 设计
+raw-template/

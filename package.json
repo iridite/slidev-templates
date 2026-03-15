@@ -1,0 +1,16 @@
+{
+  "name": "slidev-templates",
+  "version": "1.0.0",
+  "private": true,
+  "description": "高质量 Slidev 演示模板集合",
+  "workspaces": [
+    "neko-style/example"
+  ],
+  "scripts": {
+    "dev:neko": "npm run dev -w neko-style/example",
+    "build:neko": "npm run build -w neko-style/example",
+    "export:neko": "npm run export -w neko-style/example"
+  },
+  "keywords": ["slidev", "template", "presentation"],
+  "license": "MIT"
+}
