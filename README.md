@@ -20,43 +20,45 @@
 
 ## 🚀 使用方式
 
-本仓库采用 **monorepo** 结构，支持两种使用方式：
+### 方式一：Starter Template（推荐新手）
 
-### 方式一：AI Agent 读取（推荐用于 AI 辅助创作）
-
-直接让 AI agent 读取仓库内容，自动应用模板风格：
+直接复制 starter 模板，开箱即用：
 
 ```bash
-# 1. 克隆仓库
-git clone https://github.com/iridite/slidev-templates.git
-
-# 2. 在根目录安装依赖（monorepo 统一管理）
-cd slidev-templates
-npm install
-
-# 3. 启动 neko-style 示例预览
-npm run dev:neko
-```
-
-AI agent 可以直接读取 [neko-style/docs/FOR-AI-ASSISTANTS.md](./neko-style/docs/FOR-AI-ASSISTANTS.md) 和组件文档，帮你快速生成符合模板风格的演示文稿。
-
-### 方式二：手工复制（传统方式）
-
-复制模板文件到你的项目，手动修改：
-
-```bash
-# 1. 复制模板到你的项目
-cp -r neko-style/components your-project/
-cp -r neko-style/styles your-project/
-cp -r neko-style/configs your-project/
-
-# 2. 参考示例项目
-cd neko-style/example
+npx degit iridite/slidev-templates/neko-style/starter my-presentation
+cd my-presentation
 npm install
 npm run dev
 ```
 
-浏览器会自动打开 `http://localhost:3030`，可以实时预览完整的示例演示。
+### 方式二：NPM Theme Package（推荐进阶用户）
+
+在现有 Slidev 项目中安装 theme：
+
+```bash
+npm install slidev-theme-neko-style
+```
+
+在 `slides.md` 中引用：
+
+```yaml
+---
+theme: neko-style
+---
+```
+
+**工作原理**：Slidev 会自动从 `node_modules/slidev-theme-*` 加载 theme 的 components、layouts 和 styles，实现跨项目复用。
+
+### 方式三：Monorepo 开发（贡献者）
+
+克隆仓库进行开发：
+
+```bash
+git clone https://github.com/iridite/slidev-templates.git
+cd slidev-templates
+npm install
+npm run dev:neko
+```
 
 ## 📁 仓库结构
 
