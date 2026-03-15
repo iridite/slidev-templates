@@ -57,9 +57,9 @@
 | 高级功能 | 信息卡片 | `purple-800` |
 | 对比展示 | 左右对比布局 | `red-800` + `green-800` |
 
-### 步骤 3：从 components-guide.md 复制代码
+### 步骤 3：从 docs/components-guide.md 复制代码
 
-**重要**：直接从 `components-guide.md` 复制完整的代码块，然后修改：
+**重要**：直接从 `docs/components-guide.md` 复制完整的代码块，然后修改：
 1. 标题文字
 2. 内容文字
 3. 图标（如果需要）
@@ -287,16 +287,29 @@ transition duration-500 ease-in-out
 
 当用户需要帮助时，按以下顺序引导：
 
-1. **components-guide.md** ⭐⭐⭐ - 最重要，包含所有组件代码
-2. **QUICK-START.md** ⭐⭐ - 快速入门
-3. **color-system.md** ⭐ - 配色说明
-4. **animation-patterns.md** ⭐ - 动画说明
+1. **docs/components-guide.md** ⭐⭐⭐ - 最重要，包含所有组件代码
+2. **docs/QUICK-START.md** ⭐⭐ - 快速入门
+3. **docs/color-system.md** ⭐ - 配色说明
+4. **docs/animation-patterns.md** ⭐ - 动画说明
 5. **example/slides.md** - 完整示例
+
+## 🤖 Claude Code Skill
+
+如果用户使用 Claude Code，可以创建一个 skill 来快速激活这个模板：
+
+1. 复制 `neko-style/skills.md` 到项目根目录的 `.claude/skills/neko-slidev.md`
+2. 使用 `/neko-slidev` 命令激活
+
+```bash
+cp neko-style/skills.md .claude/skills/neko-slidev.md
+```
+
+**注意**：`.claude/` 目录已被 `.gitignore` 排除，每个用户需要在本地创建。
 
 ## 💡 最佳实践
 
 1. **从示例开始**：建议用户先运行 `example` 项目
-2. **复制粘贴**：从 `components-guide.md` 直接复制代码
+2. **复制粘贴**：从 `docs/components-guide.md` 直接复制代码
 3. **渐进修改**：先复制，再修改文字和颜色
 4. **保持简洁**：一页不要放太多内容
 5. **使用 v-click**：控制内容渐进展示
@@ -321,7 +334,7 @@ transition duration-500 ease-in-out
 让我开始创建...
 ```
 
-然后从 `components-guide.md` 复制合适的组件代码，修改内容。
+然后从 `docs/components-guide.md` 复制合适的组件代码，修改内容。
 
 ## 🚀 效率提升技巧
 
@@ -333,7 +346,7 @@ transition duration-500 ease-in-out
 ---
 
 记住：这个模板的核心价值在于**可复用的组件**和**语义化的配色**。
-直接从 `components-guide.md` 复制代码，然后修改内容，是最高效的使用方式。
+直接从 `docs/components-guide.md` 复制代码，然后修改内容，是最高效的使用方式。
 
 ## 颜色预设系统
 

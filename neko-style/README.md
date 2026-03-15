@@ -143,9 +143,19 @@ theme: dark       # dark | light
 
 本模板提供了专门的 AI 助手指南,支持:
 - 让 AI 读取模板文档并自动应用风格
-- 使用 `/neko-slidev` skill 快速创建演示
+- 使用 Claude Code skill 快速创建演示
 
-详见 [FOR-AI-ASSISTANTS.md](./FOR-AI-ASSISTANTS.md)
+### 使用 Claude Code Skill
+
+复制 skill 文件到本地:
+
+```bash
+cp neko-style/skills.md .claude/skills/neko-slidev.md
+```
+
+然后使用 `/neko-slidev` 命令激活。
+
+详见 [FOR-AI-ASSISTANTS.md](./FOR-AI-ASSISTANTS.md) 和 [skills.md](./skills.md)
 
 ## 📄 License
 
