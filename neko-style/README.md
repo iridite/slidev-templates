@@ -42,7 +42,7 @@ npm install -D @iconify-json/carbon @iconify-json/logos
 | [docs/components-guide.md](./docs/components-guide.md) | 所有组件使用方法 ⭐⭐⭐ |
 | [docs/color-system.md](./docs/color-system.md) | 配色系统说明 |
 | [docs/animation-patterns.md](./docs/animation-patterns.md) | 动画模式指南 |
-| [FOR-AI-ASSISTANTS.md](./FOR-AI-ASSISTANTS.md) | AI 助手使用指南 |
+| [docs/FOR-AI-ASSISTANTS.md](./docs/FOR-AI-ASSISTANTS.md) | AI 助手使用指南 |
 
 **推荐学习顺序**:
 1. 运行 `example` 项目(5 分钟)
@@ -155,7 +155,7 @@ cp neko-style/skills.md .claude/skills/neko-slidev.md
 
 然后使用 `/neko-slidev` 命令激活。
 
-详见 [FOR-AI-ASSISTANTS.md](./FOR-AI-ASSISTANTS.md) 和 [skills.md](./skills.md)
+详见 [docs/FOR-AI-ASSISTANTS.md](./docs/FOR-AI-ASSISTANTS.md) 和 [skills.md](./skills.md)
 
 ## 📄 License
 

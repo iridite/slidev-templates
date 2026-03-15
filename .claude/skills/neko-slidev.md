@@ -25,9 +25,9 @@ runInPlanMode: false
 
 在开始创建之前,你必须读取以下文档:
 
-1. `neko-style/FOR-AI-ASSISTANTS.md` - AI 助手使用指南(最重要)
-2. `neko-style/components-guide.md` - 组件代码示例
-3. `neko-style/QUICK-START.md` - 快速入门
+1. `neko-style/docs/FOR-AI-ASSISTANTS.md` - AI 助手使用指南(最重要)
+2. `neko-style/docs/components-guide.md` - 组件代码示例
+3. `neko-style/docs/QUICK-START.md` - 快速入门
 4. `neko-style/example/slides.md` - 完整示例
 
 ## 组件选择指南
@@ -65,7 +65,7 @@ glowOpacity: 0.4      # 0-1
 ## 开始工作
 
 现在请:
-1. 读取 `neko-style/FOR-AI-ASSISTANTS.md` 获取完整指南
-2. 读取 `neko-style/components-guide.md` 获取组件代码
+1. 读取 `neko-style/docs/FOR-AI-ASSISTANTS.md` 获取完整指南
+2. 读取 `neko-style/docs/components-guide.md` 获取组件代码
 3. 询问用户的演示需求
 4. 开始创建演示文稿

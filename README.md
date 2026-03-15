@@ -38,7 +38,7 @@ npm install
 npm run dev:neko
 ```
 
-AI agent 可以直接读取 [neko-style/AI-GUIDE.md](./neko-style/AI-GUIDE.md) 和组件文档，帮你快速生成符合模板风格的演示文稿。
+AI agent 可以直接读取 [neko-style/docs/FOR-AI-ASSISTANTS.md](./neko-style/docs/FOR-AI-ASSISTANTS.md) 和组件文档，帮你快速生成符合模板风格的演示文稿。
 
 ### 方式二：手工复制（传统方式）
 
@@ -101,7 +101,7 @@ glowPreset: rust   # blue | rust | cyan
 - [组件指南](./neko-style/components-guide.md) — 所有组件代码示例 ⭐⭐⭐
 - [配色系统](./neko-style/color-system.md) — 配色方案说明
 - [动画模式](./neko-style/animation-patterns.md) — 动画效果指南
-- [AI 助手指南](./neko-style/FOR-AI-ASSISTANTS.md) — 给 AI 助手的使用说明
+- [AI 助手指南](./neko-style/docs/FOR-AI-ASSISTANTS.md) — 给 AI 助手的使用说明
 
 ## 🤝 贡献
 
