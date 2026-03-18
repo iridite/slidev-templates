@@ -10,13 +10,11 @@
 
 ## 🎬 Neko Style 实例 PPT 预览
 
-<video src="./assets/neko-style-preview-30fps-smooth-full.mp4" controls autoplay muted loop playsinline width="960" height="540">
-  Your browser does not support the video tag.
-</video>
+这里是 `neko-style` 示例预览视频（MP4）：
 
-> 预览已切换为 MP4（`30fps`，淡入淡出过渡），视觉更平滑。
+https://github.com/iridite/slidev-templates/raw/main/assets/neko-style-preview-30fps-smooth-full.mp4
 
-> 若当前平台不支持内嵌视频，可直接打开：[`./assets/neko-style-preview-30fps-smooth-full.mp4`](./assets/neko-style-preview-30fps-smooth-full.mp4)
+> 采用“裸链接”方式，兼容 GitHub README 渲染。
 
 > 静态首屏预览：[`./assets/neko-style-preview.png`](./assets/neko-style-preview.png)
 
