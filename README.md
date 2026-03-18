@@ -8,6 +8,14 @@
 |------|------|------|
 | [neko-style](./neko-style/) | 从 neko-talks / KubeCon HK 2025 演示文稿提取的专业技术演示风格 | 动态 Glow 背景、语义化配色、丰富组件库 |
 
+## 🎬 Neko Style 实例 PPT 预览
+
+![neko-style preview (glow background)](./assets/neko-style-preview.gif)
+
+> 若 GIF 在网络环境下加载较慢，可查看静态首屏预览：[`./assets/neko-style-preview.png`](./assets/neko-style-preview.png)
+
+> 示例来源：`neko-style/example/slides.md`（用于展示 glow seed 背景效果）
+
 ## ✨ 特性概览
 
 ### neko-style
