@@ -44,7 +44,7 @@ const seed = computed<string>(() => (formatter.value.glowSeed === 'false' || for
   ? Date.now().toString()
   : formatter.value.glowSeed || 'default',
 )
-const theme = computed(() => (formatter.value.theme || 'dark') as 'light' | 'dark')
+const theme = computed<'dark'>(() => 'dark')
 const preset = computed(() => (formatter.value.glowPreset || 'blue') as ColorPreset)
 const overflow = 0.3
 const disturb = 0.3
@@ -175,6 +175,14 @@ function usePloy(number = 16) {
 const poly1 = usePloy(10)
 const poly2 = usePloy(6)
 const poly3 = usePloy(3)
+
+function clipStyle(poly: string, alpha: number, from: string, to: string, direction: 'to right' | 'to left' | 'to top') {
+  return {
+    'clip-path': `polygon(${poly})`,
+    opacity: alpha,
+    'background-image': `linear-gradient(${direction}, ${from}, ${to})`,
+  }
+}
 </script>
 
 <template>
@@ -187,64 +195,18 @@ const poly3 = usePloy(3)
       ]"
       aria-hidden="true"
     >
-      <template v-if="theme === 'light'">
-        <div
-          class="clip bg-gradient-to-r"
-          :style="{
-            'clip-path': `polygon(${poly1})`,
-            'opacity': opacity,
-            '--tw-gradient-from': colors.from,
-            '--tw-gradient-to': colors.to,
-          }"
-        />
-        <div
-          class="clip bg-gradient-to-l"
-          :style="{
-            'clip-path': `polygon(${poly2})`,
-            'opacity': opacity,
-            '--tw-gradient-from': colors.from,
-            '--tw-gradient-to': colors.to,
-          }"
-        />
-        <div
-          class="clip bg-gradient-to-t"
-          :style="{
-            'clip-path': `polygon(${poly3})`,
-            'opacity': 0.2,
-            '--tw-gradient-from': colors.accent,
-            '--tw-gradient-to': colors.to,
-          }"
-        />
-      </template>
-      <template v-else>
-        <div
-          class="clip bg-gradient-to-r"
-          :style="{
-            'clip-path': `polygon(${poly1})`,
-            'opacity': opacity,
-            '--tw-gradient-from': colors.from,
-            '--tw-gradient-to': colors.to,
-          }"
-        />
-        <div
-          class="clip bg-gradient-to-l"
-          :style="{
-            'clip-path': `polygon(${poly2})`,
-            'opacity': opacity,
-            '--tw-gradient-from': colors.from,
-            '--tw-gradient-to': colors.to,
-          }"
-        />
-        <div
-          class="clip bg-gradient-to-t"
-          :style="{
-            'clip-path': `polygon(${poly3})`,
-            'opacity': 0.2,
-            '--tw-gradient-from': colors.accent,
-            '--tw-gradient-to': colors.to,
-          }"
-        />
-      </template>
+      <div
+        class="clip"
+        :style="clipStyle(poly1, opacity, colors.from, colors.to, 'to right')"
+      />
+      <div
+        class="clip"
+        :style="clipStyle(poly2, opacity, colors.from, colors.to, 'to left')"
+      />
+      <div
+        class="clip"
+        :style="clipStyle(poly3, 0.2, colors.accent, colors.to, 'to top')"
+      />
     </div>
   </div>
 </template>

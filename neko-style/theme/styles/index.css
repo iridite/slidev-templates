@@ -11,10 +11,6 @@ h6 {
   letter-spacing: 0 !important;
 }
 
-.dark #slide-content {
-  background-color: black !important;
-}
-
 /* Transitions */
 .slidev-vclick-target {
   transition:
