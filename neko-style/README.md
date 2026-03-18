@@ -150,6 +150,30 @@ theme: dark       # dark | light
 
 更多组件请查看 [docs/components-guide.md](./docs/components-guide.md)
 
+## 🛠️ 背景显示说明（避免黑底无 Glow）
+
+为确保 `glowSeed` 背景在所有页面都正常生效，请注意：
+
+1. 在 `slides.md` 顶部 frontmatter 启用主题：
+
+```yaml
+---
+theme: neko-style
+---
+```
+
+2. 不要在全局样式里覆盖 `.slidev-layout` 的背景色（例如强制 `background: black`）。
+3. 使用 `glowSeed` 时，保持每页 frontmatter 正常书写（YAML 缩进和分隔线 `---` 正确）。
+
+### 快速自检清单
+
+- ✅ 已设置 `theme: neko-style`
+- ✅ 页面没有设置自定义 `background` 覆盖 Glow
+- ✅ `glow` 未被显式关闭（即未设置 `glow: false`）
+- ✅ 未在项目全局 CSS 中强制覆盖 `.slidev-layout` 背景
+
+如果你看到“整页纯黑且没有 Glow 多边形”，优先检查以上 4 项。
+
 ## 🎬 动画效果
 
 ```vue

@@ -38,6 +38,27 @@ npm run dev:neko
 
 ## 📚 核心概念
 
+### ⚠️ 黑底无 Glow 的常见原因
+
+如果你看到纯黑背景但没有 `glowSeed` 特效，通常是以下原因：
+
+- 没有在文档顶层 frontmatter 设置 `theme: neko-style`
+- 某处全局 CSS 强制覆盖了 `.slidev-layout` 背景（例如 `background: black`）
+- 当前页显式设置了 `glow: false`
+- frontmatter 格式错误导致配置未生效
+
+建议先用下面最小配置验证：
+
+```yaml
+---
+theme: neko-style
+glowSeed: 100
+glowPreset: blue
+glowOpacity: 0.4
+glow: full
+---
+```
+
 ### 1. Glow 背景配置
 
 每页使用不同的 `glowSeed` 值:

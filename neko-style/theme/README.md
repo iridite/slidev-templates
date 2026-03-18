@@ -18,6 +18,33 @@ theme: neko-style
 ---
 ```
 
+## Glow Background Notes
+
+To avoid a full black background without glow effect:
+
+- Do not force override `.slidev-layout` with a global black background in your project CSS.
+- Keep `glow` enabled (default is enabled, only disabled when `glow: false`).
+- If a slide defines `background`, that explicit background takes precedence over glow.
+
+Recommended per-slide frontmatter:
+
+```yaml
+---
+glowSeed: 42
+glowPreset: blue   # blue | rust | cyan
+glowOpacity: 0.4
+glow: full
+---
+```
+
+Quick check when glow is missing:
+
+1. Confirm `theme: neko-style` is present.
+2. Confirm no custom global CSS overrides `.slidev-layout` background.
+3. Confirm the slide does not set `glow: false`.
+4. Confirm frontmatter YAML is valid (correct `---` separators and indentation).
+
+
 ## Available Layouts
 
 - `cover` - Title slide with glow background
