@@ -12,7 +12,7 @@
 
 这里是 `neko-style` 示例预览视频（MP4）：
 
-https://github.com/iridite/slidev-templates/raw/main/assets/neko-style-preview-30fps-smooth-full.mp4
+https://github.com/user-attachments/assets/6a4d34f7-cefd-47e1-b5d1-51d6e31845fe
 
 > 采用“裸链接”方式，兼容 GitHub README 渲染。
 
