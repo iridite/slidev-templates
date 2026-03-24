@@ -15,6 +15,7 @@
   "devDependencies": {
     "@iconify-json/carbon": "^1.2.8",
     "@iconify-json/logos": "^1.2.4",
+    "playwright-chromium": "^1.54.2",
     "unocss": "^0.58.0"
   }
 }
