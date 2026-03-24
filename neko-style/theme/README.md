@@ -4,8 +4,39 @@ A modern, animated Slidev theme with glow effects and advanced components.
 
 ## Installation
 
+> ⚠️ `slidev-theme-neko-style` 当前**未发布到 npm registry**，不能直接 `npm install slidev-theme-neko-style`。
+
+推荐两种方式：
+
+### A) 使用 starter（最推荐）
+
 ```bash
-npm install slidev-theme-neko-style
+npx degit iridite/slidev-templates/neko-style/starter my-presentation
+cd my-presentation
+npm install
+npm run dev
+```
+
+### B) 在已有项目通过本地路径安装 theme
+
+先获取仓库（任意位置）：
+
+```bash
+git clone https://github.com/iridite/slidev-templates.git
+```
+
+然后在你的 Slidev 项目里安装本地 theme 包：
+
+```bash
+npm install /absolute/path/to/slidev-templates/neko-style/theme
+```
+
+安装后在 `slides.md` 使用：
+
+```yaml
+---
+theme: neko-style
+---
 ```
 
 ## Usage

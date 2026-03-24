@@ -13,11 +13,18 @@ npm install
 npm run dev
 ```
 
-### 方式二：Theme Package（推荐进阶用户）
+### 方式二：Theme Package（已有项目迁移）
+
+> ⚠️ 当前主题**未发布到 npm registry**，不能直接执行 `npm install slidev-theme-neko-style`。
+
+请使用“本地路径安装”方式：
 
 ```bash
-# 在现有 Slidev 项目中
-npm install slidev-theme-neko-style
+# 1) 先获取模板仓库
+git clone https://github.com/iridite/slidev-templates.git
+
+# 2) 在你的 Slidev 项目中安装本地 theme
+npm install /absolute/path/to/slidev-templates/neko-style/theme
 ```
 
 在 slides.md 中引用：

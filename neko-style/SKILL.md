@@ -13,6 +13,9 @@ description: 使用 neko-style 模板创建专业的 Slidev 演示文稿
 4. 根据内容类型选择合适的组件和配色
 5. 生成演示文稿
 
+> ⚠️ 发布状态说明：`slidev-theme-neko-style` 当前未发布到 npm registry。
+> 当用户要在已有项目接入时，必须给出“本地路径安装”指令，而不是 `npm install slidev-theme-neko-style`。
+
 ## 核心原则
 
 - 直接从 `docs/components-guide.md` 复制代码

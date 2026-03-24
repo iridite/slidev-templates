@@ -27,15 +27,21 @@ npm install
 npm run dev
 ```
 
-### 方式 2: 安装 Theme Package（推荐进阶用户）
+### 方式 2: 在已有项目接入 Theme（进阶）
 
-在现有 Slidev 项目中安装 theme：
+> ⚠️ `slidev-theme-neko-style` 当前未发布到 npm registry，不能直接 `npm install slidev-theme-neko-style`。
+
+在已有 Slidev 项目中请使用本地路径安装：
 
 ```bash
-npm install slidev-theme-neko-style
+# 1) 先获取模板仓库
+git clone https://github.com/iridite/slidev-templates.git
+
+# 2) 在你的 Slidev 项目中安装本地 theme 包
+npm install /absolute/path/to/slidev-templates/neko-style/theme
 ```
 
-在 slides.md 中引用：
+在 `slides.md` 中引用：
 
 ```yaml
 ---
@@ -74,7 +80,7 @@ npm run dev:neko
 ```
 neko-style/
 ├── README.md                    # 本文件
-├── theme/                       # NPM Theme Package
+├── theme/                       # Local Theme Package（本地路径安装）
 │   ├── package.json
 │   ├── components/              # 主题组件
 │   │   ├── GlowBackground.vue

@@ -108,10 +108,16 @@ npm install
 npm run dev
 ```
 
-### Option 2: Install Theme Package (Recommended for existing projects)
+### Option 2: Install Theme Package from Local Path (Recommended for existing projects)
+
+> `slidev-theme-neko-style` is currently not published to npm registry.
 
 ```bash
-npm install slidev-theme-neko-style
+# clone template repo first
+git clone https://github.com/iridite/slidev-templates.git
+
+# install local theme package in your Slidev project
+npm install /absolute/path/to/slidev-templates/neko-style/theme
 ```
 
 Then add to `slides.md`:

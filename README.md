@@ -43,12 +43,18 @@ npm install
 npm run dev
 ```
 
-### 方式二：NPM Theme Package（推荐进阶用户）
+### 方式二：在已有项目接入 Theme（进阶）
 
-在现有 Slidev 项目中安装 theme：
+> ⚠️ `slidev-theme-neko-style` 当前未发布到 npm registry，不能直接 `npm install slidev-theme-neko-style`。
+
+在现有 Slidev 项目中，请先获取仓库再用本地路径安装：
 
 ```bash
-npm install slidev-theme-neko-style
+# 1) 获取仓库
+git clone https://github.com/iridite/slidev-templates.git
+
+# 2) 在你的 Slidev 项目中安装本地 theme 包
+npm install /absolute/path/to/slidev-templates/neko-style/theme
 ```
 
 在 `slides.md` 中引用：
@@ -83,7 +89,7 @@ slidev-templates/
     ├── SKILL.md            # Claude Code 技能定义
     ├── docs/               # 文档（快速入门/组件/动画/配色等）
     ├── starter/            # 可直接运行的示例项目
-    ├── theme/              # 可复用主题包（NPM）
+    ├── theme/              # 可复用主题包（本地路径安装）
     └── uno.config.ts       # UnoCSS 配置
 ```
 
