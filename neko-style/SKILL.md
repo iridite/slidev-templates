@@ -1,4 +1,5 @@
 ---
+name: neko-slidev
 description: 使用 neko-style 模板创建专业的 Slidev 演示文稿
 ---
 
