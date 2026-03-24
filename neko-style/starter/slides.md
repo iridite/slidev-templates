@@ -323,7 +323,7 @@ class: px-14 py-10
 </div>
 
 <div class="mt-8 text-center opacity-70">
-  查看 <span class="text-blue-400">examples/README.md</span> 获取原始案例来源
+  查看 <span class="text-blue-400">raw-template/neko-style/talks/packages/</span> 获取原始案例来源
 </div>
 
 ---

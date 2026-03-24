@@ -308,7 +308,7 @@ cp neko-style/SKILL.md .claude/skills/neko-slidev.md
 
 ## 💡 最佳实践
 
-1. **从示例开始**：建议用户先运行 `example` 项目
+1. **从示例开始**：建议用户先运行 `starter` 项目
 2. **复制粘贴**：从 `docs/components-guide.md` 直接复制代码
 3. **渐进修改**：先复制，再修改文字和颜色
 4. **保持简洁**：一页不要放太多内容

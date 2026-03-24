@@ -252,4 +252,4 @@ glowSeed: 200
 
 ## Examples in Production
 
-See `neko-style/examples/README.md` for real-world usage in conference presentations.
+See `raw-template/neko-style/talks/packages/` for real-world usage in conference presentations.

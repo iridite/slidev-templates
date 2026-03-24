@@ -76,19 +76,15 @@ npm run dev:neko
 
 ```
 slidev-templates/
-├── package.json       # Monorepo 配置
-├── README.md          # 本文件
-└── neko-style/        # neko-style 模板
-    ├── README.md      # 模板主文档
-    ├── QUICK-START.md # 5 分钟快速入门
-    ├── components-guide.md   # 组件使用指南
-    ├── color-system.md       # 配色系统说明
-    ├── animation-patterns.md # 动画模式指南
-    ├── FOR-AI-ASSISTANTS.md  # AI 助手使用说明 ⭐
-    ├── components/           # Vue 组件
-    ├── styles/               # 基础样式
-    ├── configs/              # 配置示例
-    └── example/              # 完整可运行示例项目
+├── package.json            # Monorepo 配置
+├── README.md               # 本文件
+└── neko-style/
+    ├── README.md           # 模板主文档
+    ├── SKILL.md            # Claude Code 技能定义
+    ├── docs/               # 文档（快速入门/组件/动画/配色等）
+    ├── starter/            # 可直接运行的示例项目
+    ├── theme/              # 可复用主题包（NPM）
+    └── uno.config.ts       # UnoCSS 配置
 ```
 
 ## 🎨 neko-style 颜色预设
@@ -111,10 +107,10 @@ glowPreset: rust   # blue | rust | cyan
 ## 📖 文档导航
 
 - [neko-style README](./neko-style/README.md) — 模板总览
-- [QUICK-START](./neko-style/QUICK-START.md) — 5 分钟快速入门 ⭐
-- [组件指南](./neko-style/components-guide.md) — 所有组件代码示例 ⭐⭐⭐
-- [配色系统](./neko-style/color-system.md) — 配色方案说明
-- [动画模式](./neko-style/animation-patterns.md) — 动画效果指南
+- [QUICK-START](./neko-style/docs/QUICK-START.md) — 5 分钟快速入门 ⭐
+- [组件指南](./neko-style/docs/components-guide.md) — 所有组件代码示例 ⭐⭐⭐
+- [配色系统](./neko-style/docs/color-system.md) — 配色方案说明
+- [动画模式](./neko-style/docs/animation-patterns.md) — 动画效果指南
 - [AI 助手指南](./neko-style/docs/FOR-AI-ASSISTANTS.md) — 给 AI 助手的使用说明
 
 ## 🤝 贡献
@@ -122,7 +118,7 @@ glowPreset: rust   # blue | rust | cyan
 欢迎提交新模板！每个模板独立放在根目录的子文件夹中，并附上：
 
 - `README.md` — 模板说明
-- `example/` — 可运行的示例项目
+- `starter/` — 可运行的示例项目
 - 必要的组件、样式和配置文件
 
 ## 📄 License

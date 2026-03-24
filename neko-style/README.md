@@ -63,10 +63,9 @@ npm run dev:neko
 | [docs/animation-patterns.md](./docs/animation-patterns.md) | 动画模式指南 |
 | [docs/optional-dependencies.md](./docs/optional-dependencies.md) | 可选依赖说明 |
 | [docs/FOR-AI-ASSISTANTS.md](./docs/FOR-AI-ASSISTANTS.md) | AI 助手使用指南 |
-| [examples/README.md](./examples/README.md) | 真实演讲案例 ⭐ |
 
 **推荐学习顺序**:
-1. 运行 `example` 项目(5 分钟)
+1. 运行 `starter` 项目(5 分钟)
 2. 阅读 `components-guide.md`(10 分钟)⭐ 最重要
 3. 开始创建你的演示
 
@@ -100,9 +99,10 @@ neko-style/
 │   ├── components-guide.md      ⭐⭐⭐
 │   ├── layouts-guide.md
 │   └── ...
-└── examples/                    # 真实演讲案例
-    └── README.md
+└── ...
 ```
+
+> 真实演讲案例源文件位于：`../raw-template/neko-style/talks/packages/`
 
 ## 🎨 颜色预设
 

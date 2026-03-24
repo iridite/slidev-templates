@@ -8,18 +8,18 @@ This is a monorepo containing high-quality Slidev presentation templates. The pr
 
 ## Development Commands
 
-### Running the Example
+### Running the Starter Demo
 ```bash
 # From repository root
 npm install
-npm run dev:neko      # Start neko-style example at http://localhost:3030
+npm run dev:neko      # Start neko-style starter at http://localhost:3030
 npm run build:neko    # Build for production
 npm run export:neko   # Export to PDF/images
 ```
 
 ### Working with Individual Templates
 ```bash
-# Navigate to template example
+# Navigate to template starter
 cd neko-style/starter
 
 # Development
@@ -35,7 +35,7 @@ npm run export        # Export presentation
 - **`neko-style/theme/`**: NPM theme package with components, layouts, and styles
 - **`neko-style/starter/`**: Starter template that uses the theme
 - **`neko-style/docs/`**: Shared documentation
-- **`neko-style/examples/`**: Real-world presentation examples
+- **`raw-template/neko-style/talks/packages/`**: Real-world presentation source packages
 
 ### neko-style Template Architecture
 
@@ -172,4 +172,5 @@ This repository follows standard git practices:
 - Main branch: `main`
 - Recent commits show documentation reorganization and monorepo structure improvements
 - Clean working directory (no uncommitted changes)
+ges)
 ges)
