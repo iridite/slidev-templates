@@ -206,12 +206,12 @@ theme: neko-style
 复制 skill 文件到本地:
 
 ```bash
-cp neko-style/skills.md .claude/skills/neko-slidev.md
+cp neko-style/SKILL.md .claude/skills/neko-slidev.md
 ```
 
 然后使用 `/neko-slidev` 命令激活。
 
-详见 [docs/FOR-AI-ASSISTANTS.md](./docs/FOR-AI-ASSISTANTS.md) 和 [skills.md](./skills.md)
+详见 [docs/FOR-AI-ASSISTANTS.md](./docs/FOR-AI-ASSISTANTS.md) 和 [SKILL.md](./SKILL.md)
 
 ## 📄 License
 

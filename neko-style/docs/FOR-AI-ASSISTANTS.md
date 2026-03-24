@@ -297,11 +297,11 @@ transition duration-500 ease-in-out
 
 如果用户使用 Claude Code，可以创建一个 skill 来快速激活这个模板：
 
-1. 复制 `neko-style/skills.md` 到项目根目录的 `.claude/skills/neko-slidev.md`
+1. 复制 `neko-style/SKILL.md` 到项目根目录的 `.claude/skills/neko-slidev.md`
 2. 使用 `/neko-slidev` 命令激活
 
 ```bash
-cp neko-style/skills.md .claude/skills/neko-slidev.md
+cp neko-style/SKILL.md .claude/skills/neko-slidev.md
 ```
 
 **注意**：`.claude/` 目录已被 `.gitignore` 排除，每个用户需要在本地创建。
