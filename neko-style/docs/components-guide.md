@@ -41,6 +41,163 @@
 
 ---
 
+## Raw-template 提炼组件（推荐）
+
+这些组件已内置在 `theme/components/`，可直接在 slides.md 使用。
+
+### ProblemSolutionSplit（问题 vs 方案）
+
+```vue
+<ProblemSolutionSplit>
+  <template #problem>
+    <div flex items-center gap-2><div i-carbon:close text-red-400 />依赖版本漂移</div>
+    <div flex items-center gap-2><div i-carbon:close text-red-400 />环境难复现</div>
+  </template>
+  <template #solution>
+    <div flex items-center gap-2><div i-carbon:checkmark-outline text-green-400 />统一环境定义</div>
+    <div flex items-center gap-2><div i-carbon:checkmark-outline text-green-400 />锁文件可追踪</div>
+  </template>
+</ProblemSolutionSplit>
+```
+
+### LifecycleChallengesThreeCol（三栏挑战）
+
+```vue
+<LifecycleChallengesThreeCol />
+```
+
+### CapabilityRevealRow（渐进能力矩阵）
+
+```vue
+<CapabilityRevealRow />
+```
+
+### SplitBrandIntro（左右分列开场）
+
+```vue
+<SplitBrandIntro>
+  <template #left>
+    <div i-carbon:presentation-file text-5xl text-blue-300 />
+    <span font-semibold>Structure First</span>
+  </template>
+  <template #right>
+    <div i-carbon:color-palette text-5xl text-cyan-300 />
+    <span font-semibold>Visual Identity</span>
+  </template>
+</SplitBrandIntro>
+```
+
+### WorksOnMyMachineHero（报错开场）
+
+```vue
+<WorksOnMyMachineHero />
+```
+
+### InsightCalloutBar（结论条）
+
+```vue
+<InsightCalloutBar tone="yellow">
+  先把问题切成结构化模块，再做技术选型。
+</InsightCalloutBar>
+```
+
+### SessionHoverGallery（截图 + 二维码悬停）
+
+```vue
+<SessionHoverGallery :items="[
+  { image: '/session-1.png', qr: '/session-1-qr.png' },
+  { image: '/session-2.png', qr: '/session-2-qr.png' },
+  { image: '/session-3.png', qr: '/session-3-qr.png' },
+  { image: '/session-4.png', qr: '/session-4-qr.png' },
+]" />
+```
+
+### SpotlightQuestion（问题聚焦页）
+
+```vue
+<SpotlightQuestion question="Neuro-sama 又是什么？" />
+```
+
+### FeatureOverlayVideo（视频叠层功能点）
+
+```vue
+<FeatureOverlayVideo src="/Neuro-minecraft.mp4" title="这段演示里有哪些能力？" />
+```
+
+### ContactQrTriplet（三联联系方式）
+
+```vue
+<ContactQrTriplet :items="[
+  { label: 'GitHub', src: '/github_qr.png' },
+  { label: 'Discord', src: '/discord_qr.png' },
+  { label: 'Telegram', src: '/telegram_qr.png' },
+]" />
+```
+
+### SpeakerEcosystemIntro（讲者+社区）
+
+```vue
+<SpeakerEcosystemIntro
+  avatar="/person/neko.jpeg"
+  name="Neko"
+  role="Literally Full-stack Developer"
+  handle="nekomeowww"
+  :community="[
+    { icon: 'i-logos:hugging-face-icon', label: 'Hugging Face' },
+    { icon: 'i-logos:vue', label: 'Vue' },
+    { icon: 'i-simple-icons:ollama', label: 'Ollama' },
+  ]"
+  :other-projects="[
+    { icon: 'i-ri:github-fill', label: 'Moeru AI' },
+  ]"
+  qr="/nekomeoww-qr.png"
+/>
+```
+
+### FullBleedCharacterReveal（全屏角色揭示）
+
+```vue
+<FullBleedCharacterReveal
+  image="/Neuro-sama_v2_character_sheet.webp"
+  title="Neurosama"
+  :stats="[
+    { icon: 'i-logos:youtube-icon', text: '63.6 万订阅' },
+    { icon: 'i-logos:twitch', text: '78.9 万订阅' },
+  ]"
+/>
+```
+
+### RecruitingRoleList（招募清单）
+
+```vue
+<RecruitingRoleList
+  title="我们在找什么角色"
+  subtitle="欢迎一起构建复杂 AI 系统"
+  :roles="[
+    { icon: 'i-solar:hand-stars-bold-duotone', label: '产品经理' },
+    { icon: 'i-solar:pen-new-square-bold-duotone', label: '设计师' },
+    { icon: 'i-solar:eye-bold-duotone', label: '机器视觉（CV）' },
+  ]"
+/>
+```
+
+### ThankYouSplitPanel（双栏结束页）
+
+```vue
+<ThankYouSplitPanel art="/relu-art-6.gif" qr="/slide_qr.png" />
+```
+
+### 动画防遮挡容器（样式类）
+
+```vue
+<div class="neko-motion-stage">
+  <div class="text-6xl animate-balance-move-left">⬆️</div>
+</div>
+<div class="neko-motion-caption">图标运动区和文案区分离，避免遮挡</div>
+```
+
+---
+
 ## 1. 信息卡片（Info Card）
 
 ### 基础信息卡片

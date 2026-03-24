@@ -80,7 +80,36 @@ clicks: 1
 - Click once to animate the first section into focus
 - The animation uses smooth transitions with `duration-1500`
 
-### 4. end.vue - Closing Slide
+### 4. page.vue - Standard Content Page
+
+Raw-template 中最常见的内容页形态，内置安全边距（`.neko-safe-area`）。
+
+**Usage:**
+```markdown
+---
+layout: page
+glowSeed: 120
+---
+
+# Your Content
+```
+
+### 5. page-wide.vue - Full-Bleed Page
+
+用于视频、全宽图表、截图等内容。
+
+**Usage:**
+```markdown
+---
+layout: page-wide
+---
+
+<video autoplay muted>
+  <source src="/demo.mp4" />
+</video>
+```
+
+### 6. end.vue - Closing Slide
 
 The final slide of your presentation.
 

@@ -53,6 +53,53 @@ iframe {
 }
 
 /* Animation System */
+
+/* Safe animation containers to avoid icon overlap over captions */
+.neko-motion-stage {
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.neko-motion-caption {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  opacity: 0.75;
+  line-height: 1.25;
+}
+
+/* Reusable glass card style from raw-template patterns */
+.neko-glass-card {
+  background: color-mix(in srgb, white 6%, transparent);
+  border: 1px solid color-mix(in srgb, white 15%, transparent);
+  backdrop-filter: blur(6px);
+  border-radius: 0.75rem;
+}
+
+/* fallback for environments without color-mix support */
+@supports not (background: color-mix(in srgb, white 6%, transparent)) {
+  .neko-glass-card {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* Content safe area for edge-collision prevention */
+.neko-safe-area {
+  padding: 2.5rem 3.5rem;
+}
+
+@media (max-width: 1024px) {
+  .neko-safe-area {
+    padding: 1.5rem 2rem;
+  }
+}
+
+/* --- */
+
+/* Animation System */
 @keyframes balance-shake {
   0% {
     transform: rotate(13deg);

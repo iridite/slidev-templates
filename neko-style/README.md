@@ -69,6 +69,7 @@ npm run dev:neko
 | [docs/animation-patterns.md](./docs/animation-patterns.md) | 动画模式指南 |
 | [docs/optional-dependencies.md](./docs/optional-dependencies.md) | 可选依赖说明 |
 | [docs/FOR-AI-ASSISTANTS.md](./docs/FOR-AI-ASSISTANTS.md) | AI 助手使用指南 |
+| [docs/design-language-airi-2025-10.md](./docs/design-language-airi-2025-10.md) | AIRI 设计语言提炼（页面语法） ⭐ |
 
 **推荐学习顺序**:
 1. 运行 `starter` 项目(5 分钟)

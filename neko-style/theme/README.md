@@ -105,6 +105,8 @@ Important precedence:
 - `cover` - Title slide with glow background
 - `section` - Section divider with centered content
 - `contents-toc` - Table of contents with automatic slide links
+- `page` - Standard content page with built-in safe area padding
+- `page-wide` - Full-bleed page (for videos/large diagrams)
 - `end` - Closing slide
 
 ## Components
@@ -113,6 +115,70 @@ Important precedence:
 
 - `GlowBackground` - Animated particle background with glow effects
 - `Background` - Simple background wrapper
+- `ProblemSolutionSplit` - 红绿对比叙事卡（问题 vs 方案）
+- `LifecycleChallengesThreeCol` - 三栏挑战卡（生命周期问题拆解）
+- `CapabilityRevealRow` - 渐进式能力矩阵（`v-clicks` 逐列出现）
+- `WorksOnMyMachineHero` - 经典“报错开场”页
+- `InsightCalloutBar` - 底部总结条（关键结论）
+- `SplitBrandIntro` - 左右分列入场开场组件
+- `SessionHoverGallery` - 截图 + 二维码悬停展示墙
+- `SpotlightQuestion` - 大字问题聚焦页（缩放淡出）
+- `FeatureOverlayVideo` - 视频叠层功能讲解页
+- `ContactQrTriplet` - 三联二维码联系方式卡
+- `SpeakerEcosystemIntro` - 讲者身份 + 社区生态页
+- `FullBleedCharacterReveal` - 全屏角色揭示页
+- `RecruitingRoleList` - 招募方向清单页
+- `ThankYouSplitPanel` - 双栏感谢收尾页
+
+示例：
+
+```vue
+<ProblemSolutionSplit>
+  <template #problem>
+    <div flex items-center gap-2><div i-carbon:close text-red-400 />依赖版本漂移</div>
+  </template>
+  <template #solution>
+    <div flex items-center gap-2><div i-carbon:checkmark-outline text-green-400 />统一环境定义</div>
+  </template>
+</ProblemSolutionSplit>
+```
+
+```vue
+<LifecycleChallengesThreeCol />
+```
+
+```vue
+<CapabilityRevealRow />
+```
+
+```vue
+<SessionHoverGallery :items="[
+  { image: '/session-1.png', qr: '/session-1-qr.png' },
+  { image: '/session-2.png', qr: '/session-2-qr.png' },
+  { image: '/session-3.png', qr: '/session-3-qr.png' },
+  { image: '/session-4.png', qr: '/session-4-qr.png' },
+]" />
+```
+
+```vue
+<SpotlightQuestion question="AI 主播？">
+  <v-clicks>
+    <h1 mt-4 text="5xl!">就是带货那种数字人吗？</h1>
+  </v-clicks>
+</SpotlightQuestion>
+```
+
+```vue
+<FeatureOverlayVideo src="/Neuro-minecraft.mp4" title="这段演示里有哪些能力？" />
+```
+
+```vue
+<ContactQrTriplet :items="[
+  { label: 'GitHub', src: '/github_qr.png' },
+  { label: 'Discord', src: '/discord_qr.png' },
+  { label: 'Telegram', src: '/telegram_qr.png' },
+]" />
+```
 
 ### Advanced Components (Optional Dependencies)
 
