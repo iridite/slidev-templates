@@ -67,6 +67,33 @@
 
 ### 步骤 4：配置 Glow 背景
 
+> ⚠️ 如果用户是在现有项目里“迁移”模板，不是从 starter 新建：
+> 你必须先创建一页最小 smoke test，再继续写内容。
+
+最小 smoke test（先复制这页再说）：
+
+```yaml
+---
+theme: neko-style
+glowSeed: 101
+glowPreset: blue
+glow: full
+glowOpacity: 0.4
+---
+
+# Glow Smoke Test
+```
+
+然后检查项目是否存在会覆盖背景的全局 CSS：
+
+```bash
+rg -n "\.slidev-layout|background:\s*black|background-color:\s*#000|background-color:\s*black" .
+```
+
+若存在，先移除/注释后再继续生成内容。
+
+### 常规 Glow 配置（通过 smoke test 后再用）
+
 每页使用不同的 `glowSeed` 值，可选配置主题：
 ```yaml
 ---

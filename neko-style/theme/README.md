@@ -44,6 +44,30 @@ Quick check when glow is missing:
 3. Confirm the slide does not set `glow: false`.
 4. Confirm frontmatter YAML is valid (correct `---` separators and indentation).
 
+Migration smoke test (recommended before writing real content):
+
+```yaml
+---
+theme: neko-style
+glowSeed: 101
+glowPreset: blue
+glow: full
+glowOpacity: 0.4
+---
+
+# Glow Smoke Test
+```
+
+Find potentially conflicting CSS quickly:
+
+```bash
+rg -n "\.slidev-layout|background:\s*black|background-color:\s*#000|background-color:\s*black" .
+```
+
+Important precedence:
+- `background:` in slide frontmatter takes precedence over glow.
+- `glow: false` explicitly disables glow.
+
 
 ## Available Layouts
 

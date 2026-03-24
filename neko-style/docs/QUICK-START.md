@@ -59,6 +59,21 @@ glow: full
 ---
 ```
 
+### ✅ 迁移到已有项目的强制验证流程（建议先做）
+
+如果你是在“已有 Slidev 项目”里套用 neko-style（不是直接用 starter），请先做这 4 步：
+
+1. 顶部 frontmatter 必须有 `theme: neko-style`
+2. 先建一页最小测试页（只写 `glowSeed` / `glowPreset`）确认背景正常
+3. 全局搜索并移除覆盖 `.slidev-layout` 的黑色背景 CSS
+4. 确认当前页没有 `background:` 或 `glow: false`
+
+可直接执行：
+
+```bash
+rg -n "\.slidev-layout|background:\s*black|background-color:\s*#000|background-color:\s*black" .
+```
+
 ### 1. Glow 背景配置
 
 每页使用不同的 `glowSeed` 值:
