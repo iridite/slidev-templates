@@ -1,4 +1,4 @@
-import { defineConfig, presetAttributify, presetIcons, presetUno, presetWebFonts } from 'unocss'
+import { defineConfig, presetAttributify, presetIcons, presetUno } from 'unocss'
 
 export default defineConfig({
   shortcuts: {
@@ -19,23 +19,12 @@ export default defineConfig({
     presetIcons({
       prefix: 'i-',
       extraProperties: {
-        'display': 'inline-block',
+        display: 'inline-block',
         'vertical-align': 'middle',
       },
       warn: true,
     }),
-    presetWebFonts({
-      fonts: {
-        sans: 'DM Sans',
-        cn: 'Noto Serif SC',
-        hand: 'Playwrite IT Moderna',
-        rounded: 'Comfortaa',
-        math: 'Latin Modern Roman',
-      },
-      timeouts: {
-        warning: 30000,
-        failure: 30000,
-      },
-    }),
+    // Keep starter offline-friendly: avoid remote webfont fetch during build.
+    // Use system/local font fallbacks instead.
   ],
 })
