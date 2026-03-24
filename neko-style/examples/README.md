@@ -172,4 +172,4 @@ Each package contains:
 
 ## Creating Your Own
 
-Start with the example in `neko-style/example/` and incorporate patterns from these real presentations. The example demonstrates all core features, while these production talks show how to combine them effectively.
+Start with the starter in `neko-style/starter/` and incorporate patterns from these real presentations. The starter demonstrates all core features, while these production talks show how to combine them effectively.

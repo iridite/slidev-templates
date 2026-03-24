@@ -106,4 +106,4 @@ glowOpacity: 0.4     # 0-1
 1. 查看 [components-guide.md](./components-guide.md) - 所有组件代码
 2. 查看 [color-system.md](./color-system.md) - 配色方案
 3. 查看 [animation-patterns.md](./animation-patterns.md) - 动画效果
-4. 查看 [example/slides.md](../example/slides.md) - 完整示例
+4. 查看 [starter/slides.md](../starter/slides.md) - 完整示例

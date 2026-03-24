@@ -44,7 +44,18 @@ const seed = computed<string>(() => (formatter.value.glowSeed === 'false' || for
   ? Date.now().toString()
   : formatter.value.glowSeed || 'default',
 )
-const theme = computed<'dark'>(() => 'dark')
+const theme = computed<'light' | 'dark'>(() => {
+  const frontmatterTheme = formatter.value.theme
+  const frontmatterSchema = formatter.value.colorSchema
+
+  if (frontmatterTheme === 'light' || frontmatterTheme === 'dark')
+    return frontmatterTheme
+
+  if (frontmatterSchema === 'light' || frontmatterSchema === 'dark')
+    return frontmatterSchema
+
+  return 'dark'
+})
 const preset = computed(() => (formatter.value.glowPreset || 'blue') as ColorPreset)
 const overflow = 0.3
 const disturb = 0.3
@@ -126,7 +137,7 @@ function distance2([x1, y1]: Range, [x2, y2]: Range) {
   return (x2 - x1) ** 2 + (y2 - y1) ** 2
 }
 
-function usePloy(number = 16) {
+function usePoly(number = 16) {
   function getPoints(): Range[] {
     const limits = distributionToLimits(distribution.value)
     const rng = seedrandom(`${seed.value}-${currentSlideRoute.value.no}`)
@@ -172,9 +183,9 @@ function usePloy(number = 16) {
   return poly
 }
 
-const poly1 = usePloy(10)
-const poly2 = usePloy(6)
-const poly3 = usePloy(3)
+const poly1 = usePoly(10)
+const poly2 = usePoly(6)
+const poly3 = usePoly(3)
 
 function clipStyle(poly: string, alpha: number, from: string, to: string, direction: 'to right' | 'to left' | 'to top') {
   return {

@@ -54,7 +54,7 @@ npm install @tresjs/core @tresjs/cientos three
 To install all optional dependencies at once:
 
 ```bash
-cd neko-style/example
+cd neko-style/starter
 npm install
 ```
 

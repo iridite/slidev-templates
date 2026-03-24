@@ -15,7 +15,7 @@ All advanced features use optional dependencies that won't break installation if
 
 Install all advanced features:
 ```bash
-cd neko-style/example
+cd neko-style/starter
 npm install
 ```
 
@@ -109,7 +109,7 @@ apt install asciinema   # Ubuntu
 asciinema rec demo.cast
 
 # Place in public directory
-mv demo.cast neko-style/example/public/asciinema/
+mv demo.cast neko-style/starter/public/asciinema/
 ```
 
 **In Slides:**

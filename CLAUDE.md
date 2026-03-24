@@ -20,7 +20,7 @@ npm run export:neko   # Export to PDF/images
 ### Working with Individual Templates
 ```bash
 # Navigate to template example
-cd neko-style/example
+cd neko-style/starter
 
 # Development
 npm run dev           # Start dev server with hot reload
@@ -72,9 +72,9 @@ The template uses semantic, card-based components built with UnoCSS utility clas
 - **Animation system**: Unified 500ms transitions with `v-click` for progressive disclosure
 
 **Styling Architecture**:
-- `styles/base.css`: Base styles and CSS variables
-- `configs/uno.config.example.ts`: UnoCSS configuration with presets and icon collections
-- Uses UnoCSS with presets: Wind3, Attributify, Icons, WebFonts
+- `theme/styles/index.css`: Base styles and transition conventions
+- `starter/uno.config.ts`: UnoCSS configuration used by the starter template
+- Uses UnoCSS with presets: Uno, Attributify, Icons, WebFonts
 - Icon collections: `@iconify-json/carbon`, `@iconify-json/logos`
 
 ## Key Files and Their Purposes
@@ -82,9 +82,10 @@ The template uses semantic, card-based components built with UnoCSS utility clas
 - **`neko-style/docs/FOR-AI-ASSISTANTS.md`**: Comprehensive guide for AI assistants creating presentations with this template
 - **`neko-style/docs/components-guide.md`**: Complete component library with copy-paste code examples
 - **`neko-style/docs/QUICK-START.md`**: 5-minute quick start guide
-- **`neko-style/components/GlowBackground.vue`**: Must be copied to project as `global-bottom.vue` (Slidev convention)
-- **`neko-style/styles/base.css`**: Must be copied to project as `style.css`
-- **`neko-style/configs/uno.config.example.ts`**: UnoCSS configuration template
+- **`neko-style/theme/components/GlowBackground.vue`**: Core glow background implementation
+- **`neko-style/theme/global-bottom.vue`**: Theme-level global background entry for Slidev
+- **`neko-style/theme/styles/index.css`**: Theme base styles
+- **`neko-style/starter/uno.config.ts`**: Starter-side UnoCSS configuration
 
 ## Creating New Presentations
 
@@ -144,7 +145,7 @@ When users need help, guide them to documentation in this order:
 
 1. `neko-style/docs/components-guide.md` - Most important, contains all component code
 2. `neko-style/docs/FOR-AI-ASSISTANTS.md` - Comprehensive AI assistant guide
-3. `neko-style/example/slides.md` - Working example with all features
+3. `neko-style/starter/slides.md` - Working starter with all core features
 4. `neko-style/docs/QUICK-START.md` - Quick start guide
 5. `neko-style/docs/color-system.md` - Color system details
 6. `neko-style/docs/animation-patterns.md` - Animation patterns
@@ -171,3 +172,4 @@ This repository follows standard git practices:
 - Main branch: `main`
 - Recent commits show documentation reorganization and monorepo structure improvements
 - Clean working directory (no uncommitted changes)
+ges)

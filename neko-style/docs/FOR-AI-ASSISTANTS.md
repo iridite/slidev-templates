@@ -291,7 +291,7 @@ transition duration-500 ease-in-out
 2. **docs/QUICK-START.md** ⭐⭐ - 快速入门
 3. **docs/color-system.md** ⭐ - 配色说明
 4. **docs/animation-patterns.md** ⭐ - 动画说明
-5. **example/slides.md** - 完整示例
+5. **starter/slides.md** - 完整示例
 
 ## 🤖 Claude Code Skill
 
@@ -341,7 +341,7 @@ cp neko-style/SKILL.md .claude/skills/neko-slidev.md
 1. **预设模板**：记住常用的页面结构
 2. **批量替换**：使用查找替换修改颜色
 3. **增量构建**：先创建基本结构，再添加动画
-4. **参考示例**：遇到不确定的情况，查看 `example/slides.md`
+4. **参考示例**：遇到不确定的情况，查看 `starter/slides.md`
 
 ---
 
