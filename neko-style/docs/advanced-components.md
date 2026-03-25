@@ -79,13 +79,13 @@ Provides smooth entrance animations using @vueuse/motion.
 </template>
 ```
 
-## AsciinemaExample.vue - Terminal Recordings
+## AsciinemaPlayer.vue - Terminal Recordings
 
 Display terminal recordings for live demos and tutorials.
 
 **Basic Usage:**
 ```vue
-<AsciinemaExample
+<AsciinemaPlayer
   src="/asciinema/demo.cast"
   :controls="'auto'"
   :rows="18"
@@ -120,7 +120,7 @@ layout: default
 
 # Live Demo
 
-<AsciinemaExample
+<AsciinemaPlayer
   src="/asciinema/deployment.cast"
   :controls="'auto'"
   :rows="20"
@@ -218,7 +218,7 @@ glowSeed: 200
 
   <div class="space-y-4">
     <h2>Terminal Demo</h2>
-    <AsciinemaExample
+    <AsciinemaPlayer
       src="/asciinema/demo.cast"
       :rows="12"
       :speed="2"

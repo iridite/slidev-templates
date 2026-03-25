@@ -121,7 +121,9 @@ Important precedence:
 - `WorksOnMyMachineHero` - 经典“报错开场”页
 - `InsightCalloutBar` - 底部总结条（关键结论）
 - `SplitBrandIntro` - 左右分列入场开场组件
+- `ProcessFlowGrid` - 协议流程 / 端到端步骤讲解网格
 - `SessionHoverGallery` - 截图 + 二维码悬停展示墙
+- `SpeakerLineupIntro` - 多讲者 / 联合分享开场组件
 - `SpotlightQuestion` - 大字问题聚焦页（缩放淡出）
 - `FeatureOverlayVideo` - 视频叠层功能讲解页
 - `ContactQrTriplet` - 三联二维码联系方式卡
@@ -191,6 +193,25 @@ Important precedence:
 ```
 
 ```vue
+<ProcessFlowGrid :columns="2" :items="[
+  { icon: 'i-carbon:settings-adjust', title: '读取配置', description: '先加载本地配置。' },
+  { icon: 'i-carbon:plug', title: '连接服务', description: '连接协议端点。' },
+  { icon: 'i-carbon:tool-box', title: '拉取能力', description: '获取工具或能力描述。' },
+  { icon: 'i-carbon:result', title: '返回结果', description: '执行后组织最终输出。' },
+]" />
+```
+
+```vue
+<SpeakerLineupIntro
+  title="联合分享"
+  :speakers="[
+    { name: 'Neko', role: 'AI Engineer', handle: 'nekomeowww', handleIcon: 'i-ri:github-fill' },
+    { name: 'Makito', role: 'Platform Engineer', handle: 'sumimakito', handleIcon: 'i-ri:github-fill' },
+  ]"
+/>
+```
+
+```vue
 <MotionPrinciplesGallery />
 ```
 
@@ -203,9 +224,9 @@ Important precedence:
 
 ### Advanced Components (Optional Dependencies)
 
-- `AsciinemaPlayer` - Terminal recording playback (requires `@nolebase/ui-asciinema`, `asciinema-player`)
-- `ThreeScene` - 3D scene rendering (requires `@tresjs/core`, `@tresjs/cientos`, `three`)
-- Motion animations (requires `@vueuse/motion`)
+- `AsciinemaPlayer` - Terminal recording playback wrapper (requires `@nolebase/ui-asciinema`, `asciinema-player`)
+- `VMotionExample` - Declarative motion example (requires `@vueuse/motion`)
+- TresJS / Three.js examples - 3D scene snippets (requires `@tresjs/core`, `@tresjs/cientos`, `three`)
 
 ## Configuration
 

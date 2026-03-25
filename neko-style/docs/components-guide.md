@@ -87,6 +87,31 @@
 </SplitBrandIntro>
 ```
 
+### ProcessFlowGrid（流程步骤网格）
+
+```vue
+<ProcessFlowGrid :columns="2" :items="[
+  { icon: 'i-carbon:settings-adjust', title: '读取配置', description: '客户端启动后先读取本地配置。' },
+  { icon: 'i-carbon:plug', title: '连接服务', description: '与外部系统或协议端点建立连接。' },
+  { icon: 'i-carbon:tool-box', title: '获取能力', description: '拉取工具 / 接口 / 能力描述。' },
+  { icon: 'i-carbon:result', title: '返回结果', description: '执行完成后组织输出返回给用户。' },
+]" />
+```
+
+### SpeakerLineupIntro（多讲者开场）
+
+```vue
+<SpeakerLineupIntro
+  title="联合分享"
+  subtitle="适合 Panel、Roundtable、双讲者 / 多讲者开场"
+  :speakers="[
+    { name: 'Neko', role: 'Software Engineer', handle: 'nekomeowww', handleIcon: 'i-ri:github-fill' },
+    { name: 'Makito', role: 'Platform Engineer', affiliation: 'Kong', affiliationIcon: 'i-simple-icons:kong', handle: 'sumimakito', handleIcon: 'i-ri:github-fill' },
+    { name: 'Liet', role: 'Robotics Builder', handle: 'lietblue', handleIcon: 'i-ri:github-fill' },
+  ]"
+/>
+```
+
 ### WorksOnMyMachineHero（报错开场）
 
 ```vue

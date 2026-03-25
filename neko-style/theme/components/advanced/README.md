@@ -21,7 +21,7 @@ npm install @vueuse/motion
 **Customization:**
 Modify the `:initial` and `:enter` props to create different animation effects.
 
-## AsciinemaExample.vue
+## AsciinemaPlayer.vue
 
 Terminal recording player using Asciinema.
 
@@ -32,7 +32,7 @@ npm install @nolebase/ui-asciinema asciinema-player
 
 **Usage:**
 ```vue
-<AsciinemaExample
+<AsciinemaPlayer
   src="/asciinema/demo.cast"
   :controls="'auto'"
   :rows="18"

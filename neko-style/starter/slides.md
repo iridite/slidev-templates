@@ -62,6 +62,21 @@ glowPreset: blue
 
 ---
 layout: page
+glowSeed: 64
+clicks: 4
+---
+
+# 协议 / 工作流类页面
+
+<ProcessFlowGrid :columns="2" :items="[
+  { icon: 'i-carbon:settings-adjust', title: '读取配置', description: '客户端启动后先读取本地配置。' },
+  { icon: 'i-carbon:plug', title: '连接服务', description: '与服务端或协议端点建立连接。' },
+  { icon: 'i-carbon:tool-box', title: '拉取能力', description: '获取工具列表、能力描述或元数据。' },
+  { icon: 'i-carbon:result', title: '组织结果', description: '调用完成后回传结果，再生成最终输出。' },
+]" />
+
+---
+layout: page
 glowSeed: 72
 ---
 
@@ -174,8 +189,25 @@ glowSeed: 330
   { title: 'FeatureOverlayVideo', description: '视频叠层讲解页' },
   { title: 'FullBleedCharacterReveal', description: '全屏角色揭示页' },
   { title: 'SpeakerEcosystemIntro', description: '讲者 + 社区关系页' },
+  { title: 'SpeakerLineupIntro', description: '多讲者 / 联合分享开场' },
   { title: 'ThankYouSplitPanel', description: '双栏结束页' },
 ]" />
+
+---
+layout: page
+glowSeed: 346
+clicks: 3
+---
+
+<SpeakerLineupIntro
+  title="多人联合开场，也能组件化"
+  subtitle="适合联合分享、panel、roundtable、黑客松 demo day"
+  :speakers="[
+    { name: 'Neko', role: 'AI Engineer', handle: 'nekomeowww', handleIcon: 'i-ri:github-fill', note: '负责 Agent / 产品整合' },
+    { name: 'Makito', role: 'Platform Engineer', affiliation: 'Kong', affiliationIcon: 'i-simple-icons:kong', handle: 'sumimakito', handleIcon: 'i-ri:github-fill', note: '负责平台能力与基础设施' },
+    { name: 'Liet', role: 'Robotics Builder', handle: 'lietblue', handleIcon: 'i-ri:github-fill', note: '负责具身智能与设备侧实现' },
+  ]"
+/>
 
 ---
 layout: page

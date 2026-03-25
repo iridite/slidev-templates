@@ -26,7 +26,7 @@ npm install @nolebase/ui-asciinema asciinema-player
 ```
 
 **Usage:**
-See `components/advanced/AsciinemaExample.vue` for examples.
+See `components/advanced/AsciinemaPlayer.vue` for examples.
 
 ### 3. TresJS + Three.js - 3D Visualizations
 
