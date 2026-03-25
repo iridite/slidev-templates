@@ -129,6 +129,9 @@ Important precedence:
 - `FullBleedCharacterReveal` - 全屏角色揭示页
 - `RecruitingRoleList` - 招募方向清单页
 - `ThankYouSplitPanel` - 双栏感谢收尾页
+- `PatternCardGrid` - 玻璃态模式总览网格
+- `MotionPrinciplesGallery` - 动效防遮挡示例画廊
+- `GlassChecklist` - 玻璃态检查清单
 
 示例：
 
@@ -177,6 +180,24 @@ Important precedence:
   { label: 'GitHub', src: '/github_qr.png' },
   { label: 'Discord', src: '/discord_qr.png' },
   { label: 'Telegram', src: '/telegram_qr.png' },
+]" />
+```
+
+```vue
+<PatternCardGrid :items="[
+  { title: 'Question Spotlight', description: '用问题推进叙事。' },
+  { title: 'Compare & Resolve', description: '把问题和方案并排展示。' },
+]" />
+```
+
+```vue
+<MotionPrinciplesGallery />
+```
+
+```vue
+<GlassChecklist :items="[
+  '先 smoke test：只放 <code>theme + glowSeed</code> 验证背景。',
+  '若页面设置 <code>background:</code> 会覆盖 glow（预期）。',
 ]" />
 ```
 

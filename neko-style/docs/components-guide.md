@@ -187,6 +187,38 @@
 <ThankYouSplitPanel art="/relu-art-6.gif" qr="/slide_qr.png" />
 ```
 
+### PatternCardGrid（模式总览网格）
+
+```vue
+<PatternCardGrid :items="[
+  { title: '01 Question Spotlight', description: '用问题驱动叙事，而不是堆事实。' },
+  { title: '02 Compare & Resolve', description: '问题/方案并排，观众最容易理解。' },
+  { title: '03 Progressive Reveal', description: '`v-clicks` 逐步展开复杂系统。' },
+  { title: '04 Closure & CTA', description: '结尾给下一步动作，不只说 Thanks。' },
+]" />
+```
+
+### MotionPrinciplesGallery（动效规范画廊）
+
+```vue
+<MotionPrinciplesGallery :items="[
+  { icon: '🎯', title: 'balance-shake', caption: '强调关键点', animationClass: 'animate-balance-shake' },
+  { icon: '⬆️', title: 'balance-move-left', caption: '动效区和文案区隔离', animationClass: 'animate-balance-move-left' },
+  { icon: '⬇️', title: 'balance-move-right', caption: '避免图标遮挡说明文字', animationClass: 'animate-balance-move-right' },
+]" />
+```
+
+### GlassChecklist（玻璃态检查清单）
+
+```vue
+<GlassChecklist :items="[
+  '先 smoke test：只放 <code>theme + glowSeed</code> 验证背景。',
+  '检查全局 CSS 是否覆盖 <code>.slidev-layout</code>。',
+  '若页面设置 <code>background:</code> 会覆盖 glow（预期）。',
+  '主题未发布 npm registry，已有项目请用本地路径安装。',
+]" />
+```
+
 ### 动画防遮挡容器（样式类）
 
 ```vue

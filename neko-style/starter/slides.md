@@ -53,24 +53,12 @@ glowPreset: blue
 
 # 目录（可复用结构）
 
-<div class="grid grid-cols-2 gap-5 mt-6 text-sm">
-  <div class="neko-glass-card p-4">
-    <div class="font-bold mb-2">01 Question Spotlight</div>
-    <div class="opacity-75">用问题驱动叙事，而不是堆事实。</div>
-  </div>
-  <div class="neko-glass-card p-4">
-    <div class="font-bold mb-2">02 Compare & Resolve</div>
-    <div class="opacity-75">问题/方案并排，观众最容易理解。</div>
-  </div>
-  <div class="neko-glass-card p-4">
-    <div class="font-bold mb-2">03 Progressive Reveal</div>
-    <div class="opacity-75">`v-clicks` 逐步展开复杂系统。</div>
-  </div>
-  <div class="neko-glass-card p-4">
-    <div class="font-bold mb-2">04 Closure & CTA</div>
-    <div class="opacity-75">结尾给下一步动作，不只说 Thanks。</div>
-  </div>
-</div>
+<PatternCardGrid :items="[
+  { title: '01 Question Spotlight', description: '用问题驱动叙事，而不是堆事实。' },
+  { title: '02 Compare & Resolve', description: '问题/方案并排，观众最容易理解。' },
+  { title: '03 Progressive Reveal', description: '`v-clicks` 逐步展开复杂系统。' },
+  { title: '04 Closure & CTA', description: '结尾给下一步动作，不只说 Thanks。' },
+]" />
 
 ---
 layout: page
@@ -162,31 +150,7 @@ glow: left
 
 # 动画防遮挡规范
 
-<div class="grid grid-cols-3 gap-8 mt-8">
-  <div class="neko-glass-card p-5 text-center">
-    <div class="neko-motion-stage">
-      <div class="text-6xl animate-balance-shake">🎯</div>
-    </div>
-    <div class="font-bold mb-1">balance-shake</div>
-    <div class="neko-motion-caption">强调关键点</div>
-  </div>
-
-  <div class="neko-glass-card p-5 text-center">
-    <div class="neko-motion-stage">
-      <div class="text-6xl animate-balance-move-left">⬆️</div>
-    </div>
-    <div class="font-bold mb-1">balance-move-left</div>
-    <div class="neko-motion-caption">动效区和文案区隔离</div>
-  </div>
-
-  <div class="neko-glass-card p-5 text-center">
-    <div class="neko-motion-stage">
-      <div class="text-6xl animate-balance-move-right">⬇️</div>
-    </div>
-    <div class="font-bold mb-1">balance-move-right</div>
-    <div class="neko-motion-caption">避免图标遮挡说明文字</div>
-  </div>
-</div>
+<MotionPrinciplesGallery />
 
 ---
 layout: section
@@ -204,14 +168,14 @@ glowSeed: 330
 
 # 高辨识度页面模式（已组件化）
 
-<div class="grid grid-cols-2 gap-5 mt-6 text-sm">
-  <div class="neko-glass-card p-4"><div font-bold mb-2>SpotlightQuestion</div><div class="opacity-75">大字问题聚焦页</div></div>
-  <div class="neko-glass-card p-4"><div font-bold mb-2>SessionHoverGallery</div><div class="opacity-75">截图 + 二维码悬停墙</div></div>
-  <div class="neko-glass-card p-4"><div font-bold mb-2>FeatureOverlayVideo</div><div class="opacity-75">视频叠层讲解页</div></div>
-  <div class="neko-glass-card p-4"><div font-bold mb-2>FullBleedCharacterReveal</div><div class="opacity-75">全屏角色揭示页</div></div>
-  <div class="neko-glass-card p-4"><div font-bold mb-2>SpeakerEcosystemIntro</div><div class="opacity-75">讲者 + 社区关系页</div></div>
-  <div class="neko-glass-card p-4"><div font-bold mb-2>ThankYouSplitPanel</div><div class="opacity-75">双栏结束页</div></div>
-</div>
+<PatternCardGrid :items="[
+  { title: 'SpotlightQuestion', description: '大字问题聚焦页' },
+  { title: 'SessionHoverGallery', description: '截图 + 二维码悬停墙' },
+  { title: 'FeatureOverlayVideo', description: '视频叠层讲解页' },
+  { title: 'FullBleedCharacterReveal', description: '全屏角色揭示页' },
+  { title: 'SpeakerEcosystemIntro', description: '讲者 + 社区关系页' },
+  { title: 'ThankYouSplitPanel', description: '双栏结束页' },
+]" />
 
 ---
 layout: page
@@ -260,12 +224,12 @@ glowSeed: 420
 
 # 迁移排障（必做）
 
-<div class="space-y-3 mt-6 text-sm leading-relaxed">
-  <div class="neko-glass-card p-3">1) 先 smoke test：只放 <code>theme + glowSeed</code> 验证背景。</div>
-  <div class="neko-glass-card p-3">2) 检查全局 CSS 是否覆盖 <code>.slidev-layout</code>。</div>
-  <div class="neko-glass-card p-3">3) 若页面设置 <code>background:</code> 会覆盖 glow（预期）。</div>
-  <div class="neko-glass-card p-3">4) 主题未发布 npm registry，已有项目请用本地路径安装。</div>
-</div>
+<GlassChecklist :items="[
+  '先 smoke test：只放 <code>theme + glowSeed</code> 验证背景。',
+  '检查全局 CSS 是否覆盖 <code>.slidev-layout</code>。',
+  '若页面设置 <code>background:</code> 会覆盖 glow（预期）。',
+  '主题未发布 npm registry，已有项目请用本地路径安装。',
+]" />
 
 ---
 layout: page

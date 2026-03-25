@@ -133,6 +133,12 @@ theme: dark       # dark | light
 
 ## 🎯 核心组件
 
+常用提炼组件包括：
+
+- `PatternCardGrid`：总览模式、目录卡片、组件清单
+- `MotionPrinciplesGallery`：动效防遮挡规范展示
+- `GlassChecklist`：迁移排障、发布前检查、演讲流程清单
+
 ### 信息卡片
 
 ```vue
