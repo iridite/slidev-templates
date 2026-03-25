@@ -114,6 +114,8 @@
 
 ### ArtifactExplainBoard（注释浮层讲解板）
 
+默认是 overlay 模式，适合把注释卡直接浮在主体对象上；也支持 `mode="sidebar"`，把说明卡排到右侧做更稳的讲解板。
+
 ```vue
 <ArtifactExplainBoard
   title="模型目录拆解"
@@ -147,6 +149,20 @@
     <div class="pl-12">generation_config.json</div>
     <div class="pl-12">model.safetensors</div>
   </div>
+</ArtifactExplainBoard>
+```
+
+```vue
+<ArtifactExplainBoard
+  mode="sidebar"
+  title="架构图侧边讲解"
+  :items="[
+    { icon: 'i-carbon:user-avatar', tone: 'cyan', title: '入口层', description: '用户请求进入后先做身份和上下文整理。' },
+    { icon: 'i-carbon:tool-box', tone: 'green', title: '工具层', description: '把模型能力和外部系统能力解耦。' },
+    { icon: 'i-carbon:result', tone: 'purple', title: '输出层', description: '最后汇总工具结果并产出答案。' },
+  ]"
+>
+  <img src="/architecture-diagram.png" class="h-full w-full rounded-xl object-cover" />
 </ArtifactExplainBoard>
 ```
 

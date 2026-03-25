@@ -220,6 +220,19 @@ Important precedence:
 ```
 
 ```vue
+<ArtifactExplainBoard
+  mode="sidebar"
+  title="架构图侧边讲解"
+  :items="[
+    { icon: 'i-carbon:user-avatar', title: '入口层', description: '整理输入和上下文。' },
+    { icon: 'i-carbon:tool-box', title: '工具层', description: '组合模型和工具能力。' },
+  ]"
+>
+  <img src="/architecture-diagram.png" class="h-full w-full rounded-xl object-cover" />
+</ArtifactExplainBoard>
+```
+
+```vue
 <SpeakerLineupIntro
   title="联合分享"
   :speakers="[

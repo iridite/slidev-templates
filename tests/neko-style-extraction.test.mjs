@@ -26,6 +26,7 @@ test('starter adopts extracted utility components', () => {
   assert.match(slides, /<GlassChecklist/)
   assert.match(slides, /<ProcessFlowGrid/)
   assert.match(slides, /<ArtifactExplainBoard/)
+  assert.match(slides, /mode="sidebar"/)
   assert.match(slides, /<SpeakerLineupIntro/)
 
   assert.doesNotMatch(slides, /<div class="grid grid-cols-2 gap-5 mt-6 text-sm">/)

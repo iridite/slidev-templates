@@ -218,6 +218,40 @@ clicks: 3
 </ArtifactExplainBoard>
 
 ---
+layout: page-wide
+glowSeed: 98
+clicks: 3
+---
+
+<ArtifactExplainBoard
+  mode="sidebar"
+  title="也支持更稳的 side-by-side 讲解模式"
+  subtitle="左边放主体对象，右边按 click 逐张解释，适合架构图和产品截图。"
+  :items="[
+    { icon: 'i-carbon:user-avatar', tone: 'cyan', title: '入口层', description: '先把用户输入、上下文和权限边界梳理清楚。' },
+    { icon: 'i-carbon:tool-box', tone: 'green', title: '工具层', description: '把模型推理能力和外部系统调用拆开，后续扩展更稳。' },
+    { icon: 'i-carbon:result', tone: 'purple', title: '输出层', description: '最后再拼接结果、格式化输出，避免中间层耦死。' },
+  ]"
+>
+  <div class="flex h-full items-center justify-center rounded-2xl border border-white/8 bg-neutral-950/70 p-8">
+    <div class="grid w-full max-w-3xl gap-4 md:grid-cols-3">
+      <div class="neko-glass-card p-4 text-center">
+        <div class="mb-3 text-cyan-300 i-carbon:user-avatar text-3xl" />
+        <div class="font-semibold">User / Context</div>
+      </div>
+      <div class="neko-glass-card p-4 text-center">
+        <div class="mb-3 text-green-300 i-carbon:tool-box text-3xl" />
+        <div class="font-semibold">Model + Tools</div>
+      </div>
+      <div class="neko-glass-card p-4 text-center">
+        <div class="mb-3 text-purple-300 i-carbon:result text-3xl" />
+        <div class="font-semibold">Answer / Action</div>
+      </div>
+    </div>
+  </div>
+</ArtifactExplainBoard>
+
+---
 layout: section
 glowSeed: 300
 sectionNumber: 1
