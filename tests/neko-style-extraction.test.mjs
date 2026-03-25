@@ -9,6 +9,7 @@ test('theme contains the remaining extracted utility assets', () => {
   assert.ok(existsSync(new URL('../neko-style/theme/components/MotionPrinciplesGallery.vue', import.meta.url)))
   assert.ok(existsSync(new URL('../neko-style/theme/components/GlassChecklist.vue', import.meta.url)))
   assert.ok(existsSync(new URL('../neko-style/theme/components/ProcessFlowGrid.vue', import.meta.url)))
+  assert.ok(existsSync(new URL('../neko-style/theme/components/ArtifactExplainBoard.vue', import.meta.url)))
   assert.ok(existsSync(new URL('../neko-style/theme/components/SpeakerLineupIntro.vue', import.meta.url)))
   assert.ok(existsSync(new URL('../neko-style/theme/components/advanced/AsciinemaPlayer.vue', import.meta.url)))
 
@@ -24,6 +25,7 @@ test('starter adopts extracted utility components', () => {
   assert.match(slides, /<MotionPrinciplesGallery/)
   assert.match(slides, /<GlassChecklist/)
   assert.match(slides, /<ProcessFlowGrid/)
+  assert.match(slides, /<ArtifactExplainBoard/)
   assert.match(slides, /<SpeakerLineupIntro/)
 
   assert.doesNotMatch(slides, /<div class="grid grid-cols-2 gap-5 mt-6 text-sm">/)
@@ -38,6 +40,7 @@ test('docs mention the extracted utility components', () => {
   for (const doc of [guide, themeReadme]) {
     assert.match(doc, /PatternCardGrid/)
     assert.match(doc, /ProcessFlowGrid/)
+    assert.match(doc, /ArtifactExplainBoard/)
     assert.match(doc, /SpeakerLineupIntro/)
     assert.match(doc, /MotionPrinciplesGallery/)
     assert.match(doc, /GlassChecklist/)

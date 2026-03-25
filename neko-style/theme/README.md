@@ -122,6 +122,7 @@ Important precedence:
 - `InsightCalloutBar` - 底部总结条（关键结论）
 - `SplitBrandIntro` - 左右分列入场开场组件
 - `ProcessFlowGrid` - 协议流程 / 端到端步骤讲解网格
+- `ArtifactExplainBoard` - 注释浮层讲解板（配置、架构、截图拆解）
 - `SessionHoverGallery` - 截图 + 二维码悬停展示墙
 - `SpeakerLineupIntro` - 多讲者 / 联合分享开场组件
 - `SpotlightQuestion` - 大字问题聚焦页（缩放淡出）
@@ -199,6 +200,23 @@ Important precedence:
   { icon: 'i-carbon:tool-box', title: '拉取能力', description: '获取工具或能力描述。' },
   { icon: 'i-carbon:result', title: '返回结果', description: '执行后组织最终输出。' },
 ]" />
+```
+
+```vue
+<ArtifactExplainBoard
+  title="模型目录拆解"
+  :items="[
+    { icon: 'i-carbon:document-unknown', title: 'config.json', description: '模型架构配置', positionClass: 'top-4 left-28' },
+    { icon: 'i-carbon:string-text', title: 'tokenizer_config.json', description: '分词器配置', positionClass: 'top-24 right-6' },
+  ]"
+>
+  <div class="h-full rounded-xl border border-white/8 bg-neutral-900/70 p-6 font-mono text-sm">
+    <div>models/</div>
+    <div class="pl-6">gpt-oss/</div>
+    <div class="pl-12">config.json</div>
+    <div class="pl-12">tokenizer_config.json</div>
+  </div>
+</ArtifactExplainBoard>
 ```
 
 ```vue

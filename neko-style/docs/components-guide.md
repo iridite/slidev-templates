@@ -112,6 +112,44 @@
 />
 ```
 
+### ArtifactExplainBoard（注释浮层讲解板）
+
+```vue
+<ArtifactExplainBoard
+  title="模型目录拆解"
+  subtitle="适合讲代码结构、配置文件、架构图、产品截图"
+  :items="[
+    {
+      icon: 'i-carbon:document-unknown',
+      tone: 'blue',
+      title: 'config.json - 模型架构配置',
+      description: '先说明这个对象的骨架和关键字段。',
+      positionClass: 'top-4 left-28',
+      widthClass: 'w-[18rem]',
+      inactiveAfterStep: 3,
+    },
+    {
+      icon: 'i-carbon:string-text',
+      tone: 'green',
+      title: 'tokenizer_config.json - 分词器配置',
+      description: '第二层再讲输入输出约束和 tokenizer 细节。',
+      positionClass: 'top-20 left-[24rem]',
+      widthClass: 'w-[19rem]',
+      inactiveAfterStep: 3,
+    },
+  ]"
+>
+  <div class="h-full rounded-xl border border-white/8 bg-neutral-900/70 p-6 font-mono text-sm leading-7 text-zinc-200">
+    <div>models/</div>
+    <div class="pl-6">gpt-oss/</div>
+    <div class="pl-12">config.json</div>
+    <div class="pl-12">tokenizer_config.json</div>
+    <div class="pl-12">generation_config.json</div>
+    <div class="pl-12">model.safetensors</div>
+  </div>
+</ArtifactExplainBoard>
+```
+
 ### WorksOnMyMachineHero（报错开场）
 
 ```vue

@@ -137,6 +137,7 @@ theme: dark       # dark | light
 
 - `PatternCardGrid`：总览模式、目录卡片、组件清单
 - `ProcessFlowGrid`：协议流程、端到端步骤讲解
+- `ArtifactExplainBoard`：配置、架构图、截图的浮层拆解
 - `SpeakerLineupIntro`：联合分享 / 多讲者开场
 - `MotionPrinciplesGallery`：动效防遮挡规范展示
 - `GlassChecklist`：迁移排障、发布前检查、演讲流程清单

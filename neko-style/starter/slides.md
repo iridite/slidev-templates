@@ -168,6 +168,56 @@ glow: left
 <MotionPrinciplesGallery />
 
 ---
+layout: page-wide
+glowSeed: 94
+clicks: 3
+---
+
+<ArtifactExplainBoard
+  title="讲解一个复杂对象，不用再手搓浮层"
+  subtitle="拿来讲配置文件、架构图、目录树、产品截图都顺手。"
+  :items="[
+    {
+      icon: 'i-carbon:document-unknown',
+      tone: 'blue',
+      title: 'config.json - 模型架构配置',
+      description: '先解释模型类型、hidden size、head dim 这类骨架字段。',
+      positionClass: 'top-4 left-28',
+      widthClass: 'w-[18rem]',
+      inactiveAfterStep: 3,
+    },
+    {
+      icon: 'i-carbon:string-text',
+      tone: 'green',
+      title: 'tokenizer_config.json - 分词器配置',
+      description: '第二层再讲输入输出边界、特殊 token 和 tokenizer 约束。',
+      positionClass: 'top-24 left-[24rem]',
+      widthClass: 'w-[19rem]',
+      inactiveAfterStep: 3,
+    },
+    {
+      icon: 'i-carbon:generate',
+      tone: 'purple',
+      title: 'generation_config.json - 生成参数',
+      description: '最后把采样策略、EOS 和推理默认行为单独拎出来。',
+      positionClass: 'top-14 right-4',
+      widthClass: 'w-[18rem]',
+    },
+  ]"
+>
+  <div class="h-full rounded-2xl border border-white/8 bg-neutral-950/70 p-8 font-mono text-sm leading-7 text-zinc-200">
+    <div>models/</div>
+    <div class="pl-6">gpt-oss/</div>
+    <div class="pl-12">config.json</div>
+    <div class="pl-12">tokenizer_config.json</div>
+    <div class="pl-12">generation_config.json</div>
+    <div class="pl-12">model.safetensors</div>
+    <div class="pl-6 mt-4">snapshots/</div>
+    <div class="pl-12">main/ -&gt; blobs</div>
+  </div>
+</ArtifactExplainBoard>
+
+---
 layout: section
 glowSeed: 300
 sectionNumber: 1
