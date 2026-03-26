@@ -1,12 +1,12 @@
 # slidev-templates
 
-> 一个收录高质量 [Slidev](https://sli.dev) 演示模板的仓库，灵感来自 neko-talks 系列演讲。
+> 高质量 [Slidev](https://sli.dev) 演示模板集合。当前主模板为 `neko-style`。
 
-## 📦 模板列表
+## 📦 当前模板
 
-| 模板 | 说明 | 预览 |
+| 模板 | 定位 | 包含内容 |
 |------|------|------|
-| [neko-style](./neko-style/) | 从 neko-talks / KubeCon HK 2025 演示文稿提取的专业技术演示风格 | 动态 Glow 背景、语义化配色、丰富组件库 |
+| [neko-style](./neko-style/) | 技术演示风格（提炼自 neko-talks / KubeCon HK 2025） | 动态 Glow 背景、语义化组件、布局系统、文档与 starter |
 
 ## 🎬 Neko Style 实例 PPT 预览
 
@@ -20,17 +20,25 @@
 
 ### neko-style
 
-- 🌟 **动态 Glow 背景** — 基于多边形模糊渐变，每页独立配置，平滑过渡
-- 🎨 **3 种颜色预设** — `blue`（科技蓝）、`rust`（橙红）、`cyan`（青蓝），支持深色 / 浅色主题
-- 🃏 **语义化组件库** — 信息卡片、问题对比卡片、指标展示卡片，开箱即用
-- 🚀 **平滑动画系统** — 统一 `500ms` 过渡，支持 `v-click` 渐进展示
-- 📚 **完整文档** — 快速入门、组件指南、配色说明、动画模式、AI 使用指南
+- 动态 Glow 背景（基于 seed，页面级可控）
+- 3 套颜色预设：`blue` / `rust` / `cyan`
+- 语义化组件与布局（卡片、目录、章节、结束页等）
+- 统一 500ms 动画节奏（支持 `v-click` 渐进）
+- 完整文档（快速上手、组件、配色、动画、AI 使用说明）
+
+## 🧱 仓库架构（简版）
+
+这个仓库是一个轻量 monorepo：
+
+- `neko-style/theme`：真正可复用的 Slidev 主题包（`slidev-theme-neko-style`）
+- `neko-style/starter`：开箱即用示例工程（本地依赖 `file:../theme`）
+- `neko-style/docs`：使用文档与设计沉淀
+
+根目录 `package.json` 通过 workspace 串起 `theme` 和 `starter`，用于统一开发与构建。
 
 ## 🚀 使用方式
 
-### 方式一：Starter Template（推荐新手）
-
-直接复制 starter 模板，开箱即用：
+### 1) 直接用 Starter（推荐）
 
 ```bash
 npx degit iridite/slidev-templates/neko-style/starter my-presentation
@@ -39,21 +47,19 @@ npm install
 npm run dev
 ```
 
-### 方式二：在已有项目接入 Theme（进阶）
+### 2) 在已有 Slidev 项目接入 Theme
 
 > ⚠️ `slidev-theme-neko-style` 当前未发布到 npm registry，不能直接 `npm install slidev-theme-neko-style`。
-
-在现有 Slidev 项目中，请先获取仓库再用本地路径安装：
 
 ```bash
 # 1) 获取仓库
 git clone https://github.com/iridite/slidev-templates.git
 
-# 2) 在你的 Slidev 项目中安装本地 theme 包
+# 2) 在你的项目中安装本地 theme 包
 npm install /absolute/path/to/slidev-templates/neko-style/theme
 ```
 
-在 `slides.md` 中引用：
+然后在 `slides.md` 中启用主题：
 
 ```yaml
 ---
@@ -61,11 +67,7 @@ theme: neko-style
 ---
 ```
 
-**工作原理**：Slidev 会自动从 `node_modules/slidev-theme-*` 加载 theme 的 components、layouts 和 styles，实现跨项目复用。
-
-### 方式三：Monorepo 开发（贡献者）
-
-克隆仓库进行开发：
+### 3) 在仓库内开发（贡献者）
 
 ```bash
 git clone https://github.com/iridite/slidev-templates.git
@@ -74,54 +76,131 @@ npm install
 npm run dev:neko
 ```
 
-## 📁 仓库结构
+可用脚本（根目录）：
 
-```
+- `npm run dev:neko`：启动 starter 开发环境
+- `npm run build:neko`：构建 starter
+- `npm run export:neko`：导出 starter（PDF）
+
+## 📁 目录结构
+
+```text
 slidev-templates/
-├── package.json            # Monorepo 配置
-├── README.md               # 本文件
+├── package.json
+├── README.md
 └── neko-style/
-    ├── README.md           # 模板主文档
-    ├── SKILL.md            # Claude Code 技能定义
-    ├── docs/               # 文档（快速入门/组件/动画/配色等）
-    ├── starter/            # 可直接运行的示例项目
-    ├── theme/              # 可复用主题包（本地路径安装）
-    └── uno.config.ts       # UnoCSS 配置
+    ├── README.md
+    ├── SKILL.md
+    ├── docs/
+    ├── starter/
+    │   ├── package.json
+    │   └── slides.md
+    └── theme/
+        └── package.json
 ```
 
-## 🎨 neko-style 颜色预设
+## 🎨 颜色预设
 
-| 预设 | 风格 | 主色 | 适用场景 |
-|------|------|------|---------|
-| `blue`（默认）| 蓝色科技风 | #18549a → #12238b | 技术演讲、产品发布 |
-| `rust` | 橙红活力风 | #ed5132 → #ed4832 | Rust 主题、创新演讲 |
-| `cyan` | 青蓝清新风 | #32aeed → #32e5ed | AI/ML、学术演讲 |
+| 预设 | 主色渐变 | 场景 |
+|------|---------|------|
+| `blue`（默认） | `#18549a → #12238b` | 技术演讲、产品发布 |
+| `rust` | `#ed5132 → #ed4832` | Rust 主题、创新表达 |
+| `cyan` | `#32aeed → #32e5ed` | AI/ML、学术分享 |
 
-在 `slides.md` frontmatter 中一行即可切换：
+示例：
 
 ```yaml
 ---
 glowSeed: 42
-glowPreset: rust   # blue | rust | cyan
+glowPreset: rust # blue | rust | cyan
 ---
 ```
 
-## 📖 文档导航
+## 📖 文档入口
 
-- [neko-style README](./neko-style/README.md) — 模板总览
-- [QUICK-START](./neko-style/docs/QUICK-START.md) — 5 分钟快速入门 ⭐
-- [组件指南](./neko-style/docs/components-guide.md) — 所有组件代码示例 ⭐⭐⭐
-- [配色系统](./neko-style/docs/color-system.md) — 配色方案说明
-- [动画模式](./neko-style/docs/animation-patterns.md) — 动画效果指南
-- [AI 助手指南](./neko-style/docs/FOR-AI-ASSISTANTS.md) — 给 AI 助手的使用说明
+- [neko-style README](./neko-style/README.md)
+- [快速开始](./neko-style/docs/QUICK-START.md)
+- [组件指南](./neko-style/docs/components-guide.md)
+- [布局指南](./neko-style/docs/layouts-guide.md)
+- [高级组件](./neko-style/docs/advanced-components.md)
+- [配色系统](./neko-style/docs/color-system.md)
+- [动画模式](./neko-style/docs/animation-patterns.md)
+- [可选依赖](./neko-style/docs/optional-dependencies.md)
+- [AI 助手指南](./neko-style/docs/FOR-AI-ASSISTANTS.md)
+
+## ✅ 可运行性验收（建议每次改动后执行）
+
+目标：确保仓库文档中提到的核心能力都能跑通，且 `neko-style` 模板可实际复用。
+
+### 1) 根仓库（monorepo）
+
+```bash
+npm install
+npm run dev:neko
+npm run build:neko
+npm run export:neko
+```
+
+验收点：
+- `dev:neko` 能正常启动 Slidev
+- `build:neko` 无报错
+- `export:neko` 能成功导出
+
+### 2) Starter 独立可用性
+
+```bash
+cd neko-style/starter
+npm install
+npm run dev
+npm run build
+npm run export
+```
+
+验收点：
+- Starter 脱离 monorepo 也能运行
+- `slides.md` 使用 `theme: neko-style` 后样式与组件可正常加载
+
+### 3) Theme 接入可用性（已有项目）
+
+在任意 Slidev 项目执行：
+
+```bash
+npm install /absolute/path/to/slidev-templates/neko-style/theme
+```
+
+并在 `slides.md` 写入：
+
+```yaml
+---
+theme: neko-style
+---
+```
+
+验收点：
+- 布局可用：`cover / section / contents-toc / page / page-wide / end`
+- Glow 背景可用：`glowSeed`、`glowPreset` 生效
+- 核心组件可导入并渲染
+
+### 4) 可选高级能力（按需）
+
+`theme` 已声明 optional dependencies。若要用高级功能，需按需安装对应包：
+
+- `@vueuse/motion`（动效）
+- `@nolebase/ui-asciinema` + `asciinema-player`（终端回放）
+- `@tresjs/core` + `@tresjs/cientos` + `three`（3D）
+
+---
+
+如果你希望，我可以继续把这套验收流程同步到 `neko-style/README.md`，避免根 README 和子 README 描述漂移。
 
 ## 🤝 贡献
 
-欢迎提交新模板！每个模板独立放在根目录的子文件夹中，并附上：
+欢迎新增模板。建议每个模板至少包含：
 
-- `README.md` — 模板说明
-- `starter/` — 可运行的示例项目
-- 必要的组件、样式和配置文件
+- `README.md`（使用说明）
+- `starter/`（可运行示例）
+- `theme/`（可复用主题，若适用）
+- 必要文档与示例素材
 
 ## 📄 License
 

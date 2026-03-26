@@ -21,7 +21,7 @@
 直接复制 starter 模板开始：
 
 ```bash
-npx degit user/repo/neko-style/starter my-presentation
+npx degit iridite/slidev-templates/neko-style/starter my-presentation
 cd my-presentation
 npm install
 npm run dev
