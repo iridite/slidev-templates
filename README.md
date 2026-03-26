@@ -12,11 +12,7 @@
 
 这里是 `neko-style` 示例预览视频（MP4）：
 
-https://github.com/user-attachments/assets/6a4d34f7-cefd-47e1-b5d1-51d6e31845fe
-
-> 采用“裸链接”方式，兼容 GitHub README 渲染。
-
-> 静态首屏预览：[`./assets/neko-style-preview.png`](./assets/neko-style-preview.png)
+[https://github.com/user-attachments/assets/6a4d34f7-cefd-47e1-b5d1-51d6e31845fe](https://github.com/user-attachments/assets/a8de803a-3857-43cf-988c-31578a26cb8b)
 
 > 示例来源：`neko-style/starter/slides.md`（用于展示 glow seed 深色背景效果）
 
