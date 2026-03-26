@@ -1,6 +1,7 @@
 <script setup lang="ts">
 type MotionPrincipleItem = {
-  icon: string
+  icon?: string
+  iconClass?: string
   title: string
   caption: string
   animationClass?: string
@@ -40,8 +41,9 @@ const props = withDefaults(defineProps<{
       class="neko-glass-card p-5 text-center"
     >
       <div class="neko-motion-stage">
-        <div class="text-6xl" :class="item.animationClass">
-          {{ item.icon }}
+        <div class="text-6xl flex items-center justify-center" :class="item.animationClass">
+          <div v-if="item.iconClass" :class="item.iconClass" />
+          <span v-else>{{ item.icon }}</span>
         </div>
       </div>
       <div class="mb-1 font-bold">

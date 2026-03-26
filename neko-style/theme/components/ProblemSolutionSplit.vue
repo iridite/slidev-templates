@@ -1,10 +1,18 @@
 <script setup lang="ts">
+interface SplitItem {
+  text: string
+}
+
 const props = withDefaults(defineProps<{
   problemTitle?: string
   solutionTitle?: string
+  problemItems?: SplitItem[]
+  solutionItems?: SplitItem[]
 }>(), {
   problemTitle: '传统方案的问题',
   solutionTitle: '改进方案',
+  problemItems: () => [],
+  solutionItems: () => [],
 })
 </script>
 
@@ -16,7 +24,18 @@ const props = withDefaults(defineProps<{
         <span font-bold>{{ props.problemTitle }}</span>
       </div>
       <div px-4 py-3>
-        <slot name="problem">
+        <template v-if="props.problemItems.length">
+          <div
+            v-for="(item, idx) in props.problemItems"
+            :key="`problem-${idx}`"
+            flex items-center gap-2
+            :class="idx < props.problemItems.length - 1 ? 'mb-2' : ''"
+          >
+            <div i-carbon:close text-red-400 />
+            <span>{{ item.text }}</span>
+          </div>
+        </template>
+        <slot v-else name="problem">
           <div flex items-center gap-2 mb-2>
             <div i-carbon:close text-red-400 />
             <span>依赖版本漂移</span>
@@ -35,7 +54,18 @@ const props = withDefaults(defineProps<{
         <span font-bold>{{ props.solutionTitle }}</span>
       </div>
       <div px-4 py-3>
-        <slot name="solution">
+        <template v-if="props.solutionItems.length">
+          <div
+            v-for="(item, idx) in props.solutionItems"
+            :key="`solution-${idx}`"
+            flex items-center gap-2
+            :class="idx < props.solutionItems.length - 1 ? 'mb-2' : ''"
+          >
+            <div i-carbon:checkmark-outline text-green-400 />
+            <span>{{ item.text }}</span>
+          </div>
+        </template>
+        <slot v-else name="solution">
           <div flex items-center gap-2 mb-2>
             <div i-carbon:checkmark-outline text-green-400 />
             <span>统一环境定义</span>
