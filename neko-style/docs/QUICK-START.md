@@ -17,6 +17,14 @@ npm run dev
 
 > ⚠️ 当前主题**未发布到 npm registry**，不能直接执行 `npm install slidev-theme-neko-style`。
 
+支持状态（2026-03-30）：
+
+| 安装方式 | 状态 |
+|------|------|
+| `npm install slidev-theme-neko-style` | 不支持 |
+| `npm install /absolute/path/to/slidev-templates/neko-style/theme` | 支持 |
+| `package.json` 中 `file:/absolute/path/...` | 支持 |
+
 请使用“本地路径安装”方式：
 
 ```bash
@@ -27,6 +35,22 @@ git clone https://github.com/iridite/slidev-templates.git
 npm install /absolute/path/to/slidev-templates/neko-style/theme
 ```
 
+或在 `package.json` 里声明 `file:` 依赖（推荐用于固定团队环境）：
+
+```json
+{
+  "dependencies": {
+    "slidev-theme-neko-style": "file:/absolute/path/to/slidev-templates/neko-style/theme"
+  }
+}
+```
+
+然后执行：
+
+```bash
+npm install
+```
+
 在 slides.md 中引用：
 
 ```yaml
@@ -34,6 +58,15 @@ npm install /absolute/path/to/slidev-templates/neko-style/theme
 theme: neko-style
 ---
 ```
+
+### 常见报错与排查
+
+1. 报错 `Cannot find module 'slidev-theme-neko-style'`  
+通常是没执行 `npm install`，或 `file:` 指向了错误目录。确认路径最终指向 `.../neko-style/theme`。
+2. 主题没生效（样式像默认主题）  
+确认 frontmatter 写的是 `theme: neko-style`，不是 `slidev-theme-neko-style`。
+3. 切机器后安装失败  
+绝对路径失效。更新 `package.json` 的 `file:` 路径后重新 `npm install`。
 
 ### 方式三：Monorepo 开发
 

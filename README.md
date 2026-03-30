@@ -51,6 +51,14 @@ npm run dev
 
 > ⚠️ `slidev-theme-neko-style` 当前未发布到 npm registry，不能直接 `npm install slidev-theme-neko-style`。
 
+安装支持状态（2026-03-30）：
+
+| 安装方式 | 是否支持 | 说明 |
+|------|------|------|
+| `npm install slidev-theme-neko-style` | ❌ | 未发布到 npm |
+| `npm install /absolute/path/to/neko-style/theme` | ✅ | 适合本机临时接入 |
+| `package.json` 写 `file:/absolute/path/...` | ✅ | 适合团队固定本地路径 |
+
 ```bash
 # 1) 获取仓库
 git clone https://github.com/iridite/slidev-templates.git
@@ -58,6 +66,27 @@ git clone https://github.com/iridite/slidev-templates.git
 # 2) 在你的项目中安装本地 theme 包
 npm install /absolute/path/to/slidev-templates/neko-style/theme
 ```
+
+也可以在你的 Slidev 项目 `package.json` 中直接声明本地依赖：
+
+```json
+{
+  "dependencies": {
+    "slidev-theme-neko-style": "file:/absolute/path/to/slidev-templates/neko-style/theme"
+  }
+}
+```
+
+再执行：
+
+```bash
+npm install
+```
+
+注意：
+- 包名必须是 `slidev-theme-neko-style`（`theme/package.json` 的 `name`）。
+- 幻灯片 frontmatter 里必须写 `theme: neko-style`（去掉 `slidev-theme-` 前缀后的名字）。
+- `file:` 必须指向主题包目录本身（目录内应有 `package.json`），即 `.../neko-style/theme`。
 
 然后在 `slides.md` 中启用主题：
 
