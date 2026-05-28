@@ -1,13 +1,13 @@
 # slidev-theme-neko-style
 
-A modern Slidev theme featuring animated glow polygon backgrounds, a semantic color system, and 20+ presentation components for professional tech talks.
+A modern Slidev theme featuring animated glow polygon backgrounds, a semantic color system, and 45+ presentation components for professional tech talks.
 
 ## Features
 
 - Animated glow polygon backgrounds with stable randomization (via `seedrandom`)
 - 3 color presets: **blue**, **rust**, **cyan** — switchable per-slide
 - 9 layout variants including section dividers, full-bleed pages, and TOC
-- 22+ reusable Vue components (narrative, data display, speaker intros, closings)
+- 45+ reusable Vue components (narrative, data display, architecture diagrams, speaker intros, closings)
 - UnoCSS-powered with attributify mode, Carbon and Logos icon sets
 - Dark/light theme support
 - Optional advanced features: terminal recordings, 3D graphics, motion animations
@@ -502,6 +502,322 @@ Recruiting/role showcase page.
     { icon: 'i-carbon:paint-brush', label: 'Designer' },
   ]"
 />
+```
+
+### Simple Content Components
+
+#### IconLabelWrap
+
+Horizontal flex-wrap flow of icon+label pairs. For technology tags, skill lists, or badge displays.
+
+```vue
+<IconLabelWrap :items="[
+  { icon: 'i-devicon:kubernetes', label: 'Kubernetes' },
+  { icon: 'i-devicon:go', label: 'Golang' },
+  { icon: 'i-logos:vue', label: 'Vue' },
+  { icon: 'i-logos:typescript-icon', label: 'TypeScript' },
+]" size="md" />
+```
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `items` | `IconLabelItem[]` | `[]` | Items with icon, label, iconColor |
+| `size` | `'sm'\|'md'\|'lg'` | `'md'` | Text size (lg/2xl/3xl) |
+| `gap` | `string` | `'4'` | Gap between items (1rem) |
+
+#### AccentBorderList
+
+Vertical list with colored left-border accent. For evaluation criteria, decision factors, or highlighted lists.
+
+```vue
+<AccentBorderList :items="[
+  { title: 'Business Value', description: 'How much benefit?', icon: 'i-carbon:growth', tone: 'green' },
+  { title: 'Technical Risk', description: 'What could go wrong?', icon: 'i-carbon:warning', tone: 'red' },
+]" />
+```
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `items` | `AccentItem[]` | `[]` | Items with title, description, icon, tone |
+
+#### AgendaGrid
+
+Multi-column agenda/TOC with section headers and arrow-bullet lists.
+
+```vue
+<AgendaGrid :columns="2" :sections="[
+  { title: 'Part 1: Basics', tone: 'violet', items: ['What is it?', 'Why use it?'] },
+  { title: 'Part 2: Advanced', tone: 'blue', items: ['Custom setup', 'Production'] },
+]" />
+```
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `sections` | `AgendaSection[]` | `[]` | Sections with title, icon, tone, items |
+| `columns` | `2\|3\|4` | `2` | Grid columns |
+
+#### CenteredStatement
+
+Large centered text with dramatic reveal. For keynote moments or section transitions.
+
+```vue
+<CenteredStatement text="Simplicity Always Wins" subtitle="The best code is no code" icon="i-carbon:idea" revealStyle="scale" />
+```
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `text` | `string` | required | Main statement |
+| `subtitle` | `string` | — | Secondary text |
+| `icon` | `string` | — | Icon above text |
+| `revealStyle` | `'scale'\|'fade'\|'slide'` | `'fade'` | Animation style |
+
+#### StatsRow
+
+Horizontal row of icon + value + label metrics.
+
+```vue
+<StatsRow variant="pill" :stats="[
+  { icon: 'i-logos:youtube-icon', value: '636K', label: 'subscribers' },
+  { icon: 'i-logos:twitch', value: '789K', label: 'followers' },
+]" />
+```
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `stats` | `StatItem[]` | `[]` | Stats with icon, value, label, iconColor |
+| `variant` | `'pill'\|'bare'` | `'bare'` | Whether to add background |
+
+#### LearningPathSteps
+
+Vertical progressive steps with nested ordered lists. For learning paths or onboarding.
+
+```vue
+<LearningPathSteps :steps="[
+  { icon: 'i-carbon:user-avatar', title: 'Beginner', tone: 'blue', items: ['Read docs', 'Try examples'] },
+  { icon: 'i-carbon:code', title: 'Intermediate', tone: 'purple', items: ['Build server', 'Add tools'] },
+]" />
+```
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `steps` | `PathStep[]` | `[]` | Steps with icon, title, tone, items |
+| `ordered` | `boolean` | `true` | Numbered (ol) vs bullet (ul) lists |
+
+#### CodeExplainSplit
+
+Side-by-side code block and explanation.
+
+```vue
+<CodeExplainSplit code="npm install\nnpm run dev" lang="bash">
+  <template #explanation>
+    <div>Step 1: Install deps. Step 2: Start server.</div>
+  </template>
+</CodeExplainSplit>
+```
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `code` | `string` | `''` | Code content |
+| `lang` | `string` | `'typescript'` | Language hint |
+| `explanationSide` | `'left'\|'right'` | `'right'` | Which side for explanation |
+
+### Progression & Architecture Components
+
+#### CategoryIconList
+
+Grouped columns of icon + label pairs with category headers. Perfect for tech stack listings, tool comparisons, or categorized enumerations.
+
+```vue
+<CategoryIconList :categories="[
+  { title: 'Frameworks', items: [
+    { icon: 'i-logos:pytorch-icon', label: 'PyTorch' },
+    { icon: 'i-logos:hugging-face-icon', label: 'transformers' },
+  ]},
+  { title: 'Runtimes', icon: 'i-carbon:chip', items: [
+    { icon: 'i-simple-icons:onnx', label: 'ONNX Runtime', iconColor: '#60a5fa' },
+  ]},
+]" />
+```
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `categories` | `Category[]` | `[]` | Array of category groups |
+| `columns` | `2\|3\|4` | `2` | Grid column count |
+| `iconSize` | `string` | `'32px'` | Icon font size |
+| `gap` | `string` | `'12'` | Gap between columns (3rem) |
+
+Each `Category`: `{ title, icon?, items: { icon, label, iconColor? }[] }`
+
+#### FeatureIconGrid
+
+Grid of icon + title + description cards. The most versatile component for feature showcases.
+
+```vue
+<FeatureIconGrid :columns="3" :items="[
+  { icon: 'i-carbon:lightning', title: 'Fast', description: 'Sub-ms response', tone: 'amber' },
+  { icon: 'i-carbon:security', title: 'Secure', description: 'Zero-trust', tone: 'teal' },
+  { icon: 'i-carbon:scale', title: 'Scalable', description: 'Auto-scaling', tone: 'violet' },
+]" />
+```
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `items` | `FeatureItem[]` | `[]` | Items with icon, title, description, tone |
+| `columns` | `2\|3\|4\|5` | `3` | Grid column count |
+
+#### RouteProgressionLane
+
+Horizontal stepped progression with animated connectors.
+
+```vue
+<RouteProgressionLane :steps="[
+  { icon: 'i-carbon:explore', title: 'Research', subtitle: 'Q1', tone: 'teal' },
+  { icon: 'i-carbon:code', title: 'Build', subtitle: 'Q2', tone: 'sky' },
+  { icon: 'i-carbon:rocket', title: 'Launch', subtitle: 'Q3', tone: 'violet' },
+]" />
+```
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `steps` | `RouteStep[]` | `[]` | Steps with icon, title, subtitle, tone |
+| `connectorVariant` | `'arrow'\|'hard'` | `'arrow'` | Connector style |
+
+#### LayeredArchView
+
+Vertical stack of hierarchical layers (agent architecture, platform tiers).
+
+```vue
+<LayeredArchView :columns="4" :layers="[
+  { icon: 'i-carbon:cognitive', title: 'Planning', description: 'Goal decomposition', tone: 'violet' },
+  { icon: 'i-carbon:view', title: 'Perception', description: 'State observation', tone: 'sky' },
+  { icon: 'i-carbon:terminal', title: 'Execution', description: 'Tool invocation', tone: 'teal' },
+]" />
+```
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `layers` | `ArchLayer[]` | `[]` | Layers with icon, title, description, tone |
+| `columns` | `3\|4\|5` | `4` | Grid column count |
+
+#### StackedFlowPipeline
+
+Process pipeline with nodes and directional arrows (or equal columns without arrows).
+
+```vue
+<StackedFlowPipeline variant="pipeline" :nodes="[
+  { icon: 'i-carbon:document', title: 'Input', tone: 'sky' },
+  { icon: 'i-carbon:model-alt', title: 'Process', tone: 'violet' },
+  { icon: 'i-carbon:chart-line', title: 'Output', tone: 'teal' },
+]" />
+```
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `nodes` | `PipelineNode[]` | `[]` | Nodes with icon, title, subtitle, tone |
+| `variant` | `'pipeline'\|'stacked'` | `'pipeline'` | Pipeline (with arrows) or stacked (columns only) |
+| `tall` | `boolean` | `false` | Taller cards (pipeline variant) |
+
+#### FlowDiagram
+
+Free-form node-edge diagram with SVG cubic bezier paths. Requires explicit positioning.
+
+```vue
+<FlowDiagram
+  :nodes="[
+    { id: 'a', click: 1, x: 50, y: 170, width: 200, height: 80, title: 'Service A', icon: 'i-carbon:api' },
+    { id: 'b', click: 2, x: 400, y: 170, width: 200, height: 80, title: 'Service B', icon: 'i-carbon:application' },
+  ]"
+  :edges="[
+    { id: 'e1', from: 'a', to: 'b', click: 2, fromAnchor: { x: 1, y: 0.5 }, toAnchor: { x: 0, y: 0.5 } },
+  ]"
+/>
+```
+
+Uses `utils/flowGeometry.ts` for path computation. See `docs/COMPONENT-CATALOG.md` for full FlowNode/FlowEdge interfaces.
+
+#### EventPipeline
+
+Multi-stage data flow funnel with converging token streams.
+
+```vue
+<EventPipeline
+  :tokens="[{ label: 'HTTP', x: 100, y: 80 }, { label: 'gRPC', x: 80, y: 200 }]"
+  :stages="[{ id: 's1', title: 'Parser', tone: 'cyan', icon: 'i-carbon:code', x: 550, y: 100 }]"
+/>
+```
+
+#### TerminalOrbitDemo
+
+Split-pane: terminal output on left, orbital/circular diagram on right.
+
+```vue
+<TerminalOrbitDemo
+  :terminalLines="[{ title: '$ deploy', body: 'Success', tone: 'cyan', click: 1 }]"
+  :orbitSteps="[{ icon: 'i-carbon:kubernetes', label: 'K8s', tone: 'sky', angle: 0, click: 1 }]"
+/>
+```
+
+### Layout & Content Components
+
+#### LearningCallout
+
+Compact callout card for key takeaways.
+
+```vue
+<LearningCallout icon="i-carbon:idea" tone="teal">
+  <strong>Key Insight</strong>
+  <p class="mt-1 text-sm opacity-70">The critical learning...</p>
+</LearningCallout>
+```
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `icon` | `string` | `'i-carbon:idea'` | Icon class |
+| `tone` | `string` | `'sky'` | Color tone |
+| `variant` | `'default'\|'compact'\|'note'` | `'default'` | Card style variant |
+
+#### ReasonLessonGrid
+
+Two-column classified content — reasons/problems + lessons/insights.
+
+```vue
+<ReasonLessonGrid
+  :reasons="[{ icon: 'i-carbon:warning', title: 'Issue', body: 'Description...', tone: 'violet' }]"
+  :lessons="[{ icon: 'i-carbon:checkmark', title: 'Fix', description: 'Solution...', tone: 'teal' }]"
+/>
+```
+
+#### BannerSplitLayout
+
+Asymmetric split: title + facts on one side, media slot on the other.
+
+```vue
+<BannerSplitLayout
+  title="Product"
+  :facts="[{ icon: 'i-carbon:rocket', text: '10x faster' }]"
+>
+  <template #media><img src="/screenshot.png" /></template>
+</BannerSplitLayout>
+```
+
+#### FadeVideoSlide
+
+Full-bleed video background with glassmorphic overlay.
+
+```vue
+<FadeVideoSlide src="/demo.mp4">
+  <template #overlay>
+    <h2 class="text-3xl font-bold">Live Demo</h2>
+  </template>
+</FadeVideoSlide>
+```
+
+#### IconMask
+
+CSS mask-based icon for custom SVGs not in iconify.
+
+```vue
+<IconMask src="/icons/custom.svg" size="48px" label="Custom Icon" />
 ```
 
 ---

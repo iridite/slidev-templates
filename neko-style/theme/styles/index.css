@@ -337,6 +337,746 @@ iframe {
   }
 }
 
+/* --- Component CSS Systems (extracted from neko-talks) --- */
+
+/* Shared glass base for all neko components */
+.neko-glass-base,
+.neko-route-card,
+.neko-flow-step,
+.neko-learning-card,
+.neko-stack-row,
+.neko-pipe-node,
+.neko-arch-layer,
+.neko-reason-block,
+.neko-difficulty-card,
+.neko-lesson-block,
+.neko-arch-center,
+.neko-arch-node,
+.neko-small-facts > div {
+  border: 0 !important;
+  background:
+    linear-gradient(135deg, rgb(255 255 255 / 16%), rgb(255 255 255 / 5%)),
+    rgb(255 255 255 / 7%) !important;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 24%),
+    inset 0 -1px 0 rgb(255 255 255 / 7%),
+    0 18px 70px rgb(0 0 0 / 22%) !important;
+  backdrop-filter: blur(20px) saturate(1.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.neko-route-card::before,
+.neko-flow-step::before,
+.neko-learning-card::before,
+.neko-stack-row::before,
+.neko-pipe-node::before,
+.neko-arch-layer::before,
+.neko-reason-block::before,
+.neko-difficulty-card::before,
+.neko-lesson-block::before,
+.neko-arch-center::before,
+.neko-arch-node::before,
+.neko-small-facts > div::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    linear-gradient(145deg, rgb(255 255 255 / 16%), transparent 46%),
+    radial-gradient(120% 70% at 50% 118%, rgb(255 255 255 / 34%), transparent 58%);
+  opacity: 0.72;
+}
+
+.neko-route-card::after,
+.neko-flow-step::after,
+.neko-learning-card::after,
+.neko-stack-row::after,
+.neko-pipe-node::after,
+.neko-arch-layer::after,
+.neko-reason-block::after,
+.neko-difficulty-card::after,
+.neko-lesson-block::after,
+.neko-arch-center::after,
+.neko-arch-node::after,
+.neko-small-facts > div::after {
+  content: '';
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: 0;
+  height: 38%;
+  pointer-events: none;
+  border-radius: 999px 999px 0 0;
+  background: radial-gradient(85% 110% at 50% 100%, rgb(255 255 255 / 38%), transparent 62%);
+  filter: blur(8px);
+  opacity: 0.66;
+  transform: translateY(42%);
+}
+
+.neko-route-card > *,
+.neko-flow-step > *,
+.neko-learning-card > *,
+.neko-stack-row > *,
+.neko-pipe-node > *,
+.neko-arch-layer > *,
+.neko-reason-block > *,
+.neko-difficulty-card > *,
+.neko-lesson-block > *,
+.neko-arch-center > *,
+.neko-arch-node > *,
+.neko-small-facts > div > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Route Progression Lane --- */
+
+.neko-route-lane {
+  display: grid;
+  grid-template-columns: 1fr 38px 1fr 38px 1fr 38px 1fr 38px 1fr;
+  align-items: center;
+  gap: 8px;
+  min-height: 320px;
+}
+
+.neko-route-lane.cols-3 {
+  grid-template-columns: 1fr 38px 1fr 38px 1fr;
+}
+
+.neko-route-lane.cols-4 {
+  grid-template-columns: 1fr 38px 1fr 38px 1fr 38px 1fr;
+}
+
+.neko-route-card {
+  --route-rgb: 125 211 252;
+  height: 260px;
+  padding: 0;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(20px);
+  background:
+    linear-gradient(135deg, rgb(var(--route-rgb) / 18%), rgb(255 255 255 / 5%)),
+    rgb(var(--route-rgb) / 8%) !important;
+  transition:
+    opacity 450ms ease,
+    transform 450ms ease;
+}
+
+.neko-route-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.neko-route-icon {
+  width: 68px !important;
+  height: 68px !important;
+  font-size: 68px;
+  margin: auto;
+}
+
+.neko-route-label {
+  width: 100%;
+  min-height: 78px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border-top: 1px solid rgb(var(--route-rgb) / 24%);
+  background: rgb(var(--route-rgb) / 18%);
+  text-align: center;
+}
+
+.neko-route-card strong {
+  font-size: 20px;
+  line-height: 1.15;
+}
+
+.neko-route-card span {
+  color: rgb(255 255 255 / 55%);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.neko-route-connector {
+  height: 3px;
+  background: linear-gradient(90deg, rgb(var(--route-rgb, 125 211 252) / 0%), rgb(var(--route-rgb, 125 211 252) / 82%));
+  position: relative;
+  transform: scaleX(0);
+  transform-origin: left;
+  opacity: 0;
+  transition:
+    opacity 250ms ease,
+    transform 450ms ease;
+}
+
+.neko-route-connector::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: -6px;
+  border-left: 12px solid rgb(var(--route-rgb, 125 211 252) / 82%);
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+}
+
+.neko-route-connector.is-visible {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* --- Flow Strip (Linear Process) --- */
+
+.neko-flow-strip {
+  display: grid;
+  grid-template-columns: 1fr 52px 1fr 52px 1fr 52px 1fr;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.neko-flow-strip.cols-3 {
+  grid-template-columns: 1fr 52px 1fr 52px 1fr;
+}
+
+.neko-flow-step {
+  min-height: 160px;
+  padding: 18px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 450ms ease,
+    transform 450ms ease;
+}
+
+.neko-flow-step.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.neko-flow-step > div:first-child {
+  width: 34px;
+  height: 34px;
+  margin-bottom: 14px;
+}
+
+.neko-flow-step strong {
+  font-size: 20px;
+}
+
+.neko-flow-step span {
+  margin-top: 8px;
+  color: rgb(255 255 255 / 52%);
+  line-height: 1.35;
+  font-size: 13px;
+}
+
+.neko-flow-arrow {
+  align-self: center;
+  height: 3px;
+  background: linear-gradient(90deg, rgb(125 211 252 / 0%), rgb(125 211 252 / 85%));
+  position: relative;
+  transform: scaleX(0);
+  transform-origin: left;
+  opacity: 0;
+  transition:
+    opacity 250ms ease,
+    transform 450ms ease;
+}
+
+.neko-flow-arrow::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: -6px;
+  border-left: 12px solid rgb(125 211 252 / 85%);
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+}
+
+.neko-flow-arrow.is-visible {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+/* --- Learning Card --- */
+
+.neko-learning-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 22px 24px;
+  border-radius: 16px;
+}
+
+.neko-learning-card > div:first-child {
+  width: 42px;
+  height: 42px;
+  flex: none;
+}
+
+.neko-learning-card.compact {
+  gap: 12px;
+  padding: 13px 16px;
+  border-radius: 14px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 350ms ease,
+    transform 420ms ease;
+}
+
+.neko-learning-card.compact.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.neko-learning-card.compact > div:first-child {
+  width: 30px;
+  height: 30px;
+}
+
+.neko-learning-card.note-card {
+  display: block;
+  padding: 16px 18px;
+  background:
+    linear-gradient(135deg, rgb(255 255 255 / 10%), rgb(255 255 255 / 4%)),
+    rgb(255 255 255 / 5%) !important;
+}
+
+/* --- Stacked Flow (Column Grid) --- */
+
+.neko-stacked-flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.neko-stacked-flow.cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.neko-stacked-flow.cols-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.neko-stack-row {
+  min-height: 210px;
+  padding: 18px;
+  border-radius: 16px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 450ms ease,
+    transform 450ms ease;
+}
+
+.neko-stack-row.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.neko-stack-row > div:first-child {
+  width: 38px;
+  height: 38px;
+}
+
+.neko-stack-row strong {
+  display: block;
+  margin-top: 16px;
+  font-size: 20px;
+  line-height: 1.1;
+}
+
+.neko-stack-row span {
+  display: block;
+  margin-top: 12px;
+  color: rgb(255 255 255 / 55%);
+  line-height: 1.35;
+  font-size: 13px;
+}
+
+/* --- Pipeline (Nodes + Arrows) --- */
+
+.neko-pipeline {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr 60px 1fr 60px 1fr;
+  gap: 0;
+  align-items: center;
+}
+
+.neko-pipeline.cols-3 {
+  grid-template-columns: 1fr 60px 1fr 60px 1fr;
+}
+
+.neko-pipe-node {
+  min-height: 145px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  font-size: 18px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 450ms ease,
+    transform 450ms ease;
+}
+
+.neko-pipe-node.tall {
+  min-height: 190px;
+}
+
+.neko-pipe-node.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.neko-pipe-node > div:first-child {
+  width: 34px;
+  height: 34px;
+  color: #67e8f9;
+}
+
+.neko-pipe-arrow {
+  height: 3px;
+  background: linear-gradient(90deg, rgb(103 232 249 / 0%), rgb(103 232 249 / 82%));
+  position: relative;
+  transform: scaleX(0);
+  transform-origin: left;
+  opacity: 0;
+  transition:
+    opacity 250ms ease,
+    transform 450ms ease;
+}
+
+.neko-pipe-arrow::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: -6px;
+  border-left: 12px solid rgb(103 232 249 / 82%);
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+}
+
+.neko-pipe-arrow.is-visible {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* --- Layered Architecture --- */
+
+.neko-layered-arch {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.neko-layered-arch.cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.neko-arch-layer {
+  min-height: 220px;
+  padding: 18px;
+  border-radius: 18px;
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 450ms ease,
+    transform 450ms ease;
+}
+
+.neko-arch-layer.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.neko-arch-layer > div:first-child {
+  width: 38px;
+  height: 38px;
+}
+
+.neko-arch-layer strong {
+  display: block;
+  margin-top: 16px;
+  font-size: 20px;
+}
+
+.neko-arch-layer span {
+  display: block;
+  margin-top: 12px;
+  color: rgb(255 255 255 / 55%);
+  line-height: 1.35;
+  font-size: 13px;
+}
+
+/* --- Architecture Stage (Center + Satellites) --- */
+
+.neko-arch-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 1.18fr minmax(0, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: 12px 18px;
+  align-items: stretch;
+  margin-top: 22px;
+  min-height: 248px;
+}
+
+.neko-arch-center,
+.neko-arch-node {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-radius: 18px;
+}
+
+.neko-arch-center {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  justify-content: center;
+  min-width: 0;
+  padding: 18px 20px;
+}
+
+.neko-arch-center > div:first-child,
+.neko-arch-node > div:first-child {
+  width: 32px;
+  height: 32px;
+}
+
+.neko-arch-node {
+  min-width: 0;
+  padding: 14px 16px;
+  opacity: 0;
+  transform: translateY(20px) scale(0.96);
+  transition:
+    opacity 450ms ease,
+    transform 450ms ease;
+}
+
+.neko-arch-node.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* --- Reason Block --- */
+
+.neko-reason-block {
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.neko-reason-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  color: #c4b5fd;
+  background: rgb(109 40 217 / 28%);
+  font-size: 15px;
+}
+
+.neko-reason-block.blue .neko-reason-head {
+  color: #93c5fd;
+  background: rgb(30 64 175 / 28%);
+}
+
+.neko-reason-block.cyan .neko-reason-head {
+  color: #67e8f9;
+  background: rgb(21 94 117 / 28%);
+}
+
+.neko-reason-head > div:first-child {
+  width: 18px;
+  height: 18px;
+}
+
+.neko-reason-body {
+  padding: 13px 16px;
+  background: rgb(109 40 217 / 10%);
+  line-height: 1.45;
+  font-size: 15px;
+}
+
+.neko-reason-block.blue .neko-reason-body {
+  background: rgb(30 64 175 / 10%);
+}
+
+.neko-reason-block.cyan .neko-reason-body {
+  background: rgb(21 94 117 / 10%);
+}
+
+.neko-reason-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+  color: rgb(255 255 255 / 45%);
+  font-size: 12px;
+}
+
+/* --- Difficulty / Lesson Cards --- */
+
+.neko-difficulty-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.neko-difficulty-grid.cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.neko-difficulty-card,
+.neko-lesson-block {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 18px;
+  border-radius: 16px;
+}
+
+.neko-difficulty-card > div:first-child,
+.neko-lesson-block > div:first-child {
+  width: 34px;
+  height: 34px;
+  flex: none;
+}
+
+.neko-difficulty-card strong {
+  display: block;
+  font-size: 20px;
+}
+
+.neko-difficulty-card span {
+  display: block;
+  margin-top: 8px;
+  color: rgb(255 255 255 / 55%);
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+/* --- Banner Split --- */
+
+.neko-banner-split {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 42px;
+  align-items: center;
+}
+
+.neko-banner-split img {
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: 0 28px 90px rgb(0 0 0 / 42%);
+}
+
+.neko-small-facts {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.neko-small-facts > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgb(255 255 255 / 6%);
+  color: rgb(255 255 255 / 70%);
+}
+
+.neko-small-facts > div > div:first-child {
+  width: 22px;
+  height: 22px;
+  color: #67e8f9;
+}
+
+/* --- Fade Video Slide --- */
+
+.neko-fade-video-slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.neko-fade-video-slide video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.neko-fade-video-slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 700px;
+  height: 300px;
+  background:
+    radial-gradient(105% 92% at 0% 0%, rgb(255 255 255 / 14%), rgb(255 255 255 / 6%) 42%, transparent 76%),
+    linear-gradient(135deg, rgb(255 255 255 / 8%), transparent 62%);
+}
+
+.neko-fade-video-slide::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 720px;
+  height: 320px;
+  pointer-events: none;
+  backdrop-filter: blur(10px);
+  mask-image: radial-gradient(112% 94% at top left, black 0%, black 38%, transparent 82%);
+  -webkit-mask-image: radial-gradient(112% 94% at top left, black 0%, black 38%, transparent 82%);
+}
+
+.neko-fade-heading {
+  position: absolute;
+  top: 18px;
+  left: 0;
+  z-index: 1;
+  max-width: 520px;
+  padding: 14px 24px 16px 34px;
+  text-shadow: 0 2px 18px rgb(0 0 0 / 70%), 0 1px 4px rgb(0 0 0 / 80%);
+}
+
+/* --- SVG Path Animation (shared by diagram components) --- */
+
+.neko-svg-edge {
+  fill: none;
+  stroke: rgb(125 211 252 / 72%);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  opacity: 0;
+  transition:
+    stroke-dashoffset 850ms ease,
+    opacity 350ms ease;
+}
+
+.neko-svg-edge.is-visible {
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+
 /* --- */
 
 .footnotes-sep {

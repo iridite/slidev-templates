@@ -149,10 +149,12 @@ Presets are defined in `GlowBackground.vue` and can be extended by modifying the
 
 When users need help, guide them to documentation in this order:
 
-1. `neko-style/theme/README.md` - Comprehensive theme documentation (installation, layouts, components, glow system, colors, animations)
-2. `neko-style/docs/FOR-AI-ASSISTANTS.md` - AI assistant guide for creating presentations
-3. `neko-style/starter/slides.md` - Working starter with all core features demonstrated
-4. `neko-style/docs/design-language-airi-2025-10.md` - Design language reference
+1. `neko-style/docs/COMPONENT-CATALOG.md` - Component routing table ("I need X" → use component Y) + full props reference
+2. `neko-style/docs/PAGE-PATTERNS.md` - Complete slide composition recipes with copy-paste code
+3. `neko-style/theme/README.md` - Comprehensive theme documentation (installation, layouts, components, glow system, colors, animations)
+4. `neko-style/docs/FOR-AI-ASSISTANTS.md` - AI assistant guide for creating presentations
+5. `neko-style/starter/slides.md` - Working starter with all core features demonstrated
+6. `neko-style/docs/design-language-airi-2025-10.md` - Design language reference
 
 ## Important Conventions
 

@@ -46,16 +46,37 @@
 
 ### 步骤 2：选择合适的组件
 
-根据内容类型选择：
+**详细的组件路由表请查阅 `docs/COMPONENT-CATALOG.md`**，以下是快速参考：
 
-| 内容类型 | 推荐组件 | 颜色 |
-|---------|---------|------|
-| 问题/挑战 | 问题卡片 | `red-800` |
-| 解决方案 | 解决方案卡片 | `green-800` |
-| 技术说明 | 信息卡片 | `blue-800` |
-| 性能指标 | 指标卡片 | `lime-800` |
-| 高级功能 | 信息卡片 | `purple-800` |
-| 对比展示 | 左右对比布局 | `red-800` + `green-800` |
+| 内容类型 | 推荐组件 | 复杂度 |
+|---------|---------|--------|
+| 分类图标/技术栈列表 | `CategoryIconList` | 简单 |
+| 水平图标标签流（flex wrap） | `IconLabelWrap` | 简单 |
+| 左边框强调列表（评估/决策） | `AccentBorderList` | 简单 |
+| 议程/目录网格 | `AgendaGrid` | 简单 |
+| 大字居中声明/引言 | `CenteredStatement` | 简单 |
+| 统计/指标行 | `StatsRow` | 简单 |
+| 学习路径/进阶步骤 | `LearningPathSteps` | 简单 |
+| 代码+解释分栏 | `CodeExplainSplit` | 简单 |
+| 功能/特性展示 | `FeatureIconGrid` | 简单 |
+| 步骤/流程（带箭头） | `StackedFlowPipeline` | 中等 |
+| 路线/进化/频谱 | `RouteProgressionLane` | 中等 |
+| 系统架构图（节点连线） | `FlowDiagram` | 复杂 |
+| 数据流/管道 | `EventPipeline` | 复杂 |
+| 工具循环/轨道模型 | `TerminalOrbitDemo` | 复杂 |
+| 系统分层 | `LayeredArchView` | 中等 |
+| 问题 vs 解决方案 | `ProblemSolutionSplit` | 简单 |
+| 原因 + 经验教训 | `ReasonLessonGrid` | 简单 |
+| 关键洞察/要点 | `LearningCallout` | 简单 |
+| 底部提示条 | `InsightCalloutBar` | 简单 |
+| 横幅图片 + 事实列表 | `BannerSplitLayout` | 简单 |
+| 全屏视频 + 标题覆盖 | `FadeVideoSlide` | 简单 |
+| 问题/挑战三列 | `LifecycleChallengesThreeCol` | 简单 |
+| 模式/概念卡片网格 | `PatternCardGrid` | 简单 |
+| 清单（玻璃态） | `GlassChecklist` | 简单 |
+| 对比展示 | `ProblemSolutionSplit` | 简单 |
+
+**页面组合配方请查阅 `docs/PAGE-PATTERNS.md`** — 包含完整可复制的 slide 代码。
 
 ### 步骤 3：从 theme/README.md 查阅组件用法
 
