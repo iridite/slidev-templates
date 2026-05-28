@@ -285,11 +285,18 @@ glowSeed: 250
 ```
 
 ### 2. 保持动画一致性
-所有动画使用：
+所有动画使用 class-toggle + CSS transition：
 ```vue
 transition duration-500 ease-in-out
-:class="$clicks < N ? 'opacity-0 translate-y-20' : 'opacity-100 translate-y-0'"
+:class="$clicks < N ? 'opacity-0 translate-y-6' : 'opacity-100 translate-y-0'"
 ```
+
+**禁止使用 `<Transition>` 或 `<TransitionGroup>`** 来做 click 动画。
+原因：Vue Transition 控制 DOM 插入/移除，导致：
+- 倒放时元素瞬间消失（无 leave 动画）
+- 页面切换时元素在 fade-out 完成前被移除
+
+正确做法：始终用 `:class` 绑定 + CSS `transition` 属性，元素常驻 DOM，前进/后退都平滑过渡。
 
 ### 3. 使用语义化配色
 - 问题 → 红色

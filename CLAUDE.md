@@ -161,6 +161,8 @@ When users need help, guide them to documentation in this order:
 - **Use semantic colors consistently**: Don't mix color meanings (e.g., don't use red for solutions)
 - **Each page needs unique glowSeed**: Different seeds create visual variety across slides
 - **Component file naming**: `GlowBackground.vue` must be named `global-bottom.vue` in Slidev projects (this is a Slidev convention for global components)
+- **NEVER use `<Transition>` or `<TransitionGroup>` for click animations**: These cause elements to vanish without animation on backward navigation and conflict with page transitions. Always use class-toggle + CSS transition pattern: `:class="$clicks < N ? 'opacity-0 ...' : 'opacity-100 ...'"` with `transition duration-500 ease-in-out`
+- **No `transform-gpu` on GlowBackground**: Forcing GPU compositing via `transform: translateZ(0)` breaks Firefox's filter-based page transitions. The blur glow already benefits from browser-managed compositing
 
 ## Dependencies
 

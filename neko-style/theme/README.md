@@ -622,6 +622,65 @@ All animations use `transition duration-500 ease-in-out` for consistency.
 </div>
 ```
 
+### Staggered Group Animation (components with multiple items)
+
+When building components that reveal items one-by-one via clicks:
+
+```vue
+<script setup>
+const props = defineProps<{ items: Array<{ title: string }> }>()
+</script>
+
+<template>
+  <div class="grid grid-cols-3 gap-4">
+    <ClickStepRegister :count="props.items.length" />
+    <div
+      v-for="(item, idx) in props.items"
+      :key="item.title"
+      class="neko-glass-card p-4 transition duration-500 ease-in-out"
+      :class="$clicks < idx + 1
+        ? 'translate-y-6 opacity-0 pointer-events-none'
+        : 'translate-y-0 opacity-100'"
+      :style="{ transitionDelay: `${idx * 50}ms` }"
+    >
+      {{ item.title }}
+    </div>
+  </div>
+</template>
+```
+
+Key points:
+- `ClickStepRegister` registers N click steps without adding DOM elements
+- Class toggle drives both forward (appear) and backward (disappear) animation
+- `pointer-events-none` prevents interaction with hidden items
+- `transitionDelay` creates a stagger effect
+
+### Critical: Never Use `<Transition>` or `<TransitionGroup>` for Click Animations
+
+Vue's `<Transition>` and `<TransitionGroup>` **must not** be used for click-gated (`$clicks`) or `v-click` animations. These components manage DOM insertion/removal, which causes:
+
+1. **No reverse animation** — without `leave-*` classes, elements disappear instantly when clicking backward
+2. **Page transition conflicts** — elements removed from DOM before the page's fade-out completes, causing visual "pop"
+
+**Always use the class-toggle pattern instead:**
+
+```vue
+<!-- ❌ WRONG — breaks on backward navigation -->
+<Transition enter-active-class="..." enter-from-class="...">
+  <div v-if="$clicks >= 1">Content</div>
+</Transition>
+
+<!-- ✅ CORRECT — smooth in both directions -->
+<div
+  class="transition duration-500 ease-in-out"
+  :class="$clicks < 1 ? 'opacity-0 translate-y-6' : 'opacity-100 translate-y-0'"
+>
+  Content
+</div>
+```
+
+This pattern is used by all built-in theme components (`ProcessFlowGrid`, `ArtifactExplainBoard`, etc.) and guarantees smooth bidirectional transitions.
+
 ### Guidelines
 
 - Keep 500ms duration across all transitions
@@ -738,6 +797,18 @@ transition: fade-out     # Slidev transition
 clicks: 3                # Declare total click steps
 ---
 ```
+
+---
+
+## Known Issues
+
+### Firefox: page transition flicker on last-rendered element
+
+When using the `fade-out` page transition, Firefox may cause the last element rendered on the page (typically the final card in a group) to disappear abruptly during the transition instead of fading out smoothly with the rest of the page. This is a Firefox compositor issue related to how it handles `filter: blur()` transitions on pages containing `backdrop-filter` elements.
+
+**Workaround**: Use Chrome or Chromium-based browsers for presentations. The issue does not affect the deployed/exported static build when viewed in Firefox — it only manifests during live Slidev dev-server navigation.
+
+**Status**: Upstream browser behavior. The same transition CSS works correctly in Chrome, Edge, and Safari.
 
 ---
 
