@@ -205,7 +205,7 @@ function clipStyle(poly: string, alpha: number, from: string, to: string, direct
 <template>
   <div>
     <div
-      class="bg transform-gpu overflow-hidden pointer-events-none"
+      class="bg overflow-hidden pointer-events-none"
       :style="{ filter: `blur(70px) hue-rotate(${hue}deg)`, zIndex: props.zIndex }"
       :class="[
         theme === 'light' ? 'bg-white scale-150' : 'bg-black',

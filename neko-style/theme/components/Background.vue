@@ -70,7 +70,7 @@ const shouldRenderLocalGlow = computed(() => !props.background && glowEnabled.va
 </script>
 
 <template>
-  <div :style="style" class="relative isolate h-full w-full overflow-hidden">
+  <div :style="style" class="relative h-full w-full">
     <GlowBackground v-if="shouldRenderLocalGlow" :z-index="0" />
     <div class="relative z-10 h-full w-full">
       <div
