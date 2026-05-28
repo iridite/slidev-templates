@@ -1,14 +1,22 @@
-# Neko Style - Slidev Theme
+# slidev-theme-neko-style
 
-A modern, animated Slidev theme with glow effects and advanced components.
+A modern Slidev theme featuring animated glow polygon backgrounds, a semantic color system, and 20+ presentation components for professional tech talks.
+
+## Features
+
+- Animated glow polygon backgrounds with stable randomization (via `seedrandom`)
+- 3 color presets: **blue**, **rust**, **cyan** — switchable per-slide
+- 9 layout variants including section dividers, full-bleed pages, and TOC
+- 22+ reusable Vue components (narrative, data display, speaker intros, closings)
+- UnoCSS-powered with attributify mode, Carbon and Logos icon sets
+- Dark/light theme support
+- Optional advanced features: terminal recordings, 3D graphics, motion animations
 
 ## Installation
 
-> ⚠️ `slidev-theme-neko-style` 当前**未发布到 npm registry**，不能直接 `npm install slidev-theme-neko-style`。
+> `slidev-theme-neko-style` is currently **not published to npm registry**.
 
-推荐两种方式：
-
-### A) 使用 starter（最推荐）
+### Option A: Use the Starter Template (recommended)
 
 ```bash
 npx degit iridite/slidev-templates/neko-style/starter my-presentation
@@ -17,21 +25,24 @@ npm install
 npm run dev
 ```
 
-### B) 在已有项目通过本地路径安装 theme
-
-先获取仓库（任意位置）：
+### Option B: Install from local path (existing projects)
 
 ```bash
 git clone https://github.com/iridite/slidev-templates.git
-```
-
-然后在你的 Slidev 项目里安装本地 theme 包：
-
-```bash
 npm install /absolute/path/to/slidev-templates/neko-style/theme
 ```
 
-安装后在 `slides.md` 使用：
+Or in `package.json`:
+
+```json
+{
+  "dependencies": {
+    "slidev-theme-neko-style": "file:/path/to/slidev-templates/neko-style/theme"
+  }
+}
+```
+
+Then reference in `slides.md`:
 
 ```yaml
 ---
@@ -39,144 +50,436 @@ theme: neko-style
 ---
 ```
 
-## Usage
+### Troubleshooting Installation
 
-Add the theme to your `slides.md` frontmatter:
+| Symptom | Fix |
+|---------|-----|
+| `Cannot find module 'slidev-theme-neko-style'` | Run `npm install`; verify path points to `.../neko-style/theme` |
+| Theme not applied (default styles) | Use `theme: neko-style` (not `slidev-theme-neko-style`) |
+| Path breaks on different machines | Update the `file:` path and re-run `npm install` |
+
+---
+
+## Quick Start
+
+Minimal slide with glow background:
 
 ```yaml
 ---
 theme: neko-style
----
-```
-
-## Glow Background Notes
-
-To avoid a full black background without glow effect:
-
-- Do not force override `.slidev-layout` with a global black background in your project CSS.
-- Keep `glow` enabled (default is enabled, only disabled when `glow: false`).
-- If a slide defines `background`, that explicit background takes precedence over glow.
-
-Recommended per-slide frontmatter:
-
-```yaml
----
 glowSeed: 42
-glowPreset: blue   # blue | rust | cyan
-glowOpacity: 0.4
-glow: full
+glowPreset: blue
 ---
+
+# Hello World
 ```
 
-Quick check when glow is missing:
+Each slide should have a unique `glowSeed` value for visual variety.
 
-1. Confirm `theme: neko-style` is present.
-2. Confirm no custom global CSS overrides `.slidev-layout` background.
-3. Confirm the slide does not set `glow: false`.
-4. Confirm frontmatter YAML is valid (correct `---` separators and indentation).
+---
 
-Migration smoke test (recommended before writing real content):
+## Layouts
+
+### cover
+
+Title/opening slide.
 
 ```yaml
 ---
-theme: neko-style
-glowSeed: 101
-glowPreset: blue
-glow: full
-glowOpacity: 0.4
+layout: cover
+logoSrc: /logo.png
+poweredBySrc: /powered-by.png
 ---
-
-# Glow Smoke Test
 ```
 
-Find potentially conflicting CSS quickly:
+| Prop | Type | Description |
+|------|------|-------------|
+| `background` | `string?` | Background image/color/gradient |
+| `logoSrc` | `string?` | Logo image (top-left) |
+| `poweredBySrc` | `string?` | "Powered by" image (bottom-right) |
 
-```bash
-rg -n "\.slidev-layout|background:\s*black|background-color:\s*#000|background-color:\s*black" .
+### intro
+
+Free-form introduction page with centered slot content.
+
+```yaml
+---
+layout: intro
+---
 ```
 
-Important precedence:
-- `background:` in slide frontmatter takes precedence over glow.
-- `glow: false` explicitly disables glow.
+### section
 
+Section divider with number, title, and subtitle.
 
-## Available Layouts
+```yaml
+---
+layout: section
+sectionNumber: 1
+sectionTitle: Introduction
+sectionSubtitle: Getting started
+accentColor: '#60cd6a'
+---
+```
 
-- `cover` - Title slide with glow background
-- `section` - Section divider with centered content
-- `contents-toc` - Table of contents with automatic slide links
-- `page` - Standard content page with built-in safe area padding
-- `page-wide` - Full-bleed page (for videos/large diagrams)
-- `end` - Closing slide
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `sectionNumber` | `number` | `0` | Section number |
+| `sectionTitle` | `string` | `''` | Section heading |
+| `sectionSubtitle` | `string` | `''` | Subtitle text |
+| `accentColor` | `string` | `'#60cd6a'` | Accent color for the number |
+
+### contents-toc
+
+Animated table of contents.
+
+```yaml
+---
+layout: contents-toc
+sections:
+  - Introduction
+  - Core Concepts
+  - Conclusion
+accentColor: '#60cd6a'
+clicks: 1
+---
+```
+
+### page
+
+Standard content page with built-in safe-area padding (`.neko-safe-area`).
+
+```yaml
+---
+layout: page
+glowSeed: 120
+---
+```
+
+### page-wide
+
+Full-bleed page for videos, large diagrams, or screenshots.
+
+```yaml
+---
+layout: page-wide
+---
+```
+
+### end
+
+Closing slide. Displays "Thanks" by default; customize with slide body content.
+
+```yaml
+---
+layout: end
+---
+```
+
+### center / default
+
+Centered content and Slidev's default layout, respectively.
+
+---
 
 ## Components
 
-### Core Components
+### Narrative Components
 
-- `GlowBackground` - Animated particle background with glow effects
-- `Background` - Simple background wrapper
-- `ProblemSolutionSplit` - 红绿对比叙事卡（问题 vs 方案）
-- `LifecycleChallengesThreeCol` - 三栏挑战卡（生命周期问题拆解）
-- `CapabilityRevealRow` - 渐进式能力矩阵（`v-clicks` 逐列出现）
-- `WorksOnMyMachineHero` - 经典“报错开场”页
-- `InsightCalloutBar` - 底部总结条（关键结论）
-- `SplitBrandIntro` - 左右分列入场开场组件
-- `ProcessFlowGrid` - 协议流程 / 端到端步骤讲解网格
-- `ArtifactExplainBoard` - 注释浮层讲解板（配置、架构、截图拆解）
-- `SessionHoverGallery` - 截图 + 二维码悬停展示墙
-- `SpeakerLineupIntro` - 多讲者 / 联合分享开场组件
-- `SpotlightQuestion` - 大字问题聚焦页（缩放淡出）
-- `FeatureOverlayVideo` - 视频叠层功能讲解页
-- `ContactQrTriplet` - 三联二维码联系方式卡
-- `SpeakerEcosystemIntro` - 讲者身份 + 社区生态页
-- `FullBleedCharacterReveal` - 全屏角色揭示页
-- `RecruitingRoleList` - 招募方向清单页
-- `ThankYouSplitPanel` - 双栏感谢收尾页
-- `PatternCardGrid` - 玻璃态模式总览网格
-- `MotionPrinciplesGallery` - 动效防遮挡示例画廊
-- `GlassChecklist` - 玻璃态检查清单
+#### SpotlightQuestion
 
-示例：
+Large-text question that scales down on click to reveal answer content.
 
 ```vue
-<ProblemSolutionSplit>
-  <template #problem>
-    <div flex items-center gap-2><div i-carbon:close text-red-400 />依赖版本漂移</div>
-  </template>
-  <template #solution>
-    <div flex items-center gap-2><div i-carbon:checkmark-outline text-green-400 />统一环境定义</div>
-  </template>
-</ProblemSolutionSplit>
+<SpotlightQuestion question="How much time do developers spend coding?">
+  <v-clicks>
+    <div text-5xl font-semibold>Less than 30%</div>
+  </v-clicks>
+</SpotlightQuestion>
 ```
 
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `question` | `string` | *(required)* | The spotlight question |
+| `compact` | `boolean` | `false` | Smaller text variant |
+
+#### ProblemSolutionSplit
+
+Red/green two-column comparison card.
+
 ```vue
-<LifecycleChallengesThreeCol />
+<ProblemSolutionSplit
+  problemTitle="Traditional Workflow"
+  solutionTitle="Better Approach"
+  :problem-items="[
+    { text: 'Manual setup' },
+    { text: 'Context lost' },
+  ]"
+  :solution-items="[
+    { text: 'Instant environments' },
+    { text: 'Persistent context' },
+  ]"
+/>
 ```
+
+| Prop | Type | Default |
+|------|------|---------|
+| `problemTitle` | `string` | `'传统方案的问题'` |
+| `solutionTitle` | `string` | `'改进方案'` |
+| `problemItems` | `{ text: string }[]` | `[]` |
+| `solutionItems` | `{ text: string }[]` | `[]` |
+
+Also supports slot-based usage with `#problem` and `#solution` templates.
+
+#### InsightCalloutBar
+
+Bottom-of-slide conclusion/insight banner.
+
+```vue
+<InsightCalloutBar tone="yellow" icon="i-carbon:idea">
+  The bottleneck isn't skill — it's friction.
+</InsightCalloutBar>
+```
+
+| Prop | Type | Default | Options |
+|------|------|---------|---------|
+| `icon` | `string` | `'i-carbon:idea'` | Any icon class |
+| `tone` | `string` | `'yellow'` | `blue`, `yellow`, `green`, `red` |
+
+#### WorksOnMyMachineHero
+
+Classic "error screen" opening page. No props — use as-is.
+
+```vue
+<WorksOnMyMachineHero />
+```
+
+#### SplitBrandIntro
+
+Left/right split opening with slot-based content.
+
+```vue
+<SplitBrandIntro>
+  <template #left>
+    <div i-carbon:presentation-file text-5xl text-blue-300 />
+    <span font-semibold>Structure First</span>
+  </template>
+  <template #right>
+    <div i-carbon:color-palette text-5xl text-cyan-300 />
+    <span font-semibold>Visual Identity</span>
+  </template>
+</SplitBrandIntro>
+```
+
+### Data Display Components
+
+#### ProcessFlowGrid
+
+Step-by-step process/flow grid with icons.
+
+```vue
+<ProcessFlowGrid :columns="3" :items="[
+  { icon: 'i-carbon:cloud-upload', eyebrow: 'Step 1', title: 'Upload', description: 'Push your config.' },
+  { icon: 'i-carbon:data-connected', eyebrow: 'Step 2', title: 'Connect', description: 'Link services.' },
+  { icon: 'i-carbon:checkmark', eyebrow: 'Step 3', title: 'Done', description: 'Ready to go.' },
+]" />
+```
+
+| Prop | Type | Default |
+|------|------|---------|
+| `items` | `ProcessFlowItem[]` | `[]` |
+| `columns` | `2 \| 3 \| 4` | `3` |
+
+`ProcessFlowItem`: `{ title, description?, detail?, icon?, eyebrow?, stepLabel? }`
+
+#### PatternCardGrid
+
+Glass-morphism card grid for patterns/features.
+
+```vue
+<PatternCardGrid :columns="2" :items="[
+  { eyebrow: 'Speed', title: 'Fast Startup', description: 'Sub-second spin-up.' },
+  { eyebrow: 'Safety', title: 'Auto Rollback', description: 'Every action reversible.' },
+]" />
+```
+
+| Prop | Type | Default |
+|------|------|---------|
+| `items` | `{ title, description, eyebrow? }[]` | `[]` |
+| `columns` | `2 \| 3` | `2` |
+
+#### LifecycleChallengesThreeCol
+
+Three-column challenge cards. Accepts items via props or uses built-in defaults.
+
+```vue
+<LifecycleChallengesThreeCol :items="[
+  { iconClass: 'i-carbon:time text-amber-300', title: 'Setup Cost', description: 'Hours of configuration.' },
+  { iconClass: 'i-carbon:shuffle text-blue-300', title: 'Context Loss', description: 'Rebuilding mental models.' },
+  { iconClass: 'i-carbon:repeat text-pink-300', title: 'Repetition', description: 'Same patterns everywhere.' },
+]" />
+```
+
+#### CapabilityRevealRow
+
+Progressive capability matrix with `v-clicks` column reveal.
 
 ```vue
 <CapabilityRevealRow />
 ```
 
+#### GlassChecklist
+
+Glass-effect checklist with staggered appear animation.
+
+```vue
+<GlassChecklist :items="[
+  'First item (supports <code>HTML</code>)',
+  'Second item',
+  'Third item',
+]" />
+```
+
+| Prop | Type | Default |
+|------|------|---------|
+| `items` | `string[]` | `[]` |
+
+#### ArtifactExplainBoard
+
+Annotation overlay or sidebar explanation board for code/architecture/diagrams.
+
+**Overlay mode** (default):
+
+```vue
+<ArtifactExplainBoard
+  title="Directory Structure"
+  :items="[
+    { icon: 'i-carbon:document', tone: 'blue', title: 'config.json', description: 'Model config', positionClass: 'top-4 left-28', widthClass: 'w-[18rem]' },
+  ]"
+>
+  <div class="h-full rounded-xl border border-white/8 bg-neutral-900/70 p-6 font-mono text-sm">
+    <div>models/</div>
+    <div class="pl-6">config.json</div>
+  </div>
+</ArtifactExplainBoard>
+```
+
+**Sidebar mode**:
+
+```vue
+<ArtifactExplainBoard
+  mode="sidebar"
+  subtitle="Step-by-step explanation"
+  :items="[
+    { icon: 'i-carbon:user-avatar', tone: 'cyan', title: 'Input', description: 'User request arrives.' },
+    { icon: 'i-carbon:tool-box', tone: 'green', title: 'Process', description: 'Tools are invoked.' },
+    { icon: 'i-carbon:result', tone: 'purple', title: 'Output', description: 'Result returned.' },
+  ]"
+>
+  <img src="/diagram.png" class="h-full w-full rounded-xl object-cover" />
+</ArtifactExplainBoard>
+```
+
+#### MotionPrinciplesGallery
+
+Animation showcase gallery with live CSS animations.
+
+```vue
+<MotionPrinciplesGallery :items="[
+  { icon: '🎯', title: 'balance-shake', caption: 'Emphasis', animationClass: 'animate-balance-shake' },
+]" />
+```
+
+### Speaker / Intro Components
+
+#### SpeakerLineupIntro
+
+Multi-speaker introduction panel.
+
+```vue
+<SpeakerLineupIntro
+  title="Joint Talk"
+  subtitle="Our engineering team"
+  :speakers="[
+    { name: 'Alice', role: 'Lead Engineer', handle: 'alice-gh', handleIcon: 'i-carbon:logo-github' },
+    { name: 'Bob', role: 'Platform Engineer', handle: 'bob-gh', handleIcon: 'i-carbon:logo-github' },
+  ]"
+/>
+```
+
+`SpeakerLineupItem`: `{ name, role?, avatar?, affiliation?, affiliationIcon?, handle?, handleIcon?, note? }`
+
+#### SpeakerEcosystemIntro
+
+Single speaker with community/project ecosystem display.
+
+```vue
+<SpeakerEcosystemIntro
+  avatar="/avatar.jpg"
+  name="Your Name"
+  role="Software Engineer"
+  handle="github-handle"
+  :community="[
+    { icon: 'i-logos:vue', label: 'Vue' },
+    { icon: 'i-logos:typescript-icon', label: 'TypeScript' },
+  ]"
+  :other-projects="[
+    { icon: 'i-carbon:carbon', label: 'Project X' },
+  ]"
+  qr="/qr-code.png"
+/>
+```
+
+#### FullBleedCharacterReveal
+
+Full-screen image reveal with stats overlay.
+
+```vue
+<FullBleedCharacterReveal
+  image="/character.webp"
+  title="Character Name"
+  :stats="[
+    { icon: 'i-logos:youtube-icon', text: '636K subscribers' },
+  ]"
+/>
+```
+
+### Media Components
+
+#### FeatureOverlayVideo
+
+Video with feature annotation overlays.
+
+```vue
+<FeatureOverlayVideo src="/demo.mp4" title="Feature Demo" />
+```
+
+#### SessionHoverGallery
+
+Screenshot gallery with QR codes on hover.
+
 ```vue
 <SessionHoverGallery :items="[
   { image: '/session-1.png', qr: '/session-1-qr.png' },
   { image: '/session-2.png', qr: '/session-2-qr.png' },
-  { image: '/session-3.png', qr: '/session-3-qr.png' },
-  { image: '/session-4.png', qr: '/session-4-qr.png' },
 ]" />
 ```
 
-```vue
-<SpotlightQuestion question="AI 主播？">
-  <v-clicks>
-    <h1 mt-4 text="5xl!">就是带货那种数字人吗？</h1>
-  </v-clicks>
-</SpotlightQuestion>
-```
+### Closing Components
+
+#### ThankYouSplitPanel
+
+Two-column closing page with art and QR.
 
 ```vue
-<FeatureOverlayVideo src="/Neuro-minecraft.mp4" title="这段演示里有哪些能力？" />
+<ThankYouSplitPanel title="谢谢" subtitle="Thank you" art="/art.gif" qr="/qr.png">
+  <div>Custom right-side content (slot)</div>
+</ThankYouSplitPanel>
 ```
+
+#### ContactQrTriplet
+
+Three QR codes for contact info.
 
 ```vue
 <ContactQrTriplet :items="[
@@ -186,82 +489,221 @@ Important precedence:
 ]" />
 ```
 
-```vue
-<PatternCardGrid :items="[
-  { title: 'Question Spotlight', description: '用问题推进叙事。' },
-  { title: 'Compare & Resolve', description: '把问题和方案并排展示。' },
-]" />
-```
+#### RecruitingRoleList
+
+Recruiting/role showcase page.
 
 ```vue
-<ProcessFlowGrid :columns="2" :items="[
-  { icon: 'i-carbon:settings-adjust', title: '读取配置', description: '先加载本地配置。' },
-  { icon: 'i-carbon:plug', title: '连接服务', description: '连接协议端点。' },
-  { icon: 'i-carbon:tool-box', title: '拉取能力', description: '获取工具或能力描述。' },
-  { icon: 'i-carbon:result', title: '返回结果', description: '执行后组织最终输出。' },
-]" />
-```
-
-```vue
-<ArtifactExplainBoard
-  title="模型目录拆解"
-  :items="[
-    { icon: 'i-carbon:document-unknown', title: 'config.json', description: '模型架构配置', positionClass: 'top-4 left-28' },
-    { icon: 'i-carbon:string-text', title: 'tokenizer_config.json', description: '分词器配置', positionClass: 'top-24 right-6' },
-  ]"
->
-  <div class="h-full rounded-xl border border-white/8 bg-neutral-900/70 p-6 font-mono text-sm">
-    <div>models/</div>
-    <div class="pl-6">gpt-oss/</div>
-    <div class="pl-12">config.json</div>
-    <div class="pl-12">tokenizer_config.json</div>
-  </div>
-</ArtifactExplainBoard>
-```
-
-```vue
-<ArtifactExplainBoard
-  mode="sidebar"
-  title="架构图侧边讲解"
-  :items="[
-    { icon: 'i-carbon:user-avatar', title: '入口层', description: '整理输入和上下文。' },
-    { icon: 'i-carbon:tool-box', title: '工具层', description: '组合模型和工具能力。' },
-  ]"
->
-  <img src="/architecture-diagram.png" class="h-full w-full rounded-xl object-cover" />
-</ArtifactExplainBoard>
-```
-
-```vue
-<SpeakerLineupIntro
-  title="联合分享"
-  :speakers="[
-    { name: 'Neko', role: 'AI Engineer', handle: 'nekomeowww', handleIcon: 'i-ri:github-fill' },
-    { name: 'Makito', role: 'Platform Engineer', handle: 'sumimakito', handleIcon: 'i-ri:github-fill' },
+<RecruitingRoleList
+  title="We're Hiring"
+  subtitle="Join our team"
+  :roles="[
+    { icon: 'i-carbon:code', label: 'Backend Engineer' },
+    { icon: 'i-carbon:paint-brush', label: 'Designer' },
   ]"
 />
 ```
 
+---
+
+## Glow Background System
+
+The signature feature of this theme — animated polygon backgrounds generated from a seed value.
+
+### Per-Slide Configuration
+
+```yaml
+---
+glowSeed: 42           # Seed for stable random polygons (required for variety)
+glowPreset: blue       # Color preset: blue | rust | cyan
+glow: full             # Distribution: full | top | bottom | left | right | center | top-left | top-right | bottom-left | bottom-right | topmost
+glowOpacity: 0.4       # Background opacity (0-1, default: 0.4)
+glowHue: 0             # Hue shift (0-360, default: 0)
+---
+```
+
+### Color Presets
+
+| Preset | From | To | Use Case |
+|--------|------|----|----------|
+| `blue` | `#18549a` | `#12238b` | Technical talks, product launches (default) |
+| `rust` | `#ed5132` | `#ed4832` | Rust topics, innovation, energy |
+| `cyan` | `#32aeed` | `#32e5ed` | AI/ML, academic, futuristic |
+
+### Glow Troubleshooting
+
+If you see a black background without glow:
+
+1. Confirm `theme: neko-style` is in top-level frontmatter
+2. Check no global CSS overrides `.slidev-layout` background
+3. Confirm slide doesn't set `glow: false`
+4. Verify frontmatter YAML is valid
+
+Smoke test:
+```yaml
+---
+theme: neko-style
+glowSeed: 101
+glowPreset: blue
+glow: full
+glowOpacity: 0.4
+---
+
+# Glow Test
+```
+
+---
+
+## Color System
+
+Semantic colors for consistent visual communication:
+
+| Color | Semantic | Border | Background | Icon | Text |
+|-------|----------|--------|------------|------|------|
+| Red | Problems/Warnings | `red-800` | `red-800/20` | `text-red-300` | `text-red-400` |
+| Green | Solutions/Success | `green-800` | `green-800/20` | `text-green-300` | `text-green-400` |
+| Blue | Neutral info | `blue-800` | `blue-800/20` | `text-blue-300` | `text-blue-400` |
+| Purple | Advanced features | `purple-800` | `purple-800/20` | `text-purple-300` | `text-purple-400` |
+| Yellow | Performance/Speed | `yellow-800` | `yellow-800/20` | `text-yellow-300` | `text-yellow-400` |
+| Cyan | Cloud/Containers | `cyan-800` | `cyan-800/20` | `text-cyan-300` | `text-cyan-400` |
+| Lime | Growth/Metrics | `lime-800` | `lime-800/20` | `text-lime-300` | `text-lime-400` |
+
+### Card Pattern
+
 ```vue
-<MotionPrinciplesGallery />
+<div border="2 solid [color]-800" bg="[color]-800/20" rounded-lg overflow-hidden>
+  <div bg="[color]-800/40" px-4 py-2>Header</div>
+  <div px-4 py-3>Content</div>
+</div>
+```
+
+### Opacity Levels
+
+- `/20` — card background
+- `/30` — inner regions
+- `/40` — header bar
+- `/50` — emphasis areas
+
+---
+
+## Animation Patterns
+
+All animations use `transition duration-500 ease-in-out` for consistency.
+
+### Basic Reveal (slide up)
+
+```vue
+<div
+  v-click
+  transition duration-500 ease-in-out
+  :class="$clicks < 1 ? 'opacity-0 translate-y-20' : 'opacity-100 translate-y-0'"
+>
+  Content
+</div>
+```
+
+### Direction Variants
+
+- From top: `translate-y--20` → `translate-y-0`
+- From left: `translate-x--20` → `translate-x-0`
+- From right: `translate-x-20` → `translate-x-0`
+- Scale in: `scale-90` → `scale-100`
+
+### Sequenced Animations
+
+```vue
+<div v-click="1" transition duration-500 ease-in-out
+  :class="$clicks < 1 ? 'opacity-0 translate-y-20' : 'opacity-100 translate-y-0'">
+  First
+</div>
+<div v-click="2" transition duration-500 ease-in-out
+  :class="$clicks < 2 ? 'opacity-0 translate-y-20' : 'opacity-100 translate-y-0'">
+  Second
+</div>
+```
+
+### Guidelines
+
+- Keep 500ms duration across all transitions
+- Problems animate from left, solutions from right
+- New content enters from bottom, titles from top
+- Built-in components self-register click steps; only declare `clicks:` in frontmatter when writing raw `$clicks` conditions
+- First-screen card groups use short stagger delay to avoid the last item appearing too late
+
+---
+
+## Advanced Components (Optional Dependencies)
+
+These components require additional packages that won't break installation if missing.
+
+### AsciinemaPlayer — Terminal Recordings
+
+```bash
+npm install @nolebase/ui-asciinema asciinema-player
 ```
 
 ```vue
-<GlassChecklist :items="[
-  '先 smoke test：只放 <code>theme + glowSeed</code> 验证背景。',
-  '若页面设置 <code>background:</code> 会覆盖 glow（预期）。',
-]" />
+<AsciinemaPlayer
+  src="/asciinema/demo.cast"
+  :controls="'auto'"
+  :rows="18"
+  :speed="3"
+/>
 ```
 
-### Advanced Components (Optional Dependencies)
+| Prop | Type | Default |
+|------|------|---------|
+| `src` | `string` | *(required)* |
+| `controls` | `'auto' \| 'always' \| 'never'` | `'auto'` |
+| `rows` | `number` | `18` |
+| `speed` | `number` | `1` |
 
-- `AsciinemaPlayer` - Terminal recording playback wrapper (requires `@nolebase/ui-asciinema`, `asciinema-player`)
-- `VMotionExample` - Declarative motion example (requires `@vueuse/motion`)
-- TresJS / Three.js examples - 3D scene snippets (requires `@tresjs/core`, `@tresjs/cientos`, `three`)
+### VMotionExample — Declarative Animations
+
+```bash
+npm install @vueuse/motion
+```
+
+```vue
+<VMotionExample>
+  <h1>This content fades in from below</h1>
+</VMotionExample>
+```
+
+Or use the directive directly:
+
+```vue
+<div
+  v-motion
+  :initial="{ opacity: 0, y: 100 }"
+  :enter="{ opacity: 1, y: 0, transition: { duration: 800 } }"
+>
+  Animated content
+</div>
+```
+
+### Three.js / TresJS — 3D Visualizations
+
+```bash
+npm install @tresjs/core @tresjs/cientos three
+```
+
+```vue
+<TresCanvas>
+  <TresPerspectiveCamera :position="[0, 2, 5]" />
+  <TresAmbientLight :intensity="0.5" />
+  <TresMesh>
+    <TresBoxGeometry :args="[1, 1, 1]" />
+    <TresMeshStandardMaterial color="#60cd6a" />
+  </TresMesh>
+</TresCanvas>
+```
+
+---
 
 ## Configuration
 
-The theme uses UnoCSS for styling. Add this to your `uno.config.ts`:
+### UnoCSS Setup (starter projects)
 
 ```ts
 import { defineConfig } from 'unocss'
@@ -273,17 +715,32 @@ export default defineConfig({
 })
 ```
 
-## Optional Dependencies
+### Icon Collections
 
-Install only what you need:
+The theme uses these icon sets:
+- `@iconify-json/carbon` — Primary icons ([browse](https://icon-sets.iconify.design/carbon/))
+- `@iconify-json/logos` — Brand/tech logos ([browse](https://icon-sets.iconify.design/logos/))
 
-```bash
-# For terminal recordings
-npm install @nolebase/ui-asciinema asciinema-player
+### Frontmatter Reference
 
-# For 3D scenes
-npm install @tresjs/core @tresjs/cientos three
+Full per-slide options:
 
-# For motion animations
-npm install @vueuse/motion
+```yaml
+---
+layout: page              # Layout variant
+glowSeed: 100            # Glow seed (unique per slide)
+glowPreset: blue         # blue | rust | cyan
+glow: full               # Distribution pattern
+glowOpacity: 0.4         # 0-1
+glowHue: 0               # Hue shift 0-360
+theme: dark              # dark | light
+transition: fade-out     # Slidev transition
+clicks: 3                # Declare total click steps
+---
 ```
+
+---
+
+## License
+
+MIT

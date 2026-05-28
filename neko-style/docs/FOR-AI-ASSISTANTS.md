@@ -57,9 +57,9 @@
 | 高级功能 | 信息卡片 | `purple-800` |
 | 对比展示 | 左右对比布局 | `red-800` + `green-800` |
 
-### 步骤 3：从 docs/components-guide.md 复制代码
+### 步骤 3：从 theme/README.md 查阅组件用法
 
-**重要**：直接从 `docs/components-guide.md` 复制完整的代码块，然后修改：
+**重要**：参考 `theme/README.md` 中的组件 props 和用法示例，然后修改：
 1. 标题文字
 2. 内容文字
 3. 图标（如果需要）
@@ -314,11 +314,10 @@ transition duration-500 ease-in-out
 
 当用户需要帮助时，按以下顺序引导：
 
-1. **docs/components-guide.md** ⭐⭐⭐ - 最重要，包含所有组件代码
-2. **docs/QUICK-START.md** ⭐⭐ - 快速入门
-3. **docs/color-system.md** ⭐ - 配色说明
-4. **docs/animation-patterns.md** ⭐ - 动画说明
-5. **starter/slides.md** - 完整示例
+1. **theme/README.md** ⭐⭐⭐ - 最重要，包含所有组件 props、布局、配色、动画
+2. **docs/FOR-AI-ASSISTANTS.md** ⭐⭐ - 本文件，AI 使用指南
+3. **starter/slides.md** ⭐ - 完整运行示例
+4. **docs/design-language-airi-2025-10.md** - 设计语言参考
 
 ## 🤖 Claude Code Skill
 
@@ -336,7 +335,7 @@ cp neko-style/SKILL.md .claude/skills/neko-slidev.md
 ## 💡 最佳实践
 
 1. **从示例开始**：建议用户先运行 `starter` 项目
-2. **复制粘贴**：从 `docs/components-guide.md` 直接复制代码
+2. **复制粘贴**：从 `theme/README.md` 参考组件用法
 3. **渐进修改**：先复制，再修改文字和颜色
 4. **保持简洁**：一页不要放太多内容
 5. **使用 v-click**：控制内容渐进展示
@@ -361,7 +360,7 @@ cp neko-style/SKILL.md .claude/skills/neko-slidev.md
 让我开始创建...
 ```
 
-然后从 `docs/components-guide.md` 复制合适的组件代码，修改内容。
+然后从 `theme/README.md` 查阅合适的组件用法，修改内容。
 
 ## 🚀 效率提升技巧
 
@@ -373,7 +372,7 @@ cp neko-style/SKILL.md .claude/skills/neko-slidev.md
 ---
 
 记住：这个模板的核心价值在于**可复用的组件**和**语义化的配色**。
-直接从 `docs/components-guide.md` 复制代码，然后修改内容，是最高效的使用方式。
+参考 `theme/README.md` 中的组件代码示例，然后修改内容，是最高效的使用方式。
 
 ## 颜色预设系统
 

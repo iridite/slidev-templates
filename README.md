@@ -148,14 +148,9 @@ glowPreset: rust # blue | rust | cyan
 ## 📖 文档入口
 
 - [neko-style README](./neko-style/README.md)
-- [快速开始](./neko-style/docs/QUICK-START.md)
-- [组件指南](./neko-style/docs/components-guide.md)
-- [布局指南](./neko-style/docs/layouts-guide.md)
-- [高级组件](./neko-style/docs/advanced-components.md)
-- [配色系统](./neko-style/docs/color-system.md)
-- [动画模式](./neko-style/docs/animation-patterns.md)
-- [可选依赖](./neko-style/docs/optional-dependencies.md)
+- [主题文档（安装/组件/布局/配色/动画）](./neko-style/theme/README.md)
 - [AI 助手指南](./neko-style/docs/FOR-AI-ASSISTANTS.md)
+- [设计语言参考](./neko-style/docs/design-language-airi-2025-10.md)
 
 ## ✅ 可运行性验收（建议每次改动后执行）
 

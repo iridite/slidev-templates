@@ -90,15 +90,9 @@ npm run dev:neko
 
 | 文档 | 说明 |
 |------|------|
-| [docs/QUICK-START.md](./docs/QUICK-START.md) | 5 分钟快速入门 ⭐ |
-| [docs/components-guide.md](./docs/components-guide.md) | 所有组件使用方法 ⭐⭐⭐ |
-| [docs/layouts-guide.md](./docs/layouts-guide.md) | 布局系统使用指南 ⭐⭐ |
-| [docs/advanced-components.md](./docs/advanced-components.md) | 高级组件指南 |
-| [docs/color-system.md](./docs/color-system.md) | 配色系统说明 |
-| [docs/animation-patterns.md](./docs/animation-patterns.md) | 动画模式指南 |
-| [docs/optional-dependencies.md](./docs/optional-dependencies.md) | 可选依赖说明 |
-| [docs/FOR-AI-ASSISTANTS.md](./docs/FOR-AI-ASSISTANTS.md) | AI 助手使用指南 |
-| [docs/design-language-airi-2025-10.md](./docs/design-language-airi-2025-10.md) | AIRI 设计语言提炼（页面语法） ⭐ |
+| [theme/README.md](./theme/README.md) | 完整主题文档（安装/布局/组件/配色/动画）⭐⭐⭐ |
+| [docs/FOR-AI-ASSISTANTS.md](./docs/FOR-AI-ASSISTANTS.md) | AI 助手使用指南 ⭐⭐ |
+| [docs/design-language-airi-2025-10.md](./docs/design-language-airi-2025-10.md) | AIRI 设计语言提炼（页面语法）⭐ |
 
 **推荐学习顺序**:
 1. 运行 `starter` 项目(5 分钟)
@@ -193,7 +187,7 @@ theme: dark       # dark | light
 </div>
 ```
 
-更多组件请查看 [docs/components-guide.md](./docs/components-guide.md)
+更多组件请查看 [theme/README.md](./theme/README.md)
 
 ## 🛠️ 背景显示说明（避免黑底无 Glow）
 
@@ -231,7 +225,12 @@ theme: neko-style
 </div>
 ```
 
-更多动画模式请查看 [docs/animation-patterns.md](./docs/animation-patterns.md)
+Starter 动画约束（已在示例页落地）：
+- 同页首屏的多卡片模块统一使用短 stagger，并共享基础延时，避免最后一项明显拖后。
+- 讲述顺序靠 `v-click` / `v-after`，不要用大量手写延时串联。
+- 当组件或页面直接使用 `$clicks` 判断显示时，必须同步声明 click 步数（`v-click` / `v-after` / `clicks:`），避免切页离场时末步元素丢失。
+
+更多动画模式请查看 [theme/README.md](./theme/README.md#animation-patterns)
 
 ## 💡 使用技巧
 

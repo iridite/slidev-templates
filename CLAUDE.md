@@ -79,9 +79,9 @@ The template uses semantic, card-based components built with UnoCSS utility clas
 
 ## Key Files and Their Purposes
 
-- **`neko-style/docs/FOR-AI-ASSISTANTS.md`**: Comprehensive guide for AI assistants creating presentations with this template
-- **`neko-style/docs/components-guide.md`**: Complete component library with copy-paste code examples
-- **`neko-style/docs/QUICK-START.md`**: 5-minute quick start guide
+- **`neko-style/theme/README.md`**: Comprehensive theme documentation (installation, all layouts, all components with props, glow system, color system, animations)
+- **`neko-style/docs/FOR-AI-ASSISTANTS.md`**: AI assistant guide for creating presentations
+- **`neko-style/docs/design-language-airi-2025-10.md`**: Design language reference
 - **`neko-style/theme/components/GlowBackground.vue`**: Core glow background implementation
 - **`neko-style/theme/global-bottom.vue`**: Theme-level global background entry for Slidev
 - **`neko-style/theme/styles/index.css`**: Theme base styles
@@ -92,7 +92,7 @@ The template uses semantic, card-based components built with UnoCSS utility clas
 When helping users create presentations with neko-style:
 
 1. **Read the AI guide first**: Always reference `neko-style/docs/FOR-AI-ASSISTANTS.md` for detailed instructions
-2. **Copy components from guide**: Use `neko-style/docs/components-guide.md` as the source of truth for component code
+2. **Copy components from guide**: Use `neko-style/theme/README.md` as the source of truth for component props and usage
 3. **Follow semantic colors**: Red for problems, green for solutions, blue for information
 4. **Vary glowSeed per page**: Use different seed values (100, 150, 200, etc.) for visual variety
 5. **Use v-click for animations**: Wrap content in `<v-click>` for progressive disclosure
@@ -149,12 +149,10 @@ Presets are defined in `GlowBackground.vue` and can be extended by modifying the
 
 When users need help, guide them to documentation in this order:
 
-1. `neko-style/docs/components-guide.md` - Most important, contains all component code
-2. `neko-style/docs/FOR-AI-ASSISTANTS.md` - Comprehensive AI assistant guide
-3. `neko-style/starter/slides.md` - Working starter with all core features
-4. `neko-style/docs/QUICK-START.md` - Quick start guide
-5. `neko-style/docs/color-system.md` - Color system details
-6. `neko-style/docs/animation-patterns.md` - Animation patterns
+1. `neko-style/theme/README.md` - Comprehensive theme documentation (installation, layouts, components, glow system, colors, animations)
+2. `neko-style/docs/FOR-AI-ASSISTANTS.md` - AI assistant guide for creating presentations
+3. `neko-style/starter/slides.md` - Working starter with all core features demonstrated
+4. `neko-style/docs/design-language-airi-2025-10.md` - Design language reference
 
 ## Important Conventions
 

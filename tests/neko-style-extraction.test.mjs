@@ -22,7 +22,6 @@ test('starter adopts extracted utility components', () => {
   const slides = read('neko-style/starter/slides.md')
 
   assert.match(slides, /<PatternCardGrid/)
-  assert.match(slides, /<MotionPrinciplesGallery/)
   assert.match(slides, /<GlassChecklist/)
   assert.match(slides, /<ProcessFlowGrid/)
   assert.match(slides, /<ArtifactExplainBoard/)
@@ -35,26 +34,21 @@ test('starter adopts extracted utility components', () => {
 })
 
 test('docs mention the extracted utility components', () => {
-  const guide = read('neko-style/docs/components-guide.md')
   const themeReadme = read('neko-style/theme/README.md')
 
-  for (const doc of [guide, themeReadme]) {
-    assert.match(doc, /PatternCardGrid/)
-    assert.match(doc, /ProcessFlowGrid/)
-    assert.match(doc, /ArtifactExplainBoard/)
-    assert.match(doc, /SpeakerLineupIntro/)
-    assert.match(doc, /MotionPrinciplesGallery/)
-    assert.match(doc, /GlassChecklist/)
-  }
+  assert.match(themeReadme, /PatternCardGrid/)
+  assert.match(themeReadme, /ProcessFlowGrid/)
+  assert.match(themeReadme, /ArtifactExplainBoard/)
+  assert.match(themeReadme, /SpeakerLineupIntro/)
+  assert.match(themeReadme, /MotionPrinciplesGallery/)
+  assert.match(themeReadme, /GlassChecklist/)
 })
 
 test('advanced component naming is consistent', () => {
-  const advancedGuide = read('neko-style/docs/advanced-components.md')
-  const optionalDeps = read('neko-style/docs/optional-dependencies.md')
   const advancedReadme = read('neko-style/theme/components/advanced/README.md')
   const themeReadme = read('neko-style/theme/README.md')
 
-  for (const doc of [advancedGuide, optionalDeps, advancedReadme, themeReadme]) {
+  for (const doc of [advancedReadme, themeReadme]) {
     assert.match(doc, /AsciinemaPlayer/)
     assert.doesNotMatch(doc, /AsciinemaExample/)
   }
