@@ -81,18 +81,26 @@ iframe {
 
 /* Reusable glass card style from neko-talks patterns */
 .neko-glass-card {
-  background: color-mix(in srgb, white 6%, transparent);
-  border: 1px solid color-mix(in srgb, white 15%, transparent);
-  backdrop-filter: blur(6px);
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(1.2);
   border-radius: 0.75rem;
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.12),
+    0 4px 18px rgba(0, 0, 0, 0.5);
 }
 
-/* fallback for environments without color-mix support */
-@supports not (background: color-mix(in srgb, white 6%, transparent)) {
-  .neko-glass-card {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.15);
-  }
+.neko-glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, transparent 60%),
+    radial-gradient(ellipse at 30% 20%, rgba(255, 255, 255, 0.06), transparent 70%);
+  opacity: 0.72;
+  pointer-events: none;
 }
 
 /* Content safe area for edge-collision prevention */
@@ -219,6 +227,117 @@ iframe {
   width: 1.6em;
   border-radius: 50%;
 }
+
+/* --- Route Color System --- */
+:root {
+  --route-rgb: 125 211 252;
+}
+
+.neko-route-teal { --route-rgb: 45 212 191; }
+.neko-route-sky { --route-rgb: 56 189 248; }
+.neko-route-violet { --route-rgb: 167 139 250; }
+.neko-route-amber { --route-rgb: 251 191 36; }
+.neko-route-rose { --route-rgb: 251 113 133; }
+.neko-route-emerald { --route-rgb: 52 211 153; }
+
+/* --- Entrance Animation Utilities --- */
+
+/* Vertical entrance (cards, content blocks) */
+.neko-enter-y {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 450ms ease, transform 450ms ease;
+}
+.neko-enter-y.is-visible,
+.slidev-vclick-target:not(.slidev-vclick-hidden).neko-enter-y {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scale entrance (hero cards, featured items) */
+.neko-enter-scale {
+  opacity: 0;
+  transform: translateY(28px) scale(0.92);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+.neko-enter-scale.is-visible,
+.slidev-vclick-target:not(.slidev-vclick-hidden).neko-enter-scale {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Horizontal reveal (connectors, arrows, progress bars) */
+.neko-enter-x {
+  transform: scaleX(0);
+  transform-origin: left;
+  opacity: 0;
+  transition: opacity 250ms ease, transform 450ms ease;
+}
+.neko-enter-x.is-visible,
+.slidev-vclick-target:not(.slidev-vclick-hidden).neko-enter-x {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* SVG stroke drawing */
+.neko-stroke-draw {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  opacity: 0;
+  transition: stroke-dashoffset 850ms ease, opacity 350ms ease;
+}
+.neko-stroke-draw.is-visible,
+.slidev-vclick-target:not(.slidev-vclick-hidden).neko-stroke-draw {
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+
+/* Focus dimming (highlight one item, dim rest) */
+.neko-focusable {
+  transition: opacity 400ms ease, transform 400ms ease, box-shadow 400ms ease;
+}
+.neko-focusable.is-dimmed {
+  opacity: 0.44;
+  transform: scale(0.98);
+}
+.neko-focusable.is-active {
+  opacity: 1;
+  transform: scale(1);
+  box-shadow: 0 0 24px rgb(var(--route-rgb) / 0.3);
+}
+
+/* Dramatic slow entrance (hero moments, brand reveals) */
+.neko-enter-dramatic {
+  opacity: 0;
+  transform: scale(1.05);
+  filter: blur(4px);
+  transition: opacity 1200ms ease-in-out, transform 1200ms ease-in-out, filter 800ms ease;
+}
+.neko-enter-dramatic.is-visible,
+.slidev-vclick-target:not(.slidev-vclick-hidden).neko-enter-dramatic {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .neko-enter-y,
+  .neko-enter-scale,
+  .neko-enter-x,
+  .neko-stroke-draw,
+  .neko-enter-dramatic {
+    transition: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+  .neko-stroke-draw {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* --- */
 
 .footnotes-sep {
   display: none;
