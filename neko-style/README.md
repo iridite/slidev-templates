@@ -1,24 +1,8 @@
-# neko-style Slidev 模板
+# neko-style Slidev Template
 
-专业技术演示模板,提取自 neko-talks / KubeCon HK 2025 演示文稿。
+A professional presentation template extracted from neko-talks / KubeCon HK 2025, featuring animated glow backgrounds, 22+ reusable components, and a semantic color system.
 
-## ✨ 特性
-
-- 🎨 **动态 Glow 背景** - 基于种子的稳定随机渐变,每页独立配置
-- 🌈 **3 种颜色预设** - blue(科技蓝)、rust(橙红)、cyan(青蓝)
-- 🎯 **语义化配色** - 红色=问题,绿色=解决方案,蓝色=信息
-- 📦 **丰富组件库** - 信息卡片、对比卡片、指标卡片
-- 🎭 **专业布局系统** - 封面、章节、目录、结束页布局
-- 🚀 **平滑动画系统** - 统一 500ms 过渡效果
-- ⚡ **高级功能** - v-motion 动画、Asciinema 播放器、Three.js 3D
-- 📚 **完整文档** - 快速入门、组件指南、AI 助手指南
-- 🎓 **真实案例** - 来自 KubeCon、LLM 深度解析等演讲
-
-## 🚀 快速开始
-
-### 方式 1: 使用 Starter Template（推荐新手）
-
-直接复制 starter 模板开始：
+## Quick Start
 
 ```bash
 npx degit iridite/slidev-templates/neko-style/starter my-presentation
@@ -27,240 +11,61 @@ npm install
 npm run dev
 ```
 
-### 方式 2: 在已有项目接入 Theme（进阶）
+For existing Slidev projects, see [theme/README.md — Installation](./theme/README.md#installation).
 
-> ⚠️ `slidev-theme-neko-style` 当前未发布到 npm registry，不能直接 `npm install slidev-theme-neko-style`。
-
-安装支持状态（2026-03-30）：
-
-| 安装方式 | 是否支持 | 说明 |
-|------|------|------|
-| `npm install slidev-theme-neko-style` | ❌ | 主题未发布到 npm |
-| `npm install /absolute/path/to/slidev-templates/neko-style/theme` | ✅ | 本机安装 |
-| `package.json` + `file:/absolute/path/...` | ✅ | 推荐团队固定路径 |
-
-在已有 Slidev 项目中请使用本地路径安装：
-
-```bash
-# 1) 先获取模板仓库
-git clone https://github.com/iridite/slidev-templates.git
-
-# 2) 在你的 Slidev 项目中安装本地 theme 包
-npm install /absolute/path/to/slidev-templates/neko-style/theme
-```
-
-也可以在项目 `package.json` 中固定为 `file:` 依赖：
-
-```json
-{
-  "dependencies": {
-    "slidev-theme-neko-style": "file:/absolute/path/to/slidev-templates/neko-style/theme"
-  }
-}
-```
-
-然后执行：
-
-```bash
-npm install
-```
-
-关键规则：
-- 依赖名必须是 `slidev-theme-neko-style`（见 [`theme/package.json`](./theme/package.json) 的 `name`）。
-- `slides.md` 必须写 `theme: neko-style`（不是完整包名）。
-- `file:` 路径必须落在 `.../neko-style/theme`，不能指到 `neko-style` 上层目录。
-
-在 `slides.md` 中引用：
-
-```yaml
----
-theme: neko-style
----
-```
-
-### 在 Monorepo 中开发
-
-```bash
-# 在仓库根目录
-npm install
-npm run dev:neko
-```
-
-## 📖 文档
-
-| 文档 | 说明 |
-|------|------|
-| [theme/README.md](./theme/README.md) | 完整主题文档（安装/布局/组件/配色/动画）⭐⭐⭐ |
-| [docs/FOR-AI-ASSISTANTS.md](./docs/FOR-AI-ASSISTANTS.md) | AI 助手使用指南 ⭐⭐ |
-| [docs/design-language-airi-2025-10.md](./docs/design-language-airi-2025-10.md) | AIRI 设计语言提炼（页面语法）⭐ |
-
-**推荐学习顺序**:
-1. 运行 `starter` 项目(5 分钟)
-2. 阅读 `components-guide.md`(10 分钟)⭐ 最重要
-3. 开始创建你的演示
-
-## 📁 项目结构
+## Project Structure
 
 ```
 neko-style/
-├── README.md                    # 本文件
-├── theme/                       # Local Theme Package（本地路径安装）
-│   ├── package.json
-│   ├── components/              # 主题组件
-│   │   ├── GlowBackground.vue
-│   │   ├── Background.vue
-│   │   └── advanced/
-│   ├── layouts/                 # 布局系统
-│   │   ├── cover.vue
-│   │   ├── section.vue
-│   │   ├── contents-toc.vue
-│   │   └── end.vue
-│   ├── styles/
-│   │   └── index.css
-│   ├── setup/
-│   └── README.md
-├── starter/                     # Starter Template ⭐
-│   ├── package.json
-│   ├── slides.md                # 示例幻灯片
-│   ├── uno.config.ts
-│   └── README.md
-├── docs/                        # 文档
-│   ├── QUICK-START.md
-│   ├── components-guide.md      ⭐⭐⭐
-│   ├── layouts-guide.md
-│   └── ...
-└── ...
+├── theme/                 # NPM theme package (slidev-theme-neko-style)
+│   ├── components/        #   22 Vue components + 2 advanced
+│   ├── layouts/           #   9 layout variants
+│   ├── styles/            #   Base CSS + animations
+│   ├── setup/             #   Slidev setup hooks
+│   ├── utils/             #   Theme utilities
+│   ├── global-bottom.vue  #   Glow background entry
+│   ├── package.json       #   Package metadata
+│   └── README.md          #   Comprehensive documentation ⭐
+├── starter/               # Ready-to-use demo project
+│   ├── slides.md          #   "Project Aurora" example deck
+│   ├── uno.config.ts      #   UnoCSS config
+│   └── package.json       #   Dev dependencies
+├── docs/                  # Repo-level references
+│   ├── FOR-AI-ASSISTANTS.md    # AI assistant guide
+│   └── design-language-airi-2025-10.md  # Design language
+└── ref/talks/             # Git submodule (nekomeowww/talks)
 ```
 
-> 真实演讲案例源文件位于：`../raw-template/neko-style/talks/packages/`
+## Documentation
 
-## 🎨 颜色预设
+| Document | Description |
+|----------|-------------|
+| [theme/README.md](./theme/README.md) | **Complete reference** — installation, layouts, components, glow system, colors, animations |
+| [docs/FOR-AI-ASSISTANTS.md](./docs/FOR-AI-ASSISTANTS.md) | Guide for AI assistants creating presentations |
+| [docs/design-language-airi-2025-10.md](./docs/design-language-airi-2025-10.md) | AIRI design language principles |
 
-支持 3 种颜色预设,灵感来自 neko-talks 演讲系列:
+## Highlights
 
-| 预设 | 主色渐变 | 适用场景 |
-|------|---------|---------|
-| **blue** (默认) | #18549a → #12238b | 技术演讲、产品发布 |
-| **rust** | #ed5132 → #ed4832 | Rust 主题、创新演讲 |
-| **cyan** | #32aeed → #32e5ed | AI/ML、学术演讲 |
+- **Glow Backgrounds** — Seed-based stable random polygon gradients, 3 presets (`blue` / `rust` / `cyan`)
+- **22+ Components** — Narrative, data display, speaker intros, closing slides
+- **9 Layouts** — cover, intro, section, contents-toc, page, page-wide, center, default, end
+- **Semantic Colors** — Red=problems, Green=solutions, Blue=info, Purple=advanced, Yellow=performance
+- **Unified Animations** — 500ms transitions with `v-click` progressive disclosure
 
-### 使用方法
-
-```yaml
----
-glowSeed: 42
-glowPreset: rust  # blue | rust | cyan
-theme: dark       # dark | light
----
-```
-
-## 🎯 核心组件
-
-常用提炼组件包括：
-
-- `PatternCardGrid`：总览模式、目录卡片、组件清单
-- `ProcessFlowGrid`：协议流程、端到端步骤讲解
-- `ArtifactExplainBoard`：配置、架构图、截图的浮层拆解
-- `SpeakerLineupIntro`：联合分享 / 多讲者开场
-- `MotionPrinciplesGallery`：动效防遮挡规范展示
-- `GlassChecklist`：迁移排障、发布前检查、演讲流程清单
-
-### 信息卡片
-
-```vue
-<div border="2 solid blue-800" bg="blue-800/20" rounded-lg overflow-hidden>
-  <div bg="blue-800/40" px-4 py-2>标题</div>
-  <div px-4 py-3>内容</div>
-</div>
-```
-
-### 对比卡片
-
-```vue
-<div grid grid-cols-2 gap-6>
-  <div border="2 solid red-800" bg="red-800/20" rounded-lg p-4>
-    问题
-  </div>
-  <div border="2 solid green-800" bg="green-800/20" rounded-lg p-4>
-    解决方案
-  </div>
-</div>
-```
-
-更多组件请查看 [theme/README.md](./theme/README.md)
-
-## 🛠️ 背景显示说明（避免黑底无 Glow）
-
-为确保 `glowSeed` 背景在所有页面都正常生效，请注意：
-
-1. 在 `slides.md` 顶部 frontmatter 启用主题：
-
-```yaml
----
-theme: neko-style
----
-```
-
-2. 不要在全局样式里覆盖 `.slidev-layout` 的背景色（例如强制 `background: black`）。
-3. 使用 `glowSeed` 时，保持每页 frontmatter 正常书写（YAML 缩进和分隔线 `---` 正确）。
-
-### 快速自检清单
-
-- ✅ 已设置 `theme: neko-style`
-- ✅ 页面没有设置自定义 `background` 覆盖 Glow
-- ✅ `glow` 未被显式关闭（即未设置 `glow: false`）
-- ✅ 未在项目全局 CSS 中强制覆盖 `.slidev-layout` 背景
-
-如果你看到“整页纯黑且没有 Glow 多边形”，优先检查以上 4 项。
-
-## 🎬 动画效果
-
-```vue
-<div
-  v-click
-  transition duration-500 ease-in-out
-  :class="$clicks < 1 ? 'opacity-0 translate-y-20' : 'opacity-100 translate-y-0'"
->
-  内容从下方滑入
-</div>
-```
-
-Starter 动画约束（已在示例页落地）：
-- 同页首屏的多卡片模块统一使用短 stagger，并共享基础延时，避免最后一项明显拖后。
-- 讲述顺序靠 `v-click` / `v-after`，不要用大量手写延时串联。
-- 当组件或页面直接使用 `$clicks` 判断显示时，必须同步声明 click 步数（`v-click` / `v-after` / `clicks:`），避免切页离场时末步元素丢失。
-
-更多动画模式请查看 [theme/README.md](./theme/README.md#animation-patterns)
-
-## 💡 使用技巧
-
-1. **每页不同背景** - 改变 `glowSeed` 值(如 100, 150, 200...)
-2. **语义化配色** - 红色=问题,绿色=解决方案
-3. **渐进展示** - 使用 `v-click` 控制出现顺序
-4. **复制粘贴** - 直接从 `components-guide.md` 复制代码
-
-## 🤖 AI 辅助创作
-
-本模板提供了专门的 AI 助手指南,支持:
-- 让 AI 读取模板文档并自动应用风格
-- 使用 Claude Code skill 快速创建演示
-
-### 使用 Claude Code Skill
-
-复制 skill 文件到本地:
+## AI-Assisted Creation
 
 ```bash
+# Copy skill to your project
 cp neko-style/SKILL.md .claude/skills/neko-slidev.md
+# Then use /neko-slidev in Claude Code
 ```
 
-然后使用 `/neko-slidev` 命令激活。
+See [FOR-AI-ASSISTANTS.md](./docs/FOR-AI-ASSISTANTS.md) for full instructions.
 
-详见 [docs/FOR-AI-ASSISTANTS.md](./docs/FOR-AI-ASSISTANTS.md) 和 [SKILL.md](./SKILL.md)
+## Credits
 
-## 📄 License
+Original design by [nekomeowww](https://github.com/nekomeowww) from the neko-talks presentation series.
+
+## License
 
 MIT
-
-## 🙏 Credits
-
-原始设计来自 [nekomeowww](https://github.com/nekomeowww) 的 neko-talks 演讲系列。

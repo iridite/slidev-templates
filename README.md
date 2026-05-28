@@ -24,7 +24,7 @@
 - 3 套颜色预设：`blue` / `rust` / `cyan`
 - 语义化组件与布局（卡片、目录、章节、结束页等）
 - 统一 500ms 动画节奏（支持 `v-click` 渐进）
-- 完整文档（快速上手、组件、配色、动画、AI 使用说明）
+- 完整文档（随 NPM 包分发，安装即用）
 
 ## 🧱 仓库架构（简版）
 
@@ -32,7 +32,7 @@
 
 - `neko-style/theme`：真正可复用的 Slidev 主题包（`slidev-theme-neko-style`）
 - `neko-style/starter`：开箱即用示例工程（本地依赖 `file:../theme`）
-- `neko-style/docs`：使用文档与设计沉淀
+- `neko-style/docs`：仓库级参考文档（AI 指南、设计语言）
 
 根目录 `package.json` 通过 workspace 串起 `theme` 和 `starter`，用于统一开发与构建。
 
@@ -214,8 +214,6 @@ theme: neko-style
 - `@tresjs/core` + `@tresjs/cientos` + `three`（3D）
 
 ---
-
-如果你希望，我可以继续把这套验收流程同步到 `neko-style/README.md`，避免根 README 和子 README 描述漂移。
 
 ## 🤝 贡献
 

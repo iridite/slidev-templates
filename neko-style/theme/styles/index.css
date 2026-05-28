@@ -79,7 +79,7 @@ iframe {
   line-height: 1.625;
 }
 
-/* Reusable glass card style from raw-template patterns */
+/* Reusable glass card style from neko-talks patterns */
 .neko-glass-card {
   background: color-mix(in srgb, white 6%, transparent);
   border: 1px solid color-mix(in srgb, white 15%, transparent);

@@ -1,6 +1,6 @@
 # AIRI 2025-10 设计语言提炼（可复用）
 
-来源：`raw-template/neko-style/neko-talks/packages/2025-10-24-fudan-university-airi-dev-talk/slides.md`
+来源：`ref/talks/packages/2025-10-24-fudan-university-airi-dev-talk/slides.md`（git submodule）
 
 ## 1) 表达方式（Story Grammar）
 

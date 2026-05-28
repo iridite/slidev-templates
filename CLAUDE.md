@@ -35,7 +35,7 @@ npm run export        # Export presentation
 - **`neko-style/theme/`**: NPM theme package with components, layouts, and styles
 - **`neko-style/starter/`**: Starter template that uses the theme
 - **`neko-style/docs/`**: Shared documentation
-- **`raw-template/neko-style/talks/packages/`**: Real-world presentation source packages
+- **`neko-style/ref/talks/packages/`**: Real-world presentation source packages (git submodule)
 
 ### neko-style Template Architecture
 

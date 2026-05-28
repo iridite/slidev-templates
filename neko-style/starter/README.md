@@ -61,18 +61,20 @@ layout: cover
 
 ### Add Advanced Features
 
-Install optional dependencies as needed:
+The theme includes optional components that require extra dependencies. Install only what you need:
 
 ```bash
-# Terminal recordings
+# Terminal recordings → enables <AsciinemaPlayer> component
 npm install @nolebase/ui-asciinema asciinema-player
 
-# 3D scenes
+# 3D scenes → enables TresJS/Three.js integration
 npm install @tresjs/core @tresjs/cientos three
 
-# Motion animations
+# Declarative motion → enables <VMotionExample> and v-motion directive
 npm install @vueuse/motion
 ```
+
+These won't break your build if missing — components gracefully degrade.
 
 ## Documentation
 
