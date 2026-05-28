@@ -17,6 +17,12 @@ import { useNav } from '@slidev/client'
 import seedrandom from 'seedrandom'
 import { computed, ref, watch } from 'vue'
 
+const props = withDefaults(defineProps<{
+  zIndex?: number
+}>(), {
+  zIndex: -10,
+})
+
 const { currentSlideRoute } = useNav()
 
 export type Range = [number, number]
@@ -200,7 +206,7 @@ function clipStyle(poly: string, alpha: number, from: string, to: string, direct
   <div>
     <div
       class="bg transform-gpu overflow-hidden pointer-events-none"
-      :style="{ filter: `blur(70px) hue-rotate(${hue}deg)` }"
+      :style="{ filter: `blur(70px) hue-rotate(${hue}deg)`, zIndex: props.zIndex }"
       :class="[
         theme === 'light' ? 'bg-white scale-150' : 'bg-black',
       ]"
@@ -231,7 +237,6 @@ function clipStyle(poly: string, alpha: number, from: string, to: string, direct
 .bg {
   position: absolute;
   inset: 0;
-  z-index: -10;
 }
 
 .clip {

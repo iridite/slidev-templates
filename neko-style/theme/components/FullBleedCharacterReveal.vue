@@ -16,6 +16,8 @@ const props = withDefaults(defineProps<{
 
 <template>
   <div>
+    <ClickStepRegister />
+
     <div
       w-full h-full bg="black/15" absolute backdrop-blur-sm z-100
       :class="[$clicks < 1 ? 'opacity-0' : 'opacity-100']"

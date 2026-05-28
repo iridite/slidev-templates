@@ -2,6 +2,7 @@
 import { useNav } from '@slidev/client'
 import { computed } from 'vue'
 import GlowBackground from './GlowBackground.vue'
+import { isThemeManagedLayout } from '../utils/themeManagedLayouts'
 
 const props = defineProps<{
   background?: string
@@ -17,13 +18,38 @@ function resolveAssetUrl(url: string) {
   return url
 }
 
-function handleBackground(background?: string): any {
-  const isColor = background && ['#', 'rgb', 'hsl'].some(v => background.indexOf(v) === 0)
+function isDirectCssBackground(background: string) {
+  const value = background.trim()
+  return value.startsWith('#')
+    || value.startsWith('rgb(')
+    || value.startsWith('rgba(')
+    || value.startsWith('hsl(')
+    || value.startsWith('hsla(')
+    || value.startsWith('var(')
+    || value.startsWith('linear-gradient(')
+    || value.startsWith('radial-gradient(')
+    || value.startsWith('conic-gradient(')
+    || value.startsWith('repeating-linear-gradient(')
+    || value.startsWith('repeating-radial-gradient(')
+    || value.startsWith('repeating-conic-gradient(')
+    || value.startsWith('url(')
+}
+
+function isAssetPathBackground(background: string) {
+  const value = background.trim()
+  return /^(\/|\.\/|\.\.\/|https?:\/\/|data:)/.test(value)
+    || /\.[a-z0-9]+($|\?)/i.test(value)
+}
+
+function handleBackground(background?: string): Record<string, string | undefined> {
+  const value = background?.trim()
+  const useDirectBackground = Boolean(value) && isDirectCssBackground(value!)
+  const useAssetPath = Boolean(value) && !useDirectBackground && isAssetPathBackground(value!)
 
   const style = {
-    background: isColor ? background : undefined,
-    color: background && !isColor ? 'white' : undefined,
-    backgroundImage: isColor ? undefined : background ? `url("${resolveAssetUrl(background)}")` : undefined,
+    background: useDirectBackground ? value : undefined,
+    color: value && useAssetPath ? 'white' : undefined,
+    backgroundImage: useAssetPath ? `url("${resolveAssetUrl(value!)}")` : undefined,
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
@@ -39,21 +65,25 @@ const style = computed(() => handleBackground(props.background))
 const { currentSlideRoute } = useNav()
 const formatter = computed(() => (currentSlideRoute.value.meta?.slide as any)?.frontmatter || {})
 const glowEnabled = computed(() => formatter.value.glow !== false)
+const layout = computed(() => formatter.value.layout || 'default')
+const shouldRenderLocalGlow = computed(() => !props.background && glowEnabled.value && !isThemeManagedLayout(layout.value))
 </script>
 
 <template>
-  <div :style="style" class="h-full w-full">
-    <GlowBackground v-if="!props.background && glowEnabled" />
-    <div
-      v-if="props.withLogo && props.logoSrc"
-      absolute left="[40px]" top="[20px]" w="[144px]" h="[46px]"
-      transition="all ease-in-out" duration-500
-    >
-      <img :src="props.logoSrc" alt="Logo">
-    </div>
-    <slot />
-    <div v-if="props.withPoweredBy && props.poweredBySrc" absolute right="[40px]" bottom="[0px]" w="[144px]" h="[46px]">
-      <img :src="props.poweredBySrc" alt="Powered by">
+  <div :style="style" class="relative isolate h-full w-full overflow-hidden">
+    <GlowBackground v-if="shouldRenderLocalGlow" :z-index="0" />
+    <div class="relative z-10 h-full w-full">
+      <div
+        v-if="props.withLogo && props.logoSrc"
+        absolute left="[40px]" top="[20px]" w="[144px]" h="[46px]"
+        transition="all ease-in-out" duration-500
+      >
+        <img :src="props.logoSrc" alt="Logo">
+      </div>
+      <slot />
+      <div v-if="props.withPoweredBy && props.poweredBySrc" absolute right="[40px]" bottom="[0px]" w="[144px]" h="[46px]">
+        <img :src="props.poweredBySrc" alt="Powered by">
+      </div>
     </div>
   </div>
 </template>

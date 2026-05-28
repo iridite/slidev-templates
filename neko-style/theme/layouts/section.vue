@@ -14,7 +14,7 @@ const accent = props.accentColor || '#60cd6a'
 
 <template>
   <Background :background="props.background">
-    <div ml="[45%]" class="slidev-layout" relative h-full w-full flex flex-col justify-center>
+    <div ml="[30%]" class="slidev-layout" relative h-full w-full flex flex-col justify-center>
       <div class="text-4xl font-semibold mb-2!">
         Part <span :style="{ color: accent }" class="font-mono">{{ String(props.sectionNumber || 0).padStart(2, '0') }}</span>
       </div>

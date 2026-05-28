@@ -9,6 +9,8 @@ const props = withDefaults(defineProps<{
 
 <template>
   <div class="flex justify-center items-center" :class="props.compact ? 'gap-20 px-20 text-xl' : 'gap-20 px-40 text-xl'">
+    <ClickStepRegister />
+
     <div
       absolute
       class="transition duration-500 ease-in-out"

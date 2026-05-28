@@ -7,6 +7,8 @@ const props = defineProps<{
 
 <template>
   <div>
+    <ClickStepRegister />
+
     <div
       absolute z-100 w-full h-full px-20 flex items-center
       :class="[$clicks < 1 ? 'opacity-0' : 'opacity-100']"
