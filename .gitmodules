@@ -2,3 +2,4 @@
 	path = neko-style/ref/talks
 	url = https://github.com/nekomeowww/talks.git
 	shallow = true
+	ignore = all
