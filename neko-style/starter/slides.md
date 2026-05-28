@@ -1,12 +1,11 @@
 ---
 theme: neko-style
-layout: center
-class: px-14 py-10
+layout: cover
 highlighter: shiki
 css: unocss
 colorSchema: dark
 transition: fade-out
-title: 'neko-style Starter'
+title: 'Project Aurora: Rethinking Developer Workflows'
 lineNumbers: false
 drawings:
   persist: false
@@ -15,108 +14,105 @@ glowSeed: 42
 glowPreset: blue
 ---
 
-<style>
-.starter-page {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+<div px-14>
 
-.starter-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
-}
+<h1 text-5xl font-bold>Project Aurora</h1>
 
-.starter-hero-title,
-.starter-title {
-  font-family: "Avenir Next", "SF Pro Display", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", sans-serif;
-  font-weight: 650;
-  letter-spacing: -0.03em;
-  color: rgba(255, 255, 255, 0.97);
-}
+<p text-xl opacity-85>Rethinking Developer Workflows for the AI Era</p>
 
-.starter-hero-title {
-  font-size: 3rem;
-  line-height: 1.02;
-}
+<div mt-8 flex items-center gap-4 text-lg opacity-80>
+  <div i-carbon:user-avatar></div>
+  <span>Your Name / Your Team</span>
+  <span opacity-50>·</span>
+  <span>2026</span>
+</div>
 
-.starter-title {
-  font-size: 2.3rem;
-  line-height: 1.06;
-}
+</div>
 
-.starter-title-center {
-  text-align: center;
-}
+<!--
+Welcome everyone! Today I'll introduce Project Aurora — our approach to rethinking how developer workflows can evolve alongside AI tooling.
 
-.starter-copy {
-  max-width: 54rem;
-  font-size: 1rem;
-  line-height: 1.65;
-  opacity: 0.8;
-}
+Feel free to replace all content in this starter with your own presentation material.
+-->
 
-.starter-copy-center {
-  margin-inline: auto;
-  text-align: center;
-}
+---
+layout: intro
+class: px-35
+glowSeed: 128
+---
 
-.starter-panel {
-  margin-top: 0.25rem;
-}
-</style>
-
-<div class="starter-page">
-  <div class="starter-stack">
-    <div class="starter-hero-title">neko-style Starter</div>
-    <div class="text-xl opacity-85">
-      一份能直接改成你自己分享内容的 Slidev 起始稿。
+<div flex items-center gap-3>
+  <div
+    v-click="1"
+    :class="$clicks < 1 ? 'translate-x--5 opacity-0' : 'translate-x-0 opacity-100'"
+    flex flex-col items-start transition duration-500 ease-in-out min-w-60
+  >
+    <div w-40 h-40 rounded-full class="bg-gradient-to-br from-blue-500/40 to-cyan-500/30" flex items-center justify-center mb-5>
+      <div i-carbon:user-avatar text-5xl opacity-70></div>
     </div>
-    <div class="text-sm opacity-70">
-      目标：标题层级清楚、页面重心稳定、click 节奏自然、导出不翻车。
+    <span font-semibold text-3xl>Your Name</span>
+    <div>
+      <div><span class="opacity-70">Senior Software Engineer</span></div>
+      <div text-sm flex items-center gap-2 mt-4>
+        <div i-carbon:logo-github></div><span underline decoration-dashed font-mono decoration-zinc-300>your-github-handle</span>
+      </div>
+    </div>
+  </div>
+  <div flex-1></div>
+  <div flex flex-col gap-8>
+    <div mb-4 v-click="2">
+      <div mb-4 text-zinc-400><span>Communities</span></div>
+      <div
+        flex flex-wrap items-start content-start gap-4 transition duration-500 ease-in-out
+        :class="$clicks < 2 ? 'translate-y-5' : 'translate-y-0'"
+      >
+        <div flex items-center gap-2 text-2xl w-fit h-fit>
+          <div i-logos:vue inline-block></div> Vue
+        </div>
+        <div flex items-center gap-2 text-2xl w-fit h-fit>
+          <div i-logos:typescript-icon inline-block></div> TypeScript
+        </div>
+        <div flex items-center gap-2 text-2xl w-fit h-fit>
+          <div i-carbon:kubernetes inline-block></div> Kubernetes
+        </div>
+      </div>
+    </div>
+    <div v-click="3">
+      <div mb-4 text-zinc-400><span>Projects</span></div>
+      <div
+        flex flex-wrap items-start content-start gap-4 transition duration-500 ease-in-out
+        :class="$clicks < 3 ? 'translate-y-5' : 'translate-y-0'"
+      >
+        <div flex items-center gap-2 text-2xl w-fit h-fit>
+          <div i-carbon:carbon inline-block></div> Project Aurora
+        </div>
+        <div flex items-center gap-2 text-2xl w-fit h-fit>
+          <div i-carbon:book inline-block></div> Open Docs
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
----
-layout: intro
-glowSeed: 120
-class: px-16
----
+<!--
+[click] Hi, I'm Your Name, a software engineer working on developer tooling.
 
-<SplitBrandIntro>
-  <template #left>
-    <div i-carbon:chart-line-smooth text-5xl text-blue-300 />
-    <span font-semibold>Story Structure</span>
-  </template>
-  <template #right>
-    <div i-carbon:color-palette text-5xl text-cyan-300 />
-    <span font-semibold>Visual Discipline</span>
-  </template>
-</SplitBrandIntro>
+[click] I'm active in the Vue, TypeScript, and Kubernetes communities.
 
-<div class="mt-8 max-w-3xl mx-auto text-center text-base leading-relaxed opacity-80">
-  先把叙事结构跑通，再补媒体与细节。
-</div>
+[click] And I'm one of the maintainers of Project Aurora and Open Docs.
+-->
 
 ---
-layout: page
-glowSeed: 56
-glow: top
+layout: section
+glowSeed: 200
+sectionNumber: 1
+sectionTitle: The Problem
+sectionSubtitle: Why current workflows fall short
 ---
 
-<div class="starter-title">这份 starter 现在重点示范什么</div>
-
-<div class="mt-5">
-  <PatternCardGrid :columns="2" :items="[
-    { eyebrow: 'Focus', title: '问题驱动开场', description: '先给问题和判断，不先堆细节。' },
-    { eyebrow: 'Flow', title: '中段逻辑拆解', description: '问题、方案、流程，三段式讲清楚。' },
-    { eyebrow: 'Style', title: '标题层级明确', description: '标题像标题，正文像正文。' },
-    { eyebrow: 'Delivery', title: '页面安全区稳定', description: '内容不溢出，不贴边，导出可控。' },
-  ]" />
-</div>
+<!--
+Let's start by understanding the problem space — why do we even need to rethink developer workflows?
+-->
 
 ---
 layout: page
@@ -125,246 +121,335 @@ clicks: 1
 ---
 
 <div class="h-full flex items-center justify-center">
-  <SpotlightQuestion question="一份 starter 最关键的价值是什么？" compact>
+  <SpotlightQuestion question="How much time do developers actually spend coding?">
     <v-clicks>
       <div mt-4>
-        <div class="starter-title starter-title-center" text="5xl!">
-          拿回去改 30 分钟，就能变成你自己的完整 deck。
+        <div text="5xl!" font-semibold text-center>
+          Less than 30% of their workday.
+        </div>
+        <div text-center mt-4 opacity-70>
+          The rest goes to context-switching, configuration, and waiting.
         </div>
       </div>
     </v-clicks>
   </SpotlightQuestion>
 </div>
 
+<!--
+Here's a question for everyone in the audience.
+
+[click] Studies consistently show developers spend less than a third of their time writing code. The rest is consumed by context-switching, environment setup, and waiting on pipelines.
+-->
+
 ---
 layout: page
 glowSeed: 118
-class: text-center
----
-
-<WorksOnMyMachineHero
-  title="starter 的常见翻车：看起来全有，讲起来全空"
-  subtitle="先修结构与版式，再谈炫技"
->
-  <pre class="!m-0"><code>$ pnpm dev
-cover ✅
-layout ✅
-标题层级混乱 ❌
-部分页面顶边 / 溢出 ❌
-review: “这份能直接拿去讲吗？” ❌
-</code></pre>
-</WorksOnMyMachineHero>
-
----
-layout: page
-glowSeed: 170
+glow: top
 clicks: 2
 ---
 
-<div class="starter-title">先把“半成品感”去掉</div>
+<div text-3xl font-semibold mb-5>The Current State</div>
 
 <ProblemSolutionSplit
   v-click="1"
-  class="mt-5"
-  problemTitle="常见半成品状态"
-  solutionTitle="可交付 starter 状态"
+  problemTitle="Traditional Workflow"
+  solutionTitle="What We Actually Need"
   :problem-items="[
-    { text: '标题像正文，主次不明显' },
-    { text: '模块顶边，页面重心发飘' },
-    { text: 'click 顺序杂乱，讲述断裂' },
+    { text: 'Manual environment setup per project' },
+    { text: 'Context lost between task switches' },
+    { text: 'Repetitive boilerplate for each feature' },
   ]"
   :solution-items="[
-    { text: '每页主标题统一层级' },
-    { text: '垂直重心落在页面中段' },
-    { text: 'click 只服务叙事，不抢注意力' },
+    { text: 'Instant reproducible environments' },
+    { text: 'Persistent context across sessions' },
+    { text: 'Intelligent scaffolding from intent' },
   ]"
 />
 
 <InsightCalloutBar v-click="2" tone="yellow">
-  先稳可读性，再加表现力。
+  The bottleneck isn't skill — it's friction.
 </InsightCalloutBar>
 
+<!--
+[click] On the left, what most teams still deal with. On the right, what the workflow should look like.
+
+[click] The key insight: developers aren't slow — the tooling creates unnecessary friction.
+-->
+
 ---
 layout: page
-glowSeed: 188
+glowSeed: 170
 ---
 
-<div class="starter-title">三个优先修正点</div>
+<div text-3xl font-semibold mb-5>Three Core Challenges</div>
 
-<div class="mt-6 h-[66%] flex items-center">
+<div class="mt-4 h-[66%] flex items-center">
   <LifecycleChallengesThreeCol :items="[
-    { iconClass: 'i-carbon:text-font text-blue-300', title: '标题层级', description: '大标题、正文、注释必须分层，不混成一坨。' },
-    { iconClass: 'i-carbon:fit-to-screen text-pink-300', title: '安全区', description: '所有组件留在可视边界内，不贴边、不截断。' },
-    { iconClass: 'i-carbon:center-to-fit text-green-300', title: '重心平衡', description: '该居中就居中，避免上重下空的失衡感。' },
+    { iconClass: 'i-carbon:time text-amber-300', title: 'Setup Cost', description: 'Every new project demands hours of configuration before any real work begins.' },
+    { iconClass: 'i-carbon:shuffle text-blue-300', title: 'Context Loss', description: 'Switching between tasks means rebuilding mental models from scratch.' },
+    { iconClass: 'i-carbon:repeat text-pink-300', title: 'Repetition', description: 'The same patterns re-implemented slightly differently across every service.' },
   ]" />
 </div>
 
+<!--
+We've identified three categories of friction that compound on each other: setup cost, context loss, and repetition.
+-->
+
 ---
-layout: page
-glowSeed: 64
-clicks: 4
+layout: section
+glowSeed: 250
+glowPreset: cyan
+sectionNumber: 2
+sectionTitle: The Solution
+sectionSubtitle: How Aurora addresses this
 ---
 
-<div class="starter-title">推荐叙事骨架（四段式）</div>
-
-<div class="mt-5">
-  <ProcessFlowGrid :columns="4" :items="[
-    { icon: 'i-carbon:idea', eyebrow: 'Act I', title: 'Question', description: '先统一观众注意力。' },
-    { icon: 'i-carbon:compare', eyebrow: 'Act II', title: 'Compare', description: '讲旧方案的代价。' },
-    { icon: 'i-carbon:chart-network', eyebrow: 'Act III', title: 'Explain', description: '拆解方法和关键决策。' },
-    { icon: 'i-carbon:flag', eyebrow: 'Act IV', title: 'Close', description: '给下一步动作与入口。' },
-  ]" />
-</div>
+<!--
+Now that we've framed the problem — let's look at what Aurora does differently.
+-->
 
 ---
 layout: page
 glowSeed: 86
+glowPreset: cyan
 glow: left
+clicks: 3
 ---
 
-<div class="starter-title">动效规范（click 节奏优化）</div>
+<div text-3xl font-semibold mb-5>Architecture Overview</div>
 
-<div class="mt-5">
-  <MotionPrinciplesGallery :items="[
-    { iconClass: 'i-carbon:cursor-1 text-emerald-300', title: '主文案先稳定', caption: '动画只做辅助，不抢正文。', animationClass: 'animate-balance-shake' },
-    { iconClass: 'i-carbon:arrow-down-left text-blue-300', title: '动区文区分离', caption: '动效元素离开阅读主区。', animationClass: 'animate-balance-move-left' },
-    { iconClass: 'i-carbon:dot-mark text-amber-300', title: '每步只引入一件事', caption: '避免一次性弹出过多信息。', animationClass: 'animate-balance-move-right' },
+<ProcessFlowGrid :columns="3" :items="[
+  { icon: 'i-carbon:cloud-upload', eyebrow: 'Layer 1', title: 'Environment Engine', description: 'Declarative environment specs — spun up in seconds, not hours.' },
+  { icon: 'i-carbon:data-connected', eyebrow: 'Layer 2', title: 'Context Graph', description: 'Persistent knowledge graph connecting code, tasks, and decisions.' },
+  { icon: 'i-carbon:machine-learning-model', eyebrow: 'Layer 3', title: 'Intent Resolver', description: 'Translates high-level intent into concrete implementation steps.' },
+]" />
+
+<!--
+Aurora is built in three layers.
+
+[click] First, the Environment Engine — think instant, reproducible dev containers from a single config file.
+
+[click] Second, the Context Graph — it remembers what you were working on, why, and what decisions were made.
+
+[click] Third, the Intent Resolver — describe what you want to build, and it generates the scaffolding.
+-->
+
+---
+layout: page
+glowSeed: 64
+glowPreset: cyan
+---
+
+<div text-3xl font-semibold mb-5>Key Features</div>
+
+<div class="mt-4">
+  <PatternCardGrid :columns="2" :items="[
+    { eyebrow: 'Speed', title: 'Sub-second Environment Spin-up', description: 'Pre-built layer caching means your environment is ready before you finish typing.' },
+    { eyebrow: 'Memory', title: 'Cross-session Context', description: 'Pick up exactly where you left off — even weeks later, even on a different machine.' },
+    { eyebrow: 'Safety', title: 'Automatic Rollback', description: 'Every action is reversible. Experiment freely without fear of breaking state.' },
+    { eyebrow: 'Integration', title: 'Works With Your Stack', description: 'Plugs into existing CI/CD, editors, and cloud providers. No lock-in.' },
   ]" />
 </div>
+
+<!--
+These are the four differentiators that matter most to teams evaluating Aurora.
+-->
 
 ---
 layout: page-wide
 glowSeed: 98
+glowPreset: cyan
 clicks: 3
 class: px-8 py-6
 ---
 
 <div class="h-full flex flex-col justify-center gap-4">
-  <div class="starter-title">复杂对象讲解：稳定双栏</div>
+  <div text-2xl font-semibold>How the Context Graph Works</div>
 
   <ArtifactExplainBoard
     mode="sidebar"
-    artifactClass="min-h-[17rem]"
-    panelClass="grid-cols-[minmax(0,1.2fr)_minmax(15rem,0.9fr)]"
-    subtitle="左边主体，右边按 click 逐条解释，避免上下堆叠导致溢出。"
+    artifactClass="min-h-[16rem]"
+    panelClass="grid-cols-[minmax(0,1.2fr)_minmax(14rem,0.9fr)]"
+    subtitle="Left: your project's knowledge structure. Right: each layer explained step by step."
     :items="[
-      { icon: 'i-carbon:document', tone: 'cyan', title: '入口信息', description: '先说输入边界与上下文。' },
-      { icon: 'i-carbon:tool-box', tone: 'green', title: '处理中段', description: '再说流程与关键动作。' },
-      { icon: 'i-carbon:result', tone: 'purple', title: '输出落点', description: '最后说结果结构和去向。' },
+      { icon: 'i-carbon:document', tone: 'cyan', title: 'Capture', description: 'Every file edit, terminal command, and decision is logged as a node.' },
+      { icon: 'i-carbon:connect', tone: 'green', title: 'Link', description: 'Nodes are connected by causal relationships — why led to what.' },
+      { icon: 'i-carbon:search', tone: 'purple', title: 'Retrieve', description: 'Query past context naturally: why did we choose Redis here?' },
     ]"
   >
     <div class="flex h-full items-center justify-center rounded-2xl border border-white/8 bg-neutral-950/70 p-6">
       <div class="grid w-full gap-3 grid-cols-3">
         <div class="neko-glass-card p-4 text-center">
-          <div class="mb-2 text-cyan-300 i-carbon:document text-2xl" />
-          <div class="font-semibold">Input</div>
+          <div class="mb-2 text-cyan-300 text-2xl" i-carbon:document></div>
+          <div class="text-sm font-semibold">Events</div>
         </div>
         <div class="neko-glass-card p-4 text-center">
-          <div class="mb-2 text-green-300 i-carbon:tool-box text-2xl" />
-          <div class="font-semibold">Process</div>
+          <div class="mb-2 text-green-300 text-2xl" i-carbon:connect></div>
+          <div class="text-sm font-semibold">Relations</div>
         </div>
         <div class="neko-glass-card p-4 text-center">
-          <div class="mb-2 text-purple-300 i-carbon:result text-2xl" />
-          <div class="font-semibold">Output</div>
+          <div class="mb-2 text-purple-300 text-2xl" i-carbon:search></div>
+          <div class="text-sm font-semibold">Queries</div>
         </div>
       </div>
     </div>
   </ArtifactExplainBoard>
 </div>
 
+<!--
+Let me walk you through the Context Graph in detail.
+
+[click] First, capture — every meaningful action becomes a node in the graph.
+
+[click] Then linking — we establish causal chains so you can trace decisions.
+
+[click] Finally retrieval — ask questions in natural language, get precise answers with source.
+-->
+
 ---
 layout: page
 glowSeed: 330
-clicks: 3
+glowPreset: rust
+glow: center
 ---
 
-<div class="starter-title">联合讲者开场模板</div>
+<div text-3xl font-semibold mb-5>Live Demo</div>
 
-<div class="mt-5">
-  <SpeakerLineupIntro
-    title="三种常见协作角色"
-    subtitle="即使你一个人做，也会在这三种角色之间来回切换。"
-    :speakers="[
-      { name: 'Speaker', role: '把节奏讲顺' },
-      { name: 'Designer', role: '把层级拉开' },
-      { name: 'Builder', role: '把交付跑通' },
-    ]"
-  />
-</div>
-
----
-layout: page
-glowSeed: 380
-clicks: 4
----
-
-<div class="starter-title">继续扩展 starter 的优先级</div>
-
-<div class="mt-5">
-  <ProcessFlowGrid :columns="2" :items="[
-    { icon: 'i-solar:chat-round-bold-duotone', title: '开场提问 / 误解纠偏页', description: '先把最常用开场页打磨到位。' },
-    { icon: 'i-solar:notes-bold-duotone', title: '对比论证 / 取舍说明页', description: '中段逻辑页决定说服力。' },
-    { icon: 'i-solar:diagram-up-bold-duotone', title: '流程拆解 / 决策链路页', description: '复杂内容要能稳稳讲清楚。' },
-    { icon: 'i-solar:checklist-bold-duotone', title: 'FAQ / 收尾 CTA 页', description: '结尾要有明确行动指向。' },
-  ]" />
-</div>
-
----
-layout: page
-glowSeed: 418
-clicks: 3
----
-
-<div class="starter-title">媒体接入顺序（你录屏后再替换）</div>
-
-<div class="mt-5">
-  <ProcessFlowGrid :columns="3" :items="[
-    { icon: 'i-carbon:edit', eyebrow: 'Step 1', title: '先写故事', description: '先确认每页目的和讲述顺序。' },
-    { icon: 'i-carbon:image', eyebrow: 'Step 2', title: '再放静态占位', description: '封面图、案例图先到位，整份稿先能讲。' },
-    { icon: 'i-carbon:media-library', eyebrow: 'Step 3', title: '最后替换录屏', description: '你录完后再替换真实视频，风险最低。' },
-  ]" />
-</div>
-
----
-layout: page
-glowSeed: 450
-class: text-center
----
-
-<div class="starter-title starter-title-center">联系方式（单二维码位）</div>
-
-<div class="h-[68%] flex items-center justify-center mt-4">
-  <div class="h-64 w-64 rounded-2xl border border-white/15 bg-black/20 p-4 flex items-center justify-center text-center">
-    <div>
-      <div class="text-sm uppercase tracking-[0.2em] opacity-65">QR Slot</div>
-      <div class="mt-2 text-lg font-semibold">在这里放你的二维码</div>
-      <div class="mt-2 text-xs opacity-70">建议复用同一个主入口二维码</div>
-    </div>
+<div class="mt-4 rounded-2xl border border-white/10 bg-black/30 p-6 backdrop-blur-sm">
+  <div class="flex items-center gap-3 mb-4">
+    <div class="h-3 w-3 rounded-full bg-red-500"></div>
+    <div class="h-3 w-3 rounded-full bg-yellow-500"></div>
+    <div class="h-3 w-3 rounded-full bg-green-500"></div>
+    <span class="ml-2 text-sm opacity-50 font-mono">terminal</span>
+  </div>
+  <div class="font-mono text-sm leading-relaxed">
+    <div><span text-green-400>$</span> aurora init --from intent "REST API with auth and rate limiting"</div>
+    <div mt-2 opacity-80>✓ Detected stack: Node.js + TypeScript + Express</div>
+    <div opacity-80>✓ Generated: 12 files, 3 middleware, JWT auth scaffold</div>
+    <div opacity-80>✓ Environment ready in 0.8s</div>
+    <div mt-3><span text-green-400>$</span> aurora context "why did we pick JWT over sessions?"</div>
+    <div mt-1 opacity-80>→ Decision from 2026-03-14: "stateless scaling requirement from arch review"</div>
   </div>
 </div>
 
-<div class="text-sm opacity-75 text-center">
-  只保留一个二维码入口，减少视觉噪音。
+<div mt-4 text-center text-sm opacity-60>
+  Replace this with your own terminal recording or live demo.
 </div>
+
+<!--
+Here's what it looks like in practice. One command, and you go from intent to a running project.
+
+The context query shows how past decisions are instantly retrievable.
+-->
+
+---
+layout: section
+glowSeed: 380
+sectionNumber: 3
+sectionTitle: What's Next
+sectionSubtitle: Roadmap and getting involved
+---
+
+<!--
+We've covered the problem and the solution. Let's wrap up with what's coming next and how to get involved.
+-->
 
 ---
 layout: page
 glowSeed: 420
+glow: right
 ---
 
-<div class="starter-title">迁移检查清单</div>
+<div text-3xl font-semibold mb-5>Takeaways</div>
 
-<div class="mt-5">
+<div class="mt-4">
   <GlassChecklist :items="[
-    '先 smoke test：只放 <code>theme + glowSeed</code>，确认背景正常。',
-    '标题层级要统一，不能退化成正文样式。',
-    '每页内容保持在安全区内，不贴边、不溢出。',
-    'click 一次只引入一个重点，避免节奏过密。',
-    '导出前至少跑一次 <code>build</code>，保证交付稳定。',
+    'Developer friction is the real bottleneck — not skill or tooling quantity.',
+    'Environment setup should be instant and declarative.',
+    'Context persistence eliminates costly mental model rebuilds.',
+    'Intent-driven scaffolding removes repetitive boilerplate.',
+    'Aurora is open-source — contributions welcome.',
   ]" />
 </div>
+
+<!--
+Five things I want you to remember from this talk.
+-->
+
+---
+layout: page
+glowSeed: 450
+clicks: 3
+---
+
+<div text-3xl font-semibold mb-5>Team & Contributors</div>
+
+<SpeakerLineupIntro
+  title=""
+  subtitle="The people building Aurora"
+  :speakers="[
+    { name: 'Your Name', role: 'Lead · Architecture', handle: 'your-handle', handleIcon: 'i-carbon:logo-github' },
+    { name: 'Teammate A', role: 'Runtime · Performance', handle: 'teammate-a', handleIcon: 'i-carbon:logo-github' },
+    { name: 'Teammate B', role: 'AI · Context Engine', handle: 'teammate-b', handleIcon: 'i-carbon:logo-github' },
+  ]"
+/>
+
+<!--
+[click] I lead the architecture.
+
+[click] Teammate A handles the runtime and performance layer.
+
+[click] And Teammate B owns the AI and context engine.
+
+We're always looking for contributors — feel free to reach out to any of us.
+-->
+
+---
+layout: page
+glowSeed: 490
+class: text-center
+---
+
+<div text-3xl font-semibold mb-6>Get Started</div>
+
+<div class="h-[55%] flex items-center justify-center">
+  <div class="flex gap-10 items-start">
+    <div class="flex flex-col items-center gap-3">
+      <div class="h-48 w-48 rounded-2xl border border-white/15 bg-black/20 p-4 flex items-center justify-center">
+        <div class="text-center">
+          <div i-carbon:qr-code text-5xl opacity-40></div>
+          <div class="mt-2 text-xs opacity-50">Your QR Here</div>
+        </div>
+      </div>
+      <div text-sm opacity-70>GitHub Repo</div>
+    </div>
+    <div class="flex flex-col items-center gap-3">
+      <div class="h-48 w-48 rounded-2xl border border-white/15 bg-black/20 p-4 flex items-center justify-center">
+        <div class="text-center">
+          <div i-carbon:qr-code text-5xl opacity-40></div>
+          <div class="mt-2 text-xs opacity-50">Your QR Here</div>
+        </div>
+      </div>
+      <div text-sm opacity-70>Documentation</div>
+    </div>
+  </div>
+</div>
+
+<InsightCalloutBar tone="green" icon="i-carbon:star">
+  Star us on GitHub — every star helps the project grow.
+</InsightCalloutBar>
+
+<!--
+Two QR codes: one for the repo, one for the docs. Replace these placeholder boxes with your actual QR images.
+-->
 
 ---
 layout: end
 glowSeed: 700
 ---
+
+<!--
+Thank you all! Happy to take questions.
+
+Replace this end slide with ThankYouSplitPanel if you'd like a more elaborate closing.
+-->

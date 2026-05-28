@@ -20,6 +20,16 @@ npm run export
 
 ## Customization
 
+### Animation Contract
+
+Starter pages follow one consistent reveal contract:
+
+- Group cards on first paint use `TransitionGroup appear` with a shared base delay plus short stagger.
+- Step-by-step narration uses `v-click` / `v-after` instead of ad-hoc timing chains.
+- If custom content uses raw `$clicks` conditions, also declare click steps via `v-click` / `v-after` or slide `clicks:` frontmatter.
+
+This prevents "last item disappears on leave" and avoids one card lagging far behind the rest.
+
 ### Change Theme Colors
 
 Edit the frontmatter in `slides.md`:
