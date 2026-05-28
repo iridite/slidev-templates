@@ -1,0 +1,4 @@
+[submodule "neko-style/ref/talks"]
+	path = neko-style/ref/talks
+	url = https://github.com/nekomeowww/talks.git
+	shallow = true
