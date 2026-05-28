@@ -60,71 +60,18 @@ const toneClassMap: Record<NonNullable<ArtifactExplainItem['tone']>, string> = {
       </div>
 
       <div class="flex flex-col gap-4">
-        <Transition
+        <div
           v-for="(item, idx) in props.items"
           :key="`${item.title}-${idx}`"
-          appear
-          enter-active-class="transition duration-500 ease-out"
-          enter-from-class="translate-y-6 opacity-0"
-          enter-to-class="translate-y-0 opacity-100"
+          class="transition duration-500 ease-in-out"
+          :class="$clicks < idx + 1
+            ? 'translate-y-6 opacity-0 pointer-events-none'
+            : (item.inactiveAfterStep && $clicks > item.inactiveAfterStep
+              ? 'translate-y-0 opacity-55 blur-sm'
+              : 'translate-y-0 opacity-100')"
+          :style="{ transitionDelay: `${idx * 50}ms` }"
         >
-          <div
-            v-if="$clicks >= idx + 1"
-            class="transition duration-500 ease-in-out"
-            :class="item.inactiveAfterStep && $clicks > item.inactiveAfterStep ? 'opacity-55 blur-sm' : ''"
-          >
-            <div class="neko-glass-card p-4 shadow-[0_18px_60px_rgba(0,0,0,0.2)]" :class="item.widthClass ?? 'w-full'">
-              <div class="flex items-start gap-3">
-                <div class="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/12 bg-white/8 text-sm font-semibold">
-                  <div v-if="item.icon" :class="[item.icon, toneClassMap[item.tone ?? 'blue']]" class="text-lg" />
-                  <span v-else>{{ String(idx + 1).padStart(2, '0') }}</span>
-                </div>
-
-                <div class="min-w-0 flex-1">
-                  <div v-if="item.eyebrow" class="mb-1 text-[0.68rem] uppercase tracking-[0.2em] opacity-55">
-                    {{ item.eyebrow }}
-                  </div>
-                  <div class="text-sm font-semibold leading-snug" :class="toneClassMap[item.tone ?? 'blue']">
-                    {{ item.title }}
-                  </div>
-                  <div v-if="item.description" class="mt-2 text-xs leading-relaxed opacity-80">
-                    {{ item.description }}
-                  </div>
-                  <div v-if="item.detail" class="mt-3 border-t border-white/8 pt-3 text-[0.7rem] leading-relaxed opacity-65">
-                    {{ item.detail }}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Transition>
-      </div>
-    </div>
-
-    <div
-      v-else
-      class="relative overflow-hidden rounded-2xl border border-white/10 bg-black/15 p-4 backdrop-blur-sm"
-      :class="props.artifactClass"
-    >
-      <slot />
-
-      <Transition
-        v-for="(item, idx) in props.items"
-        :key="`${item.title}-${idx}`"
-        appear
-        enter-active-class="transition duration-500 ease-out"
-        enter-from-class="translate-y-6 opacity-0"
-        enter-to-class="translate-y-0 opacity-100"
-      >
-        <div
-          v-if="$clicks >= idx + 1"
-          class="absolute transition duration-500 ease-in-out"
-          :class="[
-            item.positionClass ?? 'top-4 left-4',
-            item.inactiveAfterStep && $clicks > item.inactiveAfterStep ? 'opacity-55 blur-sm' : '',
-          ]"
-        >
-          <div class="neko-glass-card p-4 shadow-[0_18px_60px_rgba(0,0,0,0.25)]" :class="item.widthClass ?? 'w-[20rem]'">
+          <div class="neko-glass-card p-4 shadow-[0_18px_60px_rgba(0,0,0,0.2)]" :class="item.widthClass ?? 'w-full'">
             <div class="flex items-start gap-3">
               <div class="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/12 bg-white/8 text-sm font-semibold">
                 <div v-if="item.icon" :class="[item.icon, toneClassMap[item.tone ?? 'blue']]" class="text-lg" />
@@ -148,7 +95,54 @@ const toneClassMap: Record<NonNullable<ArtifactExplainItem['tone']>, string> = {
             </div>
           </div>
         </div>
-      </Transition>
+      </div>
+    </div>
+
+    <div
+      v-else
+      class="relative overflow-hidden rounded-2xl border border-white/10 bg-black/15 p-4 backdrop-blur-sm"
+      :class="props.artifactClass"
+    >
+      <slot />
+
+      <div
+        v-for="(item, idx) in props.items"
+        :key="`${item.title}-${idx}`"
+        class="absolute transition duration-500 ease-in-out"
+        :class="[
+          item.positionClass ?? 'top-4 left-4',
+          $clicks < idx + 1
+            ? 'translate-y-6 opacity-0 pointer-events-none'
+            : (item.inactiveAfterStep && $clicks > item.inactiveAfterStep
+              ? 'opacity-55 blur-sm'
+              : 'opacity-100'),
+        ]"
+        :style="{ transitionDelay: `${idx * 50}ms` }"
+      >
+        <div class="neko-glass-card p-4 shadow-[0_18px_60px_rgba(0,0,0,0.25)]" :class="item.widthClass ?? 'w-[20rem]'">
+          <div class="flex items-start gap-3">
+            <div class="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/12 bg-white/8 text-sm font-semibold">
+              <div v-if="item.icon" :class="[item.icon, toneClassMap[item.tone ?? 'blue']]" class="text-lg" />
+              <span v-else>{{ String(idx + 1).padStart(2, '0') }}</span>
+            </div>
+
+            <div class="min-w-0 flex-1">
+              <div v-if="item.eyebrow" class="mb-1 text-[0.68rem] uppercase tracking-[0.2em] opacity-55">
+                {{ item.eyebrow }}
+              </div>
+              <div class="text-sm font-semibold leading-snug" :class="toneClassMap[item.tone ?? 'blue']">
+                {{ item.title }}
+              </div>
+              <div v-if="item.description" class="mt-2 text-xs leading-relaxed opacity-80">
+                {{ item.description }}
+              </div>
+              <div v-if="item.detail" class="mt-3 border-t border-white/8 pt-3 text-[0.7rem] leading-relaxed opacity-65">
+                {{ item.detail }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>

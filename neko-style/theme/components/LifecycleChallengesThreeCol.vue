@@ -31,14 +31,7 @@ const fallbackItems: LifecycleChallengeItem[] = [
 </script>
 
 <template>
-  <TransitionGroup
-    appear
-    tag="div"
-    class="grid h-74 grid-cols-1 gap-3 md:grid-cols-3"
-    enter-active-class="transition duration-500 ease-out"
-    enter-from-class="translate-y-4 opacity-0"
-    enter-to-class="translate-y-0 opacity-100"
-  >
+  <div class="grid h-74 grid-cols-1 gap-3 md:grid-cols-3">
     <div
       v-for="(item, idx) in (props.items.length ? props.items : fallbackItems)"
       :key="`${item.title}-${idx}`"
@@ -47,7 +40,6 @@ const fallbackItems: LifecycleChallengeItem[] = [
       overflow-hidden
       bg="white/5"
       backdrop-blur-sm
-      :style="{ transitionDelay: `${40 + idx * 55}ms` }"
     >
       <div flex items-center bg="white/10" px-3 py-2>
         <div :class="item.iconClass || fallbackItems[idx % fallbackItems.length].iconClass" mr-2 />
@@ -57,5 +49,5 @@ const fallbackItems: LifecycleChallengeItem[] = [
         {{ item.description }}
       </div>
     </div>
-  </TransitionGroup>
+  </div>
 </template>

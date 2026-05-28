@@ -34,19 +34,11 @@ const props = withDefaults(defineProps<{
 </script>
 
 <template>
-  <TransitionGroup
-    appear
-    tag="div"
-    class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-3"
-    enter-active-class="transition duration-500 ease-out"
-    enter-from-class="translate-y-4 opacity-0"
-    enter-to-class="translate-y-0 opacity-100"
-  >
+  <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-3">
     <div
       v-for="(item, idx) in props.items"
       :key="`${item.title}-${idx}`"
       class="neko-glass-card p-5 text-center"
-      :style="{ transitionDelay: `${40 + idx * 55}ms` }"
     >
       <div class="neko-motion-stage">
         <div class="text-6xl flex items-center justify-center" :class="item.animationClass">
@@ -61,5 +53,5 @@ const props = withDefaults(defineProps<{
         {{ item.caption }}
       </div>
     </div>
-  </TransitionGroup>
+  </div>
 </template>
