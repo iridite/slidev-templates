@@ -12,15 +12,28 @@ drawings:
 mdc: true
 glowSeed: 42
 glowPreset: blue
+clicks: 2
 ---
 
 <div px-14>
 
-<h1 text-5xl font-bold>Project Aurora</h1>
+<h1
+  v-click="1"
+  :class="$clicks < 1 ? 'opacity-0 scale-105 blur-sm' : 'opacity-100 scale-100 blur-0'"
+  text-5xl font-bold transition duration-1200 ease-in-out
+>Project Aurora</h1>
 
-<p text-xl opacity-85>Rethinking Developer Workflows for the AI Era</p>
+<p
+  v-click="1"
+  :class="$clicks < 1 ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'"
+  text-xl opacity-85 transition duration-800 ease-in-out delay-200
+>Rethinking Developer Workflows for the AI Era</p>
 
-<div mt-8 flex items-center gap-4 text-lg opacity-80>
+<div
+  v-click="2"
+  :class="$clicks < 2 ? 'opacity-0 translate-y-3' : 'opacity-80 translate-y-0'"
+  mt-8 flex items-center gap-4 text-lg transition duration-500 ease-in-out
+>
   <div i-carbon:user-avatar></div>
   <span>Your Name / Your Team</span>
   <span opacity-50>·</span>
@@ -44,7 +57,7 @@ glowSeed: 128
 <div flex items-center gap-3>
   <div
     v-click="1"
-    :class="$clicks < 1 ? 'translate-x--5 opacity-0' : 'translate-x-0 opacity-100'"
+    :class="$clicks < 1 ? 'translate-x--5 opacity-0 blur-sm scale-95' : 'translate-x-0 opacity-100 blur-0 scale-100'"
     flex flex-col items-start transition duration-500 ease-in-out min-w-60
   >
     <div w-40 h-40 rounded-full class="bg-gradient-to-br from-blue-500/40 to-cyan-500/30" flex items-center justify-center mb-5>
@@ -64,7 +77,7 @@ glowSeed: 128
       <div mb-4 text-zinc-400><span>Communities</span></div>
       <div
         flex flex-wrap items-start content-start gap-4 transition duration-500 ease-in-out
-        :class="$clicks < 2 ? 'translate-y-5' : 'translate-y-0'"
+        :class="$clicks < 2 ? 'translate-y-5 opacity-0 blur-sm' : 'translate-y-0 opacity-100 blur-0'"
       >
         <div flex items-center gap-2 text-2xl w-fit h-fit>
           <div i-logos:vue inline-block></div> Vue
@@ -81,7 +94,7 @@ glowSeed: 128
       <div mb-4 text-zinc-400><span>Projects</span></div>
       <div
         flex flex-wrap items-start content-start gap-4 transition duration-500 ease-in-out
-        :class="$clicks < 3 ? 'translate-y-5' : 'translate-y-0'"
+        :class="$clicks < 3 ? 'translate-y-5 opacity-0 blur-sm' : 'translate-y-0 opacity-100 blur-0'"
       >
         <div flex items-center gap-2 text-2xl w-fit h-fit>
           <div i-carbon:carbon inline-block></div> Project Aurora
@@ -122,16 +135,18 @@ clicks: 1
 
 <div class="h-full flex items-center justify-center">
   <SpotlightQuestion question="How much time do developers actually spend coding?">
-    <v-clicks>
-      <div mt-4>
-        <div text="5xl!" font-semibold text-center>
-          Less than 30% of their workday.
-        </div>
-        <div text-center mt-4 opacity-70>
-          The rest goes to context-switching, configuration, and waiting.
-        </div>
+    <div
+      v-click="1"
+      :class="$clicks < 1 ? 'opacity-0 scale-95 blur-sm' : 'opacity-100 scale-100 blur-0'"
+      mt-4 transition duration-800 ease-in-out
+    >
+      <div text="5xl!" font-semibold text-center>
+        Less than 30% of their workday.
       </div>
-    </v-clicks>
+      <div text-center mt-4 opacity-70>
+        The rest goes to context-switching, configuration, and waiting.
+      </div>
+    </div>
   </SpotlightQuestion>
 </div>
 
@@ -150,25 +165,36 @@ clicks: 2
 
 <div text-3xl font-semibold mb-5>The Current State</div>
 
-<ProblemSolutionSplit
+<div
   v-click="1"
-  problemTitle="Traditional Workflow"
-  solutionTitle="What We Actually Need"
-  :problem-items="[
-    { text: 'Manual environment setup per project' },
-    { text: 'Context lost between task switches' },
-    { text: 'Repetitive boilerplate for each feature' },
-  ]"
-  :solution-items="[
-    { text: 'Instant reproducible environments' },
-    { text: 'Persistent context across sessions' },
-    { text: 'Intelligent scaffolding from intent' },
-  ]"
-/>
+  :class="$clicks < 1 ? 'opacity-0 translate-y-5 scale-95' : 'opacity-100 translate-y-0 scale-100'"
+  transition duration-500 ease-in-out
+>
+  <ProblemSolutionSplit
+    problemTitle="Traditional Workflow"
+    solutionTitle="What We Actually Need"
+    :problem-items="[
+      { text: 'Manual environment setup per project' },
+      { text: 'Context lost between task switches' },
+      { text: 'Repetitive boilerplate for each feature' },
+    ]"
+    :solution-items="[
+      { text: 'Instant reproducible environments' },
+      { text: 'Persistent context across sessions' },
+      { text: 'Intelligent scaffolding from intent' },
+    ]"
+  />
+</div>
 
-<InsightCalloutBar v-click="2" tone="yellow">
-  The bottleneck isn't skill — it's friction.
-</InsightCalloutBar>
+<div
+  v-click="2"
+  :class="$clicks < 2 ? 'opacity-0 translate-y-3 blur-sm' : 'opacity-100 translate-y-0 blur-0'"
+  transition duration-500 ease-in-out
+>
+  <InsightCalloutBar tone="yellow">
+    The bottleneck isn't skill — it's friction.
+  </InsightCalloutBar>
+</div>
 
 <!--
 [click] On the left, what most teams still deal with. On the right, what the workflow should look like.
@@ -311,11 +337,16 @@ layout: page
 glowSeed: 330
 glowPreset: rust
 glow: center
+clicks: 1
 ---
 
 <div text-3xl font-semibold mb-5>Live Demo</div>
 
-<div class="mt-4 rounded-2xl border border-white/10 bg-black/30 p-6 backdrop-blur-sm">
+<div
+  v-click="1"
+  :class="$clicks < 1 ? 'opacity-0 scale-92 blur-sm' : 'opacity-100 scale-100 blur-0'"
+  class="mt-4 rounded-2xl border border-white/10 bg-black/30 p-6 backdrop-blur-sm transition duration-800 ease-in-out"
+>
   <div class="flex items-center gap-3 mb-4">
     <div class="h-3 w-3 rounded-full bg-red-500"></div>
     <div class="h-3 w-3 rounded-full bg-yellow-500"></div>
@@ -358,11 +389,16 @@ We've covered the problem and the solution. Let's wrap up with what's coming nex
 layout: page
 glowSeed: 420
 glow: right
+clicks: 1
 ---
 
 <div text-3xl font-semibold mb-5>Takeaways</div>
 
-<div class="mt-4">
+<div
+  v-click="1"
+  :class="$clicks < 1 ? 'opacity-0 translate-y-4 scale-98' : 'opacity-100 translate-y-0 scale-100'"
+  class="mt-4 transition duration-600 ease-in-out"
+>
   <GlassChecklist :items="[
     'Developer friction is the real bottleneck — not skill or tooling quantity.',
     'Environment setup should be instant and declarative.',
@@ -408,13 +444,18 @@ We're always looking for contributors — feel free to reach out to any of us.
 layout: page
 glowSeed: 490
 class: text-center
+clicks: 2
 ---
 
 <div text-3xl font-semibold mb-6>Get Started</div>
 
 <div class="h-[55%] flex items-center justify-center">
   <div class="flex gap-10 items-start">
-    <div class="flex flex-col items-center gap-3">
+    <div
+      v-click="1"
+      :class="$clicks < 1 ? 'opacity-0 translate-y-6 scale-92' : 'opacity-100 translate-y-0 scale-100'"
+      class="flex flex-col items-center gap-3 transition duration-500 ease-in-out"
+    >
       <div class="h-48 w-48 rounded-2xl border border-white/15 bg-black/20 p-4 flex items-center justify-center">
         <div class="text-center">
           <div i-carbon:qr-code text-5xl opacity-40></div>
@@ -423,7 +464,11 @@ class: text-center
       </div>
       <div text-sm opacity-70>GitHub Repo</div>
     </div>
-    <div class="flex flex-col items-center gap-3">
+    <div
+      v-click="1"
+      :class="$clicks < 1 ? 'opacity-0 translate-y-6 scale-92' : 'opacity-100 translate-y-0 scale-100'"
+      class="flex flex-col items-center gap-3 transition duration-500 ease-in-out delay-200"
+    >
       <div class="h-48 w-48 rounded-2xl border border-white/15 bg-black/20 p-4 flex items-center justify-center">
         <div class="text-center">
           <div i-carbon:qr-code text-5xl opacity-40></div>
@@ -435,9 +480,15 @@ class: text-center
   </div>
 </div>
 
-<InsightCalloutBar tone="green" icon="i-carbon:star">
-  Star us on GitHub — every star helps the project grow.
-</InsightCalloutBar>
+<div
+  v-click="2"
+  :class="$clicks < 2 ? 'opacity-0 translate-y-3' : 'opacity-100 translate-y-0'"
+  transition duration-500 ease-in-out
+>
+  <InsightCalloutBar tone="green" icon="i-carbon:star">
+    Star us on GitHub — every star helps the project grow.
+  </InsightCalloutBar>
+</div>
 
 <!--
 Two QR codes: one for the repo, one for the docs. Replace these placeholder boxes with your actual QR images.
