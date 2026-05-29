@@ -1,12 +1,12 @@
 # neko-style Slidev Template
 
-A professional presentation template extracted from neko-talks / KubeCon HK 2025, featuring animated glow backgrounds, 22+ reusable components, and a semantic color system.
+A professional presentation template extracted from neko-talks / KubeCon HK 2025, featuring animated glow backgrounds, 43+ reusable components, and a semantic color system.
 
 ## Quick Start
 
 ```bash
-npx degit iridite/slidev-templates/neko-style/starter my-presentation
-cd my-presentation
+npx degit iridite/slidev-templates/neko-style my-presentation
+cd my-presentation/starter
 npm install
 npm run dev
 ```
@@ -18,7 +18,7 @@ For existing Slidev projects, see [theme/README.md — Installation](./theme/REA
 ```
 neko-style/
 ├── theme/                 # NPM theme package (slidev-theme-neko-style)
-│   ├── components/        #   22 Vue components + 2 advanced
+│   ├── components/        #   43 Vue components (incl. advanced)
 │   ├── layouts/           #   9 layout variants
 │   ├── styles/            #   Base CSS + animations
 │   ├── setup/             #   Slidev setup hooks
@@ -47,7 +47,7 @@ neko-style/
 ## Highlights
 
 - **Glow Backgrounds** — Seed-based stable random polygon gradients, 3 presets (`blue` / `rust` / `cyan`)
-- **22+ Components** — Narrative, data display, speaker intros, closing slides
+- **43+ Components** — Narrative, data display, architecture diagrams, speaker intros, closing slides
 - **9 Layouts** — cover, intro, section, contents-toc, page, page-wide, center, default, end
 - **Semantic Colors** — Red=problems, Green=solutions, Blue=info, Purple=advanced, Yellow=performance
 - **Unified Animations** — 500ms transitions with `v-click` progressive disclosure

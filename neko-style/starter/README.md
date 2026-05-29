@@ -24,11 +24,11 @@ npm run export
 
 Starter pages follow one consistent reveal contract:
 
-- Group cards on first paint use `TransitionGroup appear` with a shared base delay plus short stagger.
-- Step-by-step narration uses `v-click` / `v-after` instead of ad-hoc timing chains.
+- Progressive disclosure uses `v-click` / `v-after` directives, never ad-hoc timing chains.
+- Animated visibility uses the class-toggle pattern: `:class="$clicks < N ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'"` with `transition duration-500 ease-in-out`.
 - If custom content uses raw `$clicks` conditions, also declare click steps via `v-click` / `v-after` or slide `clicks:` frontmatter.
 
-This prevents "last item disappears on leave" and avoids one card lagging far behind the rest.
+> **Never use `<Transition>` or `<TransitionGroup>` for click-driven animations** — they cause elements to disappear without animation on backward navigation. Always use the class-toggle pattern above.
 
 ### Change Theme Colors
 

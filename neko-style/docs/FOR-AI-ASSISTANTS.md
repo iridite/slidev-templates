@@ -290,6 +290,83 @@ glowSeed: 250
 - `i-logos:python`
 - `i-logos:nodejs-icon`
 
+## 🚫 强制约束：使用 neko-style 时必须优先复用内置组件
+
+> **这是硬性规则，不是建议。** 当用户明确要求使用 neko-style 主题时，AI 必须先匹配内置组件，而不是直接手写通用 div。
+
+### 组件优先决策流程
+
+在生成每一页之前，按以下流程决策：
+
+```
+1. 这页要表达什么内容类型？
+   ↓
+2. 查 COMPONENT-CATALOG.md 或下表，是否有匹配组件？
+   ↓
+3. 有 → 使用组件（修改 props 内容，不要重新实现）
+   没有 → 使用 .neko-glass-card 语义卡片模式（见下方）
+   ↓
+4. 交付前执行自检清单（见下方）
+```
+
+### 高频场景强制组件匹配
+
+| 页面意图 | 必须优先用 | 禁止替代方案 |
+|---------|-----------|------------|
+| 议程 / 目录 / 三件事 | `AgendaGrid` | 手写 flex div 列表 |
+| 三列能力 / 特性 / 挑战 | `FeatureIconGrid` 或 `LifecycleChallengesThreeCol` | 手写三列 grid |
+| 模式 / 方法学 / 概念卡片 | `PatternCardGrid` | 手写 2x2 grid |
+| 流程步骤（带箭头） | `ProcessFlowGrid` 或 `StackedFlowPipeline` | 手写 flex + 箭头 |
+| 问题 vs 解决方案 | `ProblemSolutionSplit` | 手写红绿双列 |
+| Checklist / 要点列表 | `GlassChecklist` | 手写 ul/li |
+| 结论强调条 | `InsightCalloutBar` | 手写 banner div |
+| 指标 / 数字 | `StatsRow` | 手写数字卡片 |
+| 技术栈 / 图标列表 | `CategoryIconList` 或 `IconLabelWrap` | 手写 flex wrap |
+| 代码 + 说明 | `CodeExplainSplit` | 手写双列 grid |
+| 分层架构 | `LayeredArchView` | 手写堆叠 div |
+
+### 禁止的浅色卡片写法
+
+下列写法在 neko-style 深色主题下会产生视觉割裂，**除非该页显式设置 `theme: light`，否则禁止使用**：
+
+```html
+<!-- ❌ 禁止 -->
+<div class="p-5 border border-sky-200 bg-sky-50 rounded-lg">
+<div class="bg-emerald-50 border border-emerald-200">
+<div class="bg-violet-50 text-slate-600">
+<div class="bg-slate-100 border border-gray-200">
+```
+
+正确替代：
+
+```html
+<!-- ✅ 使用主题组件 -->
+<FeatureIconGrid :columns="3" :items="..." />
+
+<!-- ✅ 或使用 neko-glass-card 语义模式 -->
+<div class="neko-glass-card p-5">内容</div>
+
+<!-- ✅ 或使用语义色边框卡片 -->
+<div border="2 solid green-800" bg="green-800/20" rounded-lg overflow-hidden>
+  <div bg="green-800/40" px-4 py-2>标题</div>
+  <div px-4 py-3>内容</div>
+</div>
+```
+
+### 交付前 AI 自检清单
+
+在生成完所有页面后，逐项检查：
+
+```
+□ 是否出现大量普通 div 卡片（没有使用任何内置组件）？
+□ 是否存在 bg-*-50 / bg-slate-100 / border-*-200 等浅色卡片样式？
+□ 是否存在 text-slate-600 / text-gray-700 等深色文字（在暗色背景下几乎不可见）？
+□ 每一页是否能对应到 neko-style 的一个 layout 或 component？
+□ 如果某页没有使用内置组件，是否有明确原因？
+```
+
+如果上述任一项为"是"，先修正再交付。
+
 ## ⚠️ 重要注意事项
 
 ### 1. 不要修改核心结构
@@ -325,8 +402,21 @@ transition duration-500 ease-in-out
 - 信息 → 蓝色
 - 不要随意混用
 
-### 4. 每页不同的 glowSeed
-每页使用不同的 `glowSeed` 值（如 100, 150, 200, 250...）
+### 4. 每页不同的 glowSeed，全场统一 glowPreset
+每页使用不同的 `glowSeed` 值（如 100, 150, 200, 250...），但 `glowPreset` 在整个演示文档中只用一个。
+
+**在第一页 frontmatter 决定配色，其余页沿用，不要中途切换：**
+```yaml
+# ✅ 正确：全场统一 preset
+glowPreset: cyan   # 确定后所有页都用这个
+
+# ❌ 错误：封面 blue → 中间 cyan → 附录 rust（视觉横跳）
+```
+
+配色选择参考：
+- `blue` — 技术产品发布、工程主题
+- `rust` — Rust/创新/突破性话题
+- `cyan` — AI/ML、医疗影像、学术研究
 
 ## 🔍 调试清单
 

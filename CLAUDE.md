@@ -102,8 +102,8 @@ When helping users create presentations with neko-style:
 ### Option 1: Use Starter Template (Recommended for new users)
 
 ```bash
-npx degit user/repo/neko-style/starter my-presentation
-cd my-presentation
+npx degit user/repo/neko-style my-presentation
+cd my-presentation/starter
 npm install
 npm run dev
 ```
@@ -116,6 +116,9 @@ npm run dev
 # clone template repo first
 git clone https://github.com/iridite/slidev-templates.git
 
+# install theme's own node_modules first (required when using bun — see note below)
+cd slidev-templates/neko-style/theme && npm install && cd -
+
 # install local theme package in your Slidev project
 npm install /absolute/path/to/slidev-templates/neko-style/theme
 ```
@@ -126,6 +129,8 @@ Then add to `slides.md`:
 theme: neko-style
 ---
 ```
+
+> **Bun users**: bun installs `file:` dependencies as per-file symlinks instead of directory junctions. Vite follows these symlinks to the real path and resolves imports (e.g. `seedrandom`) from there — bypassing the consuming project's `node_modules`. Fix: run `npm install` inside `neko-style/theme/` so the theme's own `node_modules` is present. This is a one-time step per clone.
 
 ## Theme Development
 
@@ -142,6 +147,8 @@ Three presets inspired by neko-talks presentations:
 - **blue** (default): #18549a → #12238b - Technical talks, product launches
 - **rust**: #ed5132 → #ed4832 - Rust topics, innovation themes
 - **cyan**: #32aeed → #32e5ed - AI/ML topics, academic presentations
+
+**Use one preset for the entire presentation.** Pick based on topic at the start; switching presets mid-deck creates visual noise. `glowSeed` provides per-page variety — the preset is the deck's identity.
 
 Presets are defined in `GlowBackground.vue` and can be extended by modifying the `colorPresets` object.
 

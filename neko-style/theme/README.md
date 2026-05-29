@@ -19,8 +19,8 @@ A modern Slidev theme featuring animated glow polygon backgrounds, a semantic co
 ### Option A: Use the Starter Template (recommended)
 
 ```bash
-npx degit iridite/slidev-templates/neko-style/starter my-presentation
-cd my-presentation
+npx degit iridite/slidev-templates/neko-style my-presentation
+cd my-presentation/starter
 npm install
 npm run dev
 ```
@@ -1125,6 +1125,43 @@ When using the `fade-out` page transition, Firefox may cause the last element re
 **Workaround**: Use Chrome or Chromium-based browsers for presentations. The issue does not affect the deployed/exported static build when viewed in Firefox — it only manifests during live Slidev dev-server navigation.
 
 **Status**: Upstream browser behavior. The same transition CSS works correctly in Chrome, Edge, and Safari.
+
+### LiquidGlass naming conflict warning (Slidev v0.51+)
+
+When using `LiquidGlass` in projects that scan `.ts` files as components, you may see:
+
+```
+[unplugin-vue-components] component "LiquidGlass" has naming conflicts with other components, ignored.
+```
+
+This happens because `unplugin-vue-components` picks up `components/advanced/liquid-glass/index.ts` and derives the component name `LiquidGlass` from the directory path, conflicting with `LiquidGlass.vue`.
+
+**Workaround**: The starter template includes a `vite.config.ts` that restricts component scanning to `.vue` and `.md` files only. If you encounter this warning in your own project, add the following to your `vite.config.ts`:
+
+```ts
+export default {
+  slidev: {
+    components: {
+      extensions: ['vue', 'md'],
+    },
+  },
+}
+```
+
+The `LiquidGlass.vue` component itself is unaffected — it imports its helpers directly via `import` and does not rely on auto-component registration.
+
+### Custom CSS file not loaded (Slidev v0.51+)
+
+Slidev v0.51 auto-loads only the following style entry files:
+
+```
+styles/index.css
+styles/index.ts
+styles.css
+style.css
+```
+
+A file named `styles/custom.css` **will not** be auto-loaded. If your custom styles appear to have no effect, rename the file to `styles/index.css` (or import it from `styles/index.css`).
 
 ---
 

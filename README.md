@@ -12,7 +12,7 @@
 
 这里是 `neko-style` 示例预览视频（MP4）：
 
-[https://github.com/user-attachments/assets/6a4d34f7-cefd-47e1-b5d1-51d6e31845fe](https://github.com/user-attachments/assets/a8de803a-3857-43cf-988c-31578a26cb8b)
+https://github.com/user-attachments/assets/a8de803a-3857-43cf-988c-31578a26cb8b
 
 > 示例来源：`neko-style/starter/slides.md`（用于展示 glow seed 深色背景效果）
 
@@ -41,8 +41,8 @@
 ### 1) 直接用 Starter（推荐）
 
 ```bash
-npx degit iridite/slidev-templates/neko-style/starter my-presentation
-cd my-presentation
+npx degit iridite/slidev-templates/neko-style my-presentation
+cd my-presentation/starter
 npm install
 npm run dev
 ```
@@ -173,7 +173,9 @@ npm run export:neko
 ### 2) Starter 独立可用性
 
 ```bash
-cd neko-style/starter
+# 用 degit 获取 starter（模拟用户体验）
+npx degit iridite/slidev-templates/neko-style my-presentation
+cd my-presentation/starter
 npm install
 npm run dev
 npm run build
@@ -181,6 +183,7 @@ npm run export
 ```
 
 验收点：
+- `degit neko-style` 后 `file:../theme` 能正确解析
 - Starter 脱离 monorepo 也能运行
 - `slides.md` 使用 `theme: neko-style` 后样式与组件可正常加载
 
