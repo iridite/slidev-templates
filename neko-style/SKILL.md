@@ -445,18 +445,14 @@ Copy the snippet, fill `{{placeholders}}`, done.
 - `examples/golden-tech-talk.md` — 12-slide realistic architecture talk
 - `examples/bad-vs-good.md` — 5 common AI mistakes with corrections
 
-**AI rules** (for Codex/ChatGPT): See `AGENTS.md` for mandatory rules and self-check.
-
 ## Deep Dive (Read Only When Needed)
 
 | Need | Read this file |
 |------|---------------|
-| Per-page fillable templates | `neko-style/snippets/*.md` |
-| AI generation rules (Codex) | `neko-style/AGENTS.md` |
-| Full props for a specific component | `neko-style/docs/COMPONENT-CATALOG.md` |
-| Complete page composition recipes | `neko-style/docs/PAGE-PATTERNS.md` |
-| All 45+ components + 13 layouts | `neko-style/theme/README.md` |
-| AI workflow guide + anti-patterns | `neko-style/docs/FOR-AI-ASSISTANTS.md` |
-| Golden example (12 slides) | `neko-style/examples/golden-tech-talk.md` |
-| What NOT to do | `neko-style/examples/bad-vs-good.md` |
-| Design language philosophy | `neko-style/docs/design-language-airi-2025-10.md` |
+| Per-page fillable templates | `snippets/*.md` |
+| Full props for a specific component | `docs/COMPONENT-CATALOG.md` |
+| Complete page composition recipes | `docs/PAGE-PATTERNS.md` |
+| All 45+ components + 13 layouts | `theme/README.md` |
+| Golden example (12 slides) | `examples/golden-tech-talk.md` |
+| What NOT to do | `examples/bad-vs-good.md` |
+| Design language philosophy | `docs/design-language-airi-2025-10.md` |

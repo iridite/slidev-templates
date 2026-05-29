@@ -35,10 +35,9 @@ npm run export        # Export presentation
 - **`neko-style/theme/`**: NPM theme package with components, layouts, and styles
 - **`neko-style/starter/`**: Starter template that uses the theme
 - **`neko-style/docs/`**: Shared documentation
+- **`neko-style/SKILL.md`**: Single AI reference (rules, routing table, templates, snippets guide)
 - **`neko-style/snippets/`**: Per-page-type fillable templates (10 snippets for AI to copy+fill)
 - **`neko-style/examples/`**: Golden example (12-slide tech talk) and bad-vs-good anti-patterns
-- **`neko-style/AGENTS.md`**: AI generation rules for Codex/ChatGPT (mandatory constraints)
-- **`neko-style/SKILL.md`**: AI skill for Claude Code (component routing + templates)
 - **`neko-style/ref/talks/packages/`**: Real-world presentation source packages (git submodule)
 
 ### neko-style Template Architecture
@@ -84,7 +83,6 @@ The template uses semantic, card-based components built with UnoCSS utility clas
 ## Key Files and Their Purposes
 
 - **`neko-style/theme/README.md`**: Comprehensive theme documentation (installation, all layouts, all components with props, glow system, color system, animations)
-- **`neko-style/docs/FOR-AI-ASSISTANTS.md`**: AI assistant guide for creating presentations
 - **`neko-style/docs/design-language-airi-2025-10.md`**: Design language reference
 - **`neko-style/theme/components/GlowBackground.vue`**: Core glow background implementation
 - **`neko-style/theme/global-bottom.vue`**: Theme-level global background entry for Slidev
@@ -95,8 +93,8 @@ The template uses semantic, card-based components built with UnoCSS utility clas
 
 When helping users create presentations with neko-style:
 
-1. **Read the AI guide first**: Always reference `neko-style/docs/FOR-AI-ASSISTANTS.md` for detailed instructions
-2. **Copy components from guide**: Use `neko-style/theme/README.md` as the source of truth for component props and usage
+1. **Read SKILL.md first**: The single AI reference with routing table, templates, and rules
+2. **Copy from snippets/**: Use `neko-style/snippets/*.md` as fillable templates for each page type
 3. **Follow semantic colors**: Red for problems, green for solutions, blue for information
 4. **Vary glowSeed per page**: Use different seed values (100, 150, 200, etc.) for visual variety
 5. **Use v-click for animations**: Wrap content in `<v-click>` for progressive disclosure
@@ -160,16 +158,12 @@ Presets are defined in `GlowBackground.vue` and can be extended by modifying the
 
 When users need help, guide them to documentation in this order:
 
-1. `neko-style/SKILL.md` - Self-contained AI skill (routing table, templates, rules — read this first)
+1. `neko-style/SKILL.md` - **The single AI reference** (rules, routing table, templates, snippets, debugging)
 2. `neko-style/snippets/*.md` - Per-page-type fillable templates (copy+fill workflow)
-3. `neko-style/AGENTS.md` - Mandatory generation rules and self-check (for Codex/ChatGPT)
-4. `neko-style/docs/COMPONENT-CATALOG.md` - Full component props reference (when you need exact types)
-5. `neko-style/docs/PAGE-PATTERNS.md` - Complete slide composition recipes with copy-paste code
-6. `neko-style/examples/golden-tech-talk.md` - 12-slide realistic example to learn from
-7. `neko-style/examples/bad-vs-good.md` - Common AI mistakes and how to fix them
-8. `neko-style/theme/README.md` - Comprehensive theme documentation (all 13 layouts, 45+ components)
-9. `neko-style/docs/FOR-AI-ASSISTANTS.md` - Detailed AI workflow guide (Chinese)
-10. `neko-style/docs/design-language-airi-2025-10.md` - Design language reference
+3. `neko-style/examples/` - Golden example + bad-vs-good anti-patterns
+4. `neko-style/docs/COMPONENT-CATALOG.md` - Full component props reference (lookup only)
+5. `neko-style/docs/PAGE-PATTERNS.md` - Complete slide composition recipes
+6. `neko-style/theme/README.md` - Comprehensive theme documentation (all 13 layouts, 45+ components)
 
 ## Important Conventions
 

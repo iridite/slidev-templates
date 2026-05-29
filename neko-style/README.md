@@ -30,9 +30,12 @@ neko-style/
 │   ├── slides.md          #   "Project Aurora" example deck
 │   ├── uno.config.ts      #   UnoCSS config
 │   └── package.json       #   Dev dependencies
-├── docs/                  # Repo-level references
-│   ├── FOR-AI-ASSISTANTS.md    # AI assistant guide
+├── docs/                  # Reference documentation
+│   ├── COMPONENT-CATALOG.md   # Full props reference (lookup)
+│   ├── PAGE-PATTERNS.md       # Slide composition recipes
 │   └── design-language-airi-2025-10.md  # Design language
+├── snippets/              # Fillable page templates for AI
+├── examples/              # Golden example + bad-vs-good
 └── ref/talks/             # Git submodule (nekomeowww/talks)
 ```
 
@@ -41,14 +44,14 @@ neko-style/
 | Document | Description |
 |----------|-------------|
 | [theme/README.md](./theme/README.md) | **Complete reference** — installation, layouts, components, glow system, colors, animations |
-| [docs/FOR-AI-ASSISTANTS.md](./docs/FOR-AI-ASSISTANTS.md) | Guide for AI assistants creating presentations |
+| [SKILL.md](./SKILL.md) | **Single AI reference** — rules, routing table, templates, snippets |
 | [docs/design-language-airi-2025-10.md](./docs/design-language-airi-2025-10.md) | AIRI design language principles |
 
 ## Highlights
 
 - **Glow Backgrounds** — Seed-based stable random polygon gradients, 3 presets (`blue` / `rust` / `cyan`)
-- **43+ Components** — Narrative, data display, architecture diagrams, speaker intros, closing slides
-- **9 Layouts** — cover, intro, section, contents-toc, page, page-wide, center, default, end
+- **45+ Components** — Narrative, data display, architecture diagrams, speaker intros, closing slides
+- **13 Layouts** — cover, intro, section, statement, compare, cards, timeline, contents-toc, page, page-wide, center, default, end
 - **Semantic Colors** — Red=problems, Green=solutions, Blue=info, Purple=advanced, Yellow=performance
 - **Unified Animations** — 500ms transitions with `v-click` progressive disclosure
 
@@ -60,7 +63,7 @@ cp neko-style/SKILL.md .claude/skills/neko-slidev.md
 # Then use /neko-slidev in Claude Code
 ```
 
-See [FOR-AI-ASSISTANTS.md](./docs/FOR-AI-ASSISTANTS.md) for full instructions.
+See [SKILL.md](./SKILL.md) for the complete AI reference.
 
 ## Credits
 
