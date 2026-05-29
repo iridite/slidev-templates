@@ -11,6 +11,26 @@ h6 {
   letter-spacing: 0 !important;
 }
 
+/* Cover layout: hero typography for plain Markdown # / ## headings */
+.cover h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.cover h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+  opacity: 0.75;
+  margin-top: 0.25rem;
+  color: white;
+}
+
 /* Transitions */
 .slidev-vclick-target {
   transition:

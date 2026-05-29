@@ -10,7 +10,7 @@ const props = defineProps<{
 
 <template>
   <Background :background="props.background" with-logo :logo-src="props.logoSrc" with-powered-by :powered-by-src="props.poweredBySrc">
-    <div class="slidev-layout" relative h-full w-full flex flex-col justify-center text-white>
+    <div class="slidev-layout cover" relative h-full w-full flex flex-col justify-center text-white>
       <slot />
     </div>
   </Background>
