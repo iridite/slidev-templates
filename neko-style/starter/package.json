@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@slidev/cli": "^0.49.0",
-    "@slidev/theme-default": "latest",
     "slidev-theme-neko-style": "file:../theme"
   },
   "devDependencies": {

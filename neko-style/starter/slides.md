@@ -5,7 +5,7 @@ highlighter: shiki
 css: unocss
 colorSchema: dark
 transition: fade-out
-title: 'Project Aurora: Rethinking Developer Workflows'
+title: 'Project Aurora: Rethinking Developer Workflows' # TODO: replace with your presentation title
 lineNumbers: false
 drawings:
   persist: false
@@ -17,6 +17,7 @@ clicks: 2
 
 <div px-14>
 
+<!-- TODO: replace title, subtitle, speaker name, and year below -->
 <h1
   v-click="1"
   :class="$clicks < 1 ? 'opacity-0 scale-105 blur-sm' : 'opacity-100 scale-100 blur-0'"
@@ -63,6 +64,7 @@ glowSeed: 128
     <div w-40 h-40 rounded-full class="bg-gradient-to-br from-blue-500/40 to-cyan-500/30" flex items-center justify-center mb-5>
       <div i-carbon:user-avatar text-5xl opacity-70></div>
     </div>
+    <!-- TODO: replace name, role, and GitHub handle -->
     <span font-semibold text-3xl>Your Name</span>
     <div>
       <div><span class="opacity-70">Senior Software Engineer</span></div>
@@ -73,6 +75,7 @@ glowSeed: 128
   </div>
   <div flex-1></div>
   <div flex flex-col gap-8>
+    <!-- TODO: replace communities and projects with your own -->
     <div mb-4 v-click="2">
       <div mb-4 text-zinc-400><span>Communities</span></div>
       <div
@@ -420,6 +423,7 @@ clicks: 3
 
 <div text-3xl font-semibold mb-5>Team & Contributors</div>
 
+<!-- TODO: replace speaker names, roles, and handles; remove extra speakers or add more as needed -->
 <SpeakerLineupIntro
   title=""
   subtitle="The people building Aurora"
@@ -450,6 +454,7 @@ clicks: 2
 <div text-3xl font-semibold mb-6>Get Started</div>
 
 <div class="h-[55%] flex items-center justify-center">
+  <!-- TODO: replace QR code placeholders with <img src="./qr-repo.png"> and <img src="./qr-docs.png"> -->
   <div class="flex gap-10 items-start">
     <div
       v-click="1"
