@@ -8,10 +8,11 @@ const props = defineProps<{
 
 <template>
   <Background :background="props.background">
-    <div class="slidev-layout" relative h-full flex flex-col items-center justify-center text-5xl text-white font-semibold>
-      <slot>
-        <h1>Thanks</h1>
-      </slot>
+    <div class="slidev-layout timeline neko-safe-area" h-full flex flex-col>
+      <slot name="title" />
+      <div flex-1 flex items-center>
+        <slot />
+      </div>
     </div>
   </Background>
 </template>

@@ -24,6 +24,7 @@ const accent = props.accentColor || '#60cd6a'
       <span>
         {{ props.sectionSubtitle || '' }}
       </span>
+      <slot />
     </div>
   </Background>
 </template>
