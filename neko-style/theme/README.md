@@ -176,6 +176,88 @@ layout: end
 ---
 ```
 
+### statement
+
+Centered impactful claim with named slots for structured content.
+
+```md
+---
+layout: statement
+glowSeed: 200
+---
+
+::kicker::
+Core Insight
+
+# The main claim goes here
+
+::subtitle::
+Supporting sentence below the title
+```
+
+| Slot | Purpose |
+|------|---------|
+| `kicker` | Small uppercase label above title |
+| default | The main h1 statement |
+| `subtitle` | Supporting text below |
+
+### compare
+
+Side-by-side comparison with 4 named slots.
+
+```md
+---
+layout: compare
+glowSeed: 250
+---
+
+::left-title::
+Before
+
+::left::
+Content for the left column
+
+::right-title::
+After
+
+::right::
+Content for the right column
+```
+
+### cards
+
+Grid layout for card-based content. Set `columns` prop in frontmatter (default: 3).
+
+```md
+---
+layout: cards
+glowSeed: 300
+columns: 3
+---
+
+::title::
+# Feature Overview
+
+Card content goes in the default slot (grid container)
+```
+
+### timeline
+
+Horizontal progression layout. Wraps content in a centered flex container.
+
+```md
+---
+layout: timeline
+glowSeed: 350
+clicks: 7
+---
+
+::title::
+# Product Roadmap
+
+<RouteProgressionLane :steps="[...]" />
+```
+
 ### center / default
 
 Centered content and Slidev's default layout, respectively.

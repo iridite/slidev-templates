@@ -422,12 +422,41 @@ Check in order:
 4. Does the current slide have `glow: false`? (disables glow — expected)
 5. Is the frontmatter YAML valid? (check `---` delimiters and indentation)
 
+## Snippets & Examples
+
+**Before writing any slide**, check if a snippet exists for that page type:
+
+```
+snippets/cover.md             — Title slide
+snippets/section-divider.md   — Section break
+snippets/statement.md         — Centered impactful claim (uses ::kicker:: and ::subtitle:: slots)
+snippets/feature-grid.md      — Icon+title+desc grid
+snippets/problem-solution.md  — Problem vs solution split
+snippets/tech-stack.md        — Categorized icon list
+snippets/architecture.md      — Node-edge diagram
+snippets/timeline-roadmap.md  — Horizontal progression
+snippets/learning-path.md     — Vertical steps with lists
+snippets/closing.md           — Thank you page
+```
+
+Copy the snippet, fill `{{placeholders}}`, done.
+
+**Examples** (for learning, not copying):
+- `examples/golden-tech-talk.md` — 12-slide realistic architecture talk
+- `examples/bad-vs-good.md` — 5 common AI mistakes with corrections
+
+**AI rules** (for Codex/ChatGPT): See `AGENTS.md` for mandatory rules and self-check.
+
 ## Deep Dive (Read Only When Needed)
 
 | Need | Read this file |
 |------|---------------|
+| Per-page fillable templates | `neko-style/snippets/*.md` |
+| AI generation rules (Codex) | `neko-style/AGENTS.md` |
 | Full props for a specific component | `neko-style/docs/COMPONENT-CATALOG.md` |
 | Complete page composition recipes | `neko-style/docs/PAGE-PATTERNS.md` |
-| All 45+ components documented | `neko-style/theme/README.md` |
+| All 45+ components + 13 layouts | `neko-style/theme/README.md` |
 | AI workflow guide + anti-patterns | `neko-style/docs/FOR-AI-ASSISTANTS.md` |
+| Golden example (12 slides) | `neko-style/examples/golden-tech-talk.md` |
+| What NOT to do | `neko-style/examples/bad-vs-good.md` |
 | Design language philosophy | `neko-style/docs/design-language-airi-2025-10.md` |

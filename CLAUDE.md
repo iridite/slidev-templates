@@ -35,6 +35,10 @@ npm run export        # Export presentation
 - **`neko-style/theme/`**: NPM theme package with components, layouts, and styles
 - **`neko-style/starter/`**: Starter template that uses the theme
 - **`neko-style/docs/`**: Shared documentation
+- **`neko-style/snippets/`**: Per-page-type fillable templates (10 snippets for AI to copy+fill)
+- **`neko-style/examples/`**: Golden example (12-slide tech talk) and bad-vs-good anti-patterns
+- **`neko-style/AGENTS.md`**: AI generation rules for Codex/ChatGPT (mandatory constraints)
+- **`neko-style/SKILL.md`**: AI skill for Claude Code (component routing + templates)
 - **`neko-style/ref/talks/packages/`**: Real-world presentation source packages (git submodule)
 
 ### neko-style Template Architecture
@@ -156,12 +160,16 @@ Presets are defined in `GlowBackground.vue` and can be extended by modifying the
 
 When users need help, guide them to documentation in this order:
 
-1. `neko-style/docs/COMPONENT-CATALOG.md` - Component routing table ("I need X" → use component Y) + full props reference
-2. `neko-style/docs/PAGE-PATTERNS.md` - Complete slide composition recipes with copy-paste code
-3. `neko-style/theme/README.md` - Comprehensive theme documentation (installation, layouts, components, glow system, colors, animations)
-4. `neko-style/docs/FOR-AI-ASSISTANTS.md` - AI assistant guide for creating presentations
-5. `neko-style/starter/slides.md` - Working starter with all core features demonstrated
-6. `neko-style/docs/design-language-airi-2025-10.md` - Design language reference
+1. `neko-style/SKILL.md` - Self-contained AI skill (routing table, templates, rules — read this first)
+2. `neko-style/snippets/*.md` - Per-page-type fillable templates (copy+fill workflow)
+3. `neko-style/AGENTS.md` - Mandatory generation rules and self-check (for Codex/ChatGPT)
+4. `neko-style/docs/COMPONENT-CATALOG.md` - Full component props reference (when you need exact types)
+5. `neko-style/docs/PAGE-PATTERNS.md` - Complete slide composition recipes with copy-paste code
+6. `neko-style/examples/golden-tech-talk.md` - 12-slide realistic example to learn from
+7. `neko-style/examples/bad-vs-good.md` - Common AI mistakes and how to fix them
+8. `neko-style/theme/README.md` - Comprehensive theme documentation (all 13 layouts, 45+ components)
+9. `neko-style/docs/FOR-AI-ASSISTANTS.md` - Detailed AI workflow guide (Chinese)
+10. `neko-style/docs/design-language-airi-2025-10.md` - Design language reference
 
 ## Important Conventions
 

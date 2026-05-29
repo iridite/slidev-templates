@@ -38,6 +38,21 @@
 
 ## 🔧 当用户请求创建 Slidev 时
 
+### 步骤 0：从 snippets 开始
+
+在写任何 slide 之前，先检查 `snippets/` 目录是否有对应的页面模板：
+
+```
+snippets/cover.md, section-divider.md, statement.md, feature-grid.md,
+problem-solution.md, tech-stack.md, architecture.md, timeline-roadmap.md,
+learning-path.md, closing.md
+```
+
+复制 snippet → 填入 `{{placeholder}}` → 完成。这是最快最稳定的工作流。
+
+> 另见：`AGENTS.md` 包含 10 条强制规则和交付前自检清单。
+> 另见：`examples/golden-tech-talk.md` 是 12 页完整范例，`examples/bad-vs-good.md` 是反面教材。
+
 ### 步骤 1：了解需求
 询问用户：
 - 演示主题是什么？
