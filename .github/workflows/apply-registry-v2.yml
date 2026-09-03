@@ -28,6 +28,17 @@ jobs:
       - name: Reconstruct and verify payload
         shell: bash
         run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          part = Path('.registry-v2-payload/part-04')
+          content = part.read_text(encoding='utf-8')
+          needle = 'B7bhekkXL'
+          replacement = 'B7b8hekkXL'
+          if content.count(needle) != 1:
+              raise SystemExit('staged payload did not match the single known transport omission')
+          part.write_text(content.replace(needle, replacement, 1), encoding='utf-8')
+          PY
           cat .registry-v2-payload/part-* > /tmp/registry-v2.tar.xz.b64
           base64 --decode /tmp/registry-v2.tar.xz.b64 > /tmp/registry-v2.tar.xz
           echo "d90121fa83fb9ac0905a0029f079d46502a10bd6a505bfb9f15815e70dd14353  /tmp/registry-v2.tar.xz" | sha256sum --check -
