@@ -18,12 +18,20 @@ This registry therefore complements Slidev's theme ecosystem rather than duplica
 
 ## Template catalog
 
-| Template | Status | Source | Best for | Start |
+<!-- registry-catalog:start -->
+| Template | Status | Source | Highlights | Start |
 | --- | --- | --- | --- | --- |
-| [Neko Style](./neko-style/) | ✅ Verified | Hosted | Technical talks, developer presentations, AI/ML, conferences | `npx degit iridite/slidev-templates/neko-style my-presentation` |
-| [Espressif Slidev Template](https://github.com/espressif/slidev-esp-template) | 🟦 Community | External | Corporate/developer talks, branded technical presentations, addons | `npx degit espressif/slidev-esp-template my-presentation` |
-| [3mdeb Slidev Template](https://github.com/3mdeb/slidev-template) | 🟦 Community | External | Production workflows, automated export, visual regression testing | `git submodule add https://github.com/3mdeb/slidev-template.git slidev-template` |
-| [Presentations Template](https://github.com/askpt/presentations.template) | 🟦 Community | External | TypeScript/Vue, deployment-ready decks, PDF/PPTX workflows | `npx degit askpt/presentations.template my-presentation` |
+| [Neko Style](./neko-style/) | ✅ Verified | Hosted | `technical`, `developer`, `dark`, `ai`, `conference` | <code>npx degit iridite/slidev-templates/neko-style my-presentation</code> |
+| [LittleSound Talks Template](https://github.com/LittleSound/talks-template) | 🟦 Community | External | `developer`, `multi-talk`, `pnpm`, `vue`, `workspace` | <code>npx degit LittleSound/talks-template my-talks</code> |
+| [Espressif Slidev Template](https://github.com/espressif/slidev-esp-template) | 🟦 Community | External | `corporate`, `developer`, `technical`, `branded`, `addons` | <code>npx degit espressif/slidev-esp-template my-presentation</code> |
+| [Miragon Slidev Deck Template](https://github.com/Miragon/slidev-deck-template) | 🟦 Community | External | `corporate`, `scaffolder`, `automation`, `ai`, `validation` | <code>npm create @miragon/slidev-deck@latest my-talk</code> |
+| [Presentations Template](https://github.com/askpt/presentations.template) | 🟦 Community | External | `developer`, `typescript`, `deployment`, `multi-theme`, `devcontainer` | <code>npx degit askpt/presentations.template my-presentation</code> |
+| [3mdeb Slidev Template](https://github.com/3mdeb/slidev-template) | 🟦 Community | External | `technical`, `automation`, `testing`, `visual-regression`, `production` | <code>git submodule add https://github.com/3mdeb/slidev-template.git slidev-template</code> |
+| [Slidev Resources Template](https://github.com/kaakaa/slidev-resources-template) | 🟦 Community | External | `multi-talk`, `github-pages`, `pdf`, `automation`, `release` | <code>gh repo create my-slides --template kaakaa/slidev-resources-template --public</code> |
+| [Godkun PPT Template](https://github.com/godkun/ppt-template) | 🟦 Community | External | `developer`, `pnpm`, `visual`, `starter`, `custom-style` | <code>git clone https://github.com/godkun/ppt-template.git</code> |
+<!-- registry-catalog:end -->
+
+This table is generated from [`registry/templates.json`](./registry/templates.json), so the human-facing catalog and the machine-readable registry cannot silently drift apart.
 
 The registry deliberately mixes repository-hosted templates and independently maintained external projects. External authors keep ownership and governance of their projects; this repository only provides curated discovery metadata.
 
@@ -88,7 +96,7 @@ npm run build:neko
 npm run export:neko
 ```
 
-GitHub Actions runs tests, builds the hosted reference template, and verifies PDF export on pushes and pull requests.
+GitHub Actions runs tests, builds the hosted reference template, and verifies PDF export on pushes and pull requests. A separate Registry Health workflow checks external canonical sources and preview links on registry changes and on a weekly schedule.
 
 ## Repository structure
 
@@ -98,6 +106,7 @@ slidev-templates/
 │   ├── templates.json      # canonical template catalog
 │   ├── schema.json         # registry schema
 │   └── README.md           # registry rules and status model
+├── scripts/                # catalog generation + upstream health checks
 ├── tests/                  # registry + hosted-template validation
 ├── .github/
 │   └── ISSUE_TEMPLATE/     # bug, feature, and template submissions
