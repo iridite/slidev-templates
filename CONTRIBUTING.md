@@ -1,16 +1,22 @@
 # Contributing to slidev-templates
 
-Thanks for helping build a useful Slidev template discovery ecosystem. Contributions are welcome in three forms: **registry submissions**, **hosted templates**, and **maintenance improvements**.
+Thank you for helping build a useful Slidev template discovery and maintenance ecosystem. Contributions that make templates easier to discover, evaluate, reuse, verify, or maintain are especially welcome.
 
-The project optimizes for reusable, discoverable, well-documented templates rather than raw entry count.
+This repository accepts two different contribution models:
+
+- **Hosted templates** are maintained and continuously checked in this repository.
+- **External entries** stay in their canonical upstream repository and are indexed here without vendoring their code.
+
+Read [`docs/TEMPLATE_CONTRACT.md`](./docs/TEMPLATE_CONTRACT.md) before proposing a new template.
 
 ## Before opening a change
 
-- Search existing registry entries, issues, and pull requests first.
-- Keep changes focused. Avoid unrelated formatting or refactors in the same PR.
-- New templates must be reusable beyond one specific presentation.
-- Do not vendor or redistribute somebody else's project without permission; prefer an external registry entry pointing to the canonical source.
-- Make licensing and attribution explicit for code, fonts, images, and bundled assets.
+- Search existing issues, registry entries, and pull requests first.
+- Keep changes focused; avoid unrelated formatting or refactors.
+- Explain the user problem and how the change was verified.
+- Distinguish observed upstream facts from assumptions or recommendations.
+- Do not copy public code or assets unless redistribution is permitted and required notices are preserved.
+- New templates must be reusable beyond one presentation, customer, event, or private organization.
 
 ## Local setup
 
@@ -21,76 +27,123 @@ npm ci
 npm test
 ```
 
-`npm test` validates the machine-readable registry and hosted-template regression tests.
+Build every manifest-based hosted template:
 
-For changes to the current Neko Style reference template, also run:
+```bash
+npm run build:hosted
+```
+
+For Neko Style changes:
 
 ```bash
 npm run build:neko
 npm run export:neko
 ```
 
-## Adding an external template to the registry
+Browse the registry locally:
 
-External listings are the default when a template already has its own canonical repository.
+```bash
+npm run gallery:serve
+```
 
-1. Use the **Template submission** issue form if you want maintainer feedback before writing a PR.
-2. Add one entry to [`registry/templates.json`](./registry/templates.json) using `source.type = "external"`.
-3. Point `source.repository` to the canonical upstream repository.
-4. Include a representative preview, license, tags, author, and a reproducible usage command.
-5. Run `npm test`.
+Use the registry CLI:
 
-External projects retain their own license and governance. Inclusion here is an index/discovery relationship, not a transfer of ownership.
+```bash
+npm run templates -- list
+npm run templates -- search research
+npm run templates -- scaffold paper-lab ./my-talk
+```
 
-## Adding a hosted template
+## Submit an external template
 
-A hosted template is appropriate when the contribution is intended to be maintained as part of this repository.
+The lowest-friction path is the [Template submission form](https://github.com/iridite/slidev-templates/issues/new?template=template_submission.yml).
 
-It should normally include:
+Provide:
 
-- a stable top-level directory;
-- a `README.md` explaining purpose and usage;
-- a runnable starter or equivalent reproducible entry point;
-- representative preview assets;
-- explicit licensing and attribution;
-- tests or verification appropriate to its complexity;
-- a corresponding entry in `registry/templates.json` using `source.type = "hosted"`.
+- canonical repository and maintainer;
+- purpose, audience, and distinctive value;
+- representative preview or live demo;
+- shortest reproducible start command;
+- license and relevant asset attribution;
+- preferred inclusion model.
 
-A reusable theme package is welcome when the template needs one, but **a theme is not required**. The registry unit is the reusable presentation template/workflow.
+An external entry should normally remain external when it is actively governed upstream, includes organization-specific branding, has a reciprocal license, or would create substantial duplicated maintenance.
 
-## Registry review criteria
+A focused registry PR may update `registry/templates.json` directly. Run `npm test` before submitting it.
 
-Maintainers consider:
+## Add a hosted template
 
-- reuse value beyond one deck;
-- clarity of setup and documentation;
-- licensing and provenance;
-- quality of preview material;
-- whether the canonical source is still maintainable;
-- uniqueness relative to existing entries;
-- user value versus ongoing maintenance cost.
+New hosted templates belong under:
 
-Registry status is assigned as described in [`registry/README.md`](./registry/README.md): `verified`, `community`, or `experimental`.
+```text
+templates/<template-id>/
+├── template.json
+├── README.md
+├── LICENSE
+├── ATTRIBUTION.md
+├── preview.svg | preview.png | preview.webp
+└── starter/
+    ├── package.json
+    └── slides.md
+```
+
+The manifest must conform to [`registry/hosted-template.schema.json`](./registry/hosted-template.schema.json). The registry entry must point to the template root, starter path, manifest, and preview.
+
+A hosted template should add meaningful diversity. A new color palette applied to the same structure is not enough. Strong distinctions include audience, presentation job, information architecture, interaction model, component system, or delivery workflow.
+
+### Provenance
+
+Declare one of:
+
+- `original` — designed and implemented in this repository;
+- `inspired` — original implementation informed by named references;
+- `adapted` — contains material from a permissively licensed upstream project.
+
+Adapted work must preserve the upstream license and required notices. Add an accurate `ATTRIBUTION.md`; do not use vague language such as “inspired by” to hide copied implementation.
+
+### Hosted-template checklist
+
+Before opening a PR, confirm that:
+
+- `npm test` passes;
+- `npm run build:hosted` passes;
+- the starter runs with the documented command;
+- the preview represents the actual template;
+- README, manifest, registry metadata, license, and attribution agree;
+- sample content contains no private, confidential, or misleading real-world data;
+- external fonts and assets are either removed or explicitly licensed;
+- the template adds a clearly different use case or workflow.
+
+## Modify an existing hosted template
+
+For user-facing changes, explain:
+
+- what workflow or rendering problem is being fixed;
+- which slides or components are affected;
+- how compatibility was tested;
+- whether the preview, documentation, manifest version, or registry description should change.
+
+Avoid breaking a documented scaffold path without a compatibility note or migration plan.
 
 ## Pull request checklist
 
-Before submitting a PR, please confirm that:
+Every PR should make it easy to review:
 
-- `npm test` passes;
-- registry metadata is complete and uses stable URLs/paths;
-- documentation is updated when user-facing behavior changes;
-- hosted-template changes include suitable verification;
-- new dependencies are necessary and declared in the correct workspace package;
-- the PR explains what was tested and why the change benefits template users or contributors.
-
-## Reporting bugs
-
-Use the bug report issue form and include the smallest reproducible example you can provide. Installation bugs should include runtime/tool versions, the installation method, and relevant error output.
+- [ ] Scope is focused and the motivation is clear.
+- [ ] `npm test` passes.
+- [ ] Relevant hosted templates build.
+- [ ] Neko Style builds/exports when affected.
+- [ ] Documentation and generated/catalog-facing data are synchronized.
+- [ ] Dependencies are necessary and declared in the correct package.
+- [ ] Licensing, attribution, and provenance have been checked.
+- [ ] The PR states exactly how the change was verified.
 
 ## Maintainer workflow
 
-Issues are triaged based on reproducibility, user impact, ecosystem usefulness, and maintenance cost. Template submissions are reviewed for reuse value, source legitimacy, licensing, and discoverability. Pull requests are reviewed for correctness, compatibility, scope, and verification.
+Issues are triaged using reproducibility, user impact, ecosystem usefulness, licensing, and maintenance cost. Registry additions are curated rather than automatically accepted.
 
-Small, well-scoped contributions with clear evidence are the easiest to review and merge.
+Automation and coding agents may assist with candidate discovery, metadata extraction, installation reproduction, tests, and review summaries. Final decisions on inclusion, provenance, licensing, security, merges, and releases remain human-owned under [`docs/AI_ASSISTED_MAINTENANCE.md`](./docs/AI_ASSISTED_MAINTENANCE.md).
 
-By contributing code or documentation directly to this repository, you agree that those contributions are licensed under the repository's MIT License unless a subdirectory explicitly states otherwise. External registry entries retain their upstream licenses.
+Small, well-scoped changes with explicit evidence are the easiest to review and merge.
+
+By contributing repository-maintained code or documentation, you agree that your contribution is licensed under the repository's MIT License unless a nested license states otherwise. External registry entries retain their upstream licenses.
