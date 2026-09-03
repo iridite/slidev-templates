@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Browse the curated Slidev template registry by use case, source, and verification status." />
+  <title>Slidev Template Registry</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav>
+      <a class="brand" href="../README.md">slidev-templates</a>
+      <a href="../registry/templates.json">JSON Registry</a>
+      <a href="../CONTRIBUTING.md">Contribute</a>
+    </nav>
+    <div class="hero-copy">
+      <p class="eyebrow">CURATED · MACHINE-READABLE · COMMUNITY-MAINTAINED</p>
+      <h1>Find a Slidev starting point that fits the story.</h1>
+      <p>Templates are complete presentation workflows: starters, structure, components, automation, and documentation—not only visual themes.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="controls" aria-label="Template filters">
+      <label class="search">
+        <span>Search</span>
+        <input id="search" type="search" placeholder="academic, terminal, corporate, PDF…" autocomplete="off" />
+      </label>
+      <label>
+        <span>Source</span>
+        <select id="source-filter">
+          <option value="">All sources</option>
+          <option value="hosted">Hosted</option>
+          <option value="external">External</option>
+        </select>
+      </label>
+      <label>
+        <span>Status</span>
+        <select id="status-filter">
+          <option value="">All statuses</option>
+          <option value="verified">Verified</option>
+          <option value="community">Community</option>
+          <option value="experimental">Experimental</option>
+        </select>
+      </label>
+      <label>
+        <span>Category</span>
+        <select id="category-filter">
+          <option value="">All categories</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="summary" aria-live="polite">
+      <p id="result-count">Loading registry…</p>
+      <button id="clear-filters" type="button">Clear filters</button>
+    </section>
+
+    <section id="template-grid" class="template-grid" aria-label="Template catalog"></section>
+
+    <template id="template-card">
+      <article class="card">
+        <div class="preview-wrap">
+          <img class="preview" alt="" loading="lazy" />
+          <div class="preview-fallback" aria-hidden="true"><span></span></div>
+          <div class="badges"></div>
+        </div>
+        <div class="card-body">
+          <div class="card-heading">
+            <div>
+              <p class="kind"></p>
+              <h2></h2>
+            </div>
+            <span class="license"></span>
+          </div>
+          <p class="description"></p>
+          <div class="categories"></div>
+          <div class="tags"></div>
+          <div class="command-row">
+            <code></code>
+            <button class="copy" type="button">Copy</button>
+          </div>
+          <div class="actions">
+            <a class="primary-link" target="_blank" rel="noreferrer">Open source</a>
+            <a class="preview-link" target="_blank" rel="noreferrer">Preview</a>
+          </div>
+        </div>
+      </article>
+    </template>
+  </main>
+
+  <footer>
+    <p>Registry entries remain governed by their canonical upstream projects. Verification status measures review depth, not popularity.</p>
+  </footer>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
