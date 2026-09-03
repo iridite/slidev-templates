@@ -1,0 +1,38 @@
+{
+  "$schema": "./schema.json",
+  "version": 1,
+  "templates": [
+    {
+      "id": "neko-style",
+      "name": "Neko Style",
+      "description": "A polished technical-presentation template with animated glow backgrounds, reusable layouts, components, documentation, and a ready-to-run starter.",
+      "source": {
+        "type": "hosted",
+        "path": "neko-style",
+        "starterPath": "neko-style/starter"
+      },
+      "author": {
+        "name": "iridite",
+        "url": "https://github.com/iridite"
+      },
+      "tags": [
+        "technical",
+        "developer",
+        "dark",
+        "ai",
+        "conference"
+      ],
+      "license": "MIT",
+      "preview": {
+        "type": "local",
+        "value": "assets/neko-style-preview.png"
+      },
+      "usage": {
+        "type": "degit",
+        "command": "npx degit iridite/slidev-templates/neko-style my-presentation"
+      },
+      "status": "verified",
+      "featured": true
+    }
+  ]
+}
