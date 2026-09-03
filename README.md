@@ -12,7 +12,7 @@ The goal is not to maintain one theme. The goal is to make high-quality Slidev t
 
 ## What counts as a template?
 
-A template is a reusable starting point for a presentation, not just a visual theme. It may include a Slidev theme, starter deck, layouts, components, configuration, examples, documentation, and recommended project structure.
+A template is a reusable starting point for a presentation, not just a visual theme. It may include a Slidev theme, starter deck, layouts, components, configuration, examples, documentation, export/deployment workflows, and recommended project structure.
 
 This registry therefore complements Slidev's theme ecosystem rather than duplicating it: **themes provide appearance; templates provide a complete starting workflow.**
 
@@ -21,6 +21,11 @@ This registry therefore complements Slidev's theme ecosystem rather than duplica
 | Template | Status | Source | Best for | Start |
 | --- | --- | --- | --- | --- |
 | [Neko Style](./neko-style/) | ✅ Verified | Hosted | Technical talks, developer presentations, AI/ML, conferences | `npx degit iridite/slidev-templates/neko-style my-presentation` |
+| [Espressif Slidev Template](https://github.com/espressif/slidev-esp-template) | 🟦 Community | External | Corporate/developer talks, branded technical presentations, addons | `npx degit espressif/slidev-esp-template my-presentation` |
+| [3mdeb Slidev Template](https://github.com/3mdeb/slidev-template) | 🟦 Community | External | Production workflows, automated export, visual regression testing | `git submodule add https://github.com/3mdeb/slidev-template.git slidev-template` |
+| [Presentations Template](https://github.com/askpt/presentations.template) | 🟦 Community | External | TypeScript/Vue, deployment-ready decks, PDF/PPTX workflows | `npx degit askpt/presentations.template my-presentation` |
+
+The registry now deliberately mixes repository-hosted templates and independently maintained external projects. External authors keep ownership and governance of their projects; this repository only provides curated discovery metadata.
 
 ### Neko Style preview
 
@@ -57,7 +62,7 @@ A strong submission should have:
 
 1. a clear README or usage guide;
 2. a reproducible start/copy workflow;
-3. at least one representative preview;
+3. at least one representative preview or live demo;
 4. explicit licensing and attribution;
 5. an identifiable maintainer or canonical source;
 6. enough structure to be useful beyond one specific talk.
@@ -105,7 +110,7 @@ slidev-templates/
 
 ## Project direction
 
-The next stage is to grow from one reference template into a useful community discovery layer: more independently maintained templates, richer searchable metadata, compatibility signals, and eventually a browsable gallery generated from the same registry data.
+The project is building toward a useful community discovery layer rather than a single-template repository: more independently maintained templates, richer searchable metadata, compatibility signals, automated health checks, and eventually a browsable gallery generated from the same registry data.
 
 The registry format is intentionally machine-readable so other tools, agents, sites, and Slidev workflows can consume it without scraping README files.
 
