@@ -1,0 +1,94 @@
+name: Template submission
+description: Suggest a reusable Slidev template for inclusion in the registry
+title: "[Template]: "
+labels:
+  - template-submission
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping grow the Slidev template ecosystem. We curate reusable templates rather than collecting every slide deck, so please provide enough information for maintainers to evaluate usability, licensing, and long-term discoverability.
+
+  - type: input
+    id: name
+    attributes:
+      label: Template name
+      placeholder: e.g. Neko Style
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What is this template for?
+      description: Describe its visual style, intended audience, and what makes it reusable beyond a single talk.
+    validations:
+      required: true
+
+  - type: input
+    id: repository
+    attributes:
+      label: Canonical repository or source URL
+      placeholder: https://github.com/owner/repository
+    validations:
+      required: true
+
+  - type: dropdown
+    id: source-type
+    attributes:
+      label: Preferred inclusion model
+      options:
+        - External listing — keep the template in its canonical repository
+        - Hosted contribution — contribute the reusable template to this repository
+        - Unsure — maintainer can decide
+    validations:
+      required: true
+
+  - type: input
+    id: preview
+    attributes:
+      label: Preview URL
+      description: Link to a representative screenshot, gallery, demo, or exported slide preview.
+      placeholder: https://...
+    validations:
+      required: true
+
+  - type: input
+    id: usage
+    attributes:
+      label: How can a new user start from it?
+      description: Give the shortest reproducible command or setup path.
+      placeholder: npx degit owner/repo/template my-presentation
+    validations:
+      required: true
+
+  - type: input
+    id: license
+    attributes:
+      label: License
+      placeholder: MIT
+    validations:
+      required: true
+
+  - type: input
+    id: tags
+    attributes:
+      label: Suggested tags
+      description: Comma-separated discovery tags such as academic, developer, light, dark, minimal, conference.
+      placeholder: developer, dark, conference
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Submission checklist
+      options:
+        - label: The template is reusable beyond one specific presentation.
+          required: true
+        - label: The source and bundled assets have clear licensing or permission for redistribution/linking.
+          required: true
+        - label: A new user can follow the documented setup without access to private files or services.
+          required: true
+        - label: I have searched existing registry entries and submissions for duplicates.
+          required: true
