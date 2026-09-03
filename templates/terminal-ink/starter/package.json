@@ -1,0 +1,14 @@
+{
+  "name": "slidev-template-terminal-ink",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "slidev",
+    "build": "slidev build",
+    "export": "slidev export --wait-until domcontentloaded --wait 800 --timeout 120000"
+  },
+  "dependencies": {
+    "@slidev/cli": "^0.49.0"
+  }
+}
