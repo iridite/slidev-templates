@@ -2,18 +2,38 @@
   "$schema": "../../registry/hosted-template.schema.json",
   "id": "editorial-grid",
   "name": "Editorial Grid",
-  "version": "1.0.0",
-  "description": "A bold editorial Slidev starter for product narratives, strategic proposals, launches, and visually paced storytelling.",
-  "categories": ["product", "strategy", "storytelling"],
-  "tags": ["editorial", "grid", "bold-type", "light", "launch"],
+  "version": "1.1.0",
+  "description": "A bold editorial Slidev starter for product narratives, strategic proposals, launches, evidence-led persuasion, and visually paced decision storytelling.",
+  "categories": [
+    "product",
+    "strategy",
+    "storytelling"
+  ],
+  "tags": [
+    "editorial",
+    "grid",
+    "bold-type",
+    "light",
+    "launch"
+  ],
   "license": "MIT",
+  "licenseUrl": "LICENSE",
   "provenance": {
     "type": "original",
-    "notes": "Original implementation using generic editorial design principles; no upstream code, fonts, or branded assets are bundled."
+    "notes": "Original clean-room implementation created for this registry after surveying public presentation workflows; no third-party deck code, branded assets, or presentation content are vendored."
   },
   "compatibility": {
-    "node": ">=18",
-    "slidev": ">=0.49.0"
+    "node": ">=20.12.0",
+    "slidev": "^52.19.1"
+  },
+  "verification": {
+    "level": "clean-install-build",
+    "checks": [
+      "manifest-contract",
+      "clean-install",
+      "slidev-build"
+    ],
+    "workflow": ".github/workflows/ci.yml"
   },
   "entry": "starter/slides.md",
   "commands": {

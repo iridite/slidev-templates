@@ -1,34 +1,36 @@
 # Registry field reference
 
-`registry/templates.json` is the canonical catalog. This document explains the semantic contract of each entry independently of a specific JSON Schema implementation.
+[`registry/templates.json`](./templates.json) is the canonical, versioned catalog. Registry v2 makes ownership, license evidence, compatibility claims, and verification evidence explicit enough for humans and downstream tools to inspect.
 
 ## Identity and discovery
 
-- `id` — stable lowercase identifier; changing it is a breaking change for consumers.
+- `id` — stable lowercase identifier. Renaming it is a breaking change.
 - `name` — display name.
 - `description` — substantive explanation of the reusable workflow.
 - `kind` — `starter`, `workspace`, `workflow`, or `presentation-system`.
-- `categories` — high-level user jobs and audiences used for filtering.
-- `tags` — lower-level discovery facets, visual traits, and implementation signals.
+- `categories` — high-level audiences and presentation jobs used for filtering.
+- `tags` — lower-level visual, workflow, and implementation facets.
 
 ## Source and ownership
 
-`source.type` is either:
+`source.type` is:
 
 - `hosted` — implementation is maintained in this repository;
 - `external` — implementation stays in its canonical upstream repository.
 
-Hosted entries declare `path`, `starterPath`, and, for the current contract, `manifest`. External entries declare `repository` and must not claim a local hosted path.
+Hosted entries declare `path` and `starterPath`; new contract-based entries also declare `manifest`. External entries declare `repository` and must not claim a local path.
 
-`author` identifies the template author or upstream organization. Indexing an entry does not transfer ownership.
+`author` identifies the repository author or upstream organization. Indexing does not transfer ownership or governance.
 
 ## License and provenance
 
-- `license` — SPDX-style license identifier when available.
+- `license` — SPDX-style identifier when available.
+- `licenseUrl` — direct evidence: a repository-relative license file for hosted work or an absolute canonical license URL for external work.
 - `provenance.type` — `original`, `inspired`, `adapted`, or `external`.
-- `provenance.notes` — human-readable boundary and attribution summary.
+- `provenance.notes` — human-readable ownership, adaptation, branding, and redistribution boundary.
+- `provenance.upstream` — optional canonical upstream for materially inspired or adapted hosted work.
 
-External entries retain upstream licenses. Hosted adapted work preserves the notices required by its upstream license.
+A health check verifies every `licenseUrl`. External entries retain upstream licenses. Hosted adaptations must preserve notices and asset-specific obligations.
 
 ## Preview and use
 
@@ -37,18 +39,31 @@ External entries retain upstream licenses. Hosted adapted work preserves the not
 - `usage.type` — `degit`, `clone`, or `external`.
 - `usage.command` — shortest documented reproducible starting command.
 
+Hosted commands should produce a self-contained project, including README, license, and attribution evidence.
+
 ## Verification
 
 - `status` — `verified`, `community`, or `experimental`.
-- `verification.level` — current depth of repository verification.
-- `verification.checks` — explicit checks supporting that level.
+- `verification.level` — `build-and-export`, `clean-install-build`, or `metadata-health`.
+- `verification.checks` — explicit evidence supporting that level.
+- `verification.workflow` — repository workflow that produces or refreshes the evidence.
+- `verification.checkedAt` — last maintainer review date for the recorded claim.
 
-`featured` controls editorial prominence only. It is not a compatibility, quality, or popularity guarantee.
+`featured` controls editorial prominence only. It is not an endorsement, compatibility guarantee, or popularity ranking.
 
 ## Compatibility
 
-Hosted entries may declare `compatibility.node` and `compatibility.slidev`. These are supported ranges, not automatically inferred latest versions. A compatibility claim should be updated only with test evidence.
+Hosted entries declare tested `compatibility.node` and `compatibility.slidev` ranges. These are evidence-backed support claims, not automatically inferred latest versions.
 
-## Evolution
+External compatibility is omitted unless the registry has actually tested it. Runtime claims remain with upstream projects.
 
-Consumers should ignore unknown fields. Required-field removal, meaning changes, or identifier changes require registry versioning and migration notes. Additive metadata can be introduced without invalidating existing consumers.
+## Versioning
+
+Registry v2 adds required curation and evidence fields. Consumers should:
+
+- check `version` before assuming a schema;
+- ignore additive unknown fields within a supported major version;
+- treat identifier removal, required-field removal, or meaning changes as breaking;
+- use `registry/schema.json` rather than reverse-engineering README tables.
+
+Human-facing README sections and the deployable gallery are generated from the canonical registry and checked in CI.

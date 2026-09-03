@@ -1,36 +1,36 @@
 # Editorial Grid
 
-Editorial Grid is a bold, print-inspired Slidev starter for product stories, strategic proposals, launches, design reviews, and other presentations that need deliberate visual pacing.
+**Make the decision visible.**
 
-It is not a theme package. It is a complete starting structure that combines narrative order, page composition, typography, and representative content patterns.
+A bold editorial Slidev starter for product narratives, strategic proposals, launches, evidence-led persuasion, and visually paced decision storytelling.
 
-## Best for
-
-- product and company narratives;
-- launches and strategic proposals;
-- portfolio and design presentations;
-- brand-neutral editorial storytelling;
-- talks that alternate between statements, evidence, and visual rhythm.
+This is a complete Slidev starter rather than a standalone theme package. It combines a narrative structure, representative slide patterns, typography, CSS tokens, and build/export commands.
 
 ## Quick start
 
 ```bash
-npx degit iridite/slidev-templates/templates/editorial-grid editorial-talk
-cd editorial-talk/starter
+npx degit iridite/slidev-templates/templates/editorial-grid/starter editorial-talk
+cd editorial-talk
 npm install
 npm run dev
 ```
 
+The extracted directory is self-contained: `package.json`, `slides.md`, README, MIT license, attribution record, and `.gitignore` all travel with the starter.
+
+## Best for
+
+- product narratives and launch proposals;
+- strategy reviews and executive decision meetings;
+- before-and-after product or service stories;
+- evidence-led persuasion with strong pacing;
+
 ## Included patterns
 
-- a high-impact editorial cover;
-- a three-part narrative manifesto;
-- asymmetric context/evidence composition;
-- a metric spread;
-- a quotation or customer-voice page;
-- a clear decision and closing call to action.
-
-The implementation uses system fonts and CSS only, so it has no external font or image dependency. Add your own licensed assets deliberately rather than inheriting opaque stock imagery.
+- asymmetric editorial cover;
+- three-part manifesto;
+- tension-setting context spread;
+- before-and-after transformation;
+- metric, voice-of-user, and explicit decision pages;
 
 ## Commands
 
@@ -40,16 +40,22 @@ npm run build
 npm run export
 ```
 
-## Authoring guidance
+The starter tracks the current official Slidev application baseline used by this repository: Node.js 20.12 or newer, `@slidev/cli` 52.19.x, the default theme package, and Vue 3.5.
 
-Use the grid to create hierarchy, not decoration. Each page should have one dominant reading path. Large type is reserved for the claim; small type carries context, source, or navigation.
+## Customization
 
-Edit the CSS variables at the bottom of `slides.md` to change paper, ink, signal color, and supporting tones.
+Change the editorial tokens at the bottom of `slides.md` to tune paper, ink, signal red, secondary blue, and rules. Keep the grid disciplined and use large type only for the single idea the audience must retain.
 
 ## Provenance
 
-Editorial Grid is an original implementation based on general editorial and Swiss-grid principles. It does not copy an upstream Slidev project, commercial template, font, image, or brand system. See [ATTRIBUTION.md](./ATTRIBUTION.md).
+Public visual Slidev starters and general editorial design systems were reviewed to understand common workflows. The grid, slide content, CSS, and preview are original and do not reproduce any third-party deck.
+
+See [`ATTRIBUTION.md`](./ATTRIBUTION.md) and the machine-readable [`template.json`](./template.json).
+
+## Verification
+
+Every pull request clean-installs and builds this starter in GitHub Actions. Registry schema, manifest, preview, license, CLI scaffolding, and generated gallery/catalog integration are tested separately.
 
 ## License
 
-MIT. See [LICENSE](./LICENSE).
+MIT. See [`LICENSE`](./LICENSE).

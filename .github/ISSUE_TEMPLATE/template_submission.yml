@@ -1,12 +1,11 @@
 name: Template submission
-description: Propose a reusable Slidev template for the curated registry
+description: Suggest a reusable Slidev template for inclusion in the registry
 title: "[Template]: "
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for helping grow the Slidev template ecosystem. We curate reusable presentation workflows rather than collecting every slide deck. Please provide enough evidence for maintainers to evaluate usefulness, reproducibility, licensing, provenance, and long-term discoverability.
-
+        Thanks for helping grow the Slidev template ecosystem. This project curates reusable presentation workflows rather than collecting every deck. Submitting an external project does not transfer ownership or imply that its code will be copied here.
   - type: input
     id: name
     attributes:
@@ -14,38 +13,13 @@ body:
       placeholder: e.g. Paper Lab
     validations:
       required: true
-
-  - type: dropdown
-    id: kind
-    attributes:
-      label: Template kind
-      description: Choose the closest description of the reusable starting point.
-      options:
-        - Starter — one reusable presentation starting point
-        - Workspace — manages multiple talks or resources
-        - Workflow — primarily adds build, export, testing, or publishing infrastructure
-        - Presentation system — combines scaffolding, design system, components, and guardrails
-        - Unsure — maintainer can classify it
-    validations:
-      required: true
-
   - type: textarea
-    id: description
+    id: value
     attributes:
-      label: What is this template for?
-      description: Describe the audience, presentation job, visual/workflow identity, and why it is reusable beyond one talk.
-      placeholder: This template helps research teams explain a question, method, evidence, limitations, and next decision…
+      label: Distinctive value and recurring presentation job
+      description: Explain the audience, information architecture, workflow, and why this is reusable beyond one talk or a color variation.
     validations:
       required: true
-
-  - type: textarea
-    id: distinction
-    attributes:
-      label: What makes it meaningfully different?
-      description: Explain the use case, information architecture, interaction model, components, or workflow that is not already covered by existing entries.
-    validations:
-      required: true
-
   - type: input
     id: repository
     attributes:
@@ -53,94 +27,84 @@ body:
       placeholder: https://github.com/owner/repository
     validations:
       required: true
-
   - type: input
     id: maintainer
     attributes:
-      label: Upstream maintainer or organization
-      description: Link to the person or organization that governs the canonical project.
-      placeholder: https://github.com/owner
+      label: Canonical maintainer or organization
+      placeholder: GitHub username or organization
     validations:
       required: true
-
   - type: dropdown
     id: source-type
     attributes:
       label: Preferred inclusion model
       options:
-        - External listing — keep the template in its canonical repository
-        - Hosted contribution — contribute an implementation to this repository
-        - Unsure — maintainer can decide
+        - External listing — keep implementation and governance upstream
+        - Hosted contribution — propose maintainable code for this repository
+        - Unsure — maintainer should decide
     validations:
       required: true
-
   - type: input
     id: preview
     attributes:
-      label: Preview URL
-      description: Link to a representative screenshot, gallery, live demo, or exported slide preview.
+      label: Representative preview or live demo URL
       placeholder: https://...
     validations:
       required: true
-
   - type: input
     id: usage
     attributes:
-      label: How can a new user start from it?
-      description: Give the shortest reproducible command or setup path that does not require private files or services.
-      placeholder: npx degit owner/repo/template my-presentation
+      label: Shortest reproducible start path
+      placeholder: npx degit owner/repo my-presentation
     validations:
       required: true
-
   - type: input
     id: license
     attributes:
-      label: License and evidence
-      description: Provide the SPDX identifier and link to the canonical license file. Public visibility alone is not a license.
-      placeholder: MIT — https://github.com/owner/repo/blob/main/LICENSE
+      label: SPDX license identifier
+      placeholder: MIT
     validations:
       required: true
-
-  - type: textarea
-    id: provenance
+  - type: input
+    id: license-url
     attributes:
-      label: Provenance and third-party assets
-      description: State whether the work is original, inspired, or adapted, and identify any fonts, images, logos, code, or notices that require attribution.
+      label: Direct canonical license URL
+      placeholder: https://raw.githubusercontent.com/owner/repo/main/LICENSE
     validations:
       required: true
-
+  - type: textarea
+    id: assets
+    attributes:
+      label: Asset, font, brand, and attribution notes
+      description: Identify bundled material whose license or trademark policy may differ from the repository-level license.
+    validations:
+      required: true
   - type: input
     id: tags
     attributes:
-      label: Suggested categories and discovery tags
-      description: Comma-separated terms such as academic, research, developer, terminal, corporate, light, dark, multi-talk, deployment.
-      placeholder: research, academic, light, methods, results
+      label: Suggested discovery tags
+      placeholder: academic, research, light, data-storytelling
     validations:
       required: true
-
   - type: textarea
     id: verification
     attributes:
-      label: Verification performed
-      description: State the environment and exact commands you used to install, start, build, export, or otherwise verify the documented workflow.
-      placeholder: Node 20 / npm 10; npm install; npm run build…
+      label: Verification already performed
+      description: State exactly what environment and commands were tested. “It should work” is not verification.
     validations:
       required: true
-
   - type: checkboxes
     id: checklist
     attributes:
       label: Submission checklist
       options:
-        - label: The template is reusable beyond one specific presentation, customer, or private organization.
+        - label: The template is reusable beyond one presentation, customer, event, or private organization.
           required: true
-        - label: The source, code, and bundled assets have clear licensing or permission for indexing and any proposed redistribution.
+        - label: The canonical source and repository-level license are publicly inspectable.
           required: true
-        - label: A new user can follow the documented setup without access to private files or services.
+        - label: I disclosed known asset, font, branding, and attribution caveats.
           required: true
-        - label: The preview represents the actual template rather than unrelated promotional material.
+        - label: A new user can follow the documented setup without private files or services.
           required: true
-        - label: I have searched existing registry entries and submissions for duplicates or substantial overlap.
-          required: true
-        - label: I understand that external projects retain their own ownership and governance.
+        - label: I searched existing entries and submissions for duplicates.
           required: true

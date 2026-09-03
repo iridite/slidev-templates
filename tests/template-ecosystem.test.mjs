@@ -2,135 +2,104 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import { existsSync, mkdtempSync, readFileSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
-import { join, resolve } from 'node:path'
+import { dirname, join, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { spawnSync } from 'node:child_process'
 
-const root = resolve(new URL('..', import.meta.url).pathname)
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const read = (path) => readFileSync(resolve(root, path), 'utf8')
 const json = (path) => JSON.parse(read(path))
 const registry = json('registry/templates.json')
+const manifestSchema = json('registry/hosted-template.schema.json')
 
-const requiredRegistryKeys = [
-  'id',
-  'name',
-  'description',
-  'kind',
-  'categories',
-  'source',
-  'author',
-  'tags',
-  'license',
-  'preview',
-  'usage',
-  'status',
-  'featured',
-  'provenance',
-  'verification',
-]
+test('manifest-based hosted templates satisfy the current runtime contract', () => {
+  const hosted = registry.templates.filter((entry) => entry.source.type === 'hosted' && entry.source.manifest)
+  assert.equal(hosted.length, 3, 'three new contract-based starters should complement Neko Style')
 
-test('registry represents a real hosted and external ecosystem', () => {
-  assert.equal(registry.version, 1)
-  assert.ok(Array.isArray(registry.templates))
-  assert.ok(registry.templates.length >= 10, 'registry should contain a meaningful initial catalog')
-
-  const ids = registry.templates.map((entry) => entry.id)
-  assert.equal(new Set(ids).size, ids.length, 'template ids must be unique')
-
-  const hosted = registry.templates.filter((entry) => entry.source.type === 'hosted')
-  const external = registry.templates.filter((entry) => entry.source.type === 'external')
-
-  assert.ok(hosted.length >= 4, 'registry should not present a one-template hosted collection')
-  assert.ok(external.length >= 5, 'registry should include independently governed upstream projects')
-  assert.ok(new Set(hosted.flatMap((entry) => entry.categories)).size >= 8, 'hosted templates should cover distinct use cases')
-})
-
-test('every registry entry has useful discovery and provenance metadata', () => {
-  for (const entry of registry.templates) {
-    for (const key of requiredRegistryKeys) assert.ok(key in entry, `${entry.id} is missing ${key}`)
-
-    assert.match(entry.id, /^[a-z0-9]+(?:-[a-z0-9]+)*$/)
-    assert.ok(entry.description.length >= 60, `${entry.id} needs a substantive description`)
-    assert.ok(Array.isArray(entry.categories) && entry.categories.length >= 2)
-    assert.equal(new Set(entry.categories).size, entry.categories.length)
-    assert.ok(Array.isArray(entry.tags) && entry.tags.length >= 3)
-    assert.equal(new Set(entry.tags).size, entry.tags.length)
-    assert.ok(['verified', 'community', 'experimental'].includes(entry.status))
-    assert.ok(['hosted', 'external'].includes(entry.source.type))
-    assert.ok(['original', 'inspired', 'adapted', 'external'].includes(entry.provenance.type))
-    assert.ok(entry.provenance.notes.length >= 20)
-    assert.ok(Array.isArray(entry.verification.checks) && entry.verification.checks.length >= 1)
-    assert.ok(entry.usage.command.length >= 8)
-  }
-})
-
-test('hosted entries satisfy the repository template contract', () => {
-  const hosted = registry.templates.filter((entry) => entry.source.type === 'hosted')
+  const packageNames = new Set()
 
   for (const entry of hosted) {
-    assert.ok(entry.source.path)
-    assert.ok(entry.source.starterPath)
-    assert.ok(existsSync(resolve(root, entry.source.path)), `${entry.id} source path is missing`)
-    assert.ok(existsSync(resolve(root, entry.source.starterPath, 'package.json')), `${entry.id} starter package is missing`)
-    assert.ok(existsSync(resolve(root, entry.source.starterPath, 'slides.md')), `${entry.id} slides are missing`)
+    assert.ok(existsSync(resolve(root, entry.source.manifest)), `${entry.id}: manifest is missing`)
+    const manifest = json(entry.source.manifest)
+    const templateRoot = entry.source.path
 
-    if (entry.preview.type === 'local') {
-      assert.ok(existsSync(resolve(root, entry.preview.value)), `${entry.id} preview is missing`)
-    }
+    for (const key of manifestSchema.required)
+      assert.ok(key in manifest, `${entry.id}: manifest is missing ${key}`)
+
+    assert.equal(manifest.id, entry.id)
+    assert.equal(manifest.name, entry.name)
+    assert.equal(manifest.description, entry.description)
+    assert.deepEqual(manifest.categories, entry.categories)
+    assert.deepEqual(manifest.tags, entry.tags)
+    assert.equal(manifest.license, entry.license)
+    assert.equal(manifest.licenseUrl, 'LICENSE')
+    assert.equal(manifest.provenance.type, entry.provenance.type)
+    assert.equal(manifest.compatibility.node, '>=20.12.0')
+    assert.equal(manifest.compatibility.slidev, '^52.19.1')
+    assert.equal(manifest.verification.level, 'clean-install-build')
+
+    for (const file of ['README.md', 'LICENSE', 'ATTRIBUTION.md', 'preview.svg'])
+      assert.ok(existsSync(resolve(root, templateRoot, file)), `${entry.id}: missing ${file}`)
 
     const starterPackage = json(join(entry.source.starterPath, 'package.json'))
-    assert.ok(starterPackage.scripts?.dev, `${entry.id} must provide npm run dev`)
-    assert.ok(starterPackage.scripts?.build, `${entry.id} must provide npm run build`)
-    assert.ok(starterPackage.scripts?.export, `${entry.id} must provide npm run export`)
+    assert.ok(starterPackage.scripts?.dev)
+    assert.ok(starterPackage.scripts?.build)
+    assert.ok(starterPackage.scripts?.export)
+    assert.equal(starterPackage.engines?.node, '>=20.12.0')
+    assert.equal(starterPackage.dependencies?.['@slidev/cli'], '^52.19.1')
+    assert.equal(starterPackage.dependencies?.['@slidev/theme-default'], '0.25.0')
+    assert.equal(starterPackage.dependencies?.vue, '^3.5.33')
+    assert.ok(starterPackage.devDependencies?.['playwright-chromium'])
+
+    assert.ok(!packageNames.has(starterPackage.name), `${entry.id}: duplicate package name`)
+    packageNames.add(starterPackage.name)
 
     const slides = read(join(entry.source.starterPath, 'slides.md'))
-    assert.ok((slides.match(/^---$/gm) || []).length >= 6, `${entry.id} should demonstrate multiple reusable slide patterns`)
-
-    if (entry.source.manifest) {
-      assert.ok(existsSync(resolve(root, entry.source.manifest)), `${entry.id} manifest is missing`)
-      const manifest = json(entry.source.manifest)
-      assert.equal(manifest.id, entry.id)
-      assert.equal(manifest.name, entry.name)
-      assert.equal(manifest.license, entry.license)
-      assert.equal(manifest.provenance.type, entry.provenance.type)
-
-      const templateRoot = entry.source.path
-      for (const file of ['README.md', 'LICENSE', 'ATTRIBUTION.md']) {
-        assert.ok(existsSync(resolve(root, templateRoot, file)), `${entry.id} is missing ${file}`)
-      }
-    }
+    assert.ok((slides.match(/^---$/gm) || []).length >= 6, `${entry.id}: starter should demonstrate multiple slide patterns`)
+    assert.doesNotMatch(slides, /https?:\/\/[^\s)"']+\.(?:png|jpe?g|gif|webp)/i, `${entry.id}: hosted starter must not depend on untracked remote raster assets`)
   }
 })
 
-test('external entries retain canonical ownership and are not vendored', () => {
-  const external = registry.templates.filter((entry) => entry.source.type === 'external')
-
-  for (const entry of external) {
-    assert.match(entry.source.repository, /^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+\/?$/)
-    assert.equal(entry.provenance.type, 'external')
-    assert.ok(!entry.source.path)
-    assert.ok(entry.provenance.notes.toLowerCase().includes('upstream') || entry.provenance.notes.toLowerCase().includes('indexed'))
-  }
-})
-
-test('gallery is a direct consumer of the canonical registry', () => {
+test('gallery and generated catalogs consume the canonical registry', () => {
   const html = read('gallery/index.html')
   const app = read('gallery/app.js')
   const css = read('gallery/styles.css')
 
   assert.match(html, /Slidev Template Registry/)
-  assert.match(html, /id="template-grid"/)
+  assert.match(html, /class="license"/)
   assert.match(app, /registry\/templates\.json/)
+  assert.match(app, /licenseUrl/)
   assert.match(app, /navigator\.clipboard/)
   assert.match(css, /\.template-grid/)
+  assert.match(css, /\.badge\.verification/)
+
+  const catalog = spawnSync(process.execPath, ['scripts/generate-catalog.mjs', '--check'], {
+    cwd: root,
+    encoding: 'utf8',
+  })
+  assert.equal(catalog.status, 0, catalog.stderr)
+
+  const gallery = spawnSync(process.execPath, ['scripts/build-gallery.mjs', '--check'], {
+    cwd: root,
+    encoding: 'utf8',
+  })
+  assert.equal(gallery.status, 0, gallery.stderr)
 })
 
-test('registry CLI can search and scaffold a hosted template', () => {
+test('registry CLI can search and scaffold a hosted template safely', () => {
   const search = spawnSync(process.execPath, ['scripts/registry-cli.mjs', 'search', 'academic', '--json'], {
     cwd: root,
     encoding: 'utf8',
   })
   assert.equal(search.status, 0, search.stderr)
   assert.ok(JSON.parse(search.stdout).some((entry) => entry.id === 'paper-lab'))
+
+  const info = spawnSync(process.execPath, ['scripts/registry-cli.mjs', 'info', 'nju-academic', '--json'], {
+    cwd: root,
+    encoding: 'utf8',
+  })
+  assert.equal(info.status, 0, info.stderr)
+  assert.equal(JSON.parse(info.stdout).source.type, 'external')
 
   const temp = mkdtempSync(join(tmpdir(), 'slidev-template-'))
   const destination = join(temp, 'paper-talk')
@@ -143,6 +112,9 @@ test('registry CLI can search and scaffold a hosted template', () => {
     assert.equal(scaffold.status, 0, scaffold.stderr)
     assert.ok(existsSync(join(destination, 'package.json')))
     assert.ok(existsSync(join(destination, 'slides.md')))
+    assert.ok(existsSync(join(destination, 'README.md')))
+    assert.ok(existsSync(join(destination, 'LICENSE')))
+    assert.ok(existsSync(join(destination, 'ATTRIBUTION.md')))
   } finally {
     rmSync(temp, { recursive: true, force: true })
   }

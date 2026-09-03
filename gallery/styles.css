@@ -66,7 +66,7 @@ nav .brand { margin-right: auto; font-weight: 800; letter-spacing: -.03em; }
 }
 
 .hero-copy > p:last-child {
-  max-width: 720px;
+  max-width: 760px;
   margin: 32px 0 0;
   color: var(--muted);
   font-size: clamp(16px, 2vw, 22px);
@@ -188,6 +188,7 @@ a:focus-visible {
   position: absolute;
   top: 10px;
   left: 10px;
+  right: 10px;
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
@@ -200,23 +201,39 @@ a:focus-visible {
   background: rgba(17,17,17,.76);
   color: #fff;
   backdrop-filter: blur(8px);
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 800;
-  letter-spacing: .07em;
+  letter-spacing: .06em;
   text-transform: uppercase;
 }
 
 .badge.verified { background: rgba(32,122,88,.92); }
 .badge.hosted { background: rgba(49,85,216,.92); }
+.badge.verification { margin-left: auto; background: rgba(17,17,17,.72); }
 
 .card-body { padding: 20px; }
 .card-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
 .kind { margin: 0 0 5px; color: var(--signal); font-size: 10px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
 .card h2 { margin: 0; font-size: 24px; line-height: 1.05; letter-spacing: -.04em; }
-.license { flex: none; padding: 4px 7px; border: 1px solid var(--line); border-radius: 4px; color: var(--muted); font: 11px/1.2 ui-monospace, monospace; }
-.description { min-height: 66px; margin: 16px 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
+
+.license {
+  flex: none;
+  padding: 4px 7px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--muted);
+  font: 11px/1.2 ui-monospace, monospace;
+  text-decoration: none;
+}
+
+.license:hover { border-color: var(--ink); color: var(--ink); }
+
+.description { min-height: 66px; margin: 16px 0 8px; color: var(--muted); font-size: 14px; line-height: 1.55; }
+.reviewed { margin: 0 0 14px; color: #8a857b; font: 10px/1.4 ui-monospace, monospace; text-transform: uppercase; letter-spacing: .06em; }
+
 .categories,
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
 .categories { margin-bottom: 8px; }
 .categories span { padding: 5px 8px; border-radius: 4px; background: #e7e2d7; font-size: 11px; font-weight: 700; }
 .tags span { color: var(--muted); font-size: 11px; }
@@ -287,4 +304,5 @@ footer p { max-width: 1440px; margin: 0 auto; }
   .controls,
   .template-grid { grid-template-columns: 1fr; }
   .description { min-height: 0; }
+  .badge.verification { margin-left: 0; }
 }

@@ -3,21 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Browse the curated Slidev template registry by use case, source, and verification status." />
+  <meta name="description" content="Browse a curated registry of reusable Slidev templates by use case, source, license, and verification status." />
   <title>Slidev Template Registry</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
   <header class="hero">
     <nav>
-      <a class="brand" href="../README.md">slidev-templates</a>
-      <a href="../registry/templates.json">JSON Registry</a>
-      <a href="../CONTRIBUTING.md">Contribute</a>
+      <a class="brand" href="https://github.com/iridite/slidev-templates">slidev-templates</a>
+      <a href="./templates.json">JSON Registry</a>
+      <a href="https://github.com/iridite/slidev-templates/blob/main/docs/TEMPLATE_CONTRACT.md">Template contract</a>
+      <a href="https://github.com/iridite/slidev-templates/blob/main/CONTRIBUTING.md">Contribute</a>
     </nav>
     <div class="hero-copy">
-      <p class="eyebrow">CURATED · MACHINE-READABLE · COMMUNITY-MAINTAINED</p>
+      <p class="eyebrow">CURATED · MACHINE-READABLE · LICENSE-AUDITED</p>
       <h1>Find a Slidev starting point that fits the story.</h1>
-      <p>Templates are complete presentation workflows: starters, structure, components, automation, and documentation—not only visual themes.</p>
+      <p>Templates are complete presentation workflows: starters, narrative structure, components, automation, and documentation—not only visual themes.</p>
     </div>
   </header>
 
@@ -72,9 +73,10 @@
               <p class="kind"></p>
               <h2></h2>
             </div>
-            <span class="license"></span>
+            <a class="license" target="_blank" rel="noreferrer"></a>
           </div>
           <p class="description"></p>
+          <p class="reviewed"></p>
           <div class="categories"></div>
           <div class="tags"></div>
           <div class="command-row">
@@ -91,7 +93,7 @@
   </main>
 
   <footer>
-    <p>Registry entries remain governed by their canonical upstream projects. Verification status measures review depth, not popularity.</p>
+    <p>External entries remain governed by their canonical upstream projects. Verification status measures review depth, not popularity or endorsement.</p>
   </footer>
 
   <script type="module" src="./app.js"></script>

@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url'
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const registry = JSON.parse(readFileSync(resolve(root, 'registry/templates.json'), 'utf8'))
 const templates = registry.templates
+const repoBase = 'https://github.com/iridite/slidev-templates'
 
 const [, , command = 'help', ...args] = process.argv
 const hasFlag = (flag) => args.includes(flag)
@@ -19,24 +20,36 @@ const compact = (entry) => ({
   source: entry.source.type,
   status: entry.status,
   categories: entry.categories,
-  tags: entry.tags,
+  license: entry.license,
+  verification: entry.verification.level,
+  checkedAt: entry.verification.checkedAt,
   command: entry.usage.command,
 })
 
+function sourceUrl(entry) {
+  if (entry.source.type === 'external') return entry.source.repository
+  return `${repoBase}/tree/main/${entry.source.path}`
+}
+
+function licenseUrl(entry) {
+  if (/^https?:\/\//.test(entry.licenseUrl)) return entry.licenseUrl
+  return `${repoBase}/blob/main/${entry.licenseUrl}`
+}
+
 function printTable(entries) {
-  const rows = entries.map((entry) => ({
+  console.table(entries.map((entry) => ({
     ID: entry.id,
     Name: entry.name,
     Kind: entry.kind,
     Source: entry.source.type,
     Status: entry.status,
+    Verification: entry.verification.level,
     Categories: entry.categories.join(', '),
-  }))
-  console.table(rows)
+  })))
 }
 
 function printHelp() {
-  console.log(`slidev-templates registry CLI
+  console.log(`slidev-templates registry CLI (registry v${registry.version})
 
 Usage:
   node scripts/registry-cli.mjs list [--json]
@@ -75,14 +88,8 @@ try {
     if (!query) throw new Error('Search requires a query.')
 
     const matches = templates.filter((entry) => {
-      const haystack = [
-        entry.id,
-        entry.name,
-        entry.description,
-        entry.kind,
-        ...entry.categories,
-        ...entry.tags,
-      ].join(' ').toLowerCase()
+      const haystack = [entry.id, entry.name, entry.description, entry.kind, entry.license,
+        entry.verification.level, ...entry.categories, ...entry.tags].join(' ').toLowerCase()
       return query.split(/\s+/).every((term) => haystack.includes(term))
     })
 
@@ -96,12 +103,14 @@ try {
     } else {
       console.log(`${entry.name} (${entry.id})`)
       console.log(entry.description)
-      console.log(`\nSource: ${entry.source.type}`)
+      console.log(`\nSource: ${entry.source.type} · ${sourceUrl(entry)}`)
       console.log(`Status: ${entry.status}`)
       console.log(`Kind: ${entry.kind}`)
       console.log(`Categories: ${entry.categories.join(', ')}`)
       console.log(`Tags: ${entry.tags.join(', ')}`)
-      console.log(`License: ${entry.license}`)
+      console.log(`License: ${entry.license} · ${licenseUrl(entry)}`)
+      console.log(`Verification: ${entry.verification.level} (${entry.verification.checkedAt})`)
+      console.log(`Checks: ${entry.verification.checks.join(', ')}`)
       console.log(`Start: ${entry.usage.command}`)
       console.log(`Preview: ${entry.preview.value}`)
     }
@@ -111,26 +120,32 @@ try {
 
     if (entry.source.type !== 'hosted') {
       console.log(`${entry.name} is maintained externally.`)
+      console.log(`Canonical source: ${sourceUrl(entry)}`)
+      console.log(`License evidence: ${licenseUrl(entry)}`)
       console.log(`Use its canonical start path instead:\n${entry.usage.command}`)
       process.exit(0)
     }
 
-    if (!entry.source.starterPath) {
+    if (!entry.source.starterPath)
       throw new Error(`${entry.id} does not declare source.starterPath.`)
-    }
 
     const source = resolve(root, entry.source.starterPath)
     const destination = resolve(process.cwd(), destinationArg || basename(entry.id))
 
     if (!existsSync(source)) throw new Error(`Hosted starter is missing: ${entry.source.starterPath}`)
-    if (existsSync(destination) && !hasFlag('--force')) {
+    if (existsSync(destination) && !hasFlag('--force'))
       throw new Error(`Destination already exists: ${destination}. Pass --force to overwrite files.`)
-    }
 
     mkdirSync(destination, { recursive: true })
     cpSync(source, destination, { recursive: true, force: hasFlag('--force') })
 
+    for (const required of ['package.json', 'slides.md', 'README.md', 'LICENSE', 'ATTRIBUTION.md']) {
+      if (!existsSync(resolve(destination, required)))
+        throw new Error(`Scaffold is incomplete; missing ${required}.`)
+    }
+
     console.log(`Created ${entry.name} at ${destination}`)
+    console.log(`License: ${entry.license} (${licenseUrl(entry)})`)
     console.log('Next steps:')
     console.log(`  cd ${destinationArg || basename(entry.id)}`)
     console.log('  npm install')

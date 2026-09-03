@@ -19,6 +19,15 @@ const elements = {
 
 const repoBase = 'https://github.com/iridite/slidev-templates'
 
+function isHttpUrl(value) {
+  try {
+    const url = new URL(value)
+    return url.protocol === 'http:' || url.protocol === 'https:'
+  } catch {
+    return false
+  }
+}
+
 function isImagePreview(entry) {
   const value = entry.preview?.value || ''
   return entry.preview?.type === 'local' || /\.(?:png|jpe?g|gif|webp|svg)(?:\?.*)?$/i.test(value)
@@ -34,6 +43,11 @@ function sourceUrl(entry) {
   return `${repoBase}/tree/main/${entry.source.path}`
 }
 
+function licenseUrl(entry) {
+  if (isHttpUrl(entry.licenseUrl)) return entry.licenseUrl
+  return `${repoBase}/blob/main/${entry.licenseUrl}`
+}
+
 function matches(entry) {
   const terms = state.search.trim().toLowerCase().split(/\s+/).filter(Boolean)
   const haystack = [
@@ -42,6 +56,7 @@ function matches(entry) {
     entry.description,
     entry.kind,
     entry.license,
+    entry.verification.level,
     ...entry.categories,
     ...entry.tags,
   ].join(' ').toLowerCase()
@@ -88,18 +103,25 @@ function createCard(entry) {
   badges.append(
     badge(entry.status, entry.status),
     badge(entry.source.type, entry.source.type),
+    badge(entry.verification.level.replaceAll('-', ' '), 'verification'),
   )
 
   fragment.querySelector('.kind').textContent = entry.kind.replaceAll('-', ' ')
   fragment.querySelector('h2').textContent = entry.name
-  fragment.querySelector('.license').textContent = entry.license
+
+  const license = fragment.querySelector('.license')
+  license.textContent = entry.license
+  license.href = licenseUrl(entry)
+  license.title = `Open ${entry.license} license evidence`
+
   fragment.querySelector('.description').textContent = entry.description
+  fragment.querySelector('.reviewed').textContent = `Reviewed ${entry.verification.checkedAt}`
 
   const categories = fragment.querySelector('.categories')
   entry.categories.forEach((value) => categories.append(chip(value)))
 
   const tags = fragment.querySelector('.tags')
-  entry.tags.slice(0, 5).forEach((value) => tags.append(chip(value)))
+  entry.tags.slice(0, 6).forEach((value) => tags.append(chip(value)))
 
   const code = fragment.querySelector('code')
   code.textContent = entry.usage.command
@@ -138,7 +160,9 @@ function render() {
   if (!filtered.length) {
     const empty = document.createElement('div')
     empty.className = 'empty'
-    empty.innerHTML = '<strong>No templates match these filters.</strong><br/>Try a broader category or clear the search.'
+    const strong = document.createElement('strong')
+    strong.textContent = 'No templates match these filters.'
+    empty.append(strong, document.createElement('br'), 'Try a broader category or clear the search.')
     elements.grid.append(empty)
   } else {
     filtered.forEach((entry) => elements.grid.append(createCard(entry)))
@@ -179,11 +203,26 @@ function bindFilters() {
   })
 }
 
+async function fetchRegistry() {
+  const candidates = ['./templates.json', '../registry/templates.json']
+  let lastError
+
+  for (const url of candidates) {
+    try {
+      const response = await fetch(url, { cache: 'no-store' })
+      if (!response.ok) throw new Error(`${url} returned ${response.status}`)
+      return await response.json()
+    } catch (error) {
+      lastError = error
+    }
+  }
+
+  throw lastError
+}
+
 async function load() {
   try {
-    const response = await fetch('../registry/templates.json', { cache: 'no-store' })
-    if (!response.ok) throw new Error(`Registry request failed with ${response.status}`)
-    const registry = await response.json()
+    const registry = await fetchRegistry()
     state.templates = registry.templates
 
     const categories = [...new Set(state.templates.flatMap((entry) => entry.categories))].sort()
@@ -198,7 +237,20 @@ async function load() {
     render()
   } catch (error) {
     elements.count.textContent = 'Registry unavailable'
-    elements.grid.innerHTML = `<div class="empty"><strong>Could not load the registry.</strong><br/>${error.message}<br/><br/>Serve the repository root over HTTP instead of opening this file directly.</div>`
+    elements.grid.replaceChildren()
+    const empty = document.createElement('div')
+    empty.className = 'empty'
+    const strong = document.createElement('strong')
+    strong.textContent = 'Could not load the registry.'
+    empty.append(
+      strong,
+      document.createElement('br'),
+      `${error.message}`,
+      document.createElement('br'),
+      document.createElement('br'),
+      'Serve the repository root over HTTP instead of opening this file directly.',
+    )
+    elements.grid.append(empty)
   }
 }
 

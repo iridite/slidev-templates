@@ -27,7 +27,6 @@ for (const entry of hosted) {
   const install = spawnSync(npm, [
     'install',
     '--package-lock=false',
-    '--ignore-scripts',
     '--no-audit',
     '--no-fund',
   ], {
@@ -56,4 +55,4 @@ for (const entry of hosted) {
   }
 }
 
-console.log(`\nBuilt ${hosted.length} hosted templates successfully.`)
+console.log(`\nBuilt ${hosted.length} hosted templates successfully in clean package environments.`)

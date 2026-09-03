@@ -1,0 +1,59 @@
+name: Registry correction
+description: Report incorrect ownership, license, source, preview, compatibility, or verification metadata
+title: "[Registry correction]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping keep the registry trustworthy. Rights holders and upstream maintainers are especially encouraged to correct inaccurate metadata. Please link canonical evidence; do not include private or security-sensitive information here.
+  - type: input
+    id: entry
+    attributes:
+      label: Registry entry
+      description: Template id or name.
+      placeholder: paper-lab or NJU Academic Slidev Template
+    validations:
+      required: true
+  - type: dropdown
+    id: field
+    attributes:
+      label: What needs correction?
+      options:
+        - Canonical source or maintainer
+        - License or attribution
+        - Preview or description
+        - Start command or compatibility
+        - Verification or status
+        - Branding or trademark concern
+        - Removal request
+        - Other metadata
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Current problem
+      description: Explain precisely what is inaccurate, stale, broken, or potentially misleading.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Canonical evidence
+      description: Link the upstream file, documentation, release, issue, or maintainer statement supporting the correction.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Proposed correction
+      description: Suggested replacement metadata or action, when known.
+    validations:
+      required: false
+  - type: checkboxes
+    id: relationship
+    attributes:
+      label: Relationship disclosure
+      options:
+        - label: I am an upstream maintainer or rights holder for this project/material.
+        - label: I am reporting this as an independent user/reviewer.

@@ -1,40 +1,36 @@
 # Paper Lab
 
-Paper Lab is a light, publication-inspired Slidev starter for research talks, technical reports, experiment reviews, and evidence-heavy proposals.
+**Evidence before ornament.**
 
-It is a **template**, not a standalone theme package. The starter combines an information structure, typography, reusable slide patterns, and a representative deck that can be copied and edited directly.
+A calm, publication-inspired Slidev starter for framing research questions, methods, evidence, results, uncertainty, limitations, and bounded decisions.
 
-## Best for
-
-- research questions and hypotheses;
-- methods and study-design explanations;
-- results with restrained data emphasis;
-- literature, evidence, and limitation slides;
-- internal experiment reviews and conference talks.
+This is a complete Slidev starter rather than a standalone theme package. It combines a narrative structure, representative slide patterns, typography, CSS tokens, and build/export commands.
 
 ## Quick start
 
 ```bash
-npx degit iridite/slidev-templates/templates/paper-lab paper-lab-talk
-cd paper-lab-talk/starter
+npx degit iridite/slidev-templates/templates/paper-lab/starter paper-lab-talk
+cd paper-lab-talk
 npm install
 npm run dev
 ```
 
-Or copy `starter/` into an existing repository.
+The extracted directory is self-contained: `package.json`, `slides.md`, README, MIT license, attribution record, and `.gitignore` all travel with the starter.
+
+## Best for
+
+- research questions, hypotheses, and pre-registered decision thresholds;
+- methods, cohorts, assumptions, and study-design explanations;
+- results that pair estimates with uncertainty and denominators;
+- limitations, external-validity boundaries, and bounded recommendations;
 
 ## Included patterns
 
-The example deck demonstrates:
-
-- a publication-style title page;
-- research-question framing;
-- a method pipeline;
-- headline results and uncertainty;
-- an evidence table;
-- limitations and next-step framing.
-
-The CSS is intentionally kept inside `slides.md`, so the starter remains easy to inspect and copy. Split it into a dedicated stylesheet when the presentation grows.
+- publication-style cover and research-question framing;
+- four-stage method pipeline;
+- headline result metrics with uncertainty;
+- evidence table separating confidence from decision relevance;
+- limitations and a bounded decision close;
 
 ## Commands
 
@@ -44,16 +40,22 @@ npm run build
 npm run export
 ```
 
+The starter tracks the current official Slidev application baseline used by this repository: Node.js 20.12 or newer, `@slidev/cli` 52.19.x, the default theme package, and Vue 3.5.
+
 ## Customization
 
-The starter uses system-safe serif, sans-serif, and monospace fallbacks. Change the CSS variables at the bottom of `slides.md` to adjust paper color, ink, accent, and typography without rewriting individual slides.
-
-Keep the visual hierarchy restrained: one primary claim per slide, generous margins, short evidence labels, and explicit limitations.
+Edit the CSS variables at the bottom of `slides.md` to change paper, ink, accent, rules, and typography. Keep the evidence hierarchy restrained: one claim, the denominator, the interval, and the decision consequence.
 
 ## Provenance
 
-This is an original clean-room implementation. Public academic Slidev projects, including `luckenco/slidev-academic-GitHub`, were reviewed to understand common needs, but no upstream code, branding, or assets were copied. See [ATTRIBUTION.md](./ATTRIBUTION.md).
+Public academic presentation repositories were reviewed to identify recurring needs, including `luckenco/slidev-academic-GitHub` and `sylearn/nju-slidev-template`. The implementation, content, CSS, and preview in this directory are original and unbranded.
+
+See [`ATTRIBUTION.md`](./ATTRIBUTION.md) and the machine-readable [`template.json`](./template.json).
+
+## Verification
+
+Every pull request clean-installs and builds this starter in GitHub Actions. Registry schema, manifest, preview, license, CLI scaffolding, and generated gallery/catalog integration are tested separately.
 
 ## License
 
-MIT. See [LICENSE](./LICENSE).
+MIT. See [`LICENSE`](./LICENSE).

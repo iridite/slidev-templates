@@ -32,12 +32,18 @@ jobs:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
         run: npm ci
 
-      - name: Run registry, contract, CLI, and regression tests
+      - name: Verify generated catalogs
+        run: npm run registry:catalog:check
+
+      - name: Verify deployable gallery
+        run: npm run gallery:check
+
+      - name: Run schema, provenance, CLI, gallery, and regression tests
         run: npm test
 
   build-hosted-collection:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
 
     steps:
       - name: Checkout
@@ -48,7 +54,7 @@ jobs:
         with:
           node-version: 20
 
-      - name: Build manifest-based hosted templates
+      - name: Clean-install and build manifest-based hosted templates
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
         run: npm run build:hosted

@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.slidev/
+*.pdf
+*.log
+.DS_Store

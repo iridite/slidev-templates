@@ -5,11 +5,13 @@ on:
   push:
     paths:
       - 'registry/**'
+      - 'templates/**/LICENSE'
       - 'scripts/check-registry-health.mjs'
       - '.github/workflows/registry-health.yml'
   pull_request:
     paths:
       - 'registry/**'
+      - 'templates/**/LICENSE'
       - 'scripts/check-registry-health.mjs'
       - '.github/workflows/registry-health.yml'
   schedule:
@@ -25,7 +27,7 @@ concurrency:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
 
     steps:
       - name: Checkout
@@ -36,7 +38,7 @@ jobs:
         with:
           node-version: 20
 
-      - name: Check canonical sources and previews
+      - name: Check canonical sources, previews, and license evidence
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: node scripts/check-registry-health.mjs
+        run: npm run registry:health

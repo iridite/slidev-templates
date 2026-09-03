@@ -2,42 +2,39 @@
 
 This directory defines the machine-readable catalog behind `slidev-templates`.
 
-The project is intentionally broader than a single theme. Its goal is to become a reliable discovery and contribution layer for reusable Slidev presentation templates: a place where users can find templates, understand how to start from them, and contribute new ones through a consistent review process.
+The project is broader than a theme gallery. It is a discovery and maintenance layer for reusable Slidev presentation workflows: a place where users can compare purpose, ownership, license evidence, start commands, provenance, and verification depth.
 
-## Registry model
+## Canonical files
 
-`templates.json` is the canonical catalog. Each entry describes:
+- [`templates.json`](./templates.json) — versioned catalog;
+- [`schema.json`](./schema.json) — exact JSON Schema for the catalog;
+- [`hosted-template.schema.json`](./hosted-template.schema.json) — manifest contract for repository-hosted starters;
+- [`FIELDS.md`](./FIELDS.md) — semantic field reference.
 
-- a stable template ID and human-readable name;
-- a concise description and searchable tags;
-- the maintainer or author;
-- license information;
-- a representative preview;
-- a copy/install command;
-- whether the template is hosted in this repository or maintained externally;
-- its review status.
+The English and Chinese README catalogs, browser gallery, CLI, tests, and health workflow all consume this data.
 
-The JSON structure is documented by `schema.json` and validated in CI.
-
-## Source types
+## Source models
 
 ### Hosted
 
-A hosted template lives in this repository and is expected to provide a runnable starter. Hosted entries use:
+A hosted template is maintained in this repository and has a reproducible starter path.
 
 ```json
 {
   "source": {
     "type": "hosted",
-    "path": "template-id",
-    "starterPath": "template-id/starter"
+    "path": "templates/example",
+    "starterPath": "templates/example/starter",
+    "manifest": "templates/example/template.json"
   }
 }
 ```
 
+New hosted starters must be self-contained when extracted: package metadata, slides, README, license, attribution, and ignore rules travel together.
+
 ### External
 
-An external template remains in the author's repository and is indexed here for discovery. This lets the registry grow without forcing every project into one monorepo.
+An external template remains in its canonical upstream repository.
 
 ```json
 {
@@ -48,33 +45,50 @@ An external template remains in the author's repository and is indexed here for 
 }
 ```
 
-## Status levels
+External inclusion is an index relationship. It does not copy code, change the upstream license, absorb governance, or imply endorsement.
 
-- `verified`: reviewed by maintainers and its usage path has been validated.
-- `community`: accepted into the catalog with adequate documentation and licensing, but not continuously tested by this repository.
-- `experimental`: useful early-stage work that may change or have incomplete compatibility guarantees.
+## Status and verification
 
-Status is not a popularity ranking. It describes the level of verification provided by this project.
+Status and verification level are related but distinct:
+
+- `verified` — the primary documented path has been exercised;
+- `community` — reviewed and monitored for discoverability, source, preview, and license evidence;
+- `experimental` — useful or distinctive, but compatibility or branding guarantees are weaker.
+
+Verification levels record the evidence:
+
+- `build-and-export` — build plus PDF export;
+- `clean-install-build` — dependency installation and Slidev build in a clean CI environment;
+- `metadata-health` — canonical source, preview, and license URL health.
+
+Every verification object records its checks, workflow path, and review date.
 
 ## Acceptance criteria
 
-A template is a strong fit when it is reusable beyond one specific talk and has:
+A strong entry is reusable beyond one talk and has:
 
-1. a clear README or usage guide;
-2. a reproducible way to start or copy the template;
-3. at least one representative preview;
-4. explicit licensing and attribution for bundled assets;
-5. an identifiable maintainer or source repository;
-6. enough structure that another person can reasonably use it without reconstructing the original author's environment.
+1. a clear audience or recurring presentation job;
+2. a canonical source and identifiable maintainer;
+3. a reproducible start or copy workflow;
+4. representative preview evidence;
+5. direct license evidence and explicit provenance;
+6. meaningful distinction from existing entries;
+7. a verification level that does not overstate what this registry tested.
 
-We may decline abandoned, unverifiable, copied-without-permission, malicious, or extremely presentation-specific submissions. The goal is a useful catalog, not the largest possible list.
+Popularity is useful adoption evidence, but not a substitute for the contract.
 
-## Contributing a template
+## Curation boundary
 
-You can either open the **Template submission** issue form first or submit a focused pull request that updates `templates.json` and any required hosted files.
+Use hosted inclusion for repository-owned work or deliberate, legally reviewed adaptations that this project will maintain.
 
-For hosted templates, keep the stable top-level path so users can copy a template directly with tools such as `degit`.
+Use external inclusion when the project already has its own maintainer, release process, reciprocal license, organization-specific branding, or substantial independent infrastructure.
 
-For external templates, do not vendor another author's repository. Add a registry entry that points to the canonical upstream source instead.
+Do not vendor a public repository merely because it is technically downloadable. Public visibility is not permission to redistribute.
 
-See [`CONTRIBUTING.md`](../CONTRIBUTING.md) for the full review workflow.
+## Maintenance
+
+`npm test` checks registry/schema agreement, local artifacts, manifests, provenance, license evidence, generated catalogs, gallery consumption, and CLI behavior.
+
+`npm run registry:health` checks external repositories, previews, and license URLs. Missing or disabled sources fail; stale and archived sources raise review warnings.
+
+See [`../docs/TEMPLATE_CONTRACT.md`](../docs/TEMPLATE_CONTRACT.md), [`../CONTRIBUTING.md`](../CONTRIBUTING.md), and [`../GOVERNANCE.md`](../GOVERNANCE.md).
