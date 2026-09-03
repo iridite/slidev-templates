@@ -1,7 +1,7 @@
 # Terminal Ink starter
 
 This directory is the self-contained, directly extractable starter for
-[`Terminal Ink`](../README.md).
+[Terminal Ink](https://github.com/iridite/slidev-templates/tree/main/templates/terminal-ink).
 
 ```bash
 npm install

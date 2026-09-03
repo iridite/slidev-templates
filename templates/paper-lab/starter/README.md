@@ -1,7 +1,7 @@
 # Paper Lab starter
 
 This directory is the self-contained, directly extractable starter for
-[`Paper Lab`](../README.md).
+[Paper Lab](https://github.com/iridite/slidev-templates/tree/main/templates/paper-lab).
 
 ```bash
 npm install

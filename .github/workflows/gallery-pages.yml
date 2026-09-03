@@ -24,6 +24,9 @@ jobs:
         with:
           node-version: 20
 
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
       - name: Build static gallery
         run: npm run gallery:build
 

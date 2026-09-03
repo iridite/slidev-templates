@@ -39,6 +39,8 @@ All notable changes to this project are documented in this file.
 - Ensured scaffolded hosted starters retain license and attribution evidence.
 - Made external license links part of scheduled registry health checks.
 - Added CI concurrency so superseded branch runs are cancelled.
+- Replaced parent-directory links in directly extracted starter READMEs with canonical repository URLs.
+- Added a GitHub Pages root redirect, `.nojekyll`, and explicit Pages configuration for the standalone gallery artifact.
 
 ## [1.0.0] - 2026-05-28
 
