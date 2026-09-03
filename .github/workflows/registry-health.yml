@@ -2,6 +2,16 @@ name: Registry Health
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - 'registry/**'
+      - 'scripts/check-registry-health.mjs'
+      - '.github/workflows/registry-health.yml'
+  pull_request:
+    paths:
+      - 'registry/**'
+      - 'scripts/check-registry-health.mjs'
+      - '.github/workflows/registry-health.yml'
   schedule:
     - cron: '17 4 * * 0'
 
@@ -9,7 +19,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: registry-health
+  group: registry-health-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
