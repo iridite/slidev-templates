@@ -1,117 +1,169 @@
 # Slidev Templates
 
 [![CI](https://github.com/iridite/slidev-templates/actions/workflows/ci.yml/badge.svg)](https://github.com/iridite/slidev-templates/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-[![Registry](https://img.shields.io/badge/registry-machine--readable-blue)](./registry/templates.json)
+[![Registry Health](https://github.com/iridite/slidev-templates/actions/workflows/registry-health.yml/badge.svg)](https://github.com/iridite/slidev-templates/actions/workflows/registry-health.yml)
+[![License: MIT](https://img.shields.io/badge/repository-MIT-171713.svg)](./LICENSE)
+[![Registry](https://img.shields.io/badge/catalog-machine--readable-3155d8.svg)](./registry/templates.json)
 
-**A curated, machine-readable registry and community collection of reusable [Slidev](https://sli.dev) presentation templates.**
+**A curated, machine-readable registry and hosted collection of reusable [Slidev](https://sli.dev) presentation templates.**
 
-The goal is not to maintain one theme. The goal is to make high-quality Slidev templates easier to **discover, evaluate, reuse, and contribute** through a consistent open-source workflow.
+The project makes high-quality Slidev starting points easier to **discover, compare, reuse, verify, and contribute**. It is not a repository for one theme and it is not an unreviewed link list.
 
-[中文说明](./README.zh-CN.md) · [Browse registry](./registry/templates.json) · [Submit a template](https://github.com/iridite/slidev-templates/issues/new?template=template_submission.yml) · [Contributing](./CONTRIBUTING.md) · [Governance](./GOVERNANCE.md)
+A template here means a complete presentation workflow: it can include a starter deck, narrative structure, layouts, components, configuration, examples, documentation, and build/export/deployment practices. A theme may be part of a template, but visual theming alone is not the collection boundary.
 
-## What counts as a template?
+[中文说明](./README.zh-CN.md) · [Registry JSON](./registry/templates.json) · [Template contract](./docs/TEMPLATE_CONTRACT.md) · [Submit a template](https://github.com/iridite/slidev-templates/issues/new?template=template_submission.yml) · [Governance](./GOVERNANCE.md)
 
-A template is a reusable starting point for a presentation, not just a visual theme. It may include a Slidev theme, starter deck, layouts, components, configuration, examples, documentation, export/deployment workflows, and recommended project structure.
+## What is available now?
 
-This registry therefore complements Slidev's theme ecosystem rather than duplicating it: **themes provide appearance; templates provide a complete starting workflow.**
+The initial catalog contains **four repository-hosted templates** and **seven independently governed external projects**. Hosted templates are continuously checked here; external entries remain owned and maintained by their canonical upstream repositories.
 
-## Template catalog
+### Repository-hosted collection
 
-<!-- registry-catalog:start -->
-| Template | Status | Source | Highlights | Start |
-| --- | --- | --- | --- | --- |
-| [Neko Style](./neko-style/) | ✅ Verified | Hosted | `technical`, `developer`, `dark`, `ai`, `conference` | <code>npx degit iridite/slidev-templates/neko-style my-presentation</code> |
-| [LittleSound Talks Template](https://github.com/LittleSound/talks-template) | 🟦 Community | External | `developer`, `multi-talk`, `pnpm`, `vue`, `workspace` | <code>npx degit LittleSound/talks-template my-talks</code> |
-| [Espressif Slidev Template](https://github.com/espressif/slidev-esp-template) | 🟦 Community | External | `corporate`, `developer`, `technical`, `branded`, `addons` | <code>npx degit espressif/slidev-esp-template my-presentation</code> |
-| [Miragon Slidev Deck Template](https://github.com/Miragon/slidev-deck-template) | 🟦 Community | External | `corporate`, `scaffolder`, `automation`, `ai`, `validation` | <code>npm create @miragon/slidev-deck@latest my-talk</code> |
-| [Presentations Template](https://github.com/askpt/presentations.template) | 🟦 Community | External | `developer`, `typescript`, `deployment`, `multi-theme`, `devcontainer` | <code>npx degit askpt/presentations.template my-presentation</code> |
-| [3mdeb Slidev Template](https://github.com/3mdeb/slidev-template) | 🟦 Community | External | `technical`, `automation`, `testing`, `visual-regression`, `production` | <code>git submodule add https://github.com/3mdeb/slidev-template.git slidev-template</code> |
-| [Slidev Resources Template](https://github.com/kaakaa/slidev-resources-template) | 🟦 Community | External | `multi-talk`, `github-pages`, `pdf`, `automation`, `release` | <code>gh repo create my-slides --template kaakaa/slidev-resources-template --public</code> |
-| [Godkun PPT Template](https://github.com/godkun/ppt-template) | 🟦 Community | External | `developer`, `pnpm`, `visual`, `starter`, `custom-style` | <code>git clone https://github.com/godkun/ppt-template.git</code> |
-<!-- registry-catalog:end -->
+| Template | Designed for | Preview | Start |
+| --- | --- | --- | --- |
+| [Neko Style](./neko-style/) | Technical talks, developer presentations, AI/ML, conferences | [Preview](./assets/neko-style-preview.png) | `npx degit iridite/slidev-templates/neko-style my-presentation` |
+| [Paper Lab](./templates/paper-lab/) | Research questions, methods, evidence, results, limitations | [Preview](./templates/paper-lab/preview.svg) | `npx degit iridite/slidev-templates/templates/paper-lab paper-lab-talk` |
+| [Terminal Ink](./templates/terminal-ink/) | Incident reviews, systems walkthroughs, code and operations | [Preview](./templates/terminal-ink/preview.svg) | `npx degit iridite/slidev-templates/templates/terminal-ink terminal-talk` |
+| [Editorial Grid](./templates/editorial-grid/) | Product narratives, strategy, launches, editorial storytelling | [Preview](./templates/editorial-grid/preview.svg) | `npx degit iridite/slidev-templates/templates/editorial-grid editorial-talk` |
 
-This table is generated from [`registry/templates.json`](./registry/templates.json), so the human-facing catalog and the machine-readable registry cannot silently drift apart.
+<table>
+  <tr>
+    <td width="33%"><img src="./templates/paper-lab/preview.svg" alt="Paper Lab preview" /></td>
+    <td width="33%"><img src="./templates/terminal-ink/preview.svg" alt="Terminal Ink preview" /></td>
+    <td width="33%"><img src="./templates/editorial-grid/preview.svg" alt="Editorial Grid preview" /></td>
+  </tr>
+</table>
 
-The registry deliberately mixes repository-hosted templates and independently maintained external projects. External authors keep ownership and governance of their projects; this repository only provides curated discovery metadata.
+Each new hosted template includes a machine-readable manifest, runnable starter, representative preview, README, license, and provenance record. `neko-style/` predates the current directory contract and remains at its historical path for compatibility.
 
-### Neko Style preview
+### Curated external projects
 
-[![Neko Style preview](./assets/neko-style-preview.png)](./neko-style/)
+The registry also indexes distinct upstream workflows including multi-talk workspaces, corporate systems, deployment-ready starters, and visual-regression-oriented presentation infrastructure.
 
-Neko Style is the first reference implementation in the registry. It includes a ready-to-run starter, reusable layouts and components, documentation, preview assets, and automated build/export verification.
+External authors retain ownership, licensing, release processes, and governance. This repository stores discovery metadata and health signals; it does not present their work as repository-owned code.
 
-## A registry, not just a list
+Browse every entry in [`registry/templates.json`](./registry/templates.json), through the local gallery, or with the CLI.
 
-[`registry/templates.json`](./registry/templates.json) is the canonical machine-readable catalog. Entries use a documented schema and are validated by CI.
+## Browse and search
 
-The registry supports two contribution models:
+### Local gallery
 
-- **Hosted templates** live in this repository and can be continuously tested here.
-- **External templates** stay in their canonical upstream repository and are indexed here for discovery without vendoring somebody else's project.
+```bash
+git clone https://github.com/iridite/slidev-templates.git
+cd slidev-templates
+npm run gallery:serve
+```
 
-See [`registry/README.md`](./registry/README.md) for the data model, review statuses, and acceptance criteria.
+Open `http://127.0.0.1:4173/gallery/`. The gallery reads the canonical registry directly and supports text, category, source, and verification-status filtering.
 
-### Verification status
+### Registry CLI
 
-- **Verified** — maintainers have reviewed the entry and validated its documented usage path.
-- **Community** — accepted into the catalog with sufficient documentation and licensing, but not continuously tested here.
+```bash
+npm run templates -- list
+npm run templates -- search academic
+npm run templates -- info terminal-ink
+npm run templates -- scaffold editorial-grid ./my-talk
+```
+
+The CLI returns the canonical command for external projects and can directly scaffold repository-hosted starters.
+
+Machine consumers can read:
+
+- [`registry/templates.json`](./registry/templates.json) — canonical catalog;
+- [`registry/schema.json`](./registry/schema.json) — registry schema;
+- [`registry/hosted-template.schema.json`](./registry/hosted-template.schema.json) — hosted manifest contract.
+
+## Why a registry instead of another theme gallery?
+
+Slidev already has a theme ecosystem. The remaining discovery problem is broader: users often need a complete starting workflow and have to inspect many unrelated repositories to answer basic questions.
+
+This registry makes those questions explicit:
+
+- What job is the template designed for?
+- Is it a starter, workspace, workflow, or larger presentation system?
+- Is it hosted here or governed upstream?
+- What is the shortest reproducible starting command?
+- What license and provenance apply?
+- What has actually been verified?
+- Is the canonical source and preview still reachable?
+
+The structured format can be consumed by galleries, CLIs, AI agents, documentation sites, and future Slidev tooling without scraping README files.
+
+## Hosted and external models
+
+**Hosted templates** live in this repository. New hosted entries follow [`docs/TEMPLATE_CONTRACT.md`](./docs/TEMPLATE_CONTRACT.md), carry explicit provenance, and pass repository tests and builds.
+
+**External templates** stay in their canonical repositories. They can be indexed without vendoring code, absorbing upstream governance, or silently changing licensing obligations.
+
+Verification status has a narrow meaning:
+
+- **Verified** — the primary documented path has been exercised; hosted entries are continuously checked here.
+- **Community** — reviewed for discoverability, documentation, source, and licensing, while runtime verification remains upstream.
 - **Experimental** — useful early-stage work with weaker compatibility guarantees.
 
-Status describes verification, not popularity.
+Status measures review depth, not popularity or endorsement.
+
+## Quality and maintenance
+
+Every pull request runs independent checks for:
+
+1. registry integrity, hosted-template contract, gallery consumption, CLI search/scaffolding, and repository regressions;
+2. clean builds of every manifest-based hosted starter;
+3. Neko Style build and PDF export verification.
+
+A separate Registry Health workflow checks canonical external sources and preview links on catalog changes and on a schedule.
+
+AI or coding agents may assist with discovery, reproduction, metadata extraction, tests, issue triage, and focused reviews, but humans retain final decisions over curation, licensing, security, provenance, merges, and releases. See [`docs/AI_ASSISTED_MAINTENANCE.md`](./docs/AI_ASSISTED_MAINTENANCE.md).
 
 ## Submit a template
 
-We actively welcome reusable Slidev templates from the community.
+Use the [Template submission form](https://github.com/iridite/slidev-templates/issues/new?template=template_submission.yml) and provide:
 
-The easiest route is the **Template submission** issue form. Provide the canonical source, preview, license, tags, and the shortest reproducible way for a new user to start from it. Maintainers can then recommend either an external registry entry or a hosted contribution.
+- the canonical source and maintainer;
+- a representative preview or live demo;
+- a reproducible start path;
+- license and attribution information;
+- the audience, use case, and distinctive value;
+- whether hosted or external inclusion is preferred.
 
-A strong submission should have:
+The collection is curated for usefulness and maintainability rather than raw entry count. Public visibility alone is not permission to copy a project.
 
-1. a clear README or usage guide;
-2. a reproducible start/copy workflow;
-3. at least one representative preview or live demo;
-4. explicit licensing and attribution;
-5. an identifiable maintainer or canonical source;
-6. enough structure to be useful beyond one specific talk.
-
-We curate for usefulness and maintainability rather than maximizing the number of entries.
-
-## For contributors and maintainers
+## Development
 
 ```bash
 git clone https://github.com/iridite/slidev-templates.git
 cd slidev-templates
 npm ci
 npm test
+npm run build:hosted
+npm run build:neko
 ```
 
-`npm test` validates both hosted-template regression tests and registry integrity. Hosted template changes can add their own build/export checks as the catalog grows.
-
-For the current Neko Style reference template:
+For changes affecting Neko Style rendering or export:
 
 ```bash
-npm run dev:neko
-npm run build:neko
 npm run export:neko
 ```
 
-GitHub Actions runs tests, builds the hosted reference template, and verifies PDF export on pushes and pull requests. A separate Registry Health workflow checks external canonical sources and preview links on registry changes and on a weekly schedule.
+For a new hosted template, follow the structure and review checklist in [`docs/TEMPLATE_CONTRACT.md`](./docs/TEMPLATE_CONTRACT.md).
 
 ## Repository structure
 
 ```text
 slidev-templates/
 ├── registry/
-│   ├── templates.json      # canonical template catalog
-│   ├── schema.json         # registry schema
-│   └── README.md           # registry rules and status model
-├── scripts/                # catalog generation + upstream health checks
-├── tests/                  # registry + hosted-template validation
-├── .github/
-│   └── ISSUE_TEMPLATE/     # bug, feature, and template submissions
-├── neko-style/             # first hosted/reference template
-├── assets/                 # catalog preview assets
+│   ├── templates.json
+│   ├── schema.json
+│   └── hosted-template.schema.json
+├── templates/
+│   ├── paper-lab/
+│   ├── terminal-ink/
+│   └── editorial-grid/
+├── neko-style/                  # historical hosted reference template
+├── gallery/                     # registry-powered browser UI
+├── scripts/                     # CLI, health, catalog, and build automation
+├── tests/                       # registry + template contract + regressions
+├── docs/
 ├── CONTRIBUTING.md
 ├── GOVERNANCE.md
 ├── SECURITY.md
@@ -120,16 +172,10 @@ slidev-templates/
 
 ## Project direction
 
-The project is building toward a useful community discovery layer rather than a single-template repository: more independently maintained templates, richer searchable metadata, compatibility signals, automated health checks, and eventually a browsable gallery generated from the same registry data.
+The next stage is distribution and adoption rather than indiscriminate collection: improve compatibility signals, publish the gallery, make the registry easier for downstream tools to consume, accept high-quality community submissions, and establish feedback loops with upstream authors.
 
-The registry format is intentionally machine-readable so other tools, agents, sites, and Slidev workflows can consume it without scraping README files.
-
-## Governance
-
-Issues and pull requests are triaged for reproducibility, user impact, ecosystem usefulness, licensing, and maintenance cost. Registry additions are reviewed rather than automatically accepted. The current primary maintainer and decision process are documented in [`GOVERNANCE.md`](./GOVERNANCE.md).
-
-Read [`CONTRIBUTING.md`](./CONTRIBUTING.md) before submitting changes. Security issues should be reported according to [`SECURITY.md`](./SECURITY.md).
+The project landscape and current hosting decisions are documented in [`docs/TEMPLATE_LANDSCAPE.md`](./docs/TEMPLATE_LANDSCAPE.md).
 
 ## License
 
-Repository-maintained code and documentation are available under the [MIT License](./LICENSE). External registry entries retain their own upstream licenses, which are recorded in the catalog.
+Repository-maintained code and documentation are available under the [MIT License](./LICENSE), unless a nested file states otherwise. External registry entries retain their own upstream licenses. No external entry is relicensed by being indexed here.
