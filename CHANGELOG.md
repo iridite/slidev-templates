@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Added
+
+- Repository-wide `npm test` command for the existing Node.js regression suite
+- Structured GitHub bug report and feature request forms
+- Pull request checklist for test, build, export, and documentation verification
+- `CONTRIBUTING.md` with local setup, review expectations, and contribution guidance
+- `SECURITY.md` with responsible vulnerability reporting guidance
+- CI and license badges plus clearer maintenance status in the root README
+
+### Changed
+
+- CI now runs the regression suite before building and exporting the starter
+- GitHub Actions workflow now declares read-only repository contents permission
+
 ## [1.0.0] - 2026-05-28
 
 ### Added
