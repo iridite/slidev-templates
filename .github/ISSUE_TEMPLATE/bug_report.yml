@@ -1,0 +1,72 @@
+name: Bug report
+description: Report a reproducible problem with a template, theme, starter, build, or export
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a problem. A minimal reproduction and exact environment details make fixes much faster.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - neko-style theme
+        - neko-style starter
+        - installation / dependency resolution
+        - build / export
+        - documentation
+        - repository automation / CI
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the observed behavior and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Provide the smallest set of steps, files, or repository link that reproduces the problem.
+      placeholder: |
+        1. Run ...
+        2. Open ...
+        3. See ...
+    validations:
+      required: true
+  - type: input
+    id: node
+    attributes:
+      label: Node.js version
+      placeholder: "e.g. 20.19.0"
+  - type: input
+    id: npm
+    attributes:
+      label: npm version
+      placeholder: "e.g. 10.8.2"
+  - type: input
+    id: slidev
+    attributes:
+      label: Slidev version
+      placeholder: "e.g. 52.x"
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Paste the smallest useful error output. Remove secrets or private data first.
+      render: shell
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues and pull requests for the same problem.
+          required: true
+        - label: I removed credentials and unrelated private data from this report.
+          required: true
