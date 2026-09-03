@@ -1,8 +1,6 @@
 name: Template submission
 description: Suggest a reusable Slidev template for inclusion in the registry
 title: "[Template]: "
-labels:
-  - template-submission
 body:
   - type: markdown
     attributes:
