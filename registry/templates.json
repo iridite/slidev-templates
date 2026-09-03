@@ -33,6 +33,99 @@
       },
       "status": "verified",
       "featured": true
+    },
+    {
+      "id": "espressif",
+      "name": "Espressif Slidev Template",
+      "description": "Espressif's reusable Slidev presentation starter with branded layouts, reusable components, addons, examples, and deployment configuration.",
+      "source": {
+        "type": "external",
+        "repository": "https://github.com/espressif/slidev-esp-template"
+      },
+      "author": {
+        "name": "Espressif Systems",
+        "url": "https://github.com/espressif"
+      },
+      "tags": [
+        "corporate",
+        "developer",
+        "technical",
+        "branded",
+        "addons"
+      ],
+      "license": "MIT",
+      "preview": {
+        "type": "url",
+        "value": "https://github.com/espressif/slidev-esp-template"
+      },
+      "usage": {
+        "type": "degit",
+        "command": "npx degit espressif/slidev-esp-template my-presentation"
+      },
+      "status": "community",
+      "featured": true
+    },
+    {
+      "id": "presentations-template",
+      "name": "Presentations Template",
+      "description": "A modern Slidev starter with TypeScript, reusable Vue components, multiple themes, dev-container support, deployment configuration, and PDF/PPTX export workflows.",
+      "source": {
+        "type": "external",
+        "repository": "https://github.com/askpt/presentations.template"
+      },
+      "author": {
+        "name": "askpt",
+        "url": "https://github.com/askpt"
+      },
+      "tags": [
+        "developer",
+        "typescript",
+        "deployment",
+        "multi-theme",
+        "devcontainer"
+      ],
+      "license": "MIT",
+      "preview": {
+        "type": "url",
+        "value": "https://askpt.github.io/presentations.template/"
+      },
+      "usage": {
+        "type": "degit",
+        "command": "npx degit askpt/presentations.template my-presentation"
+      },
+      "status": "community",
+      "featured": false
+    },
+    {
+      "id": "3mdeb-slidev-template",
+      "name": "3mdeb Slidev Template",
+      "description": "A production-oriented Slidev template workflow with submodule-based integration, scripted rendering and PDF generation, Playwright smoke tests, and visual-regression coverage.",
+      "source": {
+        "type": "external",
+        "repository": "https://github.com/3mdeb/slidev-template"
+      },
+      "author": {
+        "name": "3mdeb",
+        "url": "https://github.com/3mdeb"
+      },
+      "tags": [
+        "technical",
+        "automation",
+        "testing",
+        "visual-regression",
+        "production"
+      ],
+      "license": "Apache-2.0",
+      "preview": {
+        "type": "url",
+        "value": "https://raw.githubusercontent.com/3mdeb/slidev-template/main/tests/visual-regression.spec.ts-snapshots/layout-cover-chromium-linux.png"
+      },
+      "usage": {
+        "type": "clone",
+        "command": "git submodule add https://github.com/3mdeb/slidev-template.git slidev-template"
+      },
+      "status": "community",
+      "featured": true
     }
   ]
 }
