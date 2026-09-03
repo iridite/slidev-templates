@@ -1,17 +1,31 @@
 name: Template submission
-description: Suggest a reusable Slidev template for inclusion in the registry
+description: Propose a reusable Slidev template for the curated registry
 title: "[Template]: "
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for helping grow the Slidev template ecosystem. We curate reusable templates rather than collecting every slide deck, so please provide enough information for maintainers to evaluate usability, licensing, and long-term discoverability.
+        Thanks for helping grow the Slidev template ecosystem. We curate reusable presentation workflows rather than collecting every slide deck. Please provide enough evidence for maintainers to evaluate usefulness, reproducibility, licensing, provenance, and long-term discoverability.
 
   - type: input
     id: name
     attributes:
       label: Template name
-      placeholder: e.g. Neko Style
+      placeholder: e.g. Paper Lab
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Template kind
+      description: Choose the closest description of the reusable starting point.
+      options:
+        - Starter — one reusable presentation starting point
+        - Workspace — manages multiple talks or resources
+        - Workflow — primarily adds build, export, testing, or publishing infrastructure
+        - Presentation system — combines scaffolding, design system, components, and guardrails
+        - Unsure — maintainer can classify it
     validations:
       required: true
 
@@ -19,7 +33,16 @@ body:
     id: description
     attributes:
       label: What is this template for?
-      description: Describe its visual style, intended audience, and what makes it reusable beyond a single talk.
+      description: Describe the audience, presentation job, visual/workflow identity, and why it is reusable beyond one talk.
+      placeholder: This template helps research teams explain a question, method, evidence, limitations, and next decision…
+    validations:
+      required: true
+
+  - type: textarea
+    id: distinction
+    attributes:
+      label: What makes it meaningfully different?
+      description: Explain the use case, information architecture, interaction model, components, or workflow that is not already covered by existing entries.
     validations:
       required: true
 
@@ -31,13 +54,22 @@ body:
     validations:
       required: true
 
+  - type: input
+    id: maintainer
+    attributes:
+      label: Upstream maintainer or organization
+      description: Link to the person or organization that governs the canonical project.
+      placeholder: https://github.com/owner
+    validations:
+      required: true
+
   - type: dropdown
     id: source-type
     attributes:
       label: Preferred inclusion model
       options:
         - External listing — keep the template in its canonical repository
-        - Hosted contribution — contribute the reusable template to this repository
+        - Hosted contribution — contribute an implementation to this repository
         - Unsure — maintainer can decide
     validations:
       required: true
@@ -46,7 +78,7 @@ body:
     id: preview
     attributes:
       label: Preview URL
-      description: Link to a representative screenshot, gallery, demo, or exported slide preview.
+      description: Link to a representative screenshot, gallery, live demo, or exported slide preview.
       placeholder: https://...
     validations:
       required: true
@@ -55,7 +87,7 @@ body:
     id: usage
     attributes:
       label: How can a new user start from it?
-      description: Give the shortest reproducible command or setup path.
+      description: Give the shortest reproducible command or setup path that does not require private files or services.
       placeholder: npx degit owner/repo/template my-presentation
     validations:
       required: true
@@ -63,17 +95,35 @@ body:
   - type: input
     id: license
     attributes:
-      label: License
-      placeholder: MIT
+      label: License and evidence
+      description: Provide the SPDX identifier and link to the canonical license file. Public visibility alone is not a license.
+      placeholder: MIT — https://github.com/owner/repo/blob/main/LICENSE
+    validations:
+      required: true
+
+  - type: textarea
+    id: provenance
+    attributes:
+      label: Provenance and third-party assets
+      description: State whether the work is original, inspired, or adapted, and identify any fonts, images, logos, code, or notices that require attribution.
     validations:
       required: true
 
   - type: input
     id: tags
     attributes:
-      label: Suggested tags
-      description: Comma-separated discovery tags such as academic, developer, light, dark, minimal, conference.
-      placeholder: developer, dark, conference
+      label: Suggested categories and discovery tags
+      description: Comma-separated terms such as academic, research, developer, terminal, corporate, light, dark, multi-talk, deployment.
+      placeholder: research, academic, light, methods, results
+    validations:
+      required: true
+
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification performed
+      description: State the environment and exact commands you used to install, start, build, export, or otherwise verify the documented workflow.
+      placeholder: Node 20 / npm 10; npm install; npm run build…
     validations:
       required: true
 
@@ -82,11 +132,15 @@ body:
     attributes:
       label: Submission checklist
       options:
-        - label: The template is reusable beyond one specific presentation.
+        - label: The template is reusable beyond one specific presentation, customer, or private organization.
           required: true
-        - label: The source and bundled assets have clear licensing or permission for redistribution/linking.
+        - label: The source, code, and bundled assets have clear licensing or permission for indexing and any proposed redistribution.
           required: true
         - label: A new user can follow the documented setup without access to private files or services.
           required: true
-        - label: I have searched existing registry entries and submissions for duplicates.
+        - label: The preview represents the actual template rather than unrelated promotional material.
+          required: true
+        - label: I have searched existing registry entries and submissions for duplicates or substantial overlap.
+          required: true
+        - label: I understand that external projects retain their own ownership and governance.
           required: true
