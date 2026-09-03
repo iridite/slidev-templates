@@ -13,7 +13,47 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-and-export:
+  validate-registry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install repository dependencies
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+        run: npm ci
+
+      - name: Run registry, contract, CLI, and regression tests
+        run: npm test
+
+  build-hosted-collection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 20
+
+      - name: Build manifest-based hosted templates
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+        run: npm run build:hosted
+
+  build-and-export-neko:
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
@@ -32,17 +72,11 @@ jobs:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
         run: npm ci
 
-      - name: Run tests
-        run: npm test
-
-      - name: Verify generated registry catalog
-        run: npm run registry:catalog:check
-
-      - name: Build starter
+      - name: Build Neko Style reference template
         run: npm run build:neko
 
       - name: Install Playwright Chromium
         run: npx playwright-chromium install --with-deps chromium
 
-      - name: Export starter PDF
+      - name: Export Neko Style reference PDF
         run: npm run export:neko
