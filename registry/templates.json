@@ -15,13 +15,7 @@
         "name": "iridite",
         "url": "https://github.com/iridite"
       },
-      "tags": [
-        "technical",
-        "developer",
-        "dark",
-        "ai",
-        "conference"
-      ],
+      "tags": ["technical", "developer", "dark", "ai", "conference"],
       "license": "MIT",
       "preview": {
         "type": "local",
@@ -32,6 +26,31 @@
         "command": "npx degit iridite/slidev-templates/neko-style my-presentation"
       },
       "status": "verified",
+      "featured": true
+    },
+    {
+      "id": "littlesound-talks",
+      "name": "LittleSound Talks Template",
+      "description": "A multi-talk Slidev workspace template for managing presentations in one pnpm/Vue repository, with GitHub Template and degit onboarding plus build and PDF export workflows.",
+      "source": {
+        "type": "external",
+        "repository": "https://github.com/LittleSound/talks-template"
+      },
+      "author": {
+        "name": "LittleSound",
+        "url": "https://github.com/LittleSound"
+      },
+      "tags": ["developer", "multi-talk", "pnpm", "vue", "workspace"],
+      "license": "AGPL-3.0",
+      "preview": {
+        "type": "url",
+        "value": "https://github.com/LittleSound/talks-template"
+      },
+      "usage": {
+        "type": "degit",
+        "command": "npx degit LittleSound/talks-template my-talks"
+      },
+      "status": "community",
       "featured": true
     },
     {
@@ -46,13 +65,7 @@
         "name": "Espressif Systems",
         "url": "https://github.com/espressif"
       },
-      "tags": [
-        "corporate",
-        "developer",
-        "technical",
-        "branded",
-        "addons"
-      ],
+      "tags": ["corporate", "developer", "technical", "branded", "addons"],
       "license": "MIT",
       "preview": {
         "type": "url",
@@ -61,6 +74,31 @@
       "usage": {
         "type": "degit",
         "command": "npx degit espressif/slidev-esp-template my-presentation"
+      },
+      "status": "community",
+      "featured": true
+    },
+    {
+      "id": "miragon-deck",
+      "name": "Miragon Slidev Deck Template",
+      "description": "An actively maintained corporate Slidev system with a one-command scaffolder, 15 presentation archetypes, reusable toolkit packages, CI guardrails, and AI-assisted authoring guidance.",
+      "source": {
+        "type": "external",
+        "repository": "https://github.com/Miragon/slidev-deck-template"
+      },
+      "author": {
+        "name": "Miragon",
+        "url": "https://github.com/Miragon"
+      },
+      "tags": ["corporate", "scaffolder", "automation", "ai", "validation"],
+      "license": "MIT",
+      "preview": {
+        "type": "url",
+        "value": "https://slidev-template.netlify.app"
+      },
+      "usage": {
+        "type": "external",
+        "command": "npm create @miragon/slidev-deck@latest my-talk"
       },
       "status": "community",
       "featured": true
@@ -77,13 +115,7 @@
         "name": "askpt",
         "url": "https://github.com/askpt"
       },
-      "tags": [
-        "developer",
-        "typescript",
-        "deployment",
-        "multi-theme",
-        "devcontainer"
-      ],
+      "tags": ["developer", "typescript", "deployment", "multi-theme", "devcontainer"],
       "license": "MIT",
       "preview": {
         "type": "url",
@@ -108,13 +140,7 @@
         "name": "3mdeb",
         "url": "https://github.com/3mdeb"
       },
-      "tags": [
-        "technical",
-        "automation",
-        "testing",
-        "visual-regression",
-        "production"
-      ],
+      "tags": ["technical", "automation", "testing", "visual-regression", "production"],
       "license": "Apache-2.0",
       "preview": {
         "type": "url",
@@ -126,6 +152,56 @@
       },
       "status": "community",
       "featured": true
+    },
+    {
+      "id": "kaakaa-resources",
+      "name": "Slidev Resources Template",
+      "description": "A GitHub Template repository for managing multiple Slidev resources with automated GitHub Release PDF generation and GitHub Pages deployment workflows.",
+      "source": {
+        "type": "external",
+        "repository": "https://github.com/kaakaa/slidev-resources-template"
+      },
+      "author": {
+        "name": "kaakaa",
+        "url": "https://github.com/kaakaa"
+      },
+      "tags": ["multi-talk", "github-pages", "pdf", "automation", "release"],
+      "license": "MIT",
+      "preview": {
+        "type": "url",
+        "value": "https://kaakaa.github.io/slidev-resources-template/"
+      },
+      "usage": {
+        "type": "external",
+        "command": "gh repo create my-slides --template kaakaa/slidev-resources-template --public"
+      },
+      "status": "community",
+      "featured": false
+    },
+    {
+      "id": "godkun-ppt",
+      "name": "Godkun PPT Template",
+      "description": "A compact Slidev presentation starter focused on fast authoring with a visual demo, pnpm-based setup, reusable structure, and a polished custom presentation style.",
+      "source": {
+        "type": "external",
+        "repository": "https://github.com/godkun/ppt-template"
+      },
+      "author": {
+        "name": "godkun",
+        "url": "https://github.com/godkun"
+      },
+      "tags": ["developer", "pnpm", "visual", "starter", "custom-style"],
+      "license": "MIT",
+      "preview": {
+        "type": "url",
+        "value": "https://ppt.godkun.top"
+      },
+      "usage": {
+        "type": "clone",
+        "command": "git clone https://github.com/godkun/ppt-template.git"
+      },
+      "status": "community",
+      "featured": false
     }
   ]
 }
