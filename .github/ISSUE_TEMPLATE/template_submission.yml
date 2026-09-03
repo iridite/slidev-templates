@@ -5,24 +5,21 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for helping grow the Slidev template ecosystem. We curate reusable templates rather than collecting every slide deck, so please provide enough information for maintainers to evaluate usability, licensing, and long-term discoverability.
-
+        Thanks for helping grow the Slidev template ecosystem. This project curates reusable presentation workflows rather than collecting every deck. Submitting an external project does not transfer ownership or imply that its code will be copied here.
   - type: input
     id: name
     attributes:
       label: Template name
-      placeholder: e.g. Neko Style
+      placeholder: e.g. Paper Lab
     validations:
       required: true
-
   - type: textarea
-    id: description
+    id: value
     attributes:
-      label: What is this template for?
-      description: Describe its visual style, intended audience, and what makes it reusable beyond a single talk.
+      label: Distinctive value and recurring presentation job
+      description: Explain the audience, information architecture, workflow, and why this is reusable beyond one talk or a color variation.
     validations:
       required: true
-
   - type: input
     id: repository
     attributes:
@@ -30,63 +27,84 @@ body:
       placeholder: https://github.com/owner/repository
     validations:
       required: true
-
+  - type: input
+    id: maintainer
+    attributes:
+      label: Canonical maintainer or organization
+      placeholder: GitHub username or organization
+    validations:
+      required: true
   - type: dropdown
     id: source-type
     attributes:
       label: Preferred inclusion model
       options:
-        - External listing — keep the template in its canonical repository
-        - Hosted contribution — contribute the reusable template to this repository
-        - Unsure — maintainer can decide
+        - External listing — keep implementation and governance upstream
+        - Hosted contribution — propose maintainable code for this repository
+        - Unsure — maintainer should decide
     validations:
       required: true
-
   - type: input
     id: preview
     attributes:
-      label: Preview URL
-      description: Link to a representative screenshot, gallery, demo, or exported slide preview.
+      label: Representative preview or live demo URL
       placeholder: https://...
     validations:
       required: true
-
   - type: input
     id: usage
     attributes:
-      label: How can a new user start from it?
-      description: Give the shortest reproducible command or setup path.
-      placeholder: npx degit owner/repo/template my-presentation
+      label: Shortest reproducible start path
+      placeholder: npx degit owner/repo my-presentation
     validations:
       required: true
-
   - type: input
     id: license
     attributes:
-      label: License
+      label: SPDX license identifier
       placeholder: MIT
     validations:
       required: true
-
+  - type: input
+    id: license-url
+    attributes:
+      label: Direct canonical license URL
+      placeholder: https://raw.githubusercontent.com/owner/repo/main/LICENSE
+    validations:
+      required: true
+  - type: textarea
+    id: assets
+    attributes:
+      label: Asset, font, brand, and attribution notes
+      description: Identify bundled material whose license or trademark policy may differ from the repository-level license.
+    validations:
+      required: true
   - type: input
     id: tags
     attributes:
-      label: Suggested tags
-      description: Comma-separated discovery tags such as academic, developer, light, dark, minimal, conference.
-      placeholder: developer, dark, conference
+      label: Suggested discovery tags
+      placeholder: academic, research, light, data-storytelling
     validations:
       required: true
-
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification already performed
+      description: State exactly what environment and commands were tested. “It should work” is not verification.
+    validations:
+      required: true
   - type: checkboxes
     id: checklist
     attributes:
       label: Submission checklist
       options:
-        - label: The template is reusable beyond one specific presentation.
+        - label: The template is reusable beyond one presentation, customer, event, or private organization.
           required: true
-        - label: The source and bundled assets have clear licensing or permission for redistribution/linking.
+        - label: The canonical source and repository-level license are publicly inspectable.
           required: true
-        - label: A new user can follow the documented setup without access to private files or services.
+        - label: I disclosed known asset, font, branding, and attribution caveats.
           required: true
-        - label: I have searched existing registry entries and submissions for duplicates.
+        - label: A new user can follow the documented setup without private files or services.
+          required: true
+        - label: I searched existing entries and submissions for duplicates.
           required: true

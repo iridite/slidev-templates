@@ -3,91 +3,293 @@
   "$id": "https://github.com/iridite/slidev-templates/blob/main/registry/schema.json",
   "title": "Slidev Template Registry",
   "type": "object",
-  "required": ["version", "templates"],
+  "required": [
+    "version",
+    "templates"
+  ],
   "additionalProperties": false,
   "properties": {
-    "$schema": { "type": "string" },
-    "version": { "const": 1 },
+    "$schema": {
+      "type": "string"
+    },
+    "version": {
+      "const": 2
+    },
     "templates": {
       "type": "array",
-      "items": { "$ref": "#/$defs/template" }
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/template"
+      }
     }
   },
   "$defs": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
     "template": {
       "type": "object",
-      "required": ["id", "name", "description", "source", "author", "tags", "license", "preview", "usage", "status", "featured"],
+      "required": [
+        "id",
+        "name",
+        "description",
+        "kind",
+        "categories",
+        "source",
+        "author",
+        "tags",
+        "license",
+        "licenseUrl",
+        "preview",
+        "usage",
+        "status",
+        "featured",
+        "provenance",
+        "verification"
+      ],
       "additionalProperties": false,
       "properties": {
         "id": {
-          "type": "string",
-          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          "$ref": "#/$defs/slug"
         },
-        "name": { "type": "string", "minLength": 1 },
-        "description": { "type": "string", "minLength": 20 },
+        "name": {
+          "type": "string",
+          "minLength": 2
+        },
+        "description": {
+          "type": "string",
+          "minLength": 60
+        },
+        "kind": {
+          "enum": [
+            "starter",
+            "workspace",
+            "workflow",
+            "presentation-system"
+          ]
+        },
+        "categories": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/slug"
+          }
+        },
         "source": {
           "oneOf": [
             {
               "type": "object",
-              "required": ["type", "path", "starterPath"],
+              "required": [
+                "type",
+                "path",
+                "starterPath"
+              ],
               "additionalProperties": false,
               "properties": {
-                "type": { "const": "hosted" },
-                "path": { "type": "string", "minLength": 1 },
-                "starterPath": { "type": "string", "minLength": 1 }
+                "type": {
+                  "const": "hosted"
+                },
+                "path": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "starterPath": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "manifest": {
+                  "type": "string",
+                  "minLength": 1
+                }
               }
             },
             {
               "type": "object",
-              "required": ["type", "repository"],
+              "required": [
+                "type",
+                "repository"
+              ],
               "additionalProperties": false,
               "properties": {
-                "type": { "const": "external" },
-                "repository": { "type": "string", "format": "uri" },
-                "templatePath": { "type": "string" }
+                "type": {
+                  "const": "external"
+                },
+                "repository": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "templatePath": {
+                  "type": "string"
+                }
               }
             }
           ]
         },
         "author": {
           "type": "object",
-          "required": ["name"],
+          "required": [
+            "name"
+          ],
           "additionalProperties": false,
           "properties": {
-            "name": { "type": "string", "minLength": 1 },
-            "url": { "type": "string", "format": "uri" }
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "url": {
+              "type": "string",
+              "format": "uri"
+            }
           }
         },
         "tags": {
           "type": "array",
-          "minItems": 1,
+          "minItems": 3,
           "uniqueItems": true,
           "items": {
-            "type": "string",
-            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+            "$ref": "#/$defs/slug"
           }
         },
-        "license": { "type": "string", "minLength": 1 },
+        "license": {
+          "type": "string",
+          "minLength": 2
+        },
+        "licenseUrl": {
+          "type": "string",
+          "minLength": 1
+        },
         "preview": {
           "type": "object",
-          "required": ["type", "value"],
+          "required": [
+            "type",
+            "value"
+          ],
           "additionalProperties": false,
           "properties": {
-            "type": { "enum": ["local", "url"] },
-            "value": { "type": "string", "minLength": 1 }
+            "type": {
+              "enum": [
+                "local",
+                "url"
+              ]
+            },
+            "value": {
+              "type": "string",
+              "minLength": 1
+            }
           }
         },
         "usage": {
           "type": "object",
-          "required": ["type", "command"],
+          "required": [
+            "type",
+            "command"
+          ],
           "additionalProperties": false,
           "properties": {
-            "type": { "enum": ["degit", "clone", "external"] },
-            "command": { "type": "string", "minLength": 1 }
+            "type": {
+              "enum": [
+                "degit",
+                "clone",
+                "external"
+              ]
+            },
+            "command": {
+              "type": "string",
+              "minLength": 8
+            }
           }
         },
-        "status": { "enum": ["verified", "community", "experimental"] },
-        "featured": { "type": "boolean" }
+        "status": {
+          "enum": [
+            "verified",
+            "community",
+            "experimental"
+          ]
+        },
+        "featured": {
+          "type": "boolean"
+        },
+        "provenance": {
+          "type": "object",
+          "required": [
+            "type",
+            "notes"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "enum": [
+                "original",
+                "inspired",
+                "adapted",
+                "external"
+              ]
+            },
+            "upstream": {
+              "type": "string",
+              "format": "uri"
+            },
+            "notes": {
+              "type": "string",
+              "minLength": 40
+            }
+          }
+        },
+        "compatibility": {
+          "type": "object",
+          "required": [
+            "node",
+            "slidev"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "node": {
+              "type": "string",
+              "minLength": 1
+            },
+            "slidev": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "verification": {
+          "type": "object",
+          "required": [
+            "level",
+            "checks",
+            "workflow",
+            "checkedAt"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "level": {
+              "enum": [
+                "build-and-export",
+                "clean-install-build",
+                "metadata-health"
+              ]
+            },
+            "checks": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "$ref": "#/$defs/slug"
+              }
+            },
+            "workflow": {
+              "type": "string",
+              "minLength": 1
+            },
+            "checkedAt": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        }
       }
     }
   }

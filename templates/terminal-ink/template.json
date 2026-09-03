@@ -1,0 +1,44 @@
+{
+  "$schema": "../../registry/hosted-template.schema.json",
+  "id": "terminal-ink",
+  "name": "Terminal Ink",
+  "version": "1.1.0",
+  "description": "A terminal-first Slidev starter for incident reviews, systems walkthroughs, code explanations, operational evidence, corrective actions, and runbook decisions.",
+  "categories": [
+    "developer",
+    "systems",
+    "incident-review"
+  ],
+  "tags": [
+    "dark",
+    "terminal",
+    "code",
+    "operations",
+    "architecture"
+  ],
+  "license": "MIT",
+  "licenseUrl": "LICENSE",
+  "provenance": {
+    "type": "original",
+    "notes": "Original clean-room implementation created for this registry after surveying public presentation workflows; no third-party deck code, branded assets, or presentation content are vendored."
+  },
+  "compatibility": {
+    "node": ">=20.12.0",
+    "slidev": "^52.19.1"
+  },
+  "verification": {
+    "level": "clean-install-build",
+    "checks": [
+      "manifest-contract",
+      "clean-install",
+      "slidev-build"
+    ],
+    "workflow": ".github/workflows/ci.yml"
+  },
+  "entry": "starter/slides.md",
+  "commands": {
+    "dev": "npm run dev",
+    "build": "npm run build",
+    "export": "npm run export"
+  }
+}

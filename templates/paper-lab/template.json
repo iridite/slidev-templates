@@ -1,0 +1,44 @@
+{
+  "$schema": "../../registry/hosted-template.schema.json",
+  "id": "paper-lab",
+  "name": "Paper Lab",
+  "version": "1.1.0",
+  "description": "A calm, publication-inspired Slidev starter for framing research questions, methods, evidence, results, uncertainty, limitations, and bounded decisions.",
+  "categories": [
+    "academic",
+    "research",
+    "data-storytelling"
+  ],
+  "tags": [
+    "light",
+    "serif",
+    "citations",
+    "methods",
+    "results"
+  ],
+  "license": "MIT",
+  "licenseUrl": "LICENSE",
+  "provenance": {
+    "type": "original",
+    "notes": "Original clean-room implementation created for this registry after surveying public presentation workflows; no third-party deck code, branded assets, or presentation content are vendored."
+  },
+  "compatibility": {
+    "node": ">=20.12.0",
+    "slidev": "^52.19.1"
+  },
+  "verification": {
+    "level": "clean-install-build",
+    "checks": [
+      "manifest-contract",
+      "clean-install",
+      "slidev-build"
+    ],
+    "workflow": ".github/workflows/ci.yml"
+  },
+  "entry": "starter/slides.md",
+  "commands": {
+    "dev": "npm run dev",
+    "build": "npm run build",
+    "export": "npm run export"
+  }
+}

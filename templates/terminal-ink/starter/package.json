@@ -1,0 +1,38 @@
+{
+  "name": "slidev-template-terminal-ink",
+  "version": "1.1.0",
+  "private": true,
+  "description": "A terminal-first Slidev starter for incident reviews, systems walkthroughs, code explanations, operational evidence, corrective actions, and runbook decisions.",
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "npm@10.8.2",
+  "engines": {
+    "node": ">=20.12.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iridite/slidev-templates",
+    "directory": "templates/terminal-ink/starter"
+  },
+  "keywords": [
+    "slidev",
+    "presentation",
+    "template",
+    "developer",
+    "systems",
+    "incident-review"
+  ],
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export --wait-until domcontentloaded --wait 800 --timeout 120000"
+  },
+  "dependencies": {
+    "@slidev/cli": "^52.19.1",
+    "@slidev/theme-default": "0.25.0",
+    "vue": "^3.5.33"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.58.2"
+  }
+}

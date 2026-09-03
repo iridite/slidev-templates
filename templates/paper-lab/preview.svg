@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Paper Lab template preview</title>
+  <desc id="desc">Publication-inspired cream slide with serif headline and research-note details.</desc>
+  <rect width="1280" height="720" fill="#f5f1e8"/>
+  <line x1="92" y1="88" x2="1188" y2="88" stroke="#181815" stroke-width="2"/>
+  <line x1="92" y1="622" x2="1188" y2="622" stroke="#181815" stroke-width="2"/>
+  <text x="92" y="132" fill="#9e3f2f" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="4">RESEARCH NOTE · 2026</text>
+  <text x="92" y="280" fill="#181815" font-family="Georgia, serif" font-size="92">Evidence before</text>
+  <text x="92" y="382" fill="#181815" font-family="Georgia, serif" font-size="92">ornament</text>
+  <text x="96" y="466" fill="#575248" font-family="Georgia, serif" font-size="30">Question → method → result → uncertainty</text>
+  <text x="96" y="570" fill="#6c695f" font-family="Arial, sans-serif" font-size="18">A publication-inspired Slidev starter for research talks</text>
+  <text x="1150" y="672" fill="#6c695f" font-family="monospace" font-size="18">01</text>
+</svg>

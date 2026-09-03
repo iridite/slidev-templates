@@ -1,98 +1,174 @@
 # Slidev Templates
 
-[English](./README.md)
+[![CI](https://github.com/iridite/slidev-templates/actions/workflows/ci.yml/badge.svg)](https://github.com/iridite/slidev-templates/actions/workflows/ci.yml)
+[![Registry Health](https://github.com/iridite/slidev-templates/actions/workflows/registry-health.yml/badge.svg)](https://github.com/iridite/slidev-templates/actions/workflows/registry-health.yml)
+[![Stars](https://img.shields.io/github/stars/iridite/slidev-templates?style=flat&label=stars)](https://github.com/iridite/slidev-templates/stargazers)
+[![Forks](https://img.shields.io/github/forks/iridite/slidev-templates?style=flat&label=forks)](https://github.com/iridite/slidev-templates/forks)
+[![License: MIT](https://img.shields.io/badge/repository-MIT-171713.svg)](./LICENSE)
+[![Registry v2](https://img.shields.io/badge/registry-v2-3155d8.svg)](./registry/templates.json)
 
-这是一个面向 [Slidev](https://sli.dev) 的**高质量模板收录、发现与社区协作生态**，而不是单独维护某一个主题。
+这是一个面向 [Slidev](https://sli.dev) 的**高质量模板收录、发现、验证与社区协作生态**，而不是只维护某一个主题，也不是未经审核的链接列表。
 
-项目希望解决的是：优秀 Slidev 模板分散在不同仓库、质量和使用方式不统一、难以发现、难以判断是否还能使用，也缺少一致的贡献和维护入口。
+这里的「模板」指一套完整、可复用的演示起点：Starter、叙事结构、布局或组件、配置、文档、预览，以及可复现的构建或交付路径。Theme 可以是模板的一部分，但不是本项目的收录边界。
 
-因此，本仓库把「模板」定义为一套可复用的演示起点。一个模板可以同时包含 theme、starter、布局、组件、配置、示例、文档、导出/部署流程和推荐目录结构。Theme 只是模板的一部分，而不是本项目的收录边界。
+[English](./README.md) · [Registry JSON](./registry/templates.json) · [Gallery](./gallery/README.md) · [模板契约](./docs/TEMPLATE_CONTRACT.md) · [提交模板](https://github.com/iridite/slidev-templates/issues/new?template=template_submission.yml) · [治理规则](./GOVERNANCE.md)
 
-## 模板目录
+<!-- registry-stats-zh:start -->
+**12 个经过筛选的工作流 · 4 个仓库托管模板 · 8 个上游治理条目 · 4 个已验证条目**
+<!-- registry-stats-zh:end -->
 
-当前实时目录以 [`registry/templates.json`](./registry/templates.json) 为唯一数据源，英文首页的模板表格也由它自动生成并由 CI 检查一致性，因此不会再维护一份容易过期的中文静态列表。
+## 为什么需要这个项目
 
-首批 Registry 已经同时覆盖：
+优秀的 Slidev Starter 分散在个人、学校和组织仓库中。用户很难快速比较它们的用途、许可证、启动方式、维护状态和实际验证深度。Slidev 已经拥有成熟的 Theme 生态；本项目补充的是更广泛的 **Template 级发现与维护层**。
 
-- 仓库内持续验证的 reference template（Neko Style）；
-- 有真实采用量的社区多演讲 workspace/template；
-- Espressif、Miragon 等组织维护的企业/开发者模板；
-- PDF、PPTX、GitHub Pages、自动发布和视觉回归等不同工程工作流。
+仓库也已经产生真实的社区维护信号：外部贡献者曾通过 [PR #6](https://github.com/iridite/slidev-templates/pull/6) 发现并修复独立安装问题，规范问题也通过 [Issue #7](https://github.com/iridite/slidev-templates/issues/7) 进入分诊与修复流程。现在这些互动已经由结构化提交、回归测试、清洁构建、来源规则和定时健康检查承接。
 
-Neko Style 是 Registry 的第一个 reference implementation，用来验证模板目录、Starter、预览、测试、构建和导出这一整套维护流程；其他项目保持在各自 canonical repository 中，本项目只负责 curated discovery，不复制、吞并第三方代码，也不暗示第三方作者对本 Registry 的背书。
+## 本仓库托管的模板
 
-## Registry
+目前有四个由本仓库维护的模板。下面三个遵循新 Template Contract，全部是 clean-room 原创实现，并可直接提取成自包含项目。
 
-[`registry/templates.json`](./registry/templates.json) 是项目的机器可读模板目录，由 [`registry/schema.json`](./registry/schema.json) 描述格式，并由 CI 自动校验。
+<table>
+  <tr>
+    <td width="33%"><a href="./templates/paper-lab/"><img src="./templates/paper-lab/preview.svg" alt="Paper Lab preview" /></a></td>
+    <td width="33%"><a href="./templates/terminal-ink/"><img src="./templates/terminal-ink/preview.svg" alt="Terminal Ink preview" /></a></td>
+    <td width="33%"><a href="./templates/editorial-grid/"><img src="./templates/editorial-grid/preview.svg" alt="Editorial Grid preview" /></a></td>
+  </tr>
+  <tr>
+    <td><b>Paper Lab</b><br/>研究问题、方法、结果、不确定性与局限。</td>
+    <td><b>Terminal Ink</b><br/>故障复盘、日志、系统机制、修复与运行决策。</td>
+    <td><b>Editorial Grid</b><br/>产品叙事、战略、发布和证据驱动的故事表达。</td>
+  </tr>
+</table>
 
-Registry 支持两种收录模式：
+[Neko Style](./neko-style/) 保留为历史兼容路径下的大型参考实现，包含可复用 Theme、组件库、Starter、文档、构建检查和 PDF 导出验证。
 
-- **Hosted**：模板直接维护在本仓库，能够持续做测试和兼容性验证。
-- **External**：模板继续维护在作者自己的 canonical repository，本项目只负责索引和发现，不复制、吞并第三方项目。
+## 完整目录
 
-这样既可以保证高质量的托管模板，又允许生态规模增长，而不会把所有作者都强制塞进一个 monorepo。
+下表由 [`registry/templates.json`](./registry/templates.json) 自动生成。中英文 README 只要与 Registry 漂移，CI 就会失败。
 
-外部条目另外有独立的 Registry Health 工作流：在目录发生变化时以及每周定时检查 canonical source 和 preview 是否仍然可访问，并对上游 archived/disabled 等状态进行检测。
+<!-- registry-catalog-zh:start -->
+| 模板 | 状态 | 来源 | 定位 | 验证 | 快速开始 |
+| --- | --- | --- | --- | --- | --- |
+| [Neko Style](./neko-style/) | ✅ 已验证 | 本仓库托管 | `developer`, `technical`, `conference` | build and export | <code>npx degit iridite/slidev-templates/neko-style my-presentation</code> |
+| [Paper Lab](./templates/paper-lab/) | ✅ 已验证 | 本仓库托管 | `academic`, `research`, `data-storytelling` | clean install build | <code>npx degit iridite/slidev-templates/templates/paper-lab/starter paper-lab-talk</code> |
+| [Terminal Ink](./templates/terminal-ink/) | ✅ 已验证 | 本仓库托管 | `developer`, `systems`, `incident-review` | clean install build | <code>npx degit iridite/slidev-templates/templates/terminal-ink/starter terminal-talk</code> |
+| [Editorial Grid](./templates/editorial-grid/) | ✅ 已验证 | 本仓库托管 | `product`, `strategy`, `storytelling` | clean install build | <code>npx degit iridite/slidev-templates/templates/editorial-grid/starter editorial-talk</code> |
+| [LittleSound Talks Template](https://github.com/LittleSound/talks-template) | 🟦 社区收录 | 外部上游 | `developer`, `multi-talk`, `workspace` | metadata health | <code>npx degit LittleSound/talks-template my-talks</code> |
+| [Espressif Slidev Template](https://github.com/espressif/slidev-esp-template) | 🟦 社区收录 | 外部上游 | `corporate`, `developer`, `technical` | metadata health | <code>npx degit espressif/slidev-esp-template my-presentation</code> |
+| [Miragon Slidev Deck Template](https://github.com/Miragon/slidev-deck-template) | 🟦 社区收录 | 外部上游 | `corporate`, `automation`, `design-system` | metadata health | <code>npm create @miragon/slidev-deck@latest my-talk</code> |
+| [Presentations Template](https://github.com/askpt/presentations.template) | 🟦 社区收录 | 外部上游 | `developer`, `deployment`, `multi-theme` | metadata health | <code>npx degit askpt/presentations.template my-presentation</code> |
+| [3mdeb Slidev Template](https://github.com/3mdeb/slidev-template) | 🟦 社区收录 | 外部上游 | `technical`, `testing`, `automation` | metadata health | <code>git submodule add https://github.com/3mdeb/slidev-template.git slidev-template</code> |
+| [Slidev Resources Template](https://github.com/kaakaa/slidev-resources-template) | 🟦 社区收录 | 外部上游 | `multi-talk`, `automation`, `publishing` | metadata health | <code>gh repo create my-slides --template kaakaa/slidev-resources-template --public</code> |
+| [Godkun PPT Template](https://github.com/godkun/ppt-template) | 🟦 社区收录 | 外部上游 | `developer`, `visual`, `fast-start` | metadata health | <code>git clone https://github.com/godkun/ppt-template.git</code> |
+| [NJU Academic Slidev Template](https://github.com/sylearn/nju-slidev-template) | 🧪 实验性 | 外部上游 | `academic`, `research`, `chinese` | metadata health | <code>npx degit sylearn/nju-slidev-template academic-talk</code> |
+<!-- registry-catalog-zh:end -->
 
-## 如何提交模板
+外部条目继续由其上游作者负责所有权、许可证、发布和治理。本项目只维护发现与健康证据，不会重新授权，也不会把外部代码描述成本仓库资产。
 
-可以直接使用 GitHub 的 **Template submission** Issue Form，提供：
+## 浏览、搜索与提取
 
-- 模板名称和用途；
-- canonical repository/source；
+本地启动 Gallery：
+
+```bash
+git clone https://github.com/iridite/slidev-templates.git
+cd slidev-templates
+npm run gallery:serve
+```
+
+打开 `http://127.0.0.1:4173/gallery/`。Gallery 支持按文本、分类、来源、状态和验证级别筛选，显示许可证证据，并可复制规范化启动命令。`npm run gallery:build` 会生成可部署的静态产物；发布仍通过显式的 Maintainer Pages 工作流执行。
+
+Registry CLI：
+
+```bash
+npm run templates -- list
+npm run templates -- search academic
+npm run templates -- info terminal-ink
+npm run templates -- scaffold editorial-grid ./my-talk
+```
+
+CLI 会为外部项目返回 canonical command；提取本仓库模板时，会连同 README、LICENSE 和 ATTRIBUTION 一起保留。
+
+## 机器可读契约
+
+网站、CLI、AI Agent 和其他工具可以直接消费：
+
+- [`registry/templates.json`](./registry/templates.json)：版本化 canonical catalog；
+- [`registry/schema.json`](./registry/schema.json)：与真实字段一致的 JSON Schema；
+- [`registry/hosted-template.schema.json`](./registry/hosted-template.schema.json)：Hosted Manifest 契约；
+- [`registry/FIELDS.md`](./registry/FIELDS.md)：字段语义与演进规则。
+
+Registry v2 记录模板类型、分类、所有权边界、直接许可证证据、预览、启动命令、来源、已验证兼容性、验证级别、验证项目、工作流路径和复核日期。
+
+## 验证与健康模型
+
+每个 Pull Request 都会分别执行：
+
+1. Registry 与 Schema 一致性、许可证证据、Manifest、CLI、自动生成目录、Gallery 构建和回归测试；
+2. 所有新式 Hosted Starter 的清洁安装与 Slidev Build；
+3. Neko Style 的 Build 和 PDF Export。
+
+独立的定时工作流会检查外部 canonical repository、预览 URL 和 license URL。缺失或被禁用的来源会导致失败；长期无更新或 archived 的项目会产生明确警告，而不是被静默展示为健康。
+
+状态只表达证据深度：
+
+- **Verified**：主要使用路径已经执行，Hosted 条目持续接受本仓库 CI；
+- **Community**：来源、预览、许可证和发现信息持续检查，运行时验证留在上游；
+- **Experimental**：具有独特价值，但兼容性或品牌使用边界更弱。
+
+状态不等于热度排名，也不代表本项目背书。
+
+## 收录、来源和人工决策
+
+Hosted 与 External 模式严格分开：
+
+- 本仓库原创实现可以托管并持续构建；
+- 许可证允许的改编必须明确来源并保留 Notice；
+- 互惠许可证、品牌化或已有独立治理的项目默认仅做 External 收录；
+- 仓库公开但没有许可证，不代表允许复制。
+
+公开项目调研和收录判断见 [`docs/TEMPLATE_LANDSCAPE.md`](./docs/TEMPLATE_LANDSCAPE.md)，可复用标准见 [`docs/TEMPLATE_CONTRACT.md`](./docs/TEMPLATE_CONTRACT.md)。
+
+自动化和 Coding Agent 可以辅助候选发现、元数据提取、清洁环境复现、测试、Issue 分诊、Review 准备、Catalog/Gallery 生成和失效检测；但收录、许可证、商标与来源判断、安全、合并、移除和发布必须由人类 Maintainer 最终决定。详见 [`docs/AI_ASSISTED_MAINTENANCE.md`](./docs/AI_ASSISTED_MAINTENANCE.md)。
+
+## 提交模板
+
+使用 [Template Submission Form](https://github.com/iridite/slidev-templates/issues/new?template=template_submission.yml)，需要提供：
+
+- canonical source 与维护者；
 - 代表性预览或 live demo；
-- 最短可复现使用方式；
-- License；
-- discovery tags。
+- 可复现启动方式；
+- SPDX License 与直接许可证链接；
+- 来源和第三方资产说明；
+- 目标受众、演示任务及独特价值；
+- 实际执行过的验证环境和命令。
 
-一个适合收录的模板应该：
+项目追求有用、独特、可信和可维护，而不是单纯追求条目数量。
 
-1. 不只是某一次演讲的成品，而能被其他人复用；
-2. 有清晰 README 或使用说明；
-3. 有可复现的启动/复制方式；
-4. 有至少一份代表性预览或 live demo；
-5. 有明确 License 与第三方素材归属；
-6. 能确认作者、维护者或 canonical source。
-
-本项目追求的是**有用、可信、可维护的目录**，而不是单纯追求收录数量。
-
-## 状态等级
-
-- **Verified**：维护者已经审核并验证主要使用路径。
-- **Community**：文档和授权满足收录标准，但本仓库不持续运行其完整测试。
-- **Experimental**：仍处在早期阶段，兼容性承诺较弱。
-
-状态代表验证程度，不代表热门程度。
-
-## 维护与贡献
+## 开发与验收
 
 ```bash
 git clone https://github.com/iridite/slidev-templates.git
 cd slidev-templates
 npm ci
-npm test
 npm run registry:catalog:check
-```
-
-维护 Registry 时还可以运行：
-
-```bash
-npm run registry:catalog   # 根据 Registry 更新英文首页目录
-npm run registry:health    # 检查外部 source / preview 健康度
-```
-
-当前 Neko Style reference template 还可以运行：
-
-```bash
-npm run dev:neko
+npm run gallery:check
+npm test
+npm run build:hosted
 npm run build:neko
+```
+
+涉及 Neko Style 渲染或导出时：
+
+```bash
 npm run export:neko
 ```
 
-详细规则见 [`CONTRIBUTING.md`](./CONTRIBUTING.md)、[`GOVERNANCE.md`](./GOVERNANCE.md) 和 [`registry/README.md`](./registry/README.md)。
+## 项目方向
 
-## 方向
+下一阶段重点是 adoption，而不是无差别扩充：发布稳定 Gallery、增强兼容性探针和健康快照、接纳高质量作者提交、方便下游工具消费版本化 Registry，并与被收录项目的上游维护者建立反馈闭环。
 
-下一阶段不是继续把仓库做成 Neko Style 的产品页，而是逐步形成真正的 Slidev Template discovery layer：收录更多独立维护的模板，丰富可搜索 metadata、兼容性信息、健康度与验证信号，并最终基于同一份 Registry 数据生成可浏览的模板 Gallery。
+具体见 [`ROADMAP.md`](./ROADMAP.md)。
 
-机器可读 Registry 也意味着未来其他网站、CLI、AI Agent 和 Slidev 工作流都可以直接消费这套数据，而不需要抓取 README。
+## License
+
+本仓库维护的代码和文档采用 [MIT License](./LICENSE)，除非子目录另有说明。External 条目保留其上游许可证；进入 Registry 不会改变任何外部项目的授权。

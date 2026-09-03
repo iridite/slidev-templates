@@ -1,0 +1,38 @@
+{
+  "name": "slidev-template-paper-lab",
+  "version": "1.1.0",
+  "private": true,
+  "description": "A calm, publication-inspired Slidev starter for framing research questions, methods, evidence, results, uncertainty, limitations, and bounded decisions.",
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "npm@10.8.2",
+  "engines": {
+    "node": ">=20.12.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iridite/slidev-templates",
+    "directory": "templates/paper-lab/starter"
+  },
+  "keywords": [
+    "slidev",
+    "presentation",
+    "template",
+    "academic",
+    "research",
+    "data-storytelling"
+  ],
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export --wait-until domcontentloaded --wait 800 --timeout 120000"
+  },
+  "dependencies": {
+    "@slidev/cli": "^52.19.1",
+    "@slidev/theme-default": "0.25.0",
+    "vue": "^3.5.33"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.58.2"
+  }
+}

@@ -1,11 +1,17 @@
 {
   "$schema": "./schema.json",
-  "version": 1,
+  "version": 2,
   "templates": [
     {
       "id": "neko-style",
       "name": "Neko Style",
-      "description": "A polished technical-presentation template with animated glow backgrounds, reusable layouts, components, documentation, and a ready-to-run starter.",
+      "description": "A polished technical-presentation system with animated glow backgrounds, reusable layouts, a large component library, documentation, and a ready-to-run starter.",
+      "kind": "presentation-system",
+      "categories": [
+        "developer",
+        "technical",
+        "conference"
+      ],
       "source": {
         "type": "hosted",
         "path": "neko-style",
@@ -15,8 +21,15 @@
         "name": "iridite",
         "url": "https://github.com/iridite"
       },
-      "tags": ["technical", "developer", "dark", "ai", "conference"],
+      "tags": [
+        "technical",
+        "developer",
+        "dark",
+        "ai",
+        "conference"
+      ],
       "license": "MIT",
+      "licenseUrl": "neko-style/LICENSE",
       "preview": {
         "type": "local",
         "value": "assets/neko-style-preview.png"
@@ -26,12 +39,214 @@
         "command": "npx degit iridite/slidev-templates/neko-style my-presentation"
       },
       "status": "verified",
-      "featured": true
+      "featured": true,
+      "provenance": {
+        "type": "adapted",
+        "notes": "Repository-hosted reference implementation maintained in this repository; its history and design provenance are documented inside the template."
+      },
+      "compatibility": {
+        "node": ">=18",
+        "slidev": "^0.49.0"
+      },
+      "verification": {
+        "level": "build-and-export",
+        "checks": [
+          "registry-schema",
+          "regression-tests",
+          "workspace-build",
+          "pdf-export"
+        ],
+        "workflow": ".github/workflows/ci.yml",
+        "checkedAt": "2026-09-03"
+      }
+    },
+    {
+      "id": "paper-lab",
+      "name": "Paper Lab",
+      "description": "A calm, publication-inspired Slidev starter for framing research questions, methods, evidence, results, uncertainty, limitations, and bounded decisions.",
+      "kind": "starter",
+      "categories": [
+        "academic",
+        "research",
+        "data-storytelling"
+      ],
+      "source": {
+        "type": "hosted",
+        "path": "templates/paper-lab",
+        "starterPath": "templates/paper-lab/starter",
+        "manifest": "templates/paper-lab/template.json"
+      },
+      "author": {
+        "name": "slidev-templates contributors",
+        "url": "https://github.com/iridite/slidev-templates"
+      },
+      "tags": [
+        "light",
+        "serif",
+        "citations",
+        "methods",
+        "results"
+      ],
+      "license": "MIT",
+      "licenseUrl": "templates/paper-lab/LICENSE",
+      "preview": {
+        "type": "local",
+        "value": "templates/paper-lab/preview.svg"
+      },
+      "usage": {
+        "type": "degit",
+        "command": "npx degit iridite/slidev-templates/templates/paper-lab/starter paper-lab-talk"
+      },
+      "status": "verified",
+      "featured": true,
+      "provenance": {
+        "type": "original",
+        "notes": "Original clean-room implementation informed by public research-presentation workflow analysis; no third-party deck code, branding, or assets are vendored."
+      },
+      "compatibility": {
+        "node": ">=20.12.0",
+        "slidev": "^52.19.1"
+      },
+      "verification": {
+        "level": "clean-install-build",
+        "checks": [
+          "manifest-contract",
+          "registry-schema",
+          "clean-install",
+          "slidev-build"
+        ],
+        "workflow": ".github/workflows/ci.yml",
+        "checkedAt": "2026-09-03"
+      }
+    },
+    {
+      "id": "terminal-ink",
+      "name": "Terminal Ink",
+      "description": "A terminal-first Slidev starter for incident reviews, systems walkthroughs, code explanations, operational evidence, corrective actions, and runbook decisions.",
+      "kind": "starter",
+      "categories": [
+        "developer",
+        "systems",
+        "incident-review"
+      ],
+      "source": {
+        "type": "hosted",
+        "path": "templates/terminal-ink",
+        "starterPath": "templates/terminal-ink/starter",
+        "manifest": "templates/terminal-ink/template.json"
+      },
+      "author": {
+        "name": "slidev-templates contributors",
+        "url": "https://github.com/iridite/slidev-templates"
+      },
+      "tags": [
+        "dark",
+        "terminal",
+        "code",
+        "operations",
+        "architecture"
+      ],
+      "license": "MIT",
+      "licenseUrl": "templates/terminal-ink/LICENSE",
+      "preview": {
+        "type": "local",
+        "value": "templates/terminal-ink/preview.svg"
+      },
+      "usage": {
+        "type": "degit",
+        "command": "npx degit iridite/slidev-templates/templates/terminal-ink/starter terminal-talk"
+      },
+      "status": "verified",
+      "featured": true,
+      "provenance": {
+        "type": "original",
+        "notes": "Original clean-room implementation informed by public developer-presentation workflow analysis; no upstream deck code or assets are copied."
+      },
+      "compatibility": {
+        "node": ">=20.12.0",
+        "slidev": "^52.19.1"
+      },
+      "verification": {
+        "level": "clean-install-build",
+        "checks": [
+          "manifest-contract",
+          "registry-schema",
+          "clean-install",
+          "slidev-build"
+        ],
+        "workflow": ".github/workflows/ci.yml",
+        "checkedAt": "2026-09-03"
+      }
+    },
+    {
+      "id": "editorial-grid",
+      "name": "Editorial Grid",
+      "description": "A bold editorial Slidev starter for product narratives, strategic proposals, launches, evidence-led persuasion, and visually paced decision storytelling.",
+      "kind": "starter",
+      "categories": [
+        "product",
+        "strategy",
+        "storytelling"
+      ],
+      "source": {
+        "type": "hosted",
+        "path": "templates/editorial-grid",
+        "starterPath": "templates/editorial-grid/starter",
+        "manifest": "templates/editorial-grid/template.json"
+      },
+      "author": {
+        "name": "slidev-templates contributors",
+        "url": "https://github.com/iridite/slidev-templates"
+      },
+      "tags": [
+        "editorial",
+        "grid",
+        "bold-type",
+        "light",
+        "launch"
+      ],
+      "license": "MIT",
+      "licenseUrl": "templates/editorial-grid/LICENSE",
+      "preview": {
+        "type": "local",
+        "value": "templates/editorial-grid/preview.svg"
+      },
+      "usage": {
+        "type": "degit",
+        "command": "npx degit iridite/slidev-templates/templates/editorial-grid/starter editorial-talk"
+      },
+      "status": "verified",
+      "featured": true,
+      "provenance": {
+        "type": "original",
+        "notes": "Original clean-room implementation based on general editorial and grid-design principles; no third-party presentation content or visual assets are vendored."
+      },
+      "compatibility": {
+        "node": ">=20.12.0",
+        "slidev": "^52.19.1"
+      },
+      "verification": {
+        "level": "clean-install-build",
+        "checks": [
+          "manifest-contract",
+          "registry-schema",
+          "clean-install",
+          "slidev-build"
+        ],
+        "workflow": ".github/workflows/ci.yml",
+        "checkedAt": "2026-09-03"
+      }
     },
     {
       "id": "littlesound-talks",
       "name": "LittleSound Talks Template",
-      "description": "A multi-talk Slidev workspace template for managing presentations in one pnpm/Vue repository, with GitHub Template and degit onboarding plus build and PDF export workflows.",
+      "description": "A mature multi-talk Slidev workspace for managing presentations in one pnpm and Vue repository, with GitHub Template and degit onboarding plus build and PDF export workflows.",
+      "kind": "workspace",
+      "categories": [
+        "developer",
+        "multi-talk",
+        "workspace"
+      ],
       "source": {
         "type": "external",
         "repository": "https://github.com/LittleSound/talks-template"
@@ -40,8 +255,15 @@
         "name": "LittleSound",
         "url": "https://github.com/LittleSound"
       },
-      "tags": ["developer", "multi-talk", "pnpm", "vue", "workspace"],
+      "tags": [
+        "developer",
+        "multi-talk",
+        "pnpm",
+        "vue",
+        "workspace"
+      ],
       "license": "AGPL-3.0",
+      "licenseUrl": "https://raw.githubusercontent.com/LittleSound/talks-template/main/LICENSE",
       "preview": {
         "type": "url",
         "value": "https://github.com/LittleSound/talks-template"
@@ -51,12 +273,32 @@
         "command": "npx degit LittleSound/talks-template my-talks"
       },
       "status": "community",
-      "featured": true
+      "featured": true,
+      "provenance": {
+        "type": "external",
+        "notes": "Indexed only. Code, reciprocal-license obligations, releases, and governance remain with the canonical upstream project."
+      },
+      "verification": {
+        "level": "metadata-health",
+        "checks": [
+          "canonical-source",
+          "preview-link",
+          "license-link"
+        ],
+        "workflow": ".github/workflows/registry-health.yml",
+        "checkedAt": "2026-09-03"
+      }
     },
     {
       "id": "espressif",
       "name": "Espressif Slidev Template",
-      "description": "Espressif's reusable Slidev presentation starter with branded layouts, reusable components, addons, examples, and deployment configuration.",
+      "description": "Espressif's reusable Slidev presentation starter with branded layouts, reusable components, addons, examples, and deployment configuration for technical and organizational talks.",
+      "kind": "starter",
+      "categories": [
+        "corporate",
+        "developer",
+        "technical"
+      ],
       "source": {
         "type": "external",
         "repository": "https://github.com/espressif/slidev-esp-template"
@@ -65,8 +307,15 @@
         "name": "Espressif Systems",
         "url": "https://github.com/espressif"
       },
-      "tags": ["corporate", "developer", "technical", "branded", "addons"],
+      "tags": [
+        "corporate",
+        "developer",
+        "technical",
+        "branded",
+        "addons"
+      ],
       "license": "MIT",
+      "licenseUrl": "https://raw.githubusercontent.com/espressif/slidev-esp-template/main/LICENSE",
       "preview": {
         "type": "url",
         "value": "https://github.com/espressif/slidev-esp-template"
@@ -76,12 +325,32 @@
         "command": "npx degit espressif/slidev-esp-template my-presentation"
       },
       "status": "community",
-      "featured": true
+      "featured": true,
+      "provenance": {
+        "type": "external",
+        "notes": "Indexed without copying upstream branding, code, or assets; ownership and trademark decisions remain with Espressif."
+      },
+      "verification": {
+        "level": "metadata-health",
+        "checks": [
+          "canonical-source",
+          "preview-link",
+          "license-link"
+        ],
+        "workflow": ".github/workflows/registry-health.yml",
+        "checkedAt": "2026-09-03"
+      }
     },
     {
       "id": "miragon-deck",
       "name": "Miragon Slidev Deck Template",
-      "description": "An actively maintained corporate Slidev system with a one-command scaffolder, 15 presentation archetypes, reusable toolkit packages, CI guardrails, and AI-assisted authoring guidance.",
+      "description": "An actively maintained corporate Slidev system with a one-command scaffolder, presentation archetypes, reusable toolkit packages, CI guardrails, and AI-assisted authoring guidance.",
+      "kind": "presentation-system",
+      "categories": [
+        "corporate",
+        "automation",
+        "design-system"
+      ],
       "source": {
         "type": "external",
         "repository": "https://github.com/Miragon/slidev-deck-template"
@@ -90,8 +359,15 @@
         "name": "Miragon",
         "url": "https://github.com/Miragon"
       },
-      "tags": ["corporate", "scaffolder", "automation", "ai", "validation"],
+      "tags": [
+        "corporate",
+        "scaffolder",
+        "automation",
+        "ai",
+        "validation"
+      ],
       "license": "MIT",
+      "licenseUrl": "https://raw.githubusercontent.com/Miragon/slidev-deck-template/main/LICENSE",
       "preview": {
         "type": "url",
         "value": "https://slidev-template.netlify.app"
@@ -101,12 +377,32 @@
         "command": "npm create @miragon/slidev-deck@latest my-talk"
       },
       "status": "community",
-      "featured": true
+      "featured": true,
+      "provenance": {
+        "type": "external",
+        "notes": "Indexed only; the brand-specific implementation, published packages, assets, and governance remain in the canonical upstream project."
+      },
+      "verification": {
+        "level": "metadata-health",
+        "checks": [
+          "canonical-source",
+          "preview-link",
+          "license-link"
+        ],
+        "workflow": ".github/workflows/registry-health.yml",
+        "checkedAt": "2026-09-03"
+      }
     },
     {
       "id": "presentations-template",
       "name": "Presentations Template",
-      "description": "A modern Slidev starter with TypeScript, reusable Vue components, multiple themes, dev-container support, deployment configuration, and PDF/PPTX export workflows.",
+      "description": "A modern Slidev starter with TypeScript, reusable Vue components, multiple themes, development-container support, deployment configuration, and PDF and PPTX export workflows.",
+      "kind": "starter",
+      "categories": [
+        "developer",
+        "deployment",
+        "multi-theme"
+      ],
       "source": {
         "type": "external",
         "repository": "https://github.com/askpt/presentations.template"
@@ -115,8 +411,15 @@
         "name": "askpt",
         "url": "https://github.com/askpt"
       },
-      "tags": ["developer", "typescript", "deployment", "multi-theme", "devcontainer"],
+      "tags": [
+        "developer",
+        "typescript",
+        "deployment",
+        "multi-theme",
+        "devcontainer"
+      ],
       "license": "MIT",
+      "licenseUrl": "https://raw.githubusercontent.com/askpt/presentations.template/main/LICENSE",
       "preview": {
         "type": "url",
         "value": "https://askpt.github.io/presentations.template/"
@@ -126,12 +429,32 @@
         "command": "npx degit askpt/presentations.template my-presentation"
       },
       "status": "community",
-      "featured": false
+      "featured": false,
+      "provenance": {
+        "type": "external",
+        "notes": "Indexed only; source code, deployment workflows, releases, and project governance remain in the canonical upstream repository."
+      },
+      "verification": {
+        "level": "metadata-health",
+        "checks": [
+          "canonical-source",
+          "preview-link",
+          "license-link"
+        ],
+        "workflow": ".github/workflows/registry-health.yml",
+        "checkedAt": "2026-09-03"
+      }
     },
     {
       "id": "3mdeb-slidev-template",
       "name": "3mdeb Slidev Template",
-      "description": "A production-oriented Slidev template workflow with submodule-based integration, scripted rendering and PDF generation, Playwright smoke tests, and visual-regression coverage.",
+      "description": "A production-oriented Slidev workflow with submodule-based integration, scripted rendering and PDF generation, Playwright smoke tests, and visual-regression coverage.",
+      "kind": "workflow",
+      "categories": [
+        "technical",
+        "testing",
+        "automation"
+      ],
       "source": {
         "type": "external",
         "repository": "https://github.com/3mdeb/slidev-template"
@@ -140,8 +463,15 @@
         "name": "3mdeb",
         "url": "https://github.com/3mdeb"
       },
-      "tags": ["technical", "automation", "testing", "visual-regression", "production"],
+      "tags": [
+        "technical",
+        "automation",
+        "testing",
+        "visual-regression",
+        "production"
+      ],
       "license": "Apache-2.0",
+      "licenseUrl": "https://raw.githubusercontent.com/3mdeb/slidev-template/main/LICENSE",
       "preview": {
         "type": "url",
         "value": "https://raw.githubusercontent.com/3mdeb/slidev-template/main/tests/visual-regression.spec.ts-snapshots/layout-cover-chromium-linux.png"
@@ -151,12 +481,32 @@
         "command": "git submodule add https://github.com/3mdeb/slidev-template.git slidev-template"
       },
       "status": "community",
-      "featured": true
+      "featured": true,
+      "provenance": {
+        "type": "external",
+        "notes": "Indexed only; the Apache-2.0 implementation, testing infrastructure, notices, releases, and governance remain upstream."
+      },
+      "verification": {
+        "level": "metadata-health",
+        "checks": [
+          "canonical-source",
+          "preview-link",
+          "license-link"
+        ],
+        "workflow": ".github/workflows/registry-health.yml",
+        "checkedAt": "2026-09-03"
+      }
     },
     {
       "id": "kaakaa-resources",
       "name": "Slidev Resources Template",
       "description": "A GitHub Template repository for managing multiple Slidev resources with automated GitHub Release PDF generation and GitHub Pages deployment workflows.",
+      "kind": "workspace",
+      "categories": [
+        "multi-talk",
+        "automation",
+        "publishing"
+      ],
       "source": {
         "type": "external",
         "repository": "https://github.com/kaakaa/slidev-resources-template"
@@ -165,8 +515,15 @@
         "name": "kaakaa",
         "url": "https://github.com/kaakaa"
       },
-      "tags": ["multi-talk", "github-pages", "pdf", "automation", "release"],
+      "tags": [
+        "multi-talk",
+        "github-pages",
+        "pdf",
+        "automation",
+        "release"
+      ],
       "license": "MIT",
+      "licenseUrl": "https://raw.githubusercontent.com/kaakaa/slidev-resources-template/main/LICENSE",
       "preview": {
         "type": "url",
         "value": "https://kaakaa.github.io/slidev-resources-template/"
@@ -176,12 +533,32 @@
         "command": "gh repo create my-slides --template kaakaa/slidev-resources-template --public"
       },
       "status": "community",
-      "featured": false
+      "featured": false,
+      "provenance": {
+        "type": "external",
+        "notes": "Indexed only; release automation, deployment configuration, assets, and governance remain in the canonical upstream project."
+      },
+      "verification": {
+        "level": "metadata-health",
+        "checks": [
+          "canonical-source",
+          "preview-link",
+          "license-link"
+        ],
+        "workflow": ".github/workflows/registry-health.yml",
+        "checkedAt": "2026-09-03"
+      }
     },
     {
       "id": "godkun-ppt",
       "name": "Godkun PPT Template",
-      "description": "A compact Slidev presentation starter focused on fast authoring with a visual demo, pnpm-based setup, reusable structure, and a polished custom presentation style.",
+      "description": "A compact Slidev starter focused on fast authoring, a strong visual demo, pnpm-based setup, reusable structure, and a polished custom presentation style.",
+      "kind": "starter",
+      "categories": [
+        "developer",
+        "visual",
+        "fast-start"
+      ],
       "source": {
         "type": "external",
         "repository": "https://github.com/godkun/ppt-template"
@@ -190,8 +567,15 @@
         "name": "godkun",
         "url": "https://github.com/godkun"
       },
-      "tags": ["developer", "pnpm", "visual", "starter", "custom-style"],
+      "tags": [
+        "developer",
+        "pnpm",
+        "visual",
+        "starter",
+        "custom-style"
+      ],
       "license": "MIT",
+      "licenseUrl": "https://raw.githubusercontent.com/godkun/ppt-template/main/LICENSE",
       "preview": {
         "type": "url",
         "value": "https://raw.githubusercontent.com/godkun/ppt-template/main/public/show.gif"
@@ -201,7 +585,73 @@
         "command": "git clone https://github.com/godkun/ppt-template.git"
       },
       "status": "community",
-      "featured": false
+      "featured": false,
+      "provenance": {
+        "type": "external",
+        "notes": "Indexed only; source code, visual assets, release history, and governance remain in the canonical upstream repository."
+      },
+      "verification": {
+        "level": "metadata-health",
+        "checks": [
+          "canonical-source",
+          "preview-link",
+          "license-link"
+        ],
+        "workflow": ".github/workflows/registry-health.yml",
+        "checkedAt": "2026-09-03"
+      }
+    },
+    {
+      "id": "nju-academic",
+      "name": "NJU Academic Slidev Template",
+      "description": "A Chinese academic-report starter with research-oriented layouts, mathematical typesetting support, reusable metrics and step components, and institution-specific visual identity.",
+      "kind": "starter",
+      "categories": [
+        "academic",
+        "research",
+        "chinese"
+      ],
+      "source": {
+        "type": "external",
+        "repository": "https://github.com/sylearn/nju-slidev-template"
+      },
+      "author": {
+        "name": "sylearn",
+        "url": "https://github.com/sylearn"
+      },
+      "tags": [
+        "academic",
+        "chinese",
+        "katex",
+        "branded",
+        "research"
+      ],
+      "license": "MIT",
+      "licenseUrl": "https://raw.githubusercontent.com/sylearn/nju-slidev-template/main/LICENSE",
+      "preview": {
+        "type": "url",
+        "value": "https://raw.githubusercontent.com/sylearn/nju-slidev-template/main/docs/screenshots/slide-cover.png"
+      },
+      "usage": {
+        "type": "degit",
+        "command": "npx degit sylearn/nju-slidev-template academic-talk"
+      },
+      "status": "experimental",
+      "featured": false,
+      "provenance": {
+        "type": "external",
+        "notes": "Indexed only because the template contains institution-specific branding and assets; users must evaluate trademark and brand-policy requirements upstream."
+      },
+      "verification": {
+        "level": "metadata-health",
+        "checks": [
+          "canonical-source",
+          "preview-link",
+          "license-link"
+        ],
+        "workflow": ".github/workflows/registry-health.yml",
+        "checkedAt": "2026-09-03"
+      }
     }
   ]
 }

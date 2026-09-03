@@ -1,6 +1,7 @@
 node_modules/
 dist/
 .slidev/
+.tmp/
 *.log
 .DS_Store
 
