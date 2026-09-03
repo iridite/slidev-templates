@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Terminal Ink template preview</title>
+  <desc id="desc">Dark terminal window with green status text and incident-review headline.</desc>
+  <rect width="1280" height="720" fill="#090c0b"/>
+  <rect x="78" y="62" width="1124" height="596" rx="16" fill="#111714" stroke="#2a3831" stroke-width="2"/>
+  <path d="M78 112h1124" stroke="#2a3831" stroke-width="2"/>
+  <circle cx="112" cy="87" r="8" fill="#ff6b6b"/>
+  <circle cx="140" cy="87" r="8" fill="#ffca5c"/>
+  <circle cx="168" cy="87" r="8" fill="#69f0ae"/>
+  <text x="198" y="94" fill="#718078" font-family="monospace" font-size="17">incident-review — zsh</text>
+  <text x="128" y="174" fill="#69f0ae" font-family="monospace" font-size="22">$ status --service gateway</text>
+  <text x="128" y="220" fill="#69f0ae" font-family="monospace" font-size="22">● recovered</text>
+  <text x="128" y="368" fill="#f4fff8" font-family="Arial, sans-serif" font-size="84" font-weight="700">What failed</text>
+  <text x="128" y="462" fill="#f4fff8" font-family="Arial, sans-serif" font-size="84" font-weight="700">at 02:14?</text>
+  <text x="130" y="534" fill="#718078" font-family="Arial, sans-serif" font-size="24">State → evidence → mechanism → correction → prevention</text>
+  <text x="130" y="603" fill="#69f0ae" font-family="monospace" font-size="22">$ _</text>
+</svg>
