@@ -6,15 +6,18 @@
 
 项目希望解决的是：优秀 Slidev 模板分散在不同仓库、质量和使用方式不统一、难以发现、难以判断是否还能使用，也缺少一致的贡献和维护入口。
 
-因此，本仓库把「模板」定义为一套可复用的演示起点。一个模板可以同时包含 theme、starter、布局、组件、配置、示例、文档和推荐目录结构。Theme 只是模板的一部分，而不是本项目的收录边界。
+因此，本仓库把「模板」定义为一套可复用的演示起点。一个模板可以同时包含 theme、starter、布局、组件、配置、示例、文档、导出/部署流程和推荐目录结构。Theme 只是模板的一部分，而不是本项目的收录边界。
 
 ## 当前模板
 
 | 模板 | 状态 | 来源 | 适用场景 | 快速开始 |
 | --- | --- | --- | --- | --- |
 | [Neko Style](./neko-style/) | ✅ Verified | 仓库托管 | 技术分享、开发者演示、AI/ML、会议 | `npx degit iridite/slidev-templates/neko-style my-presentation` |
+| [Espressif Slidev Template](https://github.com/espressif/slidev-esp-template) | 🟦 Community | 外部索引 | 企业/开发者技术演示、品牌化演示、addons | `npx degit espressif/slidev-esp-template my-presentation` |
+| [3mdeb Slidev Template](https://github.com/3mdeb/slidev-template) | 🟦 Community | 外部索引 | 自动化渲染、PDF 生成、视觉回归测试 | `git submodule add https://github.com/3mdeb/slidev-template.git slidev-template` |
+| [Presentations Template](https://github.com/askpt/presentations.template) | 🟦 Community | 外部索引 | TypeScript/Vue、部署、PDF/PPTX 工作流 | `npx degit askpt/presentations.template my-presentation` |
 
-Neko Style 是当前 Registry 的第一个 reference implementation，用来验证模板目录、Starter、预览、测试、构建和导出这一整套维护流程。
+Neko Style 是当前 Registry 的第一个 reference implementation，用来验证模板目录、Starter、预览、测试、构建和导出这一整套维护流程；其他项目保持在各自 canonical repository 中，本项目只负责 curated discovery，不复制、吞并第三方代码。
 
 ## Registry
 
@@ -33,7 +36,7 @@ Registry 支持两种收录模式：
 
 - 模板名称和用途；
 - canonical repository/source；
-- 代表性预览；
+- 代表性预览或 live demo；
 - 最短可复现使用方式；
 - License；
 - discovery tags。
@@ -43,7 +46,7 @@ Registry 支持两种收录模式：
 1. 不只是某一次演讲的成品，而能被其他人复用；
 2. 有清晰 README 或使用说明；
 3. 有可复现的启动/复制方式；
-4. 有至少一张代表性预览；
+4. 有至少一份代表性预览或 live demo；
 5. 有明确 License 与第三方素材归属；
 6. 能确认作者、维护者或 canonical source。
 
@@ -78,6 +81,6 @@ npm run export:neko
 
 ## 方向
 
-下一阶段不是继续把仓库做成 Neko Style 的产品页，而是逐步形成真正的 Slidev Template discovery layer：收录更多独立维护的模板，丰富可搜索 metadata、兼容性信息和验证信号，并最终可以基于同一份 Registry 数据生成可浏览的模板 Gallery。
+下一阶段不是继续把仓库做成 Neko Style 的产品页，而是逐步形成真正的 Slidev Template discovery layer：收录更多独立维护的模板，丰富可搜索 metadata、兼容性信息、健康度与验证信号，并最终可以基于同一份 Registry 数据生成可浏览的模板 Gallery。
 
 机器可读 Registry 也意味着未来其他网站、CLI、AI Agent 和 Slidev 工作流都可以直接消费这套数据，而不需要抓取 README。
