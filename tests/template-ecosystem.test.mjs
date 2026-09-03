@@ -12,6 +12,8 @@ const json = (path) => JSON.parse(read(path))
 const registry = json('registry/templates.json')
 const manifestSchema = json('registry/hosted-template.schema.json')
 
+const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+
 test('manifest-based hosted templates satisfy the current runtime contract', () => {
   const hosted = registry.templates.filter((entry) => entry.source.type === 'hosted' && entry.source.manifest)
   assert.equal(hosted.length, 3, 'three new contract-based starters should complement Neko Style')
@@ -57,6 +59,11 @@ test('manifest-based hosted templates satisfy the current runtime contract', () 
     const slides = read(join(entry.source.starterPath, 'slides.md'))
     assert.ok((slides.match(/^---$/gm) || []).length >= 6, `${entry.id}: starter should demonstrate multiple slide patterns`)
     assert.doesNotMatch(slides, /https?:\/\/[^\s)"']+\.(?:png|jpe?g|gif|webp)/i, `${entry.id}: hosted starter must not depend on untracked remote raster assets`)
+
+    const starterReadme = read(join(entry.source.starterPath, 'README.md'))
+    const canonicalTemplateUrl = `https://github.com/iridite/slidev-templates/tree/main/${entry.source.path}`
+    assert.doesNotMatch(starterReadme, /\]\(\.\.\/README\.md\)/, `${entry.id}: extracted README must not link outside the starter`)
+    assert.match(starterReadme, new RegExp(escapeRegExp(canonicalTemplateUrl)), `${entry.id}: extracted README must link to the canonical template page`)
   }
 })
 
@@ -64,14 +71,20 @@ test('gallery and generated catalogs consume the canonical registry', () => {
   const html = read('gallery/index.html')
   const app = read('gallery/app.js')
   const css = read('gallery/styles.css')
+  const pages = read('.github/workflows/gallery-pages.yml')
+  const builder = read('scripts/build-gallery.mjs')
 
   assert.match(html, /Slidev Template Registry/)
   assert.match(html, /class="license"/)
+  assert.match(html, /github\.com\/iridite\/slidev-templates\/blob\/main\/registry\/templates\.json/)
   assert.match(app, /registry\/templates\.json/)
   assert.match(app, /licenseUrl/)
   assert.match(app, /navigator\.clipboard/)
   assert.match(css, /\.template-grid/)
   assert.match(css, /\.badge\.verification/)
+  assert.match(pages, /actions\/configure-pages@v5/)
+  assert.match(builder, /url=\.\/gallery\//)
+  assert.match(builder, /\.nojekyll/)
 
   const catalog = spawnSync(process.execPath, ['scripts/generate-catalog.mjs', '--check'], {
     cwd: root,
