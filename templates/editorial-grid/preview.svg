@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Editorial Grid template preview</title>
+  <desc id="desc">Bold cream editorial slide with black uppercase type and red emphasis.</desc>
+  <rect width="1280" height="720" fill="#f2efe7"/>
+  <rect x="76" y="62" width="1128" height="10" fill="#111111"/>
+  <line x1="76" y1="640" x2="1204" y2="640" stroke="#111111" stroke-width="3"/>
+  <text x="78" y="112" fill="#111111" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="3">ISSUE 01 · PRODUCT / STRATEGY</text>
+  <text x="78" y="282" fill="#111111" font-family="Arial, sans-serif" font-size="105" font-weight="900" letter-spacing="-8">MAKE THE</text>
+  <text x="78" y="390" fill="#e7442e" font-family="Arial, sans-serif" font-size="105" font-weight="900" letter-spacing="-8">DECISION</text>
+  <text x="78" y="498" fill="#111111" font-family="Arial, sans-serif" font-size="105" font-weight="900" letter-spacing="-8">VISIBLE.</text>
+  <text x="900" y="572" fill="#111111" font-family="Arial, sans-serif" font-size="22">Context, evidence, trade-offs</text>
+  <text x="1158" y="685" fill="#111111" font-family="Arial, sans-serif" font-size="18" font-weight="700">01</text>
+</svg>
