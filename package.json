@@ -2,7 +2,7 @@
   "name": "slidev-templates",
   "version": "1.0.0",
   "private": true,
-  "description": "高质量 Slidev 演示模板集合",
+  "description": "Curated registry and community ecosystem for reusable Slidev presentation templates",
   "workspaces": [
     "neko-style/theme",
     "neko-style/starter"
@@ -13,6 +13,14 @@
     "build:neko": "npm run build -w neko-style/starter",
     "export:neko": "npm run export -w neko-style/starter"
   },
-  "keywords": ["slidev", "template", "presentation"],
+  "keywords": [
+    "slidev",
+    "slidev-template",
+    "template",
+    "presentation",
+    "registry",
+    "starter",
+    "gallery"
+  ],
   "license": "MIT"
 }
