@@ -1,0 +1,24 @@
+{
+  "$schema": "../../registry/hosted-template.schema.json",
+  "id": "editorial-grid",
+  "name": "Editorial Grid",
+  "version": "1.0.0",
+  "description": "A bold editorial Slidev starter for product narratives, strategic proposals, launches, and visually paced storytelling.",
+  "categories": ["product", "strategy", "storytelling"],
+  "tags": ["editorial", "grid", "bold-type", "light", "launch"],
+  "license": "MIT",
+  "provenance": {
+    "type": "original",
+    "notes": "Original implementation using generic editorial design principles; no upstream code, fonts, or branded assets are bundled."
+  },
+  "compatibility": {
+    "node": ">=18",
+    "slidev": ">=0.49.0"
+  },
+  "entry": "starter/slides.md",
+  "commands": {
+    "dev": "npm run dev",
+    "build": "npm run build",
+    "export": "npm run export"
+  }
+}
