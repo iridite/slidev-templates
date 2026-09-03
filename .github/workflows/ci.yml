@@ -35,6 +35,9 @@ jobs:
       - name: Run tests
         run: npm test
 
+      - name: Verify generated registry catalog
+        run: npm run registry:catalog:check
+
       - name: Build starter
         run: npm run build:neko
 
