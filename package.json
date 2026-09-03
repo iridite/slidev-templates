@@ -9,6 +9,9 @@
   ],
   "scripts": {
     "test": "node --test tests/*.test.mjs",
+    "registry:catalog": "node scripts/generate-catalog.mjs",
+    "registry:catalog:check": "node scripts/generate-catalog.mjs --check",
+    "registry:health": "node scripts/check-registry-health.mjs",
     "dev:neko": "npm run dev -w neko-style/starter",
     "build:neko": "npm run build -w neko-style/starter",
     "export:neko": "npm run export -w neko-style/starter"
