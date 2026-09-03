@@ -1,6 +1,11 @@
 # slidev-templates
 
+[![CI](https://github.com/iridite/slidev-templates/actions/workflows/ci.yml/badge.svg)](https://github.com/iridite/slidev-templates/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+
 > 高质量 [Slidev](https://sli.dev) 演示模板集合。当前主模板为 `neko-style`。
+
+这是一个持续维护的开源模板仓库，目标是提供可复用、可测试、可独立安装的 Slidev 主题与 starter。Bug 报告和聚焦的社区 PR 欢迎通过 GitHub Issues / Pull Requests 提交；维护流程见 [CONTRIBUTING.md](./CONTRIBUTING.md)。
 
 ## 📦 当前模板
 
@@ -34,7 +39,7 @@ https://github.com/user-attachments/assets/a8de803a-3857-43cf-988c-31578a26cb8b
 - `neko-style/starter`：开箱即用示例工程（本地依赖 `file:../theme`）
 - `neko-style/docs`：仓库级参考文档（AI 指南、设计语言）
 
-根目录 `package.json` 通过 workspace 串起 `theme` 和 `starter`，用于统一开发与构建。
+根目录 `package.json` 通过 workspace 串起 `theme` 和 `starter`，用于统一开发、测试与构建。
 
 ## 🚀 使用方式
 
@@ -51,7 +56,7 @@ npm run dev
 
 > ⚠️ `slidev-theme-neko-style` 当前未发布到 npm registry，不能直接 `npm install slidev-theme-neko-style`。
 
-安装支持状态（2026-03-30）：
+当前安装支持状态：
 
 | 安装方式 | 是否支持 | 说明 |
 |------|------|------|
@@ -101,22 +106,42 @@ theme: neko-style
 ```bash
 git clone https://github.com/iridite/slidev-templates.git
 cd slidev-templates
-npm install
+npm ci
+npm test
+npm run build:neko
+```
+
+需要交互调试时运行：
+
+```bash
 npm run dev:neko
+```
+
+涉及渲染或导出行为时，再运行：
+
+```bash
+npm run export:neko
 ```
 
 可用脚本（根目录）：
 
+- `npm test`：运行仓库回归测试
 - `npm run dev:neko`：启动 starter 开发环境
 - `npm run build:neko`：构建 starter
 - `npm run export:neko`：导出 starter（PDF）
+
+GitHub Actions 会在 push 和 pull request 上自动执行安装、测试、构建和 PDF 导出，确保社区改动保持可用。
 
 ## 📁 目录结构
 
 ```text
 slidev-templates/
+├── .github/
+├── tests/
 ├── package.json
 ├── README.md
+├── CONTRIBUTING.md
+├── SECURITY.md
 └── neko-style/
     ├── README.md
     ├── SKILL.md
@@ -151,22 +176,25 @@ glowPreset: rust # blue | rust | cyan
 - [主题文档（安装/组件/布局/配色/动画）](./neko-style/theme/README.md)
 - [AI Skill（单文件 AI 参考）](./neko-style/SKILL.md)
 - [设计语言参考](./neko-style/docs/design-language-airi-2025-10.md)
+- [贡献指南](./CONTRIBUTING.md)
+- [安全策略](./SECURITY.md)
+- [变更记录](./CHANGELOG.md)
 
-## ✅ 可运行性验收（建议每次改动后执行）
+## ✅ 可运行性验收
 
 目标：确保仓库文档中提到的核心能力都能跑通，且 `neko-style` 模板可实际复用。
 
 ### 1) 根仓库（monorepo）
 
 ```bash
-npm install
-npm run dev:neko
+npm ci
+npm test
 npm run build:neko
 npm run export:neko
 ```
 
 验收点：
-- `dev:neko` 能正常启动 Slidev
+- 回归测试通过
 - `build:neko` 无报错
 - `export:neko` 能成功导出
 
@@ -216,17 +244,12 @@ theme: neko-style
 - `@nolebase/ui-asciinema` + `asciinema-player`（终端回放）
 - `@tresjs/core` + `@tresjs/cientos` + `three`（3D）
 
----
+## 🤝 参与维护
 
-## 🤝 贡献
+欢迎提交 bug、改进建议和聚焦的 pull request。对安装、兼容性和复用体验有直接改善的贡献会优先处理。
 
-欢迎新增模板。建议每个模板至少包含：
-
-- `README.md`（使用说明）
-- `starter/`（可运行示例）
-- `theme/`（可复用主题，若适用）
-- 必要文档与示例素材
+提交前请阅读 [CONTRIBUTING.md](./CONTRIBUTING.md)。安全问题请按 [SECURITY.md](./SECURITY.md) 私下报告，不要公开披露可利用漏洞。
 
 ## 📄 License
 
-MIT
+MIT — see [LICENSE](./LICENSE).
