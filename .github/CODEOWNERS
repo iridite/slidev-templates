@@ -1,0 +1,15 @@
+# Primary review ownership
+* @iridite
+
+# Registry, curation, licensing, and governance require maintainer review
+/registry/ @iridite
+/templates/ @iridite
+/docs/TEMPLATE_CONTRACT.md @iridite
+/docs/AI_ASSISTED_MAINTENANCE.md @iridite
+/GOVERNANCE.md @iridite
+/SECURITY.md @iridite
+
+# Automation changes affect the trust model
+/.github/workflows/ @iridite
+/scripts/ @iridite
+/tests/ @iridite
