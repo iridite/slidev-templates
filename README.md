@@ -8,7 +8,7 @@
 
 The goal is not to maintain one theme. The goal is to make high-quality Slidev templates easier to **discover, evaluate, reuse, and contribute** through a consistent open-source workflow.
 
-[中文说明](./README.zh-CN.md) · [Browse registry](./registry/templates.json) · [Submit a template](../../issues/new?template=template_submission.yml) · [Contributing](./CONTRIBUTING.md)
+[中文说明](./README.zh-CN.md) · [Browse registry](./registry/templates.json) · [Submit a template](https://github.com/iridite/slidev-templates/issues/new?template=template_submission.yml) · [Contributing](./CONTRIBUTING.md) · [Governance](./GOVERNANCE.md)
 
 ## What counts as a template?
 
@@ -25,7 +25,7 @@ This registry therefore complements Slidev's theme ecosystem rather than duplica
 | [3mdeb Slidev Template](https://github.com/3mdeb/slidev-template) | 🟦 Community | External | Production workflows, automated export, visual regression testing | `git submodule add https://github.com/3mdeb/slidev-template.git slidev-template` |
 | [Presentations Template](https://github.com/askpt/presentations.template) | 🟦 Community | External | TypeScript/Vue, deployment-ready decks, PDF/PPTX workflows | `npx degit askpt/presentations.template my-presentation` |
 
-The registry now deliberately mixes repository-hosted templates and independently maintained external projects. External authors keep ownership and governance of their projects; this repository only provides curated discovery metadata.
+The registry deliberately mixes repository-hosted templates and independently maintained external projects. External authors keep ownership and governance of their projects; this repository only provides curated discovery metadata.
 
 ### Neko Style preview
 
@@ -104,6 +104,7 @@ slidev-templates/
 ├── neko-style/             # first hosted/reference template
 ├── assets/                 # catalog preview assets
 ├── CONTRIBUTING.md
+├── GOVERNANCE.md
 ├── SECURITY.md
 └── CHANGELOG.md
 ```
@@ -116,7 +117,7 @@ The registry format is intentionally machine-readable so other tools, agents, si
 
 ## Governance
 
-Issues and pull requests are triaged for reproducibility, user impact, ecosystem usefulness, licensing, and maintenance cost. Registry additions are reviewed rather than automatically accepted.
+Issues and pull requests are triaged for reproducibility, user impact, ecosystem usefulness, licensing, and maintenance cost. Registry additions are reviewed rather than automatically accepted. The current primary maintainer and decision process are documented in [`GOVERNANCE.md`](./GOVERNANCE.md).
 
 Read [`CONTRIBUTING.md`](./CONTRIBUTING.md) before submitting changes. Security issues should be reported according to [`SECURITY.md`](./SECURITY.md).
 
