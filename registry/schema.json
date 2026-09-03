@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/iridite/slidev-templates/blob/main/registry/schema.json",
+  "title": "Slidev Template Registry",
+  "type": "object",
+  "required": ["version", "templates"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": 1 },
+    "templates": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/template" }
+    }
+  },
+  "$defs": {
+    "template": {
+      "type": "object",
+      "required": ["id", "name", "description", "source", "author", "tags", "license", "preview", "usage", "status", "featured"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "name": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 20 },
+        "source": {
+          "oneOf": [
+            {
+              "type": "object",
+              "required": ["type", "path", "starterPath"],
+              "additionalProperties": false,
+              "properties": {
+                "type": { "const": "hosted" },
+                "path": { "type": "string", "minLength": 1 },
+                "starterPath": { "type": "string", "minLength": 1 }
+              }
+            },
+            {
+              "type": "object",
+              "required": ["type", "repository"],
+              "additionalProperties": false,
+              "properties": {
+                "type": { "const": "external" },
+                "repository": { "type": "string", "format": "uri" },
+                "templatePath": { "type": "string" }
+              }
+            }
+          ]
+        },
+        "author": {
+          "type": "object",
+          "required": ["name"],
+          "additionalProperties": false,
+          "properties": {
+            "name": { "type": "string", "minLength": 1 },
+            "url": { "type": "string", "format": "uri" }
+          }
+        },
+        "tags": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        },
+        "license": { "type": "string", "minLength": 1 },
+        "preview": {
+          "type": "object",
+          "required": ["type", "value"],
+          "additionalProperties": false,
+          "properties": {
+            "type": { "enum": ["local", "url"] },
+            "value": { "type": "string", "minLength": 1 }
+          }
+        },
+        "usage": {
+          "type": "object",
+          "required": ["type", "command"],
+          "additionalProperties": false,
+          "properties": {
+            "type": { "enum": ["degit", "clone", "external"] },
+            "command": { "type": "string", "minLength": 1 }
+          }
+        },
+        "status": { "enum": ["verified", "community", "experimental"] },
+        "featured": { "type": "boolean" }
+      }
+    }
+  }
+}
