@@ -26,7 +26,7 @@ for (const entry of hosted) {
 
   const install = spawnSync(npm, [
     'install',
-    '--package-lock=false',
+    '--no-workspaces',
     '--no-audit',
     '--no-fund',
   ], {
