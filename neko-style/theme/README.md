@@ -258,6 +258,62 @@ clicks: 7
 <RouteProgressionLane :steps="[...]" />
 ```
 
+### split
+
+Golden ratio split screen layout for side-by-side narrative and code/diagram.
+
+```md
+---
+layout: split
+ratio: '4:6' # '5:5' | '4:6' | '6:4' | '3:7' | '7:3'
+---
+
+::left::
+# Architecture Shift
+Detailed explanation of the new engine.
+
+::right::
+```ts
+const pipeline = createAgentPipeline({ mode: 'autonomous' })
+```
+```
+
+### headline
+
+High-impact statement / takeaway page with optional eyebrow badge and subtext.
+
+```md
+---
+layout: headline
+---
+
+::eyebrow::
+KEY TAKEAWAY
+
+# 80% of Developer Friction Stems from Context Switching
+
+::subtext::
+By shifting orchestration to autonomous coding agents, focus is restored.
+```
+
+### metrics
+
+Executive dashboard / benchmark presentation layout with headline and KPI cards.
+
+```md
+---
+layout: metrics
+---
+
+::title::
+# Model Evaluation & Impact
+
+::lead::
+Benchmarked across 200 real-world production test cases.
+
+<MetricsGrid :items="[...]" />
+```
+
 ### center / default
 
 Centered content and Slidev's default layout, respectively.
@@ -390,6 +446,50 @@ Glass-morphism card grid for patterns/features.
 | `items` | `{ title, description, eyebrow? }[]` | `[]` |
 | `columns` | `2 \| 3` | `2` |
 
+
+#### MetricsGrid
+
+Modern high-impact executive KPI and benchmark metrics card grid.
+
+```vue
+<MetricsGrid :columns="3" :items="[
+  { value: '10x', label: 'Throughput', trend: '+900%', trendTone: 'up', tone: 'sky', subtext: 'Concurrent worker capacity' },
+  { value: '45ms', label: 'P99 Latency', trend: '-65%', trendTone: 'up', tone: 'emerald', subtext: 'Sub-second tool dispatch' },
+  { value: '99.9%', label: 'Delivery SLA', trend: 'Stable', trendTone: 'neutral', tone: 'teal', subtext: 'Continuous validation check' },
+]" />
+```
+
+| Prop | Type | Default |
+|------|------|---------|
+| `items` | `MetricItem[]` | `[]` |
+| `columns` | `2 \| 3 \| 4` | `3` |
+| `animate` | `boolean` | `true` |
+| `clicksFrom` | `number` | `1` |
+
+#### ComparisonMatrix
+
+Structured architectural / approach comparison matrix (Traditional vs Modern).
+
+```vue
+<ComparisonMatrix
+  traditional-title="Manual Maintenance"
+  modern-title="AI Agent Orchestration"
+  :rows="[
+    { dimension: 'Deploy Pipeline', traditional: 'Separate repo + manual token sync', modern: 'Self-contained CI in main branch', tag: 'Automated' },
+    { dimension: 'Background Glow', traditional: 'CPU software rasterization', modern: 'GPU-accelerated singleton compositor', tag: 'Zero-Flicker' },
+    { dimension: 'Slide Authoring', traditional: 'Manual div crafting', modern: 'SKILL.md contract-driven generation', tag: 'AI-Native' },
+  ]"
+/>
+```
+
+| Prop | Type | Default |
+|------|------|---------|
+| `rows` | `MatrixRow[]` | `[]` |
+| `traditionalTitle` | `string` | `'Traditional Approach'` |
+| `modernTitle` | `string` | `'Modern / AI-Powered'` |
+| `dimensionTitle` | `string` | `'Dimension'` |
+| `animate` | `boolean` | `true` |
+| `clicksFrom` | `number` | `1` |
 #### LifecycleChallengesThreeCol
 
 Three-column challenge cards. Accepts items via props or uses built-in defaults.
@@ -1202,11 +1302,9 @@ clicks: 3                # Declare total click steps
 
 ### Firefox: page transition flicker on last-rendered element
 
-When using the `fade-out` page transition, Firefox may cause the last element rendered on the page (typically the final card in a group) to disappear abruptly during the transition instead of fading out smoothly with the rest of the page. This is a Firefox compositor issue related to how it handles `filter: blur()` transitions on pages containing `backdrop-filter` elements.
+When using page transitions on displays with high devicePixelRatio (Retina, 4K, or external projectors), large full-screen blur filters can cause compositor tile dropping if not properly composited on the GPU.
 
-**Workaround**: Use Chrome or Chromium-based browsers for presentations. The issue does not affect the deployed/exported static build when viewed in Firefox — it only manifests during live Slidev dev-server navigation.
-
-**Status**: Upstream browser behavior. The same transition CSS works correctly in Chrome, Edge, and Safari.
+**Design**: The theme implements `GlowBackground` with `transform-gpu`, targeted property transitions (`clip-path`, `opacity`, `transform` rather than `all`), deep navy midnight base color (`#0a1428`), and singleton lifecycle in `global-bottom.vue` so that slide-to-slide transitions maintain an unbroken, flicker-free background.
 
 ### LiquidGlass naming conflict warning (Slidev v0.51+)
 

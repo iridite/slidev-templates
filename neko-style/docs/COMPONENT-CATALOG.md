@@ -21,6 +21,8 @@ This document helps AI assistants quickly find the right component for any prese
 | Horizontal icon+label tags/badges | `IconLabelWrap` | Simple | Data Display |
 | Feature comparison grid | `FeatureIconGrid` | Simple | Data Display |
 | Pattern/concept card grid | `PatternCardGrid` | Simple | Data Display |
+| Executive KPI & benchmark metrics grid | `MetricsGrid` | Simple | Data Display |
+| Architecture/approach comparison matrix | `ComparisonMatrix` | Simple | Data Display |
 | Hub-spoke architecture diagram | `FlowDiagram` | Complex | Architecture |
 | Data flow / pipeline funnel | `EventPipeline` | Complex | Architecture |
 | Tool loop / orbital model | `TerminalOrbitDemo` | Complex | Architecture |

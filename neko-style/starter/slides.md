@@ -224,6 +224,24 @@ glowSeed: 170
 We've identified three categories of friction that compound on each other: setup cost, context loss, and repetition.
 -->
 
+
+---
+layout: headline
+glowSeed: 220
+glowPreset: cyan
+---
+
+::eyebrow::
+THE CORE HYPOTHESIS
+
+# What If Workflows Were Declarative Software, Not Mental Memory?
+
+::subtext::
+Instead of engineers manually synchronizing context and tooling, the runtime autonomously coordinates state, verification, and execution invariants.
+
+<!--
+This is the central thesis behind our approach.
+-->
 ---
 layout: section
 glowSeed: 250
@@ -376,6 +394,94 @@ Here's what it looks like in practice. One command, and you go from intent to a 
 The context query shows how past decisions are instantly retrievable.
 -->
 
+
+---
+layout: split
+ratio: '4:6'
+glowSeed: 340
+glowPreset: cyan
+---
+
+::left::
+# Architecture & Interface
+
+By cleanly decoupling the high-level intent engine from the deterministic local execution harness, developers retain full inspectability and rollback control.
+
+<InsightCalloutBar tone="cyan" class="mt-4">
+  Deterministic invariants replace probabilistic guessing.
+</InsightCalloutBar>
+
+::right::
+```ts
+import { createAgentPipeline } from '@aurora/core'
+
+// Autonomous verification & continuous deployment
+const pipeline = createAgentPipeline({
+  mode: 'autonomous',
+  verification: 'continuous',
+  telemetry: 'durable',
+})
+
+await pipeline.executeWorkflow()
+```
+
+<!--
+Here is the code architecture: concise declarative contracts driving autonomous workers.
+-->
+
+---
+layout: page
+glowSeed: 360
+glowPreset: cyan
+clicks: 3
+---
+
+<div text-3xl font-semibold mb-5>Paradigm Shift</div>
+
+<div class="mt-4">
+  <ComparisonMatrix
+    traditional-title="Manual / Scripted Delivery"
+    modern-title="Aurora Agentic Orchestration"
+    :rows="[
+      { dimension: 'Pipeline Isolation', traditional: 'Fragmented dotfiles & manual secrets', modern: 'Unified single-branch declarative CI', tag: 'Automated' },
+      { dimension: 'Graphics Compositing', traditional: 'Uncached software blur (blackouts on 4K)', modern: 'GPU-accelerated singleton compositor', tag: 'Zero-Flicker' },
+      { dimension: 'Slide Authoring', traditional: 'Manual div crafting & inconsistent CSS', modern: 'SKILL-guided AI automated synthesis', tag: 'AI-Native' },
+    ]"
+  />
+</div>
+
+<!--
+Comparing before vs after across key delivery dimensions.
+-->
+
+---
+layout: metrics
+glowSeed: 370
+glowPreset: cyan
+clicks: 3
+---
+
+::title::
+# Measured Performance & Reliability
+
+::lead::
+Rigorous benchmarks measured across production test cases and high-DPI external displays.
+
+<MetricsGrid
+  :columns="3"
+  :items="[
+    { value: '10x', label: 'Concurrent Capacity', trend: '+900%', trendTone: 'up', tone: 'sky', subtext: 'Autonomous worker scaling without lockups' },
+    { value: '45ms', label: 'P99 Latency', trend: '-65%', trendTone: 'up', tone: 'emerald', subtext: 'Sub-second tool dispatch & recovery' },
+    { value: '99.9%', label: 'Delivery Integrity', trend: 'Audit Green', trendTone: 'neutral', tone: 'teal', subtext: 'Automated continuous smoke verification' },
+  ]"
+/>
+
+::footnote::
+Tested on Slidev v52+ with Chromium and WebKit runtimes across 1080p, 2K, and 4K display outputs.
+
+<!--
+The numbers speak for themselves: 10x throughput, sub-50ms dispatch latency, and rock-solid delivery.
+-->
 ---
 layout: section
 glowSeed: 380

@@ -109,6 +109,8 @@ glowHue: 0                # Hue shift: 0-360
 | **— Data Display —** | | |
 | Feature grid (icon+title+desc cards) | `FeatureIconGrid` | items.length |
 | Pattern / concept card grid | `PatternCardGrid` | items.length |
+| Executive KPI & benchmark metrics grid | `MetricsGrid` | items.length |
+| Architecture/approach comparison matrix | `ComparisonMatrix` | rows.length |
 | Linear process (card+icon+desc) | `ProcessFlowGrid` | items.length |
 | Three challenges / column cards | `LifecycleChallengesThreeCol` | items.length |
 | Capability reveal row | `CapabilityRevealRow` | items.length |
@@ -124,6 +126,9 @@ glowHue: 0                # Hue shift: 0-360
 | Categorized icon / tech stack list | `CategoryIconList` | categories.length |
 | Horizontal icon+label tags | `IconLabelWrap` | items.length |
 | Left-border accent items (criteria) | `AccentBorderList` | items.length |
+| Narrative + Code/Diagram split layout | `layout: split` | slots |
+| High-impact statement & takeaway layout | `layout: headline` | 0 |
+| Benchmark KPI dashboard layout | `layout: metrics` | items.length |
 | **— Progression & Architecture —** | | |
 | Step-by-step pipeline (arrows) | `StackedFlowPipeline` | nodes×2−1 |
 | Spectrum / progression / roadmap | `RouteProgressionLane` | steps×2−1 |
@@ -379,6 +384,86 @@ glowSeed: 700
 />
 ```
 
+### Executive Metrics & KPIs
+
+```md
+---
+layout: metrics
+glowSeed: 600
+clicks: 3
+---
+
+::title::
+# Quantitative Benchmarks & Impact
+
+::lead::
+Rigorous measurements across production workloads comparing the before and after states.
+
+<MetricsGrid
+  :columns="3"
+  :items="[
+    { value: '10x', label: 'Concurrent Capacity', trend: '+900%', trendTone: 'up', tone: 'sky', subtext: 'Autonomous worker scaling without lockups' },
+    { value: '45ms', label: 'P99 Latency', trend: '-65%', trendTone: 'up', tone: 'emerald', subtext: 'Sub-second tool dispatch & recovery' },
+    { value: '99.9%', label: 'Delivery Integrity', trend: 'Audit Green', trendTone: 'neutral', tone: 'teal', subtext: 'Automated continuous smoke verification' },
+  ]"
+/>
+```
+
+### Approach / System Comparison
+
+```md
+---
+layout: page
+glowSeed: 650
+clicks: 3
+---
+
+# Paradigm Comparison
+
+<div class="mt-4">
+  <ComparisonMatrix
+    traditional-title="Manual / Script-Heavy Workflow"
+    modern-title="AI Agent Orchestrated Delivery"
+    :rows="[
+      { dimension: 'Deploy Automation', traditional: 'Separate repo + manual token juggling', modern: 'Self-contained CI pipeline in main branch', tag: 'Automated' },
+      { dimension: 'Background Rendering', traditional: 'Software blur rasterization (blackouts on 4K)', modern: 'GPU-accelerated singleton compositor', tag: 'Zero-Flicker' },
+      { dimension: 'Presentation Authoring', traditional: 'Manual div crafting & fragile styles', modern: 'SKILL-guided contract-first component generation', tag: 'AI-Native' },
+    ]"
+  />
+</div>
+```
+
+### Split Screen Narrative + Code/Diagram
+
+```md
+---
+layout: split
+ratio: '4:6'
+glowSeed: 700
+---
+
+::left::
+# Architecture Shift
+
+By moving from fragmented local state to an autonomous orchestration engine, the system eliminates human synchronization overhead.
+
+<InsightCalloutBar tone="cyan" class="mt-4">
+  Deterministic invariants replace probabilistic guessing.
+</InsightCalloutBar>
+
+::right::
+```ts
+import { createAgentPipeline } from '@core/runtime'
+
+// Initialize self-verifying workflow
+const pipeline = createAgentPipeline({
+  mode: 'autonomous',
+  verification: 'continuous',
+})
+await pipeline.runAll()
+```
+```
+
 ## Semantic Color System
 
 | Color | Meaning | Use for |
@@ -445,6 +530,43 @@ Copy the snippet, fill `{{placeholders}}`, done.
 - `examples/golden-tech-talk.md` — 12-slide realistic architecture talk
 - `examples/bad-vs-good.md` — 5 common AI mistakes with corrections
 
+
+## 🤖 AI-Native Presentation Design Workflow
+
+When an AI agent (Claude, GPT-4, Cursor, OMP) designs a presentation for this theme, follow this 4-step sequence:
+
+### 1. Narrative Arc Planning (7-Phase Technical Story)
+Map the user's topic to the standard technical presentation curve:
+1. **The Hook** (`layout: cover` + `SpotlightQuestion` or `WorksOnMyMachineHero`) — Emotional resonance, current pain.
+2. **The Tension** (`layout: page` + `ProblemSolutionSplit` or `LifecycleChallengesThreeCol`) — What breaks in the status quo.
+3. **The Pivot / Core Claim** (`layout: headline` or `CenteredStatement`) — The single central idea.
+4. **The Architecture** (`layout: split` or `StackedFlowPipeline` / `FlowDiagram`) — Technical mechanism and topology.
+5. **The Paradigm Shift** (`layout: page` + `ComparisonMatrix`) — Before vs after, concrete trade-offs.
+6. **The Empirical Proof** (`layout: metrics` + `MetricsGrid`) — Hard numbers, benchmarks, latency, SLA.
+7. **The Vision & Roadmap** (`layout: timeline` + `RouteProgressionLane` → `layout: end`) — Next owner, actionable next steps.
+
+### 2. Frontmatter Contract
+Every generated slide must declare:
+```yaml
+---
+layout: <matched-layout>     # Never default to plain blank layout
+glowSeed: <integer>          # Must vary per slide (e.g. 100, 200, 300...)
+glowPreset: <chosen-preset>  # Identical across the entire deck (blue | rust | cyan)
+clicks: <N>                  # Accurately reflect interactive step count
+---
+```
+
+### 3. Visual Invariant Rules
+- **Never generate raw white card containers** (`bg-white`, `bg-gray-100`). Always use `.neko-glass-card`, built-in components, or semantic transparent cards (`bg-sky-500/10 border border-sky-500/20`).
+- **Unified transition timing**: Always use `transition duration-500 ease-in-out` on reveal containers.
+- **Never use `<Transition>` tags**: Rely purely on `$clicks` class toggling.
+
+### 4. Output Verification Gate
+Before outputting:
+1. Did every slide match a known component from the Component Routing Table?
+2. Is `theme: neko-style` present on the first slide?
+3. Are all `glowSeed` values distinct integers?
+4. Are all text elements legible against dark backgrounds (no dark slate on dark bg)?
 ## Deep Dive (Read Only When Needed)
 
 | Need | Read this file |

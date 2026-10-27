@@ -86,7 +86,7 @@ const colorPresets: Record<ColorPreset, { from: string; to: string; accent: stri
   },
 }
 
-const colors = computed(() => colorPresets[preset.value])
+const colors = computed(() => colorPresets[preset.value] || colorPresets.blue)
 
 function distributionToLimits(distribution: Distribution) {
   const min = -0.2
@@ -146,7 +146,8 @@ function distance2([x1, y1]: Range, [x2, y2]: Range) {
 function usePoly(number = 16) {
   function getPoints(): Range[] {
     const limits = distributionToLimits(distribution.value)
-    const rng = seedrandom(`${seed.value}-${currentSlideRoute.value.no}`)
+    const slideNo = currentSlideRoute.value?.no ?? 1
+    const rng = seedrandom(`${seed.value}-${slideNo}`)
     function randomBetween([a, b]: Range) {
       return rng() * (b - a) + a
     }
@@ -163,11 +164,11 @@ function usePoly(number = 16) {
   }
 
   const points = ref(getPoints())
-  const poly = computed(() => points.value.map(([x, y]) => `${x * 100}% ${y * 100}%`).join(', '))
+  const poly = computed(() => (points.value || []).map(([x, y]) => `${x * 100}% ${y * 100}%`).join(', '))
 
   function jumpPoints() {
     const newPoints = new Set(getPoints())
-    points.value = points.value.map((o) => {
+    points.value = (points.value || []).map((o) => {
       let minDistance = Number.POSITIVE_INFINITY
       let closest: Range | undefined
       for (const n of newPoints) {
@@ -177,8 +178,9 @@ function usePoly(number = 16) {
           closest = n
         }
       }
-      newPoints.delete(closest)
-      return closest
+      if (closest)
+        newPoints.delete(closest)
+      return closest ?? o
     })
   }
 
@@ -205,10 +207,10 @@ function clipStyle(poly: string, alpha: number, from: string, to: string, direct
 <template>
   <div>
     <div
-      class="bg overflow-hidden pointer-events-none"
+      class="bg transform-gpu overflow-hidden pointer-events-none"
       :style="{ filter: `blur(70px) hue-rotate(${hue}deg)`, zIndex: props.zIndex }"
       :class="[
-        theme === 'light' ? 'bg-white scale-150' : 'bg-black',
+        theme === 'light' ? 'bg-[#fbfcfe] scale-150' : 'bg-[#0a1428]',
       ]"
       aria-hidden="true"
     >
@@ -231,12 +233,14 @@ function clipStyle(poly: string, alpha: number, from: string, to: string, direct
 <style scoped>
 .bg,
 .clip {
-  transition: all 2.5s ease;
+  transition: clip-path 2.5s ease, opacity 2.5s ease, transform 2.5s ease;
+  will-change: clip-path, transform, opacity;
 }
 
 .bg {
   position: absolute;
   inset: 0;
+  z-index: -10;
 }
 
 .clip {

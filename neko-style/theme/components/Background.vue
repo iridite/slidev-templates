@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { useNav } from '@slidev/client'
 import { computed } from 'vue'
-import GlowBackground from './GlowBackground.vue'
-import { isThemeManagedLayout } from '../utils/themeManagedLayouts'
 
 const props = defineProps<{
   background?: string
@@ -62,16 +59,10 @@ function handleBackground(background?: string): Record<string, string | undefine
 }
 
 const style = computed(() => handleBackground(props.background))
-const { currentSlideRoute } = useNav()
-const formatter = computed(() => (currentSlideRoute.value.meta?.slide as any)?.frontmatter || {})
-const glowEnabled = computed(() => formatter.value.glow !== false)
-const layout = computed(() => formatter.value.layout || 'default')
-const shouldRenderLocalGlow = computed(() => !props.background && glowEnabled.value && !isThemeManagedLayout(layout.value))
 </script>
 
 <template>
   <div :style="style" class="relative h-full w-full">
-    <GlowBackground v-if="shouldRenderLocalGlow" :z-index="0" />
     <div class="relative z-10 h-full w-full">
       <div
         v-if="props.withLogo && props.logoSrc"
